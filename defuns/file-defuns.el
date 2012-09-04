@@ -1,3 +1,4 @@
+;;;; Defuns for working with files
 
 ;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/file-defuns.el
 (defun rename-current-buffer-file ()
@@ -30,10 +31,3 @@
         (delete-file filename)
         (kill-buffer buffer)
         (message "File '%s' successfully removed" filename)))))
-
-;; source: https://github.com/bbatsov/prelude/blob/master/prelude/prelude-core.el
-(defun sudo-edit (&optional arg)
-  (interactive "p")
-  (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
