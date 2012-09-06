@@ -30,4 +30,12 @@
 ;; Hide scroll bars
 (scroll-bar-mode -1)
 
+;; Indicate fill-column
+(fci-mode 1)
+
+;; Set up whitespace-mode to work with fci
+;; which is not compatible with show-trailing-whitespace
+(setq whitespace-style '(face trailing))
+(global-whitespace-mode 1)
+
 (provide 'appearance)
