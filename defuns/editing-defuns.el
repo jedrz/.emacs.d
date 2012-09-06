@@ -12,7 +12,7 @@
 
 (defun move-point-backward-out-of-string ()
   (while (point-is-in-string-p) (backward-char)))
-  
+
 (defun move-forward-out-of-param ()
   (while (not (looking-at ")\\|, \\| ?}\\| ?\\]"))
     (cond
@@ -46,3 +46,9 @@
                         (point))))
     (transpose-regions start-of-first end-of-first start-of-last end-of-last)))
 ;; }}}
+
+(defun back-to-indentation-or-beginning ()
+  (interactive)
+  (if (looking-back "^\\([[:blank:]]\\)+")
+      (beginning-of-line)
+    (back-to-indentation)))

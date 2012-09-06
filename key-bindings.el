@@ -22,8 +22,8 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;;; Motion
-;; Rebind C-a to back-to-indentation
-(global-set-key (kbd "C-a") 'back-to-indentation)
+;; Rebind C-a to work as M-m then second hit as usual C-a
+(global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 ;; Jump to a definition in the current file
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 
