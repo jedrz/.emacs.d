@@ -24,6 +24,8 @@
 ;;; Motion
 ;; Rebind C-a to work as M-m then second hit as usual C-a
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
+;; Quickly go to word with ace-jump-mode
+(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
 ;; Jump to a definition in the current file
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 
