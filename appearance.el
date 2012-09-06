@@ -31,7 +31,7 @@
 (scroll-bar-mode -1)
 
 ;; Indicate fill-column
-(fci-mode 1)
+(fci-mode t)
 
 ;; Set up whitespace-mode to work with fci
 ;; which is not compatible with show-trailing-whitespace
