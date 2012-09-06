@@ -94,6 +94,9 @@
 ;; Any key deletes selection
 (delete-selection-mode)
 
+;; Wrap region with punctuation, etc.
+(wrap-region-global-mode 1)
+
 ;; Revert buffers automatically associated with files when the changes on disk
 (global-auto-revert-mode 1)
 
