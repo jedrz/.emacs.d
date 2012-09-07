@@ -100,6 +100,9 @@
 ;; Revert buffers automatically associated with files when the changes on disk
 (global-auto-revert-mode 1)
 
+;; Projectile is a project interaction library
+(projectile-global-mode 1)
+
 ;;; Text mode
 ;; Turn on auto-fill mode in text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
