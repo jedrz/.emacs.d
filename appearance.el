@@ -31,7 +31,10 @@
 (scroll-bar-mode -1)
 
 ;; Indicate fill-column
-(fci-mode t)
+(define-global-minor-mode fci-global-mode
+  fci-mode
+  (lambda () (fci-mode 1)))
+(fci-global-mode 1)
 
 ;; Set up whitespace-mode to work with fci
 ;; which is not compatible with show-trailing-whitespace
