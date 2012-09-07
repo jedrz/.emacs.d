@@ -82,8 +82,8 @@
 (ido-ubiquitous-mode 1)
 
 ;; Smart M-x
-(smex-initialize)
 (setq smex-save-file (concat user-emacs-directory "smex-items"))
+(smex-initialize)
 
 ;; Create imenu index
 (setq-default imenu-auto-rescan t)
