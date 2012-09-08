@@ -62,6 +62,10 @@
 ;; Replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
+;; Buffer file functions
+(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file) ; was find-file-read-only
+(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
+
 ;;; Windows management
 ;; Use shift + arrow keys to switch between windows
 (windmove-default-keybindings)
