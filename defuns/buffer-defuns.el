@@ -91,8 +91,7 @@ might be bad."
   (interactive)
   (untabify-buffer)
   (delete-trailing-whitespace)
-  ;(set-buffer-file-coding-system 'utf-8)
-  )
+  (set-buffer-file-coding-system 'utf-8))
 
 (defun cleanup-buffer ()
   "Perform a bunch of operations on the whitespace content of a buffer.
