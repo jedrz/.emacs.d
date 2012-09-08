@@ -72,11 +72,11 @@
 ;(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Ido mode
-(ido-mode 1)
 (setq ido-enable-flex-matching t
       ido-everywhere t
       ido-create-new-buffer 'always
       ido-save-directory-list-file (concat user-emacs-directory "ido.last"))
+(ido-mode 1)
 
 ;; Ido everywhere
 (ido-ubiquitous-mode 1)
