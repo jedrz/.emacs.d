@@ -100,6 +100,9 @@
 ;; Revert buffers automatically associated with files when the file changes on disk
 (global-auto-revert-mode 1)
 
+;; Don't use M-TAB to correct words in flyspell-mode
+(setq flyspell-use-meta-tab nil)
+
 ;; Projectile is a project interaction library
 (projectile-global-mode 1)
 
