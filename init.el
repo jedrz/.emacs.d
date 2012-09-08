@@ -12,4 +12,5 @@
 (require 'appearance)
 (require 'key-bindings)
 (require 'mode-mappings)
+(require 'setup-prog-mode)
 (require 'setup-yasnippet)
