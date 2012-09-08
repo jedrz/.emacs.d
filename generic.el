@@ -97,7 +97,7 @@
 ;; Wrap region with punctuation, etc.
 (wrap-region-global-mode 1)
 
-;; Revert buffers automatically associated with files when the changes on disk
+;; Revert buffers automatically associated with files when the file changes on disk
 (global-auto-revert-mode 1)
 
 ;; Projectile is a project interaction library
