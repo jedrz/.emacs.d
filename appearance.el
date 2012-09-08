@@ -41,8 +41,4 @@
 (setq whitespace-style '(face trailing))
 (global-whitespace-mode 1)
 
-;; Don't truncate lines
-(setq-default truncate-lines nil
-              truncate-partial-width-windows nil)
-
 (provide 'appearance)
