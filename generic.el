@@ -59,8 +59,8 @@
 ;; Set fill-column
 (setq-default fill-column 79)
 
-;; Set deafult dictionary for flyspell-mode
-(ispell-change-dictionary "polish")
+;; Set default dictionary for flyspell-mode
+(setq ispell-dictionary "english")
 
 ;; Enable system copy and paste
 (setq x-select-enable-clipboard t)
