@@ -21,23 +21,25 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;;; Motion
 ;; Rebind C-a to work as M-m then second hit as usual C-a
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
+
 ;; Quickly go to word with ace-jump-mode
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+
 ;; Jump to a definition in the current file
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 
-;;; Editing
 ;; Just join line
 (global-set-key (kbd "C-x ^") 'join-line)
+
 ;; Transpose stuff with M-t
-(global-unset-key (kbd "M-t")) ;; which used to be transpose-words
+(global-unset-key (kbd "M-t")) ; which used to be transpose-words
 (global-set-key (kbd "M-t l") 'transpose-lines)
 (global-set-key (kbd "M-t w") 'transpose-words)
 (global-set-key (kbd "M-t s") 'transpose-sexps)
 (global-set-key (kbd "M-t p") 'transpose-params)
+
 ;; Multiple cursors!
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
@@ -45,10 +47,13 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
+
 ;; Rectangular region mode
 (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
+
 ;; Nice replacement of string-rectangle
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
+
 ;; Expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
 
