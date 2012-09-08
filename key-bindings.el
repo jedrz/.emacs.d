@@ -71,4 +71,7 @@
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
+;; Google search
+(global-set-key (kbd "C-x M-g") 'google-search)
+
 (provide 'key-bindings)
