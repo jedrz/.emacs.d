@@ -13,7 +13,8 @@
   (flyspell-prog-mode)
   (turn-on-auto-fill)
   (local-comment-auto-fill)
-  (add-watchwords))
+  (add-watchwords)
+  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))
 
 (add-hook 'prog-mode-hook 'prog-mode-defaults)
 

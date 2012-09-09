@@ -14,9 +14,6 @@
 (global-unset-key (kbd "M-<up>"))
 (global-unset-key (kbd "M-<down>"))
 
-;; Make enter to work as C-j
-(global-set-key (kbd "RET") 'newline-and-indent)
-
 ;; Replace old M-x with smex
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
