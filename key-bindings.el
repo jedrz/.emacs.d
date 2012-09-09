@@ -25,11 +25,11 @@
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 
 ;; Quickly go to word with ace-jump-mode
-(global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+(global-set-key (kbd "C-c C-SPC") 'ace-jump-mode)
 ;; To char
-(global-set-key (kbd "C-c C-c SPC") 'ace-jump-char-mode)
-;; To line
-(global-set-key (kbd "M-g M-g") 'ace-jump-line-mode) ; which used to be goto-line
+(global-set-key (kbd "C-c C-c C-SPC") 'ace-jump-char-mode)
+;; To line (there is still M-g g bind to goto-line)
+(global-set-key (kbd "M-g M-g") 'ace-jump-line-mode)
 
 ;; Jump to a definition in the current file
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
