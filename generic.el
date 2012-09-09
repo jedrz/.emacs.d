@@ -107,10 +107,9 @@
 (projectile-global-mode 1)
 
 ;;; Text mode
-;; Turn on auto-fill mode in text-mode
+;; Turn on auto-fill-mode in text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 ;; Enable flyspell mode
-;(add-hook 'text-mode-hook
-;          '(lambda () (flyspell-mode 1)))
+(add-hook 'text-mode-hook '(lambda () (flyspell-mode 1)))
 
 (provide 'generic)
