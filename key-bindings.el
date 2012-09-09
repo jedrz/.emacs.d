@@ -26,6 +26,10 @@
 
 ;; Quickly go to word with ace-jump-mode
 (global-set-key (kbd "C-c SPC") 'ace-jump-mode)
+;; To char
+(global-set-key (kbd "C-c C-c SPC") 'ace-jump-char-mode)
+;; To line
+(global-set-key (kbd "M-g M-g") 'ace-jump-line-mode) ; which used to be goto-line
 
 ;; Jump to a definition in the current file
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
