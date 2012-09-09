@@ -6,12 +6,12 @@
           1 font-lock-warning-face t))))
 
 (defun local-comment-auto-fill ()
-  (set (make-local-variable 'comment-auto-fill-only-comments) t))
+  (set (make-local-variable 'comment-auto-fill-only-comments) t)
+  (turn-on-auto-fill))
 
 (defun prog-mode-defaults ()
   "Default coding hook"
   (flyspell-prog-mode)
-  (turn-on-auto-fill)
   (local-comment-auto-fill)
   (add-watchwords)
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))
