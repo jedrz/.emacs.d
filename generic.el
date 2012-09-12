@@ -6,9 +6,9 @@
 (defvar melpa '("melpa" . "http://melpa.milkbox.net/packages/"))
 
 ;; Add marmalade and melpa to package repos
-;(add-to-list 'package-archives marmalade t)
-;(add-to-list 'package-archives melpa t)
-(setq package-archives (list gnu marmalade melpa))
+(require 'package)
+(add-to-list 'package-archives marmalade t)
+(add-to-list 'package-archives melpa t)
 
 (package-initialize)
 
