@@ -103,6 +103,9 @@
 ;; Don't use M-TAB to correct words in flyspell-mode
 (setq flyspell-use-meta-tab nil)
 
+;; Visualization of undo tree
+(global-undo-tree-mode 1)
+
 ;; Projectile is a project interaction library
 (projectile-global-mode 1)
 
