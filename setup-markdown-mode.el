@@ -3,4 +3,4 @@
           '(lambda ()
              (define-key markdown-mode-map (kbd "<tab>") 'yas/expand)))
 
-(provide 'mode-mappings)
+(provide 'setup-markdown-mode)
