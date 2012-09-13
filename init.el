@@ -21,3 +21,5 @@
 (require 'setup-markdown-mode)
 
 (require 'setup-yasnippet)
+
+(require 'setup-auto-complete)
