@@ -58,9 +58,6 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
-;; Set kill-ring length
-(setq kill-ring-max 500)
-
 ;; Set fill-column
 (setq-default fill-column 79)
 
