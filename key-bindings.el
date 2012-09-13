@@ -14,6 +14,9 @@
 (global-unset-key (kbd "M-<up>"))
 (global-unset-key (kbd "M-<down>"))
 
+;; Hippie expand instead of dabbrev
+(global-set-key (kbd "M-/") 'hippie-expand)
+
 ;; Replace old M-x with smex
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)

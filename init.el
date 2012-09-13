@@ -20,6 +20,7 @@
 (require 'setup-css-mode)
 (require 'setup-markdown-mode)
 
+;; Load various settings
 (require 'setup-yasnippet)
-
 (require 'setup-auto-complete)
+(require 'setup-hippie-expand)
