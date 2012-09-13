@@ -50,7 +50,7 @@
 (setq-default save-place t)
 (require 'saveplace)
 
-;; bookmarks
+;; Bookmarks
 (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
       bookmark-save-flag 1)
 
