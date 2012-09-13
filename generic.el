@@ -45,6 +45,11 @@
       recentf-auto-cleanup 'never)
 (recentf-mode 1)
 
+;; Save locations in files
+(setq save-place-file (concat user-emacs-directory "saveplace"))
+(setq-default save-place t)
+(require 'saveplace)
+
 ;; bookmarks
 (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
       bookmark-save-flag 1)
