@@ -1,6 +1,9 @@
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
 
+;; Add extensions' folder to load path
+(add-to-list 'load-path (concat user-emacs-directory "vendor"))
+
 ;; Load functions in defuns-dir
 (setq defuns-dir (concat user-emacs-directory "defuns"))
 (dolist (file (directory-files defuns-dir t "\\w+"))
@@ -24,3 +27,6 @@
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
 (require 'setup-hippie-expand)
+
+;; Load extensions
+(require 'ac-python)
