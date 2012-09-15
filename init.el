@@ -19,6 +19,7 @@
 (require 'setup-prog-mode)
 (require 'setup-emacs-lisp-mode)
 (require 'setup-c-mode)
+(require 'setup-python-mode)
 (require 'setup-sgml-mode)
 (require 'setup-css-mode)
 (require 'setup-markdown-mode)
@@ -27,6 +28,3 @@
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
 (require 'setup-hippie-expand)
-
-;; Load extensions
-(require 'ac-python)
