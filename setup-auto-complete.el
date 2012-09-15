@@ -7,9 +7,9 @@
 (global-auto-complete-mode 1)
 (ac-config-default)
 
-(ac-set-trigger-key "TAB")
 (setq ac-auto-start nil ; start only by hitting TAB
-      ac-dwim nil) ; To get pop-ups with docs even if a word is uniquely completed
+      ac-dwim nil ; To get pop-ups with docs even if a word is uniquely completed
+      ac-use-menu-map t) ; To search for completions using C-s
 
 (define-key ac-completing-map (kbd "C-n") 'ac-next)
 (define-key ac-completing-map (kbd "C-p") 'ac-previous)
