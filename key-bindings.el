@@ -30,6 +30,10 @@
 ;; To line (there is still M-g g bind to goto-line)
 (global-set-key (kbd "M-g M-g") 'ace-jump-line-mode)
 
+;; vim's f and b commands
+(global-set-key (kbd "M-m") 'jump-char-forward)
+(global-set-key (kbd "M-M") 'jump-char-backward)
+
 ;; Jump to a definition in the current file
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 
