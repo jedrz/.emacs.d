@@ -86,10 +86,10 @@
 ;; Smart forward
 (require 'smart-forward)
 ;; These key bindings replace making a selection using Shift
-(global-set-key (kbd "C-s-f") 'smart-forward)
-(global-set-key (kbd "C-s-b") 'smart-backward)
-(global-set-key (kbd "C-s-n") 'smart-down)
-(global-set-key (kbd "C-s-p") 'smart-up)
+(global-set-key (kbd "C-S-f") 'smart-forward)
+(global-set-key (kbd "C-S-b") 'smart-backward)
+(global-set-key (kbd "C-S-n") 'smart-down)
+(global-set-key (kbd "C-S-p") 'smart-up)
 
 ;;; File finding
 ;; Find recent files with ido
