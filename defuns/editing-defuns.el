@@ -97,7 +97,7 @@ region-end is used. Adds the duplicated text to the kill ring."
 (defun copy-line (arg)
   "Copy to end of line, or as many lines as prefix argument"
   (interactive "P")
-  (unless arg
+  (if (null arg)
       (copy-to-end-of-line)
     (copy-whole-lines (prefix-numeric-value arg))))
 
