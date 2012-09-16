@@ -1,4 +1,4 @@
-;;;; Defuns for working with files
+;;; Defuns for working with files
 
 ;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/file-defuns.el
 (defun rename-current-buffer-file ()

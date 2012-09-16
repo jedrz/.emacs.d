@@ -1,4 +1,4 @@
-;;;; Defuns for editing text
+;;; Defuns for editing text
 
 ;; {{{
 ;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/editing-defuns.el

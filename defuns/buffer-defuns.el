@@ -1,4 +1,4 @@
-;;;; Buffer-related defuns
+;;; Buffer-related defuns
 
 ;; source:
 ;; https://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el

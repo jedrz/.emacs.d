@@ -1,4 +1,4 @@
-;;;; Misc defuns
+;;; Misc defuns
 
 ;; {{{
 ;; source: https://github.com/bbatsov/prelude/blob/master/prelude/prelude-core.el
