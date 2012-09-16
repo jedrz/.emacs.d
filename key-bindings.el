@@ -36,6 +36,24 @@
 ;; Just join line
 (global-set-key (kbd "C-x ^") 'join-line)
 
+;; Clever new lines
+(global-set-key (kbd "C-<return>") 'new-line-below)
+(global-set-key (kbd "C-S-<return>") 'new-line-above)
+(global-set-key (kbd "M-<return>") 'new-line-in-between)
+
+;; Line movement
+(global-set-key (kbd "C-S-<down>") 'move-line-down)
+(global-set-key (kbd "C-S-<up>") 'move-line-up)
+
+;; Use M-w for copy to end of line if no active region
+(global-set-key (kbd "M-w") 'save-region-or-current-line)
+;; M-W to copy entire line
+(global-set-key (kbd "M-W")
+                (lambda () (interactive) (save-region-or-current-line 1)))
+
+;; Yank and indent
+(global-set-key (kbd "C-S-y") 'yank-and-indent)
+
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ; which used to be transpose-words
 (global-set-key (kbd "M-t l") 'transpose-lines)

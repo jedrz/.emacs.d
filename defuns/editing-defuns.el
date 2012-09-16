@@ -2,6 +2,145 @@
 
 ;; {{{
 ;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/editing-defuns.el
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (move-to-column col)))
+
+(defun new-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline))
+  (indent-for-tab-command))
+
+(defun new-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
+(defun new-line-in-between ()
+  (interactive)
+  (newline)
+  (save-excursion
+    (newline)
+    (indent-for-tab-command))
+  (indent-for-tab-command))
+
+(defun duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated."
+  (interactive "p")
+  (save-excursion
+    (if (region-active-p)
+        (duplicate-region arg)
+      (duplicate-current-line arg))))
+
+(defun duplicate-region (num &optional start end)
+  "Duplicates the region bounded by START and END NUM times.
+If no START and END is provided, the current region-beginning and
+region-end is used. Adds the duplicated text to the kill ring."
+  (interactive "p")
+  (let* ((start (or start (region-beginning)))
+         (end (or end (region-end)))
+         (region (buffer-substring start end)))
+    (kill-ring-save start end)
+    (goto-char start)
+    (dotimes (i num)
+      (insert region))))
+
+(defun duplicate-current-line (num)
+  "Duplicate the current line NUM times."
+  (interactive "p")
+  (when (eq (point-at-eol) (point-max))
+    (goto-char (point-max))
+    (newline)
+    (forward-char -1))
+  (duplicate-region num (point-at-bol) (1+ (point-at-eol))))
+
+(defun yank-and-indent ()
+  (interactive)
+  (yank)
+  (call-interactively 'indent-region))
+
+(defun kill-to-beginning-of-line ()
+  (interactive)
+  (kill-region (save-excursion (beginning-of-line) (point))
+               (point)))
+
+(defun copy-to-end-of-line ()
+  (interactive)
+  (kill-ring-save (point)
+                  (line-end-position))
+  (message "Copied to end of line"))
+
+(defun copy-whole-lines (arg)
+  "Copy lines (as many as prefix argument) in the kill ring"
+  (interactive "p")
+  (kill-ring-save (line-beginning-position)
+                  (line-beginning-position (1+ arg)))
+  (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+
+(defun copy-line (arg)
+  "Copy to end of line, or as many lines as prefix argument"
+  (interactive "P")
+  (unless arg
+      (copy-to-end-of-line)
+    (copy-whole-lines (prefix-numeric-value arg))))
+
+(defun save-region-or-current-line (arg)
+  (interactive "P")
+  (if (region-active-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (copy-line arg)))
+
+(defun kill-and-retry-line ()
+  "Kill the entire current line and reposition point at indentation"
+  (interactive)
+  (back-to-indentation)
+  (kill-line))
+
+(defun camelize-buffer ()
+  (interactive)
+  (goto-char 0)
+  (ignore-errors
+    (replace-next-underscore-with-camel 0))
+  (goto-char 0))
+
+;; kill all comments in buffer
+(defun comment-kill-all ()
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (comment-kill (save-excursion
+                    (goto-char (point-max))
+                    (line-number-at-pos)))))
+
+(defun replace-next-underscore-with-camel (arg)
+  (interactive "p")
+  (if (> arg 0)
+      (setq arg (1+ arg))) ; 1-based index to get eternal loop with 0
+  (let ((case-fold-search nil))
+    (while (not (= arg 1))
+      (search-forward-regexp "\\b_[a-z]")
+      (forward-char -2)
+      (delete-char 1)
+      (capitalize-word 1)
+      (setq arg (1- arg)))))
+
 (defun current-quotes-char ()
   (nth 3 (syntax-ppss)))
 
