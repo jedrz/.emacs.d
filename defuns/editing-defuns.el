@@ -22,7 +22,7 @@
 (defun new-line-below ()
   (interactive)
   (end-of-line)
-  (newline))
+  (newline)
   (indent-for-tab-command))
 
 (defun new-line-above ()
