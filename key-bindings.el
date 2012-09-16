@@ -65,6 +65,13 @@
 (global-set-key (kbd "M-i") 'change-inner)
 (global-set-key (kbd "M-o") 'change-outer)
 
+;; Smart forward
+(require 'smart-forward)
+(global-set-key (kbd "C-s-f") 'smart-forward)
+(global-set-key (kbd "C-s-b") 'smart-backward)
+(global-set-key (kbd "C-s-n") 'smart-down)
+(global-set-key (kbd "C-s-p") 'smart-up)
+
 ;;; File finding
 ;; Find recent files with ido
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
