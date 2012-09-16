@@ -1,0 +1,3 @@
+[submodule "vendor/change-inner"]
+	path = vendor/change-inner
+	url = git://github.com/magnars/change-inner.el.git

@@ -60,6 +60,11 @@
 ;; Expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
 
+;; Change inner/outer
+(require 'change-inner)
+(global-set-key (kbd "M-i") 'change-inner)
+(global-set-key (kbd "M-o") 'change-outer)
+
 ;;; File finding
 ;; Find recent files with ido
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
