@@ -37,9 +37,6 @@
 ;; Jump to a definition in the current file
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 
-;; Just join line
-(global-set-key (kbd "C-x ^") 'join-line)
-
 ;; Clever new lines
 (global-set-key (kbd "C-<return>") 'new-line-below)
 (global-set-key (kbd "C-S-<return>") 'new-line-above)
