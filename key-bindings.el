@@ -107,7 +107,7 @@
 
 ;; Buffer file functions
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file) ; was find-file-read-only
-(global-set-key (kbd "C-x C-k") 'delete-current-buffer-file)
+(global-set-key (kbd "C-x C-S-k") 'delete-current-buffer-file)
 
 ;;; Windows management
 ;; Use shift + arrow keys to switch between windows
