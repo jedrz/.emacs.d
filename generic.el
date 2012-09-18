@@ -68,6 +68,9 @@
 ;; Set fill-column
 (setq-default fill-column 79)
 
+;; Enable set-goal-column
+(put 'set-goal-column 'disabled nil)
+
 ;; Set default dictionary for flyspell-mode
 (setq ispell-dictionary "english")
 
