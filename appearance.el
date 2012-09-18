@@ -30,6 +30,9 @@
 ;; Hide scroll bars
 (scroll-bar-mode -1)
 
+;; Hide menu bar
+(menu-bar-mode -1)
+
 ;; Indicate fill-column
 (define-global-minor-mode fci-global-mode
   fci-mode

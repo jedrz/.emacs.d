@@ -120,4 +120,7 @@
 ;; Google search
 (global-set-key (kbd "C-x M-g") 'google-search)
 
+;; Show menu bar on demand
+(global-set-key (kbd "<f12>") 'menu-bar-mode)
+
 (provide 'key-bindings)
