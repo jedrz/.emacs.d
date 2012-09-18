@@ -20,6 +20,8 @@
 ;; Replace old M-x with smex
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; M-x without Meta
+(global-set-key (kbd "C-x C-m") 'smex)
 
 ;; Rebind C-a to work as M-m then second hit as usual C-a
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
