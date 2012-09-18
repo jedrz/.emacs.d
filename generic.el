@@ -71,6 +71,9 @@
 ;; Enable set-goal-column
 (put 'set-goal-column 'disabled nil)
 
+;; Enable narrowing
+(put 'narrow-to-region 'disabled nil)
+
 ;; Set default dictionary for flyspell-mode
 (setq ispell-dictionary "english")
 
