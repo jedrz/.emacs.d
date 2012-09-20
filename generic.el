@@ -68,6 +68,9 @@
 ;; Set fill-column
 (setq-default fill-column 79)
 
+;; Sentences do not need double spaces to end.
+(setq-default sentence-end-double-space nil)
+
 ;; Enable set-goal-column
 (put 'set-goal-column 'disabled nil)
 
