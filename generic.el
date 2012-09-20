@@ -121,6 +121,9 @@
 ;; Visualization of undo tree
 (global-undo-tree-mode 1)
 
+;; Undo/redo window configuration with C-c <left>/<right>
+(winner-mode 1)
+
 ;; Projectile is a project interaction library
 (projectile-global-mode 1)
 
