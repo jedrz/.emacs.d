@@ -71,12 +71,10 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; Change inner/outer
-(require 'change-inner)
 (global-set-key (kbd "M-i") 'change-inner) ; which used to be tab-to-tab-stop
 (global-set-key (kbd "M-o") 'change-outer) ; which used to be facemenu-set-bold
 
 ;; Smart forward
-(require 'smart-forward)
 ;; These key bindings replace making a selection using Shift
 (global-set-key (kbd "C-S-f") 'smart-forward)
 (global-set-key (kbd "C-S-b") 'smart-backward)

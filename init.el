@@ -15,7 +15,6 @@
 ;; Load stuff
 (require 'generic)
 (require 'appearance)
-(require 'key-bindings)
 
 ;; Load settings for programming modes
 (require 'setup-prog-mode)
@@ -30,3 +29,10 @@
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
 (require 'setup-hippie-expand)
+
+;; Load extensions
+(require 'change-inner)
+(require 'smart-forward)
+
+;; Setup key bindings
+(require 'key-bindings)
