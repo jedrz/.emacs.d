@@ -193,3 +193,14 @@ region-end is used. Adds the duplicated text to the kill ring."
            (not (looking-at "[[:blank:]]+")))
       (beginning-of-line)
     (back-to-indentation)))
+
+(defun open-line-sane (arg)
+  "Open line but doesn't touch current line.
+If ARG is 1 then line is opened below, otherwise above."
+  (interactive "p")
+  (save-excursion
+    (if (= arg 1)
+        (forward-line)
+      (beginning-of-line))
+    ;; FIXME: If point is at the beginning of line then the point isn't restored
+    (newline)))

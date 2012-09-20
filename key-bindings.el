@@ -28,6 +28,11 @@
 (global-set-key (kbd "C-S-<return>") 'new-line-above)
 (global-set-key (kbd "M-<return>") 'new-line-in-between)
 
+;; Sane open-line
+(global-set-key (kbd "C-o") 'open-line-sane)
+(global-set-key (kbd "C-S-o")
+                (lambda () (interactive) (open-line-sane -1)))
+
 ;; Line movement
 (global-set-key (kbd "C-S-<down>") 'move-line-down)
 (global-set-key (kbd "C-S-<up>") 'move-line-up)
