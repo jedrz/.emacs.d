@@ -19,7 +19,7 @@
 ;; Load settings for programming modes
 (require 'setup-prog-mode)
 (require 'setup-emacs-lisp-mode)
-(require 'setup-c-mode)
+(require 'setup-cc-mode)
 (require 'setup-python-mode)
 (require 'setup-sgml-mode)
 (require 'setup-css-mode)

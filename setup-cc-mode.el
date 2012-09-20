@@ -6,4 +6,4 @@
 
 (add-hook 'c-mode-common-hook 'c-mode-common-defaults)
 
-(provide 'setup-c-mode)
+(provide 'setup-cc-mode)
