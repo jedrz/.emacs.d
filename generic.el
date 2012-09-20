@@ -115,14 +115,21 @@
 ;; Any key deletes selection
 (delete-selection-mode)
 
-;; Wrap region with punctuation, etc.
-(wrap-region-global-mode 1)
-
 ;; Revert buffers automatically associated with files when the file changes on disk
 (global-auto-revert-mode 1)
 
 ;; Don't use M-TAB to correct words in flyspell-mode
 (setq flyspell-use-meta-tab nil)
+
+;; Automatically pair parentheses and wrap region
+(autopair-global-mode 1)
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (autopair-mode -1)))
+(add-hook 'python-mode-hook
+          #'(lambda ()
+              (setq autopair-handle-action-fns
+                    (list #'autopair-default-handle-action
+                          #'autopair-python-triple-quote-action))))
 
 ;; Visualization of undo tree
 (global-undo-tree-mode 1)
