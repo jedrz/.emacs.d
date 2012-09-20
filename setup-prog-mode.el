@@ -12,7 +12,6 @@
 (defun prog-mode-defaults ()
   "Default coding hook"
   (flyspell-prog-mode)
-  (subword-mode 1)
   (local-comment-auto-fill)
   (add-watchwords)
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))

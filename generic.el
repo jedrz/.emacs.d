@@ -121,6 +121,9 @@
 ;; Don't use M-TAB to correct words in flyspell-mode
 (setq flyspell-use-meta-tab nil)
 
+;; Handle camelCase words properly everywhere
+(global-subword-mode 1)
+
 ;; Automatically pair parentheses and wrap region
 (autopair-global-mode 1)
 (add-hook 'emacs-lisp-mode-hook
