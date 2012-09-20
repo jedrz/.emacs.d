@@ -71,6 +71,9 @@
 ;; Sentences do not need double spaces to end.
 (setq-default sentence-end-double-space nil)
 
+;; Move files to trash when deleting
+(setq delete-by-moving-to-trash t)
+
 ;; Enable set-goal-column
 (put 'set-goal-column 'disabled nil)
 
