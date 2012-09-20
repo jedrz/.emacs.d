@@ -33,6 +33,7 @@
 ;; Load extensions
 (require 'change-inner)
 (require 'smart-forward)
+(require 'browse-kill-ring)
 
 ;; Setup key bindings
 (require 'key-bindings)

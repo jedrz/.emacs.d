@@ -46,6 +46,9 @@
 ;; Yank and indent
 (global-set-key (kbd "C-S-y") 'yank-and-indent)
 
+;; Browse kill ring
+(global-set-key (kbd "C-x C-y") 'browse-kill-ring)
+
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ; which used to be transpose-words
 (global-set-key (kbd "M-t l") 'transpose-lines)
