@@ -112,9 +112,6 @@
 ;; Create imenu index
 (setq-default imenu-auto-rescan t)
 
-;; Auto completion in minibuffer
-(icomplete-mode 1)
-
 ;; Any key deletes selection
 (delete-selection-mode)
 
