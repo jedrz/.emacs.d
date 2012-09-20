@@ -74,6 +74,9 @@
 ;; Move files to trash when deleting
 (setq delete-by-moving-to-trash t)
 
+;; Automatically open compressed files
+(auto-compression-mode 1)
+
 ;; Enable set-goal-column
 (put 'set-goal-column 'disabled nil)
 
