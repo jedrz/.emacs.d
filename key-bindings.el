@@ -104,6 +104,9 @@
 ;; Windows rotating
 (global-set-key (kbd "C-x w") 'rotate-windows)
 
+;; Magit status
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
