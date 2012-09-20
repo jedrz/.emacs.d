@@ -11,6 +11,13 @@
       ac-dwim nil ; To get pop-ups with docs even if a word is uniquely completed
       ac-use-menu-map t) ; To search for completions using C-s
 
+;; Default sources
+(setq-default ac-sources '(ac-source-yasnippet
+                           ac-source-dictionary
+                           ac-source-words-in-buffer
+                           ac-source-words-in-same-mode-buffers
+                           ac-source-words-in-all-buffer))
+
 (define-key ac-completing-map (kbd "C-n") 'ac-next)
 (define-key ac-completing-map (kbd "C-p") 'ac-previous)
 
