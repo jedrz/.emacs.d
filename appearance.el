@@ -33,6 +33,12 @@
 ;; Hide menu bar
 (menu-bar-mode -1)
 
+;; More useful frame title
+(setq frame-title-format
+      '("" invocation-name ": " (:eval (if (buffer-file-name)
+                                           (abbreviate-file-name (buffer-file-name))
+                                         "%b"))))
+
 ;; Indicate fill-column
 (define-global-minor-mode fci-global-mode
   fci-mode
