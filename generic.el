@@ -65,8 +65,9 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
-;; Set fill-column
+;; Set fill-column and comment-fill-column
 (setq-default fill-column 79)
+(setq comment-fill-column 70)
 
 ;; Sentences do not need double spaces to end.
 (setq-default sentence-end-double-space nil)
