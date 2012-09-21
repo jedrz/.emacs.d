@@ -20,9 +20,9 @@
         (mapc 'disable-theme custom-enabled-themes)
         (load-theme (car my-themes)) t)
     (let* ((current-theme (car custom-enabled-themes))
-           (current-theme-pos (position current-theme my-themes))
-           (next-theme-pos (1+ current-theme-pos))
-           (next-theme (nth next-theme-pos my-themes)))
+           (next-theme (nth
+                        (1+ (position current-theme my-themes))
+                        my-themes)))
       ;; Disable currently loaded theme
       (disable-theme current-theme)
       ;; Check if current-theme wasn't the last in `my-themes'
