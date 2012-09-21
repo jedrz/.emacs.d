@@ -3,7 +3,35 @@
 (setq default-frame-alist '((font . "Inconsolata-12")))
 
 ;; Load theme
-(load-theme 'solarized-dark t)
+(defvar my-themes '(sanityinc-tomorrow-night
+                    sanityinc-tomorrow-day)
+  "List of themes to switch between")
+
+(load-theme (car my-themes) t)
+
+(defun my-themes-load-next ()
+  "Load next theme from `my-themes' list"
+  (interactive)
+  ;; Check if more than one theme is not enabled
+  (if (not (= (length custom-enabled-themes) 1))
+      (progn
+        (message "More than one theme enabled. The first will be loaded.")
+        ;; Disable all loaded themes
+        (mapc 'disable-theme custom-enabled-themes)
+        (load-theme (car my-themes)) t)
+    (let* ((current-theme (car custom-enabled-themes))
+           (current-theme-pos (position
+                               current-theme my-themes))
+           (next-theme-pos (1+ current-theme-pos))
+           (next-theme (nth next-theme-pos my-themes)))
+      ;; Disable currently loaded theme
+      (disable-theme current-theme)
+      ;; Check if current-theme wasn't the last in `my-themes'
+      ;; then load the first in list
+      (if next-theme
+          (load-theme next-theme t)
+        (load-theme (car my-themes) t))
+      (message "%s loaded" (car custom-enabled-themes)))))
 
 ;; Show line numbers
 (global-linum-mode 1)
