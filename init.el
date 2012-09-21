@@ -23,6 +23,7 @@
 (require 'setup-python-mode)
 (require 'setup-sgml-mode)
 (require 'setup-css-mode)
+(require 'setup-latex-mode)
 (require 'setup-markdown-mode)
 
 ;; Load various settings
