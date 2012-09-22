@@ -39,23 +39,25 @@
 ;; (add-hook 'LaTeX-mode-hook 'enable-evince-sync)
 ;; }}}
 
-(setq TeX-auto-save t ; Automatically save style information
-      ;; Parse document structure
-      TeX-parse-self t
-      ;; Use SyncTeX for source correlation
-      TeX-source-correlate-method 'synctex
-      ;; Enable source correlation mode
-      TeX-source-correlate-mode t
-      ;; Do not ask for permission before saving files
-      TeX-save-query nil
-      ;; Do not ask before deleting files
-      TeX-clean-confirm nil
-      ;; Please indent \item
-      LaTeX-item-indent 0)
-
-(setq-default TeX-master nil ; Ask for master document
-              ;; Generate output in PDF
-              TeX-PDF-mode t)
+;; Configure AUCTex
+(eval-after-load 'auctex
+  '(progn
+     (setq TeX-auto-save t ; Automatically save style information
+           ;; Parse document structure
+           TeX-parse-self t
+           ;; Use SyncTeX for source correlation
+           TeX-source-correlate-method 'synctex
+           ;; Enable source correlation mode
+           TeX-source-correlate-mode t
+           ;; Do not ask for permission before saving files
+           TeX-save-query nil
+           ;; Do not ask before deleting files
+           TeX-clean-confirm nil
+           ;; Please indent \item
+           LaTeX-item-indent 0)
+     (setq-default TeX-master nil ; Ask for master document
+                   ;; Generate output in PDF
+                   TeX-PDF-mode t)))
 
 ;; Configure RefTex
 (eval-after-load 'reftex
@@ -73,10 +75,13 @@
      "Get the command to check TeX documents on the fly."
      `("chktex" ("-v0" "-q" "-I",filename))))
 
-(dolist (hook '(flyspell-mode
-                flymake-mode
-                reftex-mode
-                LaTeX-math-mode))
-  (add-hook 'LaTeX-mode-hook hook))
+;; Set up latex hooks
+(defun latex-mode-my-hooks ()
+  (flyspell-mode-on)
+  (flymake-mode-on)
+  (reftex-mode 1)
+  (LaTeX-math-mode 1))
+
+(add-hook 'LaTeX-mode-hook 'latex-mode-my-hooks)
 
 (provide 'setup-latex-mode)
