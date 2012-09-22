@@ -135,6 +135,9 @@
                     (list #'autopair-default-handle-action
                           #'autopair-python-triple-quote-action))))
 
+;; Drag lines, regions with M-<up/down/left/right>
+(drag-stuff-global-mode 1)
+
 ;; Visualization of undo tree
 (global-undo-tree-mode 1)
 

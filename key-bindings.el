@@ -38,10 +38,6 @@
 (global-set-key (kbd "C-S-o")
                 (lambda () (interactive) (open-line-sane -1)))
 
-;; Line movement
-(global-set-key (kbd "C-S-<down>") 'move-line-down)
-(global-set-key (kbd "C-S-<up>") 'move-line-up)
-
 ;; Use M-w for copy to end of line if no active region
 (global-set-key (kbd "M-w") 'save-region-or-current-line)
 ;; M-W to copy entire line
