@@ -1,3 +1,8 @@
+;; Kill also emacs daemon if started
+(global-set-key (kbd "C-x r q") 'save-buffers-kill-emacs)
+;; Usual C-x C-c close frame only
+(global-set-key (kbd "C-x C-c") 'delete-frame)
+
 ;; Hippie expand instead of dabbrev
 (global-set-key (kbd "M-/") 'hippie-expand)
 
