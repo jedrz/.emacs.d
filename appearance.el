@@ -13,9 +13,11 @@
   "Load next theme from `my-themes' list"
   (interactive)
   ;; Check if more than one theme is not enabled
-  (if (not (= (length custom-enabled-themes) 1))
+  ;; or the theme is not from `my-themes' list
+  (if (or (> (length custom-enabled-themes) 1)
+          (not (find (car custom-enabled-themes) my-themes)))
       (progn
-        (message "More than one theme enabled. The first will be loaded.")
+        (message "Loaded themes seem not valid. The first will be loaded.")
         ;; Disable all loaded themes
         (mapc 'disable-theme custom-enabled-themes)
         (load-theme (car my-themes)) t)
