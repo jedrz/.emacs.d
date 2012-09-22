@@ -75,13 +75,11 @@
      "Get the command to check TeX documents on the fly."
      `("chktex" ("-v0" "-q" "-I",filename))))
 
-;; Set up latex hooks
-(defun latex-mode-my-hooks ()
-  (flyspell-mode-on)
-  (flymake-mode-on)
-  (reftex-mode 1)
-  (LaTeX-math-mode 1))
-
-(add-hook 'LaTeX-mode-hook 'latex-mode-my-hooks)
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (flyspell-mode-on)
+            (flymake-mode-on)
+            (reftex-mode 1)
+            (LaTeX-math-mode 1)))
 
 (provide 'setup-latex-mode)

@@ -1,10 +1,9 @@
 ;; Add python source to AC
 (eval-after-load 'auto-complete
-    '(require 'ac-python))
+  '(require 'ac-python))
 
-(defun python-mode-defaults ()
-  (turn-on-eldoc-mode))
-
-(add-hook 'python-mode-hook 'python-mode-defaults)
+(add-hook 'python-mode-hook
+          (lambda ()
+            (turn-on-eldoc-mode)))
 
 (provide 'setup-python-mode)
