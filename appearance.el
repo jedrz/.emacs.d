@@ -43,6 +43,9 @@
 ;; Highlight current line
 (global-hl-line-mode 1)
 
+;; Indicate empty lines after the buffer end
+(setq-default indicate-empty-lines t)
+
 ;; Highlight matching parens
 (show-paren-mode 1)
 (setq show-paren-delay 0)
