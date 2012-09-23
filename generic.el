@@ -147,6 +147,16 @@
 ;; Projectile is a project interaction library
 (projectile-global-mode 1)
 
+;; Custom characters for ace-jump-mode
+(eval-after-load 'ace-jump-mode
+  '(setq ace-jump-mode-move-keys
+         (nconc (loop for c from ?a to ?z collect c)
+                (loop for c from ?A to ?Z collect c)
+                (loop for c from ?0 to ?9 collect c)
+                (loop for c in
+                      '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
+                      collect c))))
+
 ;;; Text mode
 ;; Turn on auto-fill-mode in text-mode
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
