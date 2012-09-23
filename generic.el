@@ -84,6 +84,12 @@
 ;; Enable narrowing
 (put 'narrow-to-region 'disabled nil)
 
+;; Enable upcasing region
+(put 'upcase-region 'disabled nil)
+
+;; Enable downcasing region
+(put 'downcase-region 'disabled nil)
+
 ;; Set default dictionary for flyspell-mode
 (setq ispell-dictionary "english")
 
