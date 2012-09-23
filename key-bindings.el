@@ -5,6 +5,8 @@
 
 ;; Hippie expand instead of dabbrev
 (global-set-key (kbd "M-/") 'hippie-expand)
+;; Expand line
+(global-set-key (kbd "C-M-/") 'hippie-expand-lines)
 
 ;; Replace old M-x with smex
 (global-set-key (kbd "M-x") 'smex)
