@@ -1,6 +1,7 @@
 ;; Font
-(set-frame-font "Inconsolata-12")
-(setq default-frame-alist '((font . "Inconsolata-12")))
+(set-frame-font "Monaco-10.5" nil t)
+;; FIXME: why the above line is not sufficient to set font with emacsclient
+(setq default-frame-alist '((font . "Monaco-10.5")))
 
 ;; Load theme
 (defvar my-themes '(sanityinc-tomorrow-night
