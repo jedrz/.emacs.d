@@ -163,10 +163,9 @@
                       '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
                       collect c))))
 
-;;; Text mode
-;; Turn on auto-fill-mode in text-mode
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-;; Enable flyspell mode
-(add-hook 'text-mode-hook '(lambda () (flyspell-mode 1)))
-
+;; Text mode
+(add-hook 'text-mode-hook
+          (lambda ()
+            (turn-on-auto-fill)
+            (turn-on-flyspell)))
 (provide 'generic)
