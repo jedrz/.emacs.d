@@ -163,6 +163,20 @@
                       '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
                       collect c))))
 
+(eval-after-load 'webjump
+  '(setq webjump-sites (append
+                        '(("bab la" .
+                           [simple-query
+                            "www.bab.la"
+                            "www.bab.la/slownik/angielski-polski/"
+                            ""])
+                          ("Urban Dictionary" .
+                           [simple-query
+                            "www.urbandictionary.com"
+                            "www.urbandictionary.com/define.php?term="
+                            ""]))
+                        webjump-sample-sites)))
+
 ;; Text mode
 (add-hook 'text-mode-hook
           (lambda ()
