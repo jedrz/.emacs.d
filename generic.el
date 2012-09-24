@@ -164,18 +164,23 @@
                       collect c))))
 
 (eval-after-load 'webjump
-  '(setq webjump-sites (append
-                        '(("bab la" .
-                           [simple-query
-                            "www.bab.la"
-                            "www.bab.la/slownik/angielski-polski/"
-                            ""])
-                          ("Urban Dictionary" .
-                           [simple-query
-                            "www.urbandictionary.com"
-                            "www.urbandictionary.com/define.php?term="
-                            ""]))
-                        webjump-sample-sites)))
+  '(progn
+     ;; Fix choosing first entry in webjump
+     (defadvice webjump (around ido-ubiquitous-new activate)
+       (let ((ido-ubiquitous-enable-compatibility nil))
+         ad-do-it))
+     (setq webjump-sites (append
+                           '(("bab.la" .
+                              [simple-query
+                               "bab.la"
+                               "bab.la/slownik/angielski-polski/"
+                               ""])
+                             ("Urban Dictionary" .
+                              [simple-query
+                               "urbandictionary.com"
+                               "urbandictionary.com/define.php?term="
+                               ""]))
+                           webjump-sample-sites))))
 
 ;; Text mode
 (add-hook 'text-mode-hook
