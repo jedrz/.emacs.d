@@ -10,10 +10,10 @@
 
 (load-theme (car my-themes) t)
 
-(defun my-themes-load-next ()
-  "Load next theme from `my-themes' list"
+(defun my-themes-cycle ()
+  "Load the next theme from `my-themes' list"
   (interactive)
-  ;; Check if more than one theme is not enabled
+  ;; Check if more than one theme is enabled
   ;; or the theme is not from `my-themes' list
   (if (or (> (length custom-enabled-themes) 1)
           (not (find (car custom-enabled-themes) my-themes)))
@@ -23,16 +23,13 @@
         (mapc 'disable-theme custom-enabled-themes)
         (load-theme (car my-themes)) t)
     (let* ((current-theme (car custom-enabled-themes))
+           ;; Choose the next theme or the first one
            (next-theme (nth
-                        (1+ (position current-theme my-themes))
+                        (% (1+ (position current-theme my-themes))
+                           (length my-themes))
                         my-themes)))
-      ;; Disable currently loaded theme
       (disable-theme current-theme)
-      ;; Check if current-theme wasn't the last in `my-themes'
-      ;; then load the first in list
-      (if next-theme
-          (load-theme next-theme t)
-        (load-theme (car my-themes) t))
+      (load-theme next-theme t)
       (message "%s loaded" (car custom-enabled-themes)))))
 
 ;; Show line numbers

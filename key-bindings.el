@@ -120,6 +120,6 @@
 (global-set-key (kbd "<f12>") 'menu-bar-mode)
 
 ;; Switch between `my-themes'
-(global-set-key (kbd "<f10>") 'my-themes-load-next)
+(global-set-key (kbd "<f10>") 'my-themes-cycle)
 
 (provide 'key-bindings)
