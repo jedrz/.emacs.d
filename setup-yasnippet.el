@@ -1,5 +1,5 @@
 ;; Enable YaSnippet in every mode
-(yas/global-mode 1)
+(yas-global-mode 1)
 
 ;; Personal snippets
 (setq yas/root-directory (concat user-emacs-directory "snippets"))
