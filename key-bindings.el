@@ -31,9 +31,9 @@
 (global-set-key (kbd "C-x C-i") 'ido-imenu)
 
 ;; Clever new lines
-(global-set-key (kbd "C-<return>") 'new-line-below)
-(global-set-key (kbd "C-S-<return>") 'new-line-above)
-(global-set-key (kbd "M-<return>") 'new-line-in-between)
+(global-set-key (kbd "<C-return>") 'new-line-below)
+(global-set-key (kbd "<C-S-return>") 'new-line-above)
+(global-set-key (kbd "<M-return>") 'new-line-in-between)
 
 ;; Sane open-line
 (global-set-key (kbd "C-o") 'open-line-sane)
