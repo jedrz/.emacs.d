@@ -4,6 +4,3 @@
 [submodule "vendor/smart-forward"]
 	path = vendor/smart-forward
 	url = git://github.com/magnars/smart-forward.el.git
-[submodule "vendor/browse-kill-ring"]
-	path = vendor/browse-kill-ring
-	url = git://github.com/browse-kill-ring/browse-kill-ring.git
