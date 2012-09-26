@@ -83,6 +83,8 @@
 
 ;; Enable narrowing
 (put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
 
 ;; Enable upcasing region
 (put 'upcase-region 'disabled nil)
