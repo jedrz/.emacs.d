@@ -52,6 +52,12 @@
 ;; Browse kill ring
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
 
+;; Duplicate region or current line
+(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+
+;; Comment or uncomment region
+(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
+
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ; which used to be transpose-words
 (global-set-key (kbd "M-t l") 'transpose-lines)
