@@ -113,6 +113,9 @@
 ;; Windows rotating
 (global-set-key (kbd "C-x w") 'rotate-windows)
 
+;; Eval and replace anywhere
+(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+
 ;; Magit status
 (global-set-key (kbd "C-x g") 'magit-status)
 

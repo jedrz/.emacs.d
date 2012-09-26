@@ -9,5 +9,3 @@
              (current-buffer))
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
-
-(defalias 'ear 'eval-and-replace)
