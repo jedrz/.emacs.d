@@ -73,8 +73,9 @@ region-end is used. Adds the duplicated text to the kill ring."
 
 (defun yank-and-indent ()
   (interactive)
-  (yank)
-  (call-interactively 'indent-region))
+  (let ((start (point)))
+    (yank)
+    (indent-region start (point))))
 
 (defun kill-to-beginning-of-line ()
   (interactive)
