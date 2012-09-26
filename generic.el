@@ -93,9 +93,6 @@
 ;; Set default dictionary for flyspell-mode
 (setq ispell-dictionary "english")
 
-;; Enable system copy and paste
-(setq x-select-enable-clipboard t)
-
 ;; Make edited files end with a carriage return
 (setq require-final-newline t)
 
