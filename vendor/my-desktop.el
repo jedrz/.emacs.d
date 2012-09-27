@@ -10,6 +10,9 @@
 ;; my-desktop-read -- Load a session by name
 ;; my-desktop-change -- Save the current session and load a different one
 ;; my-desktop-name -- Echo the current session name
+;;
+;; My modification:
+;; my-desktop-remove -- Remove chosen session
 
 ;;; Code:
 
@@ -52,6 +55,26 @@
     (when name
       (my-desktop-save name))
     (call-interactively 'my-desktop-read)))
+
+(defun my-desktop-remove (&optional name)
+  "Remove desktop from disk by name."
+  (interactive)
+  (unless name
+    (setq name (my-desktop-get-session-name "Remove session" t)))
+  (let ((desktop-to-delete-path (concat my-desktop-session-dir name)))
+   (if (string= name (my-desktop-get-current-name))
+       ;; If session to delete is current session then let
+       ;; `desktop-remove' function set `desktop-dirname' variable to nil.
+       (desktop-remove)
+     ;; If other session will be deleted
+     ;; then preserve `desktop-dirname' value.
+     (let ((desktop-dirname desktop-to-delete-path))
+       (desktop-remove)))
+   ;; Delete a .lock file
+   (delete-file (concat (file-name-as-directory desktop-to-delete-path)
+                        (concat desktop-base-file-name ".lock")))
+   ;; Now delete the empty directory.
+   (delete-directory desktop-to-delete-path)))
 
 (defun my-desktop-name ()
   "Return the current desktop name."
