@@ -34,6 +34,7 @@
 ;; Load extensions
 (require 'change-inner)
 (require 'smart-forward)
+(require 'my-desktop)
 
 ;; Setup key bindings
 (require 'key-bindings)
