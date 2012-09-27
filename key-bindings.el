@@ -65,17 +65,23 @@
 (global-set-key (kbd "M-t s") 'transpose-sexps)
 (global-set-key (kbd "M-t p") 'transpose-params)
 
-;; Multiple cursors!
+;; Multiple cursors
+;; From active region to multiple cursors
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
+;; Mark mark like this
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
-
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c M-<") 'mc/mark-more-like-this-extended)
+(global-set-key (kbd "C-c M->") 'mc/mark-more-like-this-extended)
+(global-set-key (kbd "C-c C-s") 'mc/mark-all-in-region)
 ;; Rectangular region mode
 (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
 
+;; Mark multiple
 ;; Nice replacement of string-rectangle
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 
