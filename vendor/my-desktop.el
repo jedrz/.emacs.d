@@ -1,5 +1,6 @@
 ;;; Commentary
 ;;
+;; Author: Scott Frazer
 ;; http://scottfrazersblog.blogspot.com/2009/12/emacs-named-desktop-sessions.html
 ;;
 ;; Keep all your sessions in one directory.
@@ -79,7 +80,7 @@
 
 (defun my-desktop-kill-emacs-hook ()
   "Save desktop before killing emacs."
-  ;; Save also current session
+  ;; Save also current session.
   (let ((current-desktop-name (my-desktop-get-current-name)))
     (when current-desktop-name
       (my-desktop-save current-desktop-name)))
