@@ -105,6 +105,8 @@
 (setq ido-enable-flex-matching t
       ido-everywhere t
       ido-create-new-buffer 'always
+      ido-use-filename-at-point 'guess
+      ido-use-url-at-point t
       ido-save-directory-list-file (concat user-emacs-directory "ido.last"))
 (ido-mode 1)
 
