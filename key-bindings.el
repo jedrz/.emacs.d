@@ -77,7 +77,7 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 (global-set-key (kbd "C-c M-<") 'mc/mark-more-like-this-extended)
 (global-set-key (kbd "C-c M->") 'mc/mark-more-like-this-extended)
-(global-set-key (kbd "C-c C-s") 'mc/mark-all-in-region)
+(global-set-key (kbd "C-c M-a") 'mc/mark-all-in-region)
 ;; Rectangular region mode
 (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
 
