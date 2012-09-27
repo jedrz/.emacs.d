@@ -70,7 +70,7 @@
      ;; then preserve `desktop-dirname' value.
      (let ((desktop-dirname desktop-to-delete-path))
        (desktop-remove)))
-   ;; Delete a .lock file
+   ;; Delete the .lock file
    (delete-file (concat (file-name-as-directory desktop-to-delete-path)
                         (concat desktop-base-file-name ".lock")))
    ;; Now delete the empty directory.
