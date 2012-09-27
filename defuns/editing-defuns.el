@@ -205,3 +205,8 @@ If ARG is 1 then line is opened below, otherwise above."
       (beginning-of-line))
     ;; FIXME: If point is at the beginning of line then the point isn't restored
     (newline)))
+
+(defun copy-rectangle (start end)
+  "Save rectangle as the last killed one."
+  (interactive "r")
+  (setq killed-rectangle (extract-rectangle start end)))
