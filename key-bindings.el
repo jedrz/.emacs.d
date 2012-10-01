@@ -131,11 +131,13 @@
 (global-set-key (kbd "C-c C-e") 'eval-and-replace)
 
 ;; Magit status
-(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x m") 'magit-status) ; which used to be compose-mail
 
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
+;; Webjump
+(global-set-key (kbd "C-x g") 'webjump)
 ;; Google search
 (global-set-key (kbd "C-x M-g") 'google-search)
 
