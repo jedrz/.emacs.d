@@ -16,6 +16,8 @@
 
 ;;; Code:
 
+(require 'desktop)
+
 (defvar my-desktop-session-dir
   (concat user-emacs-directory "desktop-sessions/")
   "Directory to save desktop sessions in")
