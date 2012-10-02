@@ -16,7 +16,7 @@
   ;; Check if more than one theme is enabled
   ;; or the theme is not from `my-themes' list
   (if (or (> (length custom-enabled-themes) 1)
-          (not (find (car custom-enabled-themes) my-themes)))
+          (not (memq (car custom-enabled-themes) my-themes)))
       (progn
         (message "Loaded themes seem not valid. The first will be loaded.")
         ;; Disable all loaded themes
