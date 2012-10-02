@@ -40,7 +40,7 @@
 ;; }}}
 
 ;; Configure AUCTex
-(eval-after-load 'auctex
+(eval-after-load 'tex-site
   '(progn
      (setq TeX-auto-save t ; Automatically save style information
            ;; Parse document structure
