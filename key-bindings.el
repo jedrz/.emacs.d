@@ -108,7 +108,7 @@
 ;; Find file in other window
 (global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 ;; Edit file with sudo
-(global-set-key (kbd "M-s e") 'sudo-edit)
+(global-set-key (kbd "M-#") 'sudo-edit)
 ;; Replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
