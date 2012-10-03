@@ -116,6 +116,12 @@
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file) ; was find-file-read-only
 (global-set-key (kbd "C-x C-S-k") 'delete-current-buffer-file)
 
+;; Jump from file to current directory
+(autoload 'dired-jump "dired-x")
+(autoload 'dired-jump-other-window "dired-x")
+(global-set-key (kbd "C-x C-j") 'dired-jump)
+(global-set-key (kbd "C-x M-j") 'dired-jump-other-window)
+
 ;;; Windows management
 ;; Use shift + arrow keys to switch between windows
 (windmove-default-keybindings)

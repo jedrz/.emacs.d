@@ -35,6 +35,7 @@
 (require 'change-inner)
 (require 'smart-forward)
 (require 'my-desktop)
+(eval-after-load "dired" '(require 'dired+))
 
 ;; Setup key bindings
 (require 'key-bindings)
