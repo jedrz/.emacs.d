@@ -40,7 +40,7 @@
 ;; }}}
 
 ;; Configure AUCTex
-(eval-after-load 'tex-site
+(eval-after-load "tex-site"
   '(progn
      (setq TeX-auto-save t ; Automatically save style information
            ;; Parse document structure
@@ -60,7 +60,7 @@
                    TeX-PDF-mode t)))
 
 ;; Configure RefTex
-(eval-after-load 'reftex
+(eval-after-load "reftex"
   '(progn
      ;; Recommended optimizations
      (setq reftex-enable-partial-scans t
@@ -70,7 +70,7 @@
            reftex-plug-into-AUCTeX t)))
 
 ;; Configure flymake
-(eval-after-load 'flymake
+(eval-after-load "flymake"
   '(defun flymake-get-tex-args (filename)
      "Get the command to check TeX documents on the fly."
      `("chktex" ("-v0" "-q" "-I",filename))))

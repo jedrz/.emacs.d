@@ -1,6 +1,6 @@
 ;;; Basic configuration for cc-mode and modes derived from it
 
-(eval-after-load 'cc-mode
+(eval-after-load "cc-mode"
   '(setq-default c-default-style "linux"
                  c-basic-offset 4))
 

@@ -155,7 +155,7 @@
 (projectile-global-mode 1)
 
 ;; Custom characters for ace-jump-mode
-(eval-after-load 'ace-jump-mode
+(eval-after-load "ace-jump-mode"
   '(setq ace-jump-mode-move-keys
          (nconc (loop for c from ?a to ?z collect c)
                 (loop for c from ?A to ?Z collect c)
@@ -164,7 +164,7 @@
                       '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
                       collect c))))
 
-(eval-after-load 'webjump
+(eval-after-load "webjump"
   '(progn
      ;; Fix choosing first entry in webjump
      (defadvice webjump (around ido-ubiquitous-new activate)
@@ -188,4 +188,5 @@
           (lambda ()
             (turn-on-auto-fill)
             (turn-on-flyspell)))
+
 (provide 'generic)
