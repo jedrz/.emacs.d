@@ -100,9 +100,11 @@ Including indent-buffer, which should not be called automatically on save."
   (cleanup-buffer-safe)
   (indent-buffer))
 
-(defun recentf-ido-find-file ()
+(defun recentf-ido-find-file (&optional arg)
   "Find a recent file using ido."
-  (interactive)
+  (interactive "P")
   (let ((file (ido-completing-read "Choose recent file: " recentf-list nil t)))
     (when file
-      (find-file file))))
+      (if arg
+          (find-file-other-window file)
+        (find-file file)))))

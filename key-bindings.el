@@ -105,6 +105,10 @@
 ;;; File finding
 ;; Find recent files with ido
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
+;; Recent in other window
+;; Overwrites find-file-other-window (also bound to C-x 4 C-f).
+(global-set-key (kbd "C-x 4 f")
+                (lambda () (interactive) (recentf-ido-find-file 1)))
 ;; Edit file with sudo
 (global-set-key (kbd "M-#") 'sudo-edit)
 ;; Replace buffer-menu with ibuffer
