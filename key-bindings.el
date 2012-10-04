@@ -105,8 +105,6 @@
 ;;; File finding
 ;; Find recent files with ido
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
-;; Find file in other window
-(global-set-key (kbd "C-x M-f") 'ido-find-file-other-window)
 ;; Edit file with sudo
 (global-set-key (kbd "M-#") 'sudo-edit)
 ;; Replace buffer-menu with ibuffer
@@ -120,7 +118,7 @@
 (autoload 'dired-jump "dired-x")
 (autoload 'dired-jump-other-window "dired-x")
 (global-set-key (kbd "C-x C-j") 'dired-jump)
-(global-set-key (kbd "C-x M-j") 'dired-jump-other-window)
+(global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 
 ;;; Windows management
 ;; Use shift + arrow keys to switch between windows
