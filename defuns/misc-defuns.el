@@ -26,3 +26,9 @@
          (url (read-from-minibuffer "URL: " default)))
     (switch-to-buffer (url-retrieve-synchronously url))
     (rename-buffer url t)))
+
+(defun run-urxvt-with-current-dir ()
+  "Run urxvt and change directory in terminal to the current one."
+  (interactive)
+  (let ((urxvt-process (start-process "urxvt-process" nil "urxvt")))
+    (process-send-string urxvt-process (concat "cd " default-directory))))
