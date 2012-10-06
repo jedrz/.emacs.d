@@ -6,8 +6,7 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
-            ;; Enable deleting all whitespace until next non-whitespace with DEL
-            ;; and auto inserting newlines after special characters
-            (c-toggle-auto-hungry-state 1)))
+            ;; Enable deleting all whitespace until next non-whitespace
+            (c-toggle-hungry-state 1)))
 
 (provide 'setup-cc-mode)
