@@ -1,12 +1,10 @@
 ;;; Misc defuns
 
-;; {{{
-;; source: https://github.com/bbatsov/prelude/blob/master/prelude/prelude-core.el
 (defun sudo-edit (&optional arg)
-  (interactive "p")
-  (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+  (interactive "P")
+  (if (and arg buffer-file-name)
+      (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))
+    (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))))
 
 (defun google-search ()
   "Googles a query or region if any."
@@ -17,7 +15,6 @@
     (url-hexify-string (if mark-active
                            (buffer-substring (region-beginning) (region-end))
                          (read-string "Google: "))))))
-;; }}}
 
 (defun view-url ()
   "Open a new buffer containing the contents of URL."
