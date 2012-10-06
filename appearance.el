@@ -69,6 +69,10 @@
                                            (abbreviate-file-name (buffer-file-name))
                                          "%b"))))
 
+;; Unique buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+
 ;; fill-column-indicator
 ;; Define global mode
 (define-global-minor-mode fci-global-mode
