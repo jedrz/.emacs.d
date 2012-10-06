@@ -2,6 +2,22 @@
 
 ;; source:
 ;; https://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
+(defun create-scratch-buffer nil
+  "Create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
+  (interactive)
+  (let ((n 0)
+        bufname)
+    (while (progn
+             (setq bufname (concat "*scratch"
+                                   (if (= n 0) "" (int-to-string n))
+                                   "*"))
+             (setq n (1+ n))
+             (get-buffer bufname)))
+    (switch-to-buffer (get-buffer-create bufname))
+    (emacs-lisp-mode)))
+
+;; source:
+;; https://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
 (defun rotate-windows ()
   "Rotate your windows"
   (interactive)

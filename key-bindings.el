@@ -135,6 +135,9 @@
 (global-set-key (kbd "<C-S-left>") 'buf-move-left)
 (global-set-key (kbd "<C-S-right>") 'buf-move-right)
 
+;; Create another scratch buffer
+(global-set-key (kbd "C-x B") 'create-scratch-buffer)
+
 ;; Eval and replace anywhere
 (global-set-key (kbd "C-c C-e") 'eval-and-replace)
 
