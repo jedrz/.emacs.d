@@ -121,7 +121,7 @@
 (setq-default imenu-auto-rescan t)
 
 ;; Any key deletes selection
-(delete-selection-mode)
+(delete-selection-mode 1)
 
 ;; Revert buffers automatically associated with files when the file changes on disk
 (global-auto-revert-mode 1)
