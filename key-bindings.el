@@ -65,6 +65,10 @@
 (global-set-key (kbd "M-t s") 'transpose-sexps)
 (global-set-key (kbd "M-t p") 'transpose-params)
 
+;; Zap to char
+(global-set-key (kbd "M-z") 'zap-up-to-char)
+(global-set-key (kbd "M-Z") 'zap-to-char)
+
 ;; Multiple cursors
 ;; From active region to multiple cursors
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
