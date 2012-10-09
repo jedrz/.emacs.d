@@ -1,7 +1,7 @@
 ;;; Defuns for editing text
 
 ;; {{{
-;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/editing-defuns.el
+;; http://github.com/magnars/.emacs.d/blob/master/defuns/editing-defuns.el
 (defun move-line-down ()
   (interactive)
   (let ((col (current-column)))

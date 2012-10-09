@@ -1,5 +1,5 @@
 ;;; Auto Complete configuration
-;; source: https://github.com/purcell/emacs.d/blob/master/init-auto-complete.el
+;; http://github.com/purcell/emacs.d/blob/master/init-auto-complete.el
 
 (require 'auto-complete)
 (require 'auto-complete-config)

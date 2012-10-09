@@ -1,7 +1,6 @@
 ;;; Buffer-related defuns
 
-;; source:
-;; https://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
+;; http://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
 (defun create-scratch-buffer nil
   "Create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
   (interactive)
@@ -16,8 +15,7 @@
     (switch-to-buffer (get-buffer-create bufname))
     (emacs-lisp-mode)))
 
-;; source:
-;; https://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
+;; http://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
 (defun rotate-windows ()
   "Rotate your windows"
   (interactive)
@@ -43,7 +41,7 @@
              (set-window-start w2 s1)
              (setq i (1+ i)))))))
 
-;; source: http://wikemacs.org/wiki/Imenu
+;; http://wikemacs.org/wiki/Imenu
 (defun ido-imenu (&optional symbol-list)
   "Refresh imenu and jump to a place in the buffer using Ido."
   (interactive)

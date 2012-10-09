@@ -1,7 +1,7 @@
 ;;; Latex configuration with Auctex
 
 ;; {{{
-;; source: http://www.emacswiki.org/emacs/AUCTeX#toc20
+;; http://www.emacswiki.org/emacs/AUCTeX#toc20
 ;; (require 'dbus)
 
 ;; (defun un-urlify (fname-or-url)

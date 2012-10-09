@@ -1,6 +1,6 @@
 ;;; Defuns for working with files
 
-;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/file-defuns.el
+;; http://github.com/magnars/.emacs.d/blob/master/defuns/file-defuns.el
 (defun rename-current-buffer-file ()
   "Renames current buffer and file it is visiting."
   (interactive)
@@ -18,7 +18,7 @@
                (set-buffer-modified-p nil)
                (message "File '%s' successfully renamed to '%s'" name (file-name-nondirectory new-name))))))))
 
-;; source: https://github.com/magnars/.emacs.d/blob/master/defuns/file-defuns.el
+;; http://github.com/magnars/.emacs.d/blob/master/defuns/file-defuns.el
 (defun delete-current-buffer-file ()
   "Removes file connected to current buffer and kills buffer."
   (interactive)
