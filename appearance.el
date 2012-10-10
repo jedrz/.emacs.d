@@ -33,7 +33,7 @@
       (message "%s loaded" (car custom-enabled-themes)))))
 
 ;; Show line numbers
-(global-linum-mode 1)
+;(global-linum-mode 1)
 
 ;; Show column number in status bar
 (column-number-mode 1)
