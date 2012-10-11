@@ -190,7 +190,7 @@ region-end is used. Adds the duplicated text to the kill ring."
 (defun back-to-indentation-or-beginning ()
   "Move point to beginning of line only if looking at indentation"
   (interactive)
-  (if (and (looking-back "^\\([[:blank:]]\\)+")
+  (if (and (looking-back "^[[:blank:]]+")
            (not (looking-at "[[:blank:]]+")))
       (beginning-of-line)
     (back-to-indentation)))
