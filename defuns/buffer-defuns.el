@@ -72,6 +72,8 @@
   "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."
   (interactive)
+  (unless (featurep 'imenu)
+    (require 'imenu nil t))
   (imenu--make-index-alist)
   (let ((name-and-pos '())
         (symbol-names '()))
