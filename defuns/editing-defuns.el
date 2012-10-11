@@ -205,15 +205,23 @@ region-end is used. Adds the duplicated text to the kill ring."
      (line-end-position))))
 
 (defun open-line-sane (arg)
-  "Open line but doesn't touch current line.
-If ARG is 1 then line is opened below, otherwise above."
+  "Open a new line but doesn't split the current one.
+If ARG is positive then ARG lines are opened below otherwise above."
   (interactive "p")
   (save-excursion
-    (if (= arg 1)
-        (forward-line)
-      (beginning-of-line))
-    ;; FIXME: If point is at the beginning of line then the point isn't restored
-    (newline)))
+    (if (< arg 0)
+        (dotimes (_ (- arg))
+          (beginning-of-line)
+          (newline))
+      (forward-line)
+      (newline arg)))
+  ;; If point was at beginning of line before running this function
+  ;; and lines were opened above
+  ;; then the point is `arg' '(abs arg)' lines too high.
+  ;; Old position has to be restored manually.
+  (when (and (< arg 0)
+             (looking-at "^"))
+    (forward-line (- arg))))
 
 (defun copy-rectangle (start end)
   "Save rectangle as the last killed one."

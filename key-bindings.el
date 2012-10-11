@@ -37,8 +37,9 @@
 
 ;; Sane open-line
 (global-set-key (kbd "C-o") 'open-line-sane)
-(global-set-key (kbd "C-S-o")
-                (lambda () (interactive) (open-line-sane -1)))
+(global-set-key (kbd "C-S-o") (lambda (arg)
+                                (interactive "p")
+                                (open-line-sane (- arg))))
 
 ;; Use M-w for copy to end of line if no active region
 (global-set-key (kbd "M-w") 'save-region-or-current-line)
