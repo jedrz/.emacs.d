@@ -195,6 +195,15 @@ region-end is used. Adds the duplicated text to the kill ring."
       (beginning-of-line)
     (back-to-indentation)))
 
+(defun comment-or-uncomment-current-line-or-region ()
+  "Comment or uncomment current line or region."
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'comment-or-uncomment-region)
+    (comment-or-uncomment-region
+     (line-beginning-position)
+     (line-end-position))))
+
 (defun open-line-sane (arg)
   "Open line but doesn't touch current line.
 If ARG is 1 then line is opened below, otherwise above."

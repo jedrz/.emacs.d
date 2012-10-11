@@ -55,8 +55,8 @@
 ;; Duplicate region or current line
 (global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
 
-;; Comment or uncomment region
-(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
+;; Comment or uncomment region or current line
+(global-set-key (kbd "C-c c") 'comment-or-uncomment-current-line-or-region)
 
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ; which used to be transpose-words
