@@ -1,16 +1,4 @@
-;;;; Generic settings
-
-;; Packages archives
-(defvar gnu '("gnu" . "http://elpa.gnu.org/packages/"))
-(defvar marmalade '("marmalade" . "http://marmalade-repo.org/packages/"))
-(defvar melpa '("melpa" . "http://melpa.milkbox.net/packages/"))
-
-;; Add marmalade and melpa to package repos
-(require 'package)
-(add-to-list 'package-archives marmalade t)
-(add-to-list 'package-archives melpa t)
-
-(package-initialize)
+;;; Generic settings
 
 ; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
