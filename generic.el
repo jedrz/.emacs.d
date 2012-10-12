@@ -13,7 +13,7 @@
 
 ;; Autosave settings
 (setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+      `((".*" ,(concat user-emacs-directory "autosaves/\\1") t)))
 
 ;; Savehist keeps track of some history
 (setq savehist-additional-variables
