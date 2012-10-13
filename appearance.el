@@ -8,7 +8,10 @@
                     sanityinc-tomorrow-day)
   "List of themes to switch between")
 
-(load-theme (car my-themes) t)
+(if (>= emacs-major-version 24)
+    (load-theme (car my-themes) t)
+  ;; If emacs 23 is running load hard coded theme
+  (color-theme-sanityinc-tomorrow-night))
 
 (defun my-themes-cycle ()
   "Load the next theme from `my-themes' list"

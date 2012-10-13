@@ -1,5 +1,14 @@
 ;;; Configure package.el and install missing packages
 
+;; When switching between emacs 23 and 24,
+;; always use the bundled package.el in emacs 24
+(let ((package-el-vendor-dir (expand-file-name (concat user-emacs-directory
+                                                       "vendor/package"))))
+  (when (and (file-directory-p package-el-vendor-dir)
+             (>= emacs-major-version 24))
+    (message "Removing local package.el to avoid shadowing bundled version")
+    (setq load-path (remove package-el-vendor-dir load-path))))
+
 (require 'package)
 
 ;; Packages archives
@@ -54,11 +63,25 @@
     )
   "List of packages to be installed via package.el.")
 
+(defvar my-packages-emacs-23
+  '(
+    color-theme
+    )
+  "List of packages to be installed if emacs 23 is used.")
+
+(defun install-missing-packages (packages)
+  "Install missing PACKAGES."
+  (let ((not-installed (remove-if 'package-installed-p my-packages)))
+    (when not-installed
+      (package-refresh-contents)
+      (dolist (package not-installed)
+        (package-install package)))))
+
 ;; Install missing packages
-(let ((not-installed (remove-if 'package-installed-p my-packages)))
-  (when not-installed
-    (package-refresh-contents)
-    (dolist (package not-installed)
-      (package-install package))))
+(install-missing-packages my-packages)
+
+;; Install specific packages for emacs 23 if is already running
+(when (< emacs-major-version 24)
+  (install-missing-packages my-packages-emacs-23))
 
 (provide 'setup-package)

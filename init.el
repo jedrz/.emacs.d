@@ -4,13 +4,13 @@
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
 
-;; Configure package.el and install missing packages
-(require 'setup-package)
-
 ;; Add extensions' folder and sub-folders to load path
 (let ((default-directory (concat user-emacs-directory "vendor")))
   (add-to-list 'load-path default-directory)
   (normal-top-level-add-subdirs-to-load-path))
+
+;; Configure package.el and install missing packages
+(require 'setup-package)
 
 ;; Load functions in defuns-dir
 (setq defuns-dir (concat user-emacs-directory "defuns"))
