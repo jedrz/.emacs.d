@@ -82,6 +82,7 @@
 
 ;; Install specific packages for emacs 23 if is already running
 (when (< emacs-major-version 24)
+  (setq warning-suppress-types nil)   ; Error when not defined?
   (install-missing-packages my-packages-emacs-23))
 
 (provide 'setup-package)
