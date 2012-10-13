@@ -13,6 +13,7 @@
 (if (>= emacs-major-version 24)
     (load-theme (car my-themes) t)
   ;; If emacs 23 is running load hard coded theme
+  (color-theme-initialize)
   (color-theme-sanityinc-tomorrow-night))
 
 (defun my-themes-cycle ()
