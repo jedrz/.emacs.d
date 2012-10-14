@@ -22,6 +22,9 @@
 (require 'generic)
 (require 'appearance)
 
+;; Associate major modes with some files
+(require 'mode-mappings)
+
 ;; Load settings for programming modes
 (require 'setup-prog-mode)
 (require 'setup-emacs-lisp-mode)
@@ -30,7 +33,6 @@
 (require 'setup-sgml-mode)
 (require 'setup-css-mode)
 (require 'setup-latex-mode)
-(require 'setup-markdown-mode)
 
 ;; Load various settings
 (require 'setup-yasnippet)
