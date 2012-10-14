@@ -1,8 +1,7 @@
 ;;; Basic configuration for sgml-mode and modes derived from it
 
-(eval-after-load "sgml-mode"
-  ;; nice key binding for renaming matching tags
-  '(define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag))
+;; nice key binding for renaming matching tags
+(define-key sgml-mode-map (kbd "C-c C-r") 'rename-sgml-tag)
 
 ;; FIXME: move zencoding configuration to a separate file?
 (eval-after-load "zencoding-mode"

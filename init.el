@@ -28,16 +28,16 @@
 ;; Load settings for programming modes
 (require 'setup-prog-mode)
 (require 'setup-emacs-lisp-mode)
-(require 'setup-cc-mode)
-(require 'setup-python-mode)
-(require 'setup-sgml-mode)
-(require 'setup-css-mode)
-(require 'setup-latex-mode)
+(eval-after-load "cc-mode" '(require 'setup-cc-mode))
+(eval-after-load "python" '(require 'setup-python-mode))
+(eval-after-load "sgml-mode" '(require 'setup-sgml-mode))
+(eval-after-load "css-mode" '(require 'setup-css-mode))
+(eval-after-load "tex-site" '(require 'setup-latex-mode))
 
 ;; Load various settings
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
-(require 'setup-hippie-expand)
+(eval-after-load "hippie-exp" '(require 'setup-hippie-expand))
 (require 'setup-pairing)
 
 ;; Load extensions

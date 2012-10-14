@@ -1,7 +1,6 @@
 ;;; Basic configuration for css-mode
 
-(eval-after-load "css-mode"
-  '(setq css-indent-offset 2))
+(setq css-indent-offset 2)
 
 (add-hook 'css-mode-hook
           (lambda ()
