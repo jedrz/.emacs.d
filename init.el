@@ -36,6 +36,7 @@
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
 (require 'setup-hippie-expand)
+(require 'setup-pairing)
 
 ;; Load extensions
 (require 'change-inner)
