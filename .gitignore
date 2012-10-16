@@ -1,0 +1,16 @@
+.*
+!.gitignore
+/auto-save-list
+/elpa
+/backups
+/autosaves
+/url
+/tramp
+/ido.last
+/recentf
+/smex-items
+/saveplace
+/savehist
+/bookmarks
+/ac-comphist.dat
+/semanticdb
