@@ -19,6 +19,7 @@
 (defvar pairing-mode 'paredit-mode
   "Currently used pairing mode (to restore it when mark becomes inactive).")
 
+;; FIXME: this function doesn't work as expected.
 (defun handle-pairing-modes ()
   "Enable or disable current pairing mode and wrap-region mode.
 
@@ -38,7 +39,7 @@ is restored."
     ;; Restore pairing mode.
     (funcall pairing-mode 1)))
 
-(add-hook 'activate-mark-hook 'handle-pairing-modes)
-(add-hook 'deactivate-mark-hook 'handle-pairing-modes)
+;; (add-hook 'activate-mark-hook 'handle-pairing-modes)
+;; (add-hook 'deactivate-mark-hook 'handle-pairing-modes)
 
 (provide 'setup-pairing)
