@@ -7,7 +7,7 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (autopair-mode -1)
-            (enable-paredit-mode)))
+            (paredit-mode 1)))
 
 ;; Handle triple quotes in python mode.
 (add-hook 'python-mode-hook
