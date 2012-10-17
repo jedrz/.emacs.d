@@ -59,6 +59,9 @@
 ;; Comment or uncomment region or current line
 (global-set-key (kbd "C-c c") 'comment-or-uncomment-current-line-or-region)
 
+;; Indent region with a number of columns
+(global-set-key (kbd "C-x I") 'indent-rigidly)
+
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ; which used to be transpose-words
 (global-set-key (kbd "M-t l") 'transpose-lines)
