@@ -120,16 +120,6 @@
 ;; Handle camelCase words properly everywhere
 (global-subword-mode 1)
 
-;; Automatically pair parentheses and wrap region
-(autopair-global-mode 1)
-(add-hook 'emacs-lisp-mode-hook
-          (lambda () (autopair-mode -1)))
-(add-hook 'python-mode-hook
-          #'(lambda ()
-              (setq autopair-handle-action-fns
-                    (list #'autopair-default-handle-action
-                          #'autopair-python-triple-quote-action))))
-
 ;; Drag lines, regions with M-<up/down/left/right>
 (drag-stuff-global-mode 1)
 
