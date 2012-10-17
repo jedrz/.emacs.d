@@ -41,7 +41,6 @@
 (require 'setup-pairing)
 
 ;; Load extensions
-(require 'change-inner)
 (require 'smart-forward)
 (require 'my-desktop)
 (eval-after-load "dired" '(require 'dired+))

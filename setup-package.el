@@ -22,6 +22,7 @@
     autopair
     browse-kill-ring
     buffer-move
+    change-inner
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
     dired+
@@ -40,6 +41,7 @@
     projectile
     rainbow-delimiters
     rainbow-mode
+    smart-forward
     smex
     solarized-theme
     undo-tree
