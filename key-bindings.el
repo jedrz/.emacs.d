@@ -147,7 +147,7 @@
 (global-set-key (kbd "C-x S") 'create-scratch-buffer)
 
 ;; Eval and replace anywhere
-(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+(global-set-key (kbd "C-x E") 'eval-and-replace)
 
 ;; Magit status
 (global-set-key (kbd "C-x m") 'magit-status) ; which used to be compose-mail
