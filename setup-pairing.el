@@ -16,10 +16,6 @@
                   (list #'autopair-default-handle-action
                         #'autopair-python-triple-quote-action))))
 
-(defvar pairing-mode 'paredit-mode
-  "Currently used pairing mode (to restore it when mark becomes inactive).")
-
-;; FIXME: this function doesn't work as expected.
 (defun handle-pairing-modes ()
   "Enable or disable current pairing mode and wrap-region mode.
 
@@ -29,17 +25,20 @@ Otherwise wrap-region becomes disabled and remembered pairing mode
 is restored."
   (if (region-active-p)
       (progn
-        ;; Remember currently used pairing mode.
-        (setq pairing-mode (if autopair-mode
-                               'autopair-mode
-                             'paredit-mode))
-        (funcall pairing-mode -1)
+        ;; Remember currently used pairing mode if any is enabled.
+        (when (or paredit-mode
+                  autopair-mode)
+          (set (make-local-variable 'pairing-mode) (if paredit-mode
+                                                       'paredit-mode
+                                                     'autopair-mode))
+          (funcall pairing-mode -1))
         (wrap-region-mode 1))
     (wrap-region-mode -1)
-    ;; Restore pairing mode.
-    (funcall pairing-mode 1)))
+    ;; Restore pairing mode if any was enabled.
+    (when (boundp 'pairing-mode)
+     (funcall pairing-mode 1))))
 
-;; (add-hook 'activate-mark-hook 'handle-pairing-modes)
-;; (add-hook 'deactivate-mark-hook 'handle-pairing-modes)
+(add-hook 'activate-mark-hook 'handle-pairing-modes)
+(add-hook 'deactivate-mark-hook 'handle-pairing-modes)
 
 (provide 'setup-pairing)
