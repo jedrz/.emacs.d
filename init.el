@@ -21,6 +21,9 @@
 ;; Load appearance settings at the beginning to avoid momentary display
 (require 'appearance)
 
+;; Shrink minor mode names
+(require 'setup-diminish)
+
 ;; Load general and extensions settings
 (require 'generic)
 
