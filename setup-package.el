@@ -26,6 +26,7 @@
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
     dired+
+    diminish
     drag-stuff
     expand-region
     fill-column-indicator
