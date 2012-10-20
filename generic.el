@@ -53,6 +53,10 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
+;; Set list of tab stop positions used by `tab-to-tab-stop'
+(setq tab-stop-list (loop for tab from tab-width to 120 by tab-width
+                          collect tab))
+
 ;; Set fill-column and comment-fill-column
 (setq-default fill-column 79)
 (setq comment-fill-column 70)
