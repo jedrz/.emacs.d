@@ -18,9 +18,11 @@
   (when (file-regular-p file)
     (load file)))
 
-;; Load stuff
-(require 'generic)
+;; Load appearance settings at the beginning to avoid momentary display
 (require 'appearance)
+
+;; Load general and extensions settings
+(require 'generic)
 
 ;; Associate major modes with some files
 (require 'mode-mappings)
