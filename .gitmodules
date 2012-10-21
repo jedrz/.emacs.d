@@ -1,6 +1,0 @@
-[submodule "vendor/change-inner"]
-	path = vendor/change-inner
-	url = git://github.com/magnars/change-inner.el.git
-[submodule "vendor/smart-forward"]
-	path = vendor/smart-forward
-	url = git://github.com/magnars/smart-forward.el.git
