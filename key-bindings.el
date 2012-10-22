@@ -156,7 +156,7 @@
 ;; Magit status
 (global-set-key (kbd "C-x m") 'magit-status) ; which used to be compose-mail
 
-p;; A complementary binding to the apropos-command(C-h a)
+;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
 ;; Webjump
