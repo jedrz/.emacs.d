@@ -23,6 +23,10 @@
 ;; To line (there is still M-g g bind to goto-line)
 (global-set-key (kbd "M-g M-g") 'ace-jump-line-mode)
 
+;; Scroll line down/up
+(global-set-key (kbd "<down>") 'scroll-down-line)
+(global-set-key (kbd "<up>") 'scroll-up-line)
+
 ;; Smart forward
 ;; These key bindings replace making a selection using Shift
 (global-set-key (kbd "C-S-f") 'smart-forward)

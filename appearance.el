@@ -64,6 +64,10 @@
 ;; Hide menu bar
 (menu-bar-mode -1)
 
+;; Smooth scrolling
+(setq scroll-conservatively 10000
+      auto-window-vscroll nil)
+
 ;; More useful frame title
 (setq frame-title-format
       '("" invocation-name ": " (:eval (if (buffer-file-name)
