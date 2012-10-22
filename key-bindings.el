@@ -23,6 +23,13 @@
 ;; To line (there is still M-g g bind to goto-line)
 (global-set-key (kbd "M-g M-g") 'ace-jump-line-mode)
 
+;; Smart forward
+;; These key bindings replace making a selection using Shift
+(global-set-key (kbd "C-S-f") 'smart-forward)
+(global-set-key (kbd "C-S-b") 'smart-backward)
+(global-set-key (kbd "C-S-n") 'smart-down)
+(global-set-key (kbd "C-S-p") 'smart-up)
+
 ;; vim's f and b commands
 (global-set-key (kbd "M-m") 'jump-char-forward)
 (global-set-key (kbd "M-M") 'jump-char-backward)
@@ -103,13 +110,6 @@
 (global-set-key (kbd "M-i") 'change-inner) ; which used to be tab-to-tab-stop
 (global-set-key (kbd "M-o") 'change-outer) ; which used to be facemenu-set-bold
 
-;; Smart forward
-;; These key bindings replace making a selection using Shift
-(global-set-key (kbd "C-S-f") 'smart-forward)
-(global-set-key (kbd "C-S-b") 'smart-backward)
-(global-set-key (kbd "C-S-n") 'smart-down)
-(global-set-key (kbd "C-S-p") 'smart-up)
-
 ;;; File finding
 ;; Find recent files with ido
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)
@@ -152,7 +152,7 @@
 ;; Magit status
 (global-set-key (kbd "C-x m") 'magit-status) ; which used to be compose-mail
 
-;; A complementary binding to the apropos-command(C-h a)
+p;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
 ;; Webjump
