@@ -136,6 +136,12 @@
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 
+;; Occur with multiple buffers
+(global-set-key (kbd "M-s m") 'multi-occur)
+
+;; Recursive grep
+(global-set-key (kbd "M-s r") 'rgrep)
+
 ;;; Windows management
 ;; Use shift + arrow keys to switch between windows
 (windmove-default-keybindings)
