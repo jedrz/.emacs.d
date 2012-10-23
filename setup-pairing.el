@@ -1,5 +1,13 @@
 ;;; Set up auto pairing and wrapping region.
 
+(eval-after-load "paredit"
+  '(progn
+     ;; Do not overwrite default key bindings
+     (define-key paredit-mode-map (kbd "M-s") nil)
+     (define-key paredit-mode-map (kbd "M-S") nil)
+     (define-key paredit-mode-map (kbd "M-s M-s") 'paredit-splice-sexp)
+     (define-key paredit-mode-map (kbd "M-s M-S") 'paredit-split-sexp)))
+
 ;; Automatically pair parentheses, quotes, etc.
 (autopair-global-mode 1)
 
