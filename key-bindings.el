@@ -122,7 +122,7 @@
 (global-set-key (kbd "C-x 4 f")
                 (lambda () (interactive) (recentf-ido-find-file 1)))
 ;; Edit file with sudo
-(global-set-key (kbd "M-#") 'sudo-edit)
+(global-set-key (kbd "C-x C-#") 'sudo-edit)
 ;; Replace buffer-menu with ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
