@@ -1,6 +1,8 @@
 ;;; Basic configuration for cc-mode and modes derived from it
 
-(setq-default c-default-style "linux"
+(setq-default c-default-style '((java-mode . "java")
+                                (awk-mode . "awk")
+                                (other . "linux"))
               c-basic-offset 4)
 
 (eval-after-load "semantic"
