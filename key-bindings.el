@@ -27,6 +27,9 @@
 (global-set-key (kbd "<down>") 'scroll-down-line)
 (global-set-key (kbd "<up>") 'scroll-up-line)
 
+;; Activate occur inside isearch with C-o
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
 ;; Smart forward
 ;; These key bindings replace making a selection using Shift
 (global-set-key (kbd "C-S-f") 'smart-forward)
