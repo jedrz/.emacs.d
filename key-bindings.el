@@ -27,6 +27,10 @@
 (global-set-key (kbd "<down>") 'scroll-down-line)
 (global-set-key (kbd "<up>") 'scroll-up-line)
 
+;; Like isearch but uses active region as search string
+(global-set-key (kbd "C-S-s") 'isearch-forward-use-region)
+(global-set-key (kbd "C-S-r") 'isearch-backward-use-region)
+
 ;; Activate occur inside isearch with C-o
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 

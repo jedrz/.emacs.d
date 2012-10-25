@@ -1,5 +1,25 @@
 ;;; Misc defuns
 
+(defun isearch-use-region (isearch-function beg end)
+  "Call interactively `isearch-function' and use active region as saarch string.
+If there is not active region then call only `isearch-function'"
+  (if (region-active-p)
+   (let ((selection (buffer-substring-no-properties beg end)))
+     (deactivate-mark)
+     (call-interactively isearch-function)
+     (isearch-yank-string selection))
+   (call-interactively isearch-function)))
+
+(defun isearch-forward-use-region (beg end)
+  "Search forward for active region."
+  (interactive "r")
+  (isearch-use-region 'isearch-forward beg end))
+
+(defun isearch-backward-use-region (beg end)
+  "Search backward for active region."
+  (interactive "r")
+  (isearch-use-region 'isearch-backward beg end))
+
 (defun sudo-edit (&optional arg)
   (interactive "P")
   (if (and arg buffer-file-name)
