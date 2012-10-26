@@ -49,9 +49,3 @@ If there is not active region then call only `isearch-function'"
   (interactive)
   (let ((urxvt-process (start-process "urxvt-process" nil "urxvt")))
     (process-send-string urxvt-process (concat "cd " default-directory))))
-
-(defun mips-mode ()
-  "Run asm mode with adjusted defaults for MIPS."
-  (interactive)
-  (setq asm-comment-char ?#)
-  (asm-mode))
