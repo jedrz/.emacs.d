@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: read float
+# key: rf
+# --
+li \$v0, 6
+syscall
+${1:instruction ($f0 contains float read)} $0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: exit 
+# --
+li $v0, 10
+syscall$0

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: print string
+# key: ps
+# --
+${1:la} \$a0, $0
+li \$v0, 4
+syscall

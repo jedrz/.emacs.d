@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: print integer
+# key: pi
+# --
+${1:move} \$a0, $0
+li \$v0, 1
+syscall

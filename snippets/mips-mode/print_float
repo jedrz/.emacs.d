@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: print float
+# key: pf
+# --
+${1:move} \$f12, $0
+li \$v0, 2
+syscall

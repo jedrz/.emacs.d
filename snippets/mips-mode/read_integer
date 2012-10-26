@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: read integer
+# key: ri
+# --
+li \$v0, 5
+syscall
+${1:instruction ($v0 contains integer read)} $0

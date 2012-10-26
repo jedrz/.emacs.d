@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: read string
+# key: rs
+# --
+${1:la} \$a0, ${2:string}
+${3:li} \$a1, ${4:length}
+li \$v0, 8
+syscall$0

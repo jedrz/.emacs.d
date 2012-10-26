@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: read double
+# key: rd
+# --
+li \$v0, 7
+syscall
+${1:instruction ($f0 contains double read)} $0
