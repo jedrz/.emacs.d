@@ -84,6 +84,11 @@
 ;; Enable downcasing region
 (put 'downcase-region 'disabled nil)
 
+(defadvice kill-line (after kill-line-cleanup-whitespace activate)
+  "Cleanup white space after `kill-line' up to not white space character."
+  (delete-region (point)
+                 (progn (skip-chars-forward " \t") (point))))
+
 ;; Set default dictionary for flyspell-mode
 (setq ispell-dictionary "english")
 
