@@ -41,6 +41,10 @@
 ;; Highlight current line
 (global-hl-line-mode 1)
 
+;; Visualize some kinds of blank
+(setq whitespace-style '(face trailing empty))
+(global-whitespace-mode 1)
+
 ;; Indicate empty lines after the buffer end
 (setq-default indicate-empty-lines t)
 
@@ -98,10 +102,5 @@
 
 ;; Turn on fci
 (fci-global-mode 1)
-
-;; Set up whitespace-mode to work with fci
-;; which is not compatible with show-trailing-whitespace
-(setq whitespace-style '(face trailing))
-(global-whitespace-mode 1)
 
 (provide 'appearance)
