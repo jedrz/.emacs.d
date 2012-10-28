@@ -66,6 +66,7 @@
 
 ;; Smooth scrolling
 (setq scroll-conservatively 10000
+      scroll-margin 3
       auto-window-vscroll nil)
 
 ;; More useful frame title
