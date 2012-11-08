@@ -49,6 +49,12 @@
 (global-set-key (kbd "<C-S-return>") 'new-line-above)
 (global-set-key (kbd "<M-return>") 'new-line-in-between)
 
+;; Join line
+(global-set-key (kbd "C-x j") 'join-line)
+(global-set-key (kbd "C-x J") (lambda (arg)
+                                (interactive "p")
+                                (join-line (- arg))))
+
 ;; Sane open-line
 (global-set-key (kbd "C-o") 'open-line-sane)
 (global-set-key (kbd "C-S-o") (lambda (arg)
