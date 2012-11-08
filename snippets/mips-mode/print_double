@@ -2,6 +2,6 @@
 # name: print double
 # key: pd
 # --
-${1:move} \$f12, $0
+${1:mov.d} \$f12, $0
 li \$v0, 3
 syscall
