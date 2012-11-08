@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: write to file
+# key: wtf
+# --
+li \$v0, 15
+move \$a0, ${1:file descriptor}
+la \$a1, ${2:buffer to write}
+li \$a2, ${3:number of characters to write from buffer}
+syscall$0
