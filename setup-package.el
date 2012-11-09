@@ -30,6 +30,7 @@
     drag-stuff
     expand-region
     fill-column-indicator
+    highlight-indentation
     ido-ubiquitous
     jump-char
     magit
