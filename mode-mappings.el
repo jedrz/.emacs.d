@@ -1,3 +1,6 @@
+;; Open .h files in c++ mode
+(add-to-list 'auto-mode-alist '("\\.h$" . c++-mode))
+
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)$" . markdown-mode))
 
