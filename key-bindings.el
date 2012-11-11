@@ -3,6 +3,9 @@
 ;; Usual C-x C-c close frame only
 (global-set-key (kbd "C-x C-c") 'delete-frame)
 
+;; C-x 4 with C-4
+(global-set-key (kbd "C-4") 'ctl-x-4-prefix)
+
 ;; Hippie expand instead of dabbrev
 (global-set-key (kbd "M-/") 'hippie-expand)
 ;; Expand line
