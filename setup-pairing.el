@@ -24,29 +24,22 @@
                   (list #'autopair-default-handle-action
                         #'autopair-python-triple-quote-action))))
 
-(defun handle-pairing-modes ()
-  "Enable or disable current pairing mode and wrap-region mode.
+(defun enable-pairing-mode ()
+  (wrap-region-mode -1)
+  ;; Restore pairing mode if any was enabled.
+  (when (boundp 'pairing-mode)
+    (funcall pairing-mode 1)))
 
-If region is active then current pairing mode is remembered and wrap-region
-is enabled.
-Otherwise wrap-region becomes disabled and remembered pairing mode
-is restored."
-  (if (region-active-p)
-      (progn
-        ;; Remember currently used pairing mode if any is enabled.
-        (when (or paredit-mode
-                  autopair-mode)
-          (set (make-local-variable 'pairing-mode) (if paredit-mode
-                                                       'paredit-mode
-                                                     'autopair-mode))
-          (funcall pairing-mode -1))
-        (wrap-region-mode 1))
-    (wrap-region-mode -1)
-    ;; Restore pairing mode if any was enabled.
-    (when (boundp 'pairing-mode)
-     (funcall pairing-mode 1))))
+(defun enable-wrapping-mode ()
+  (when (or paredit-mode autopair-mode)
+    ;; Remember currently used pairing mode if any is enabled.
+    (set (make-local-variable 'pairing-mode) (if paredit-mode
+                                                 'paredit-mode
+                                               'autopair-mode))
+    (funcall pairing-mode -1))
+  (wrap-region-mode 1))
 
-(add-hook 'activate-mark-hook 'handle-pairing-modes)
-(add-hook 'deactivate-mark-hook 'handle-pairing-modes)
+(add-hook 'activate-mark-hook 'enable-wrapping-mode)
+(add-hook 'deactivate-mark-hook 'enable-pairing-mode)
 
 (provide 'setup-pairing)
