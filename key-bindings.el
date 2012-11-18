@@ -64,6 +64,9 @@
                                 (interactive "p")
                                 (open-line-sane (- arg))))
 
+;; M-S-SPC for deleting all spaces around point
+(global-set-key (kbd "M-S-SPC") 'delete-horizontal-space)
+
 ;; Use M-w for copy to end of line if no active region
 (global-set-key (kbd "M-w") 'save-region-or-current-line)
 ;; M-W to copy entire line
