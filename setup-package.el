@@ -34,7 +34,6 @@
     ido-ubiquitous
     jump-char
     magit
-    mark-multiple
     markdown-mode
     melpa
     multiple-cursors

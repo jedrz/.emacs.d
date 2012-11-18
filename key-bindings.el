@@ -115,10 +115,6 @@
 ;; Rectangular region mode
 (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
 
-;; Mark multiple
-;; Nice replacement of string-rectangle
-(global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-
 ;; Why there is no command to copy rectangle?
 (global-set-key (kbd "C-x r C") 'copy-rectangle)
 
