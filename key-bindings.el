@@ -104,14 +104,24 @@
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
-;; Mark mark like this
+;; Often used
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-(global-set-key (kbd "C-c M-<") 'mc/mark-more-like-this-extended)
-(global-set-key (kbd "C-c M->") 'mc/mark-more-like-this-extended)
-(global-set-key (kbd "C-c M-a") 'mc/mark-all-in-region)
+(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this-dwim)
+;; Mark one occurrence
+(global-set-key (kbd "C-S-c w") 'mc/mark-next-word-like-this)
+(global-set-key (kbd "C-S-c W") 'mc/mark-previous-word-like-this)
+(global-set-key (kbd "C-S-c s") 'mc/mark-next-symbol-like-this)
+(global-set-key (kbd "C-S-c S") 'mc/mark-previous-symbol-like-this)
+(global-set-key (kbd "C-S-c e") 'mc/mark-more-like-this-extended)
+;; Mark many occurrences
+(global-set-key (kbd "C-S-c a a") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-S-c a A") 'mc/mark-all-like-this-in-defun)
+(global-set-key (kbd "C-S-c a w") 'mc/mark-all-words-like-this)
+(global-set-key (kbd "C-S-c a W") 'mc/mark-all-words-like-this-in-defun)
+(global-set-key (kbd "C-S-c a s") 'mc/mark-all-symbols-like-this)
+(global-set-key (kbd "C-S-c a S") 'mc/mark-all-symbols-like-this-in-defun)
+(global-set-key (kbd "C-S-c a r") 'mc/mark-all-in-region)
 ;; Rectangular region mode
 (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
 
