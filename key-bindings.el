@@ -3,6 +3,9 @@
 ;; Usual C-x C-c close frame only
 (global-set-key (kbd "C-x C-c") 'delete-frame)
 
+;; Repeat last command
+(global-set-key (kbd "C-z") 'repeat)    ; which used to be suspend-frame
+
 ;; C-x 4 with C-4
 (global-set-key (kbd "C-4") 'ctl-x-4-prefix)
 
