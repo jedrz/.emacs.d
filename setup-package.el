@@ -18,18 +18,19 @@
   '(
     ace-jump-mode
     auctex
-    auto-complete
+    auto-complete                       ; depends on popup
     autopair
     browse-kill-ring
     buffer-move
     change-inner
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
-    dired+
     diminish
+    dired+
     drag-stuff
     expand-region
     fill-column-indicator
+    gist                                ; depends on gh, logito, pcache
     highlight-indentation
     ido-ubiquitous
     jump-char
@@ -42,6 +43,7 @@
     projectile
     rainbow-delimiters
     rainbow-mode
+    refheap
     smart-forward
     smex
     solarized-theme
