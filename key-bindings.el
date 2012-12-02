@@ -78,6 +78,7 @@
 
 ;; Yank and indent
 (global-set-key (kbd "C-S-y") 'yank-and-indent)
+(global-set-key (kbd "M-Y") 'yank-pop-and-indent)
 
 ;; Browse kill ring
 (global-set-key (kbd "C-x C-y") 'browse-kill-ring)
