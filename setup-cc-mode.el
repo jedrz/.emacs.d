@@ -12,6 +12,8 @@
           (lambda ()
             ;; Enable deleting all whitespace until next non-whitespace
             (c-toggle-hungry-state 1)
+            ;; Do not indent open curly in in-class inline method
+            (c-set-offset 'inline-open '0)
             ;; Set up completion
             ;; (semantic-mode 1)
             ;; (add-to-list 'ac-sources 'ac-source-semantic)
