@@ -111,7 +111,7 @@
 ;; Often used
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this-dwim)
+(global-set-key (kbd "C-S-c C->") 'mc/mark-all-like-this-dwim)
 ;; Mark one occurrence
 (global-set-key (kbd "C-S-c w") 'mc/mark-next-word-like-this)
 (global-set-key (kbd "C-S-c W") 'mc/mark-previous-word-like-this)
