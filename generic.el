@@ -9,7 +9,9 @@
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
-      version-control t)
+      version-control t
+      ;; Make backup files even when they're in version control
+      vc-make-backup-files t)
 
 ;; Autosave settings
 (setq auto-save-file-name-transforms
