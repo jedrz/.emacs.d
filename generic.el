@@ -174,6 +174,9 @@
                                ""]))
                            webjump-sample-sites))))
 
+(eval-after-load "multiple-cursors-core"
+  '(add-to-list 'mc/unsupported-minor-modes 'flyspell-mode))
+
 ;; Text mode
 (add-hook 'text-mode-hook
           (lambda ()
