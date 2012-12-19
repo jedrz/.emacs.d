@@ -12,5 +12,7 @@
   '(diminish 'projectile-mode "Prj"))
 (eval-after-load "drag-stuff"
   '(diminish 'drag-stuff-mode))
+(eval-after-load "elisp-slime-nav"
+  '(diminish 'elisp-slime-nav-mode))
 
 (provide 'setup-diminish)

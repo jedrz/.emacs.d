@@ -28,6 +28,7 @@
     diminish
     dired+
     drag-stuff
+    elisp-slime-nav
     expand-region
     fill-column-indicator
     gist                                ; depends on gh, logito, pcache
