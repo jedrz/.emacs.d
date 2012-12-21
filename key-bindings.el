@@ -20,6 +20,10 @@
 ;; M-x without Meta
 (global-set-key (kbd "C-x C-m") 'smex)
 
+;; Paragraph movement
+(global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+
 ;; Rebind C-a to work as M-m then second hit as usual C-a
 (global-set-key (kbd "C-a") 'back-to-indentation-or-beginning)
 
