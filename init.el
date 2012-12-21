@@ -40,6 +40,8 @@
 (eval-after-load "tex-site" '(require 'setup-latex-mode))
 (eval-after-load "asm-mode" '(require 'setup-asm-mode))
 
+(eval-after-load "dired" '(require 'setup-dired))
+
 ;; Load various settings
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
@@ -49,7 +51,6 @@
 ;; Load extensions
 (require 'smart-forward)
 (require 'my-desktop)
-(eval-after-load "dired" '(require 'dired+))
 
 ;; Setup key bindings
 (require 'key-bindings)
