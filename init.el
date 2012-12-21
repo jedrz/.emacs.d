@@ -4,13 +4,13 @@
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory)
 
-;; Configure package.el and install missing packages
-(require 'setup-package)
-
 ;; Add extensions' folder and sub-folders to load path
 (let ((default-directory (concat user-emacs-directory "vendor")))
   (add-to-list 'load-path default-directory)
   (normal-top-level-add-subdirs-to-load-path))
+
+;; Configure package.el and install missing packages
+(require 'setup-package)
 
 ;; Load functions in defuns-dir
 (setq defuns-dir (concat user-emacs-directory "defuns"))
@@ -30,7 +30,7 @@
 ;; Associate major modes with some files
 (require 'mode-mappings)
 
-;; Load settings for programming modes
+;; Load settings for some major modes
 (require 'setup-prog-mode)
 (require 'setup-emacs-lisp-mode)
 (eval-after-load "cc-mode" '(require 'setup-cc-mode))
@@ -40,9 +40,8 @@
 (eval-after-load "tex-site" '(require 'setup-latex-mode))
 (eval-after-load "asm-mode" '(require 'setup-asm-mode))
 
+;; Setup extensions
 (eval-after-load "dired" '(require 'setup-dired))
-
-;; Load various settings
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
 (eval-after-load "hippie-exp" '(require 'setup-hippie-expand))
