@@ -29,27 +29,25 @@
       ;; Go to the end of last line.
       (goto-char (point-max))
       (backward-char)
-      (dired-sort-not-hidden-first-recursive (line-number-at-pos))
-    (set-buffer-modified-p nil))))
-
-(defun dired-sort-not-hidden-first-recursive (insert-line-number)
-  ;; Search backward for first hidden file.
-  (when (search-backward-regexp " +\\."
-                                (save-excursion
-                                  (goto-char (point-min))
-                                  (search-forward ".." nil t))
-                                t)
-    (let ((line (buffer-substring (line-beginning-position)
-                                  (1+ (line-end-position)))))
-      (dired-kill-line)
-      ;; Paste the line at `insert-line-number'.
-      (goto-char (point-min))
-      (forward-line (1- insert-line-number))
-      (insert line))
-    ;; Process previous line (just before the inserted one).
-    (forward-line -2)
-    (end-of-line)
-    (dired-sort-not-hidden-first-recursive (line-number-at-pos))))
+      (let ((current-insert-line-number (line-number-at-pos)))
+        ;; Search backward for first hidden file.
+        (while (search-backward-regexp " +\\."
+                                       (save-excursion
+                                         (goto-char (point-min))
+                                         (search-forward ".." nil t))
+                                       t)
+          (let ((line (buffer-substring (line-beginning-position)
+                                        (1+ (line-end-position)))))
+            (dired-kill-line)
+            ;; Paste the line at `current-insert-line-number'.
+            (goto-char (point-min))
+            (forward-line (1- current-insert-line-number))
+            (insert line))
+          ;; Process previous line (just before the inserted one).
+          (forward-line -2)
+          (end-of-line)
+          (setq current-insert-line-number (line-number-at-pos))))
+      (set-buffer-modified-p nil))))
 
 ;; Simple hook doesn't work.
 (defadvice dired-readin (after dired-after-updating-hook activate)
