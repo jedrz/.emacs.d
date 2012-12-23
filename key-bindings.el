@@ -33,6 +33,9 @@
 ;; To line (there is still M-g g bind to goto-line)
 (global-set-key (kbd "M-g M-g") 'ace-jump-line-mode)
 
+;; Go to line with linum mode enabled
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
+
 ;; Like isearch but uses active region as search string
 (global-set-key (kbd "C-S-s") 'isearch-forward-use-region)
 (global-set-key (kbd "C-S-r") 'isearch-backward-use-region)
