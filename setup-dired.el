@@ -54,6 +54,17 @@
   "Sort dired listings with not hidden files first."
   (dired-sort-not-hidden-first))
 
+(defadvice dired-clean-up-after-deletion (before
+                                          dired-auto-kill-buffer-after-deletion
+                                          activate)
+  "Kill buffers associated with file or directory being removed.
+Do not ask for permission."
+  (let* ((fn (ad-get-arg 0))
+         (buf (get-file-buffer fn))
+         (buf-list (dired-buffers-for-dir (expand-file-name fn))))
+    (and buf (kill-buffer buf))
+    (mapc 'kill-buffer buf-list)))
+
 (eval-after-load "wdired"
   '(progn
      (define-key wdired-mode-map [remap beginning-of-buffer] 'dired-goto-top)
