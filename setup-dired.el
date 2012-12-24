@@ -2,6 +2,7 @@
 
 (setq dired-listing-switches "-al --group-directories-first"
       dired-dwim-target t               ; Copy to the second visible dired buffer
+      dired-auto-revert-buffer t        ; Revert buffer on revisiting
       dired-recursive-copies 'always)
 
 (defun dired-goto-top ()

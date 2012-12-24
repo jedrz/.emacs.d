@@ -127,6 +127,8 @@
 
 ;; Revert buffers automatically associated with files when the file changes on disk
 (global-auto-revert-mode 1)
+;; Also auto refresh dired
+(setq global-auto-revert-non-file-buffers t)
 
 ;; Don't use M-TAB to correct words in flyspell-mode
 (setq flyspell-use-meta-tab nil)
