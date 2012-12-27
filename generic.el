@@ -96,6 +96,7 @@
 
 ;; Set default dictionary for flyspell-mode
 (setq ispell-dictionary "english")
+(defvar ispell-my-dicts '("english" "polish")) ; used by ispell-cycle-dicts
 
 ;; Make edited files end with a carriage return
 (setq require-final-newline t)

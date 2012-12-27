@@ -210,4 +210,7 @@
 ;; Switch between `my-themes'
 (global-set-key (kbd "<f10>") 'my-themes-cycle)
 
+;; Switch between `ispell-my-dicts'
+(global-set-key (kbd "<f6>") 'ispell-cycle-dicts)
+
 (provide 'key-bindings)

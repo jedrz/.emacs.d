@@ -67,6 +67,16 @@ If there is not active region then call only `isearch-function'"
     (switch-to-buffer (url-retrieve-synchronously url))
     (rename-buffer url t)))
 
+(defun ispell-cycle-dicts ()
+  "Switch between `ispell-my-dicts' dictionaries."
+  (interactive)
+  (ispell-change-dictionary (nth
+                             (% (1+ (position ispell-current-dictionary
+                                              ispell-my-dicts
+                                              :test 'string=))
+                                (length ispell-my-dicts))
+                             ispell-my-dicts)))
+
 (defun run-urxvt-with-current-dir ()
   "Run urxvt and change directory in terminal to the current one."
   (interactive)
