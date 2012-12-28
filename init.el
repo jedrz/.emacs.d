@@ -42,6 +42,7 @@
 
 ;; Setup extensions
 (eval-after-load "dired" '(require 'setup-dired))
+(eval-after-load "magit" '(require 'setup-magit))
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
 (eval-after-load "hippie-exp" '(require 'setup-hippie-expand))
