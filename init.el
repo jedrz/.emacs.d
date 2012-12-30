@@ -47,6 +47,7 @@
 (require 'setup-auto-complete)
 (eval-after-load "hippie-exp" '(require 'setup-hippie-expand))
 (require 'setup-pairing)
+(require 'setup-flycheck)
 
 ;; Load extensions
 (require 'smart-forward)

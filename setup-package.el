@@ -31,6 +31,7 @@
     elisp-slime-nav
     expand-region
     fill-column-indicator
+    flycheck
     gist                                ; depends on gh, logito, pcache
     highlight-indentation
     ido-ubiquitous
