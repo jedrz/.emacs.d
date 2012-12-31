@@ -69,16 +69,9 @@
            ;; Plug RefTeX into AUCTeX
            reftex-plug-into-AUCTeX t)))
 
-;; Configure flymake
-(eval-after-load "flymake"
-  '(defun flymake-get-tex-args (filename)
-     "Get the command to check TeX documents on the fly."
-     `("chktex" ("-v0" "-q" "-I",filename))))
-
 (add-hook 'LaTeX-mode-hook
           (lambda ()
             (flyspell-mode-on)
-            (flymake-mode-on)
             (reftex-mode 1)
             (LaTeX-math-mode 1)))
 
