@@ -18,7 +18,10 @@
            LaTeX-item-indent 0)
      (setq-default TeX-master nil       ; Ask for master document
                    ;; Generate output in PDF
-                   TeX-PDF-mode t)))
+                   TeX-PDF-mode t)
+     ;; Please, do not remap next-error and previous-error key bindings
+     (define-key TeX-mode-map [remap next-error] nil)
+     (define-key TeX-mode-map [remap previous-error] nil)))
 
 ;; Configure RefTex
 (eval-after-load "reftex"
