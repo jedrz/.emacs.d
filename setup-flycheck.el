@@ -6,15 +6,14 @@
      ;; Define a poor c/c++ checker (it fails when errors affect other files,
      ;; not the one being being checked actually)
      (defmacro flycheck-define-clike-checker (name command modes)
-       `(defvar ,(intern (format "flycheck-checker-%s" name))
-          '(:command
-            (,@command source-inplace)
-            :error-patterns
-            (("^\\(.*\\):\\([0-9]+\\):\\([0-9]+\\): error: \\(.*\\)$"
-              1 2 3 4 error)
-             ("^\\(.*\\):\\([0-9]+\\):\\([0-9]+\\): warning: \\(.*\\)$"
-              1 2 3 4 warning))
-            :modes ,modes)))
+       `(flycheck-declare-checker ,(intern (format "flycheck-checker-%s" name))
+          :command '(,@command source-inplace)
+          :error-patterns
+          '(("^\\(?1:.*\\):\\(?2:[0-9]+\\):\\(?3:[0-9]+\\): error: \\(?4:.*\\)$"
+             error)
+            ("^\\(?1:.*\\):\\(?2:[0-9]+\\):\\(?3:[0-9]+\\): warning: \\(?4:.*\\)$"
+             warning))
+          :modes ',modes))
      (flycheck-define-clike-checker c
                                     ("gcc" "-fsyntax-only" "-Wall" "-Wextra")
                                     c-mode)
