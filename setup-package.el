@@ -33,6 +33,7 @@
     fill-column-indicator
     flycheck
     gist                                ; depends on gh, logito, pcache
+    git-commit-mode
     highlight-indentation
     ido-ubiquitous
     jump-char
