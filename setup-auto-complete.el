@@ -8,7 +8,6 @@
 (ac-config-default)
 
 (setq ac-trigger-key "TAB"
-      ac-auto-start nil ; To avoid segfaults in emacs 24.2
       ac-dwim nil ; To get pop-ups with docs even if a word is uniquely completed
       ac-use-menu-map t) ; To search for completions using C-s
 
