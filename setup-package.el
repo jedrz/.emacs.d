@@ -64,7 +64,6 @@
 (let ((not-installed (remove-if 'package-installed-p my-packages)))
   (when not-installed
     (package-refresh-contents)
-    (dolist (package not-installed)
-      (package-install package))))
+    (mapc 'package-install not-installed)))
 
 (provide 'setup-package)
