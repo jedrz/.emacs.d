@@ -4,7 +4,7 @@
 (eval-after-load "flycheck"
   '(progn
      ;; Highlight whole line with error
-     (setq flycheck-ignore-columns t)
+     (setq flycheck-highlighting-mode 'lines)
      ;; Define a poor c/c++ checker (it fails when errors affect other files,
      ;; not the one being being checked actually)
      (defmacro flycheck-define-clike-checker (name command modes)
