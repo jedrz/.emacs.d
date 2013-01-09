@@ -177,8 +177,6 @@
 ;;; Windows management
 ;; Use shift + arrow keys to switch between windows
 (windmove-default-keybindings)
-;; Windows rotating
-(global-set-key (kbd "C-x w") 'rotate-windows)
 ;; Windows moving
 (global-set-key (kbd "<C-S-up>") 'buf-move-up)
 (global-set-key (kbd "<C-S-down>") 'buf-move-down)
