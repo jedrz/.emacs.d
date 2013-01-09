@@ -110,6 +110,9 @@
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-Z") 'zap-to-char)
 
+;; Increase number at point
+(global-set-key (kbd "C-+") 'evil-numbers/inc-at-pt)
+
 ;; Multiple cursors
 ;; From active region to multiple cursors
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)

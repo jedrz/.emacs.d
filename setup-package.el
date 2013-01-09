@@ -29,6 +29,7 @@
     dired+
     drag-stuff
     elisp-slime-nav
+    evil-numbers
     expand-region
     fill-column-indicator
     flycheck
