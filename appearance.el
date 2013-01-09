@@ -85,10 +85,9 @@
 (setq uniquify-buffer-name-style 'forward)
 
 ;; fill-column-indicator
-;; Define global mode
-(define-global-minor-mode fci-global-mode
-  fci-mode
-  (lambda () (fci-mode 1)))
+;; Enable only in text- and prog-modes
+(add-hook 'prog-mode-hook 'fci-mode)
+(add-hook 'text-mode-hook 'fci-mode)
 
 ;; Workaround for fci and AC's popup
 (defadvice popup-create (before suppress-fci-mode activate)
@@ -100,8 +99,5 @@
   "Restore fci-mode when all popups have closed"
   (when (not fci-mode)
     (turn-on-fci-mode)))
-
-;; Turn on fci
-(fci-global-mode 1)
 
 (provide 'appearance)
