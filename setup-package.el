@@ -17,7 +17,6 @@
 (defvar my-packages
   '(
     ace-jump-mode
-    auctex
     auto-complete                       ; depends on popup
     autopair
     browse-kill-ring

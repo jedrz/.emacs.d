@@ -37,7 +37,7 @@
 (eval-after-load "python" '(require 'setup-python-mode))
 (eval-after-load "sgml-mode" '(require 'setup-sgml-mode))
 (eval-after-load "css-mode" '(require 'setup-css-mode))
-(eval-after-load "tex-mode" '(require 'setup-latex-mode))
+(require 'setup-latex-mode)
 (eval-after-load "asm-mode" '(require 'setup-asm-mode))
 
 ;; Setup extensions

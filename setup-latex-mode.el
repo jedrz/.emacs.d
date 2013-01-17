@@ -1,7 +1,8 @@
-;;; Latex configuration with Auctex
+;; Manually require since auctex is not installed from ELPA
+(require 'tex-site)
 
 ;; Configure AUCTex
-(eval-after-load "tex"
+(eval-after-load "tex-site"
   '(progn
      (setq TeX-auto-save t              ; Automatically save style information
            ;; Parse document structure
@@ -18,10 +19,7 @@
            LaTeX-item-indent 0)
      (setq-default TeX-master nil       ; Ask for master document
                    ;; Generate output in PDF
-                   TeX-PDF-mode t)
-     ;; Please, do not remap next-error and previous-error key bindings
-     (define-key TeX-mode-map [remap next-error] nil)
-     (define-key TeX-mode-map [remap previous-error] nil)))
+                   TeX-PDF-mode t)))
 
 ;; Configure RefTex
 (eval-after-load "reftex"
