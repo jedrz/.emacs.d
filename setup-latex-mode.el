@@ -1,5 +1,6 @@
-;; Manually require since auctex is not installed from ELPA
-(require 'tex-site)
+;; Load autoloads since auctex is not installed from ELPA
+(load "auctex.el" nil t)
+(load "preview-latex.el" nil t)
 
 ;; Configure AUCTex
 (eval-after-load "tex-site"
@@ -33,7 +34,6 @@
 
 (add-hook 'latex-mode-hook
           (lambda ()
-            (TeX-latex-mode)          ; Enable auctex
             (flyspell-mode-on)
             (reftex-mode 1)
             (LaTeX-math-mode 1)))
