@@ -15,9 +15,7 @@
            ;; Do not ask for permission before saving files
            TeX-save-query nil
            ;; Do not ask before deleting files
-           TeX-clean-confirm nil
-           ;; Please indent \item
-           LaTeX-item-indent 0)
+           TeX-clean-confirm nil)
      (setq-default TeX-master nil       ; Ask for master document
                    ;; Generate output in PDF
                    TeX-PDF-mode t)))
