@@ -1,3 +1,9 @@
+(defmacro after (file &rest forms)
+  "Evaluate FORMS after FILE is loaded."
+  (declare (indent 1))
+  `(eval-after-load ,file
+     '(progn ,@forms)))
+
 ;; Load common lisp goodies
 (require 'cl)
 
@@ -33,19 +39,19 @@
 ;; Load settings for some major modes
 (require 'setup-prog-mode)
 (require 'setup-emacs-lisp-mode)
-(eval-after-load "cc-mode" '(require 'setup-cc-mode))
-(eval-after-load "python" '(require 'setup-python-mode))
-(eval-after-load "sgml-mode" '(require 'setup-sgml-mode))
-(eval-after-load "css-mode" '(require 'setup-css-mode))
+(after 'cc-mode (require 'setup-cc-mode))
+(after 'python (require 'setup-python-mode))
+(after 'sgml-mode (require 'setup-sgml-mode))
+(after 'css-mode (require 'setup-css-mode))
 (require 'setup-latex-mode)
-(eval-after-load "asm-mode" '(require 'setup-asm-mode))
+(after 'asm-mode (require 'setup-asm-mode))
 
 ;; Setup extensions
-(eval-after-load "dired" '(require 'setup-dired))
-(eval-after-load "magit" '(require 'setup-magit))
+(after 'dired (require 'setup-dired))
+(after 'magit (require 'setup-magit))
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
-(eval-after-load "hippie-exp" '(require 'setup-hippie-expand))
+(after 'hippie-exp (require 'setup-hippie-expand))
 (require 'setup-pairing)
 (require 'setup-flycheck)
 

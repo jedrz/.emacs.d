@@ -152,36 +152,35 @@
 (projectile-global-mode 1)
 
 ;; Custom characters for ace-jump-mode
-(eval-after-load "ace-jump-mode"
-  '(setq ace-jump-mode-move-keys
-         (nconc (loop for c from ?a to ?z collect c)
-                (loop for c from ?A to ?Z collect c)
-                (loop for c from ?0 to ?9 collect c)
-                (loop for c in
-                      '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
-                      collect c))))
+(after 'ace-jump-mode
+  (setq ace-jump-mode-move-keys
+        (nconc (loop for c from ?a to ?z collect c)
+               (loop for c from ?A to ?Z collect c)
+               (loop for c from ?0 to ?9 collect c)
+               (loop for c in
+                     '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
+                     collect c))))
 
-(eval-after-load "webjump"
-  '(progn
-     ;; Fix choosing first entry in webjump
-     (defadvice webjump (around ido-ubiquitous-new activate)
-       (let ((ido-ubiquitous-enable-compatibility nil))
-         ad-do-it))
-     (setq webjump-sites (append
-                           '(("bab.la" .
-                              [simple-query
-                               "bab.la"
-                               "bab.la/slownik/angielski-polski/"
-                               ""])
-                             ("Urban Dictionary" .
-                              [simple-query
-                               "urbandictionary.com"
-                               "urbandictionary.com/define.php?term="
-                               ""]))
-                           webjump-sample-sites))))
+(after 'webjump
+  ;; Fix choosing first entry in webjump
+  (defadvice webjump (around ido-ubiquitous-new activate)
+    (let ((ido-ubiquitous-enable-compatibility nil))
+      ad-do-it))
+  (setq webjump-sites (append
+                       '(("bab.la" .
+                          [simple-query
+                           "bab.la"
+                           "bab.la/slownik/angielski-polski/"
+                           ""])
+                         ("Urban Dictionary" .
+                          [simple-query
+                           "urbandictionary.com"
+                           "urbandictionary.com/define.php?term="
+                           ""]))
+                       webjump-sample-sites)))
 
-(eval-after-load "multiple-cursors-core"
-  '(add-to-list 'mc/unsupported-minor-modes 'flyspell-mode))
+(after 'multiple-cursors-core
+  (add-to-list 'mc/unsupported-minor-modes 'flyspell-mode))
 
 ;; Text mode
 (add-hook 'text-mode-hook

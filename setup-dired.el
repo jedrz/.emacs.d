@@ -66,9 +66,8 @@ Do not ask for permission."
     (and buf (kill-buffer buf))
     (mapc 'kill-buffer buf-list)))
 
-(eval-after-load "wdired"
-  '(progn
-     (define-key wdired-mode-map [remap beginning-of-buffer] 'dired-goto-top)
-     (define-key wdired-mode-map [remap end-of-buffer] 'dired-goto-bottom)))
+(after 'wdired
+  (define-key wdired-mode-map [remap beginning-of-buffer] 'dired-goto-top)
+  (define-key wdired-mode-map [remap end-of-buffer] 'dired-goto-bottom))
 
 (provide 'setup-dired)

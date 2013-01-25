@@ -12,10 +12,10 @@
       ac-use-menu-map t) ; To search for completions using C-s
 
 ;; Add workarounds
-(eval-after-load "flyspell"
-  '(ac-flyspell-workaround))
-(eval-after-load "linum"
-  '(ac-linum-workaround))
+(after 'flyspell
+  (ac-flyspell-workaround))
+(after 'linum
+  (ac-linum-workaround))
 
 ;; Default sources
 (setq-default ac-sources '(ac-source-yasnippet

@@ -4,11 +4,10 @@
 (define-key sgml-mode-map (kbd "C-c C-r") 'mc/mark-sgml-tag-pair)
 
 ;; FIXME: move zencoding configuration to a separate file?
-(eval-after-load "zencoding-mode"
-  '(progn
-     (define-key zencoding-mode-keymap (kbd "C-j") nil)
-     (define-key zencoding-mode-keymap (kbd "C-<return>") nil)
-     (define-key zencoding-mode-keymap (kbd "C-c C-z") 'zencoding-expand-line)))
+(after 'zencoding-mode
+  (define-key zencoding-mode-keymap (kbd "C-j") nil)
+  (define-key zencoding-mode-keymap (kbd "C-<return>") nil)
+  (define-key zencoding-mode-keymap (kbd "C-c C-z") 'zencoding-expand-line))
 
 (add-hook 'sgml-mode-hook
           (lambda ()
