@@ -125,7 +125,6 @@
 ;; Smart M-x
 (after 'smex
   (setq smex-save-file (concat user-emacs-directory "smex-items")))
-(smex-initialize)
 
 ;; Create imenu index
 (setq-default imenu-auto-rescan t)
