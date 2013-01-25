@@ -23,18 +23,20 @@
                   (list #'autopair-default-handle-action
                         #'autopair-python-triple-quote-action))))
 
+(defvar pairing-mode nil
+  "Currently used pairing mode.")
+(make-variable-buffer-local 'pairing-mode)
+
 (defun enable-pairing-mode ()
   (wrap-region-mode -1)
   ;; Restore pairing mode if any was enabled.
-  (when (boundp 'pairing-mode)
+  (when pairing-mode
     (funcall pairing-mode 1)))
 
 (defun enable-wrapping-mode ()
   (when (or paredit-mode autopair-mode)
     ;; Remember currently used pairing mode if any is enabled.
-    (set (make-local-variable 'pairing-mode) (if paredit-mode
-                                                 'paredit-mode
-                                               'autopair-mode))
+    (setq pairing-mode (if paredit-mode 'paredit-mode 'autopair-mode))
     (funcall pairing-mode -1))
   (wrap-region-mode 1))
 
