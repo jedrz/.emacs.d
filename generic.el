@@ -18,31 +18,35 @@
       `((".*" ,(concat user-emacs-directory "autosaves/\\1") t)))
 
 ;; Savehist keeps track of some history
-(setq savehist-additional-variables
-      ;; search entries
-      '(search ring regexp-search-ring)
-      ;; save every minute
-      savehist-autosave-interval 60
-      ;; keep the home clean
-      savehist-file (concat user-emacs-directory "savehist"))
+(after 'savehist
+  (setq savehist-additional-variables
+        ;; search entries
+        '(search ring regexp-search-ring)
+        ;; save every minute
+        savehist-autosave-interval 60
+        ;; keep the home clean
+        savehist-file (concat user-emacs-directory "savehist")))
 (savehist-mode 1)
 
 ;; Save recent files
-(setq recentf-save-file (concat user-emacs-directory "recentf")
-      recentf-max-saved-items 200
-      recentf-max-menu-items 15
-      recentf-exclude '("ido\\.last" "\\.mc-lists\\.el" "/elpa/")
-      recentf-auto-cleanup 'never)
+(after 'recentf
+  (setq recentf-save-file (concat user-emacs-directory "recentf")
+        recentf-max-saved-items 200
+        recentf-max-menu-items 15
+        recentf-exclude '("ido\\.last" "\\.mc-lists\\.el" "/elpa/")
+        recentf-auto-cleanup 'never))
 (recentf-mode 1)
 
 ;; Save locations in files
-(setq save-place-file (concat user-emacs-directory "saveplace"))
-(setq-default save-place t)
+(after 'saveplace
+  (setq save-place-file (concat user-emacs-directory "saveplace"))
+  (setq-default save-place t))
 (require 'saveplace)
 
 ;; Bookmarks
-(setq bookmark-default-file (concat user-emacs-directory "bookmarks")
-      bookmark-save-flag 1)
+(after 'bookmark
+  (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
+        bookmark-save-flag 1))
 
 ;; UTF-8
 (setq locale-coding-system 'utf-8)
@@ -95,7 +99,8 @@
                    (progn (skip-chars-forward " \t") (point)))))
 
 ;; Set default dictionary for flyspell-mode
-(setq ispell-dictionary "english")
+(after 'ispell
+  (setq ispell-dictionary "english"))
 (defvar ispell-my-dicts '("english" "polish")) ; used by ispell-cycle-dicts
 
 ;; Make edited files end with a carriage return
@@ -105,19 +110,21 @@
 ;(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Ido mode
-(setq ido-enable-flex-matching t
-      ido-everywhere t
-      ido-create-new-buffer 'always
-      ido-use-filename-at-point 'guess
-      ido-use-url-at-point t
-      ido-save-directory-list-file (concat user-emacs-directory "ido.last"))
+(after 'ido
+  (setq ido-enable-flex-matching t
+        ido-everywhere t
+        ido-create-new-buffer 'always
+        ido-use-filename-at-point 'guess
+        ido-use-url-at-point t
+        ido-save-directory-list-file (concat user-emacs-directory "ido.last")))
 (ido-mode 1)
 
 ;; Ido everywhere
 (ido-ubiquitous-mode 1)
 
 ;; Smart M-x
-(setq smex-save-file (concat user-emacs-directory "smex-items"))
+(after 'smex
+  (setq smex-save-file (concat user-emacs-directory "smex-items")))
 (smex-initialize)
 
 ;; Create imenu index
