@@ -17,6 +17,12 @@
 (setq auto-save-file-name-transforms
       `((".*" ,(concat user-emacs-directory "autosaves/\\1") t)))
 
+;; Create auto-save-list directory if doesn't exist yet
+;; as its lack causes errors while auto saving is performed.
+(let ((auto-save-list-dir (concat user-emacs-directory "auto-save-list")))
+ (when (not (file-exists-p auto-save-list-dir))
+   (make-directory auto-save-list-dir)))
+
 ;; Savehist keeps track of some history
 (after 'savehist
   (setq savehist-additional-variables
