@@ -85,6 +85,29 @@ If there is not active region then call only `isearch-function'"
                              ispell-my-dicts)))
 
 ;;;###autoload
+(defun my-themes-cycle ()
+  "Load the next theme from `my-themes' list"
+  (interactive)
+  ;; Check if more than one theme is enabled
+  ;; or the theme is not from `my-themes' list
+  (if (or (> (length custom-enabled-themes) 1)
+          (not (memq (car custom-enabled-themes) my-themes)))
+      (progn
+        (message "Loaded themes seem not valid. The first will be loaded.")
+        ;; Disable all loaded themes
+        (mapc 'disable-theme custom-enabled-themes)
+        (load-theme (car my-themes)) t)
+    (let* ((current-theme (car custom-enabled-themes))
+           ;; Choose the next theme or the first one
+           (next-theme (nth
+                        (% (1+ (position current-theme my-themes))
+                           (length my-themes))
+                        my-themes)))
+      (disable-theme current-theme)
+      (load-theme next-theme t)
+      (message "%s loaded" (car custom-enabled-themes)))))
+
+;;;###autoload
 (defun run-urxvt-with-current-dir ()
   "Run urxvt and change directory in terminal to the current one."
   (interactive)
