@@ -26,7 +26,6 @@
     color-theme-sanityinc-tomorrow
     diminish
     dired+
-    drag-stuff
     elisp-slime-nav
     evil-numbers
     expand-region
@@ -40,6 +39,7 @@
     magit
     markdown-mode
     melpa
+    move-text
     multiple-cursors
     paredit
     pkgbuild-mode

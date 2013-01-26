@@ -144,10 +144,6 @@
 ;; Handle camelCase words properly everywhere
 (global-subword-mode 1)
 
-;; Drag lines, regions with M-S-<up/down/left/right>
-(setq drag-stuff-modifier '(meta shift))
-(drag-stuff-global-mode 1)
-
 ;; Visualization of undo tree
 (global-undo-tree-mode 1)
 

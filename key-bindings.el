@@ -72,6 +72,10 @@
 (global-set-key (kbd "C-o") 'empty-line-below)
 (global-set-key (kbd "C-S-o") 'empty-line-above)
 
+;; Move line or region
+(global-set-key (kbd "M-S-<down>") 'move-text-down)
+(global-set-key (kbd "M-S-<up>") 'move-text-up)
+
 ;; M-S-SPC for deleting all spaces around point
 (global-set-key (kbd "M-S-SPC") 'delete-horizontal-space)
 
