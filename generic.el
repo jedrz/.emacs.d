@@ -3,6 +3,9 @@
 ; "y or n" instead of "yes or no"
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; Recompile outdated compiled files at exit
+(add-hook 'kill-emacs-hook 'byte-recompile-emacs-directory)
+
 ;; Backup files settings
 (setq backup-by-copying t
       backup-directory-alist (list (cons "." (concat user-emacs-directory "backups")))

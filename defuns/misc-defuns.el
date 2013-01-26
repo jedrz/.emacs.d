@@ -56,6 +56,15 @@ If there is not active region then call only `isearch-function'"
     (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))))
 
 ;;;###autoload
+(defun byte-recompile-emacs-directory ()
+  "Recompile outdated already compiled files in `user-emacs-directory'."
+  (interactive)
+  ;; Be quiet about compilation.
+  (let (font-lock-verbose
+        byte-compile-verbose)
+   (byte-recompile-directory user-emacs-directory)))
+
+;;;###autoload
 (defun google-search ()
   "Googles a query or region if any."
   (interactive)
