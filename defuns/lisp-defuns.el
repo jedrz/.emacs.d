@@ -1,5 +1,6 @@
 ;;; Lisp specific defuns
 
+;;;###autoload
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)

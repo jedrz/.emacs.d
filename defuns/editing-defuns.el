@@ -2,6 +2,7 @@
 
 ;; {{{
 ;; http://github.com/magnars/.emacs.d/blob/master/defuns/editing-defuns.el
+;;;###autoload
 (defun move-line-down ()
   (interactive)
   (let ((col (current-column)))
@@ -11,6 +12,7 @@
     (forward-line)
     (move-to-column col)))
 
+;;;###autoload
 (defun move-line-up ()
   (interactive)
   (let ((col (current-column)))
@@ -19,12 +21,14 @@
       (transpose-lines -1))
     (move-to-column col)))
 
+;;;###autoload
 (defun new-line-below ()
   (interactive)
   (end-of-line)
   (newline)
   (indent-for-tab-command))
 
+;;;###autoload
 (defun new-line-above ()
   (interactive)
   (beginning-of-line)
@@ -32,6 +36,7 @@
   (forward-line -1)
   (indent-for-tab-command))
 
+;;;###autoload
 (defun new-line-in-between ()
   (interactive)
   (newline)
@@ -40,6 +45,7 @@
     (indent-for-tab-command))
   (indent-for-tab-command))
 
+;;;###autoload
 (defun duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
 If there's no region, the current line will be duplicated."
@@ -49,6 +55,7 @@ If there's no region, the current line will be duplicated."
         (duplicate-region arg)
       (duplicate-current-line arg))))
 
+;;;###autoload
 (defun duplicate-region (num &optional start end)
   "Duplicates the region bounded by START and END NUM times.
 If no START and END is provided, the current region-beginning and
@@ -62,6 +69,7 @@ region-end is used. Adds the duplicated text to the kill ring."
     (dotimes (i num)
       (insert region))))
 
+;;;###autoload
 (defun duplicate-current-line (num)
   "Duplicate the current line NUM times."
   (interactive "p")
@@ -71,29 +79,34 @@ region-end is used. Adds the duplicated text to the kill ring."
     (forward-char -1))
   (duplicate-region num (point-at-bol) (1+ (point-at-eol))))
 
+;;;###autoload
 (defun yank-and-indent ()
   (interactive)
   (let ((start (point)))
     (yank)
     (indent-region start (point))))
 
+;;;###autoload
 (defun yank-pop-and-indent (arg)
   (interactive "p")
   (let ((start (point)))
     (yank-pop arg)
     (indent-region start (point))))
 
+;;;###autoload
 (defun kill-to-beginning-of-line ()
   (interactive)
   (kill-region (save-excursion (beginning-of-line) (point))
                (point)))
 
+;;;###autoload
 (defun copy-to-end-of-line ()
   (interactive)
   (kill-ring-save (point)
                   (line-end-position))
   (message "Copied to end of line"))
 
+;;;###autoload
 (defun copy-whole-lines (arg)
   "Copy lines (as many as prefix argument) in the kill ring"
   (interactive "p")
@@ -101,6 +114,7 @@ region-end is used. Adds the duplicated text to the kill ring."
                   (line-beginning-position (1+ arg)))
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 
+;;;###autoload
 (defun copy-line (arg)
   "Copy to end of line, or as many lines as prefix argument"
   (interactive "P")
@@ -108,18 +122,21 @@ region-end is used. Adds the duplicated text to the kill ring."
       (copy-to-end-of-line)
     (copy-whole-lines (prefix-numeric-value arg))))
 
+;;;###autoload
 (defun save-region-or-current-line (arg)
   (interactive "P")
   (if (region-active-p)
       (kill-ring-save (region-beginning) (region-end))
     (copy-line arg)))
 
+;;;###autoload
 (defun kill-and-retry-line ()
   "Kill the entire current line and reposition point at indentation"
   (interactive)
   (back-to-indentation)
   (kill-line))
 
+;;;###autoload
 (defun camelize-buffer ()
   (interactive)
   (goto-char 0)
@@ -128,6 +145,7 @@ region-end is used. Adds the duplicated text to the kill ring."
   (goto-char 0))
 
 ;; kill all comments in buffer
+;;;###autoload
 (defun comment-kill-all ()
   (interactive)
   (save-excursion
@@ -136,6 +154,7 @@ region-end is used. Adds the duplicated text to the kill ring."
                     (goto-char (point-max))
                     (line-number-at-pos)))))
 
+;;;###autoload
 (defun replace-next-underscore-with-camel (arg)
   (interactive "p")
   (if (> arg 0)
@@ -173,6 +192,7 @@ region-end is used. Adds the duplicated text to the kill ring."
      ((looking-back ")\\|}\\|\\]") (backward-list))
      (t (backward-char)))))
 
+;;;###autoload
 (defun transpose-params ()
   "Presumes that params are in the form (p, p, p) or {p, p, p} or [p, p, p]"
   (interactive)
@@ -193,6 +213,7 @@ region-end is used. Adds the duplicated text to the kill ring."
     (transpose-regions start-of-first end-of-first start-of-last end-of-last)))
 ;; }}}
 
+;;;###autoload
 (defun back-to-indentation-or-beginning ()
   "Move point to beginning of line only if looking at indentation"
   (interactive)
@@ -201,6 +222,7 @@ region-end is used. Adds the duplicated text to the kill ring."
       (beginning-of-line)
     (back-to-indentation)))
 
+;;;###autoload
 (defun comment-or-uncomment-current-line-or-region ()
   "Comment or uncomment current line or region."
   (interactive)
@@ -210,6 +232,7 @@ region-end is used. Adds the duplicated text to the kill ring."
      (line-beginning-position)
      (line-end-position))))
 
+;;;###autoload
 (defun empty-line-below (arg)
   "Insert empty line below point.
 If ARG is positive then ARG lines are inserted below otherwise above."
@@ -227,12 +250,14 @@ If ARG is positive then ARG lines are inserted below otherwise above."
   (when (and (< arg 0) (looking-at "^"))
     (forward-line (- arg))))
 
+;;;###autoload
 (defun empty-line-above (arg)
   "Insert empty line above point.
 If ARG is positive then ARG lines are inserted above otherwise below."
   (interactive "p")
   (empty-line-below (- arg)))
 
+;;;###autoload
 (defun copy-rectangle (start end)
   "Save rectangle as the last killed one."
   (interactive "r")

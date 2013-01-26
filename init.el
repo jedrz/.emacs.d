@@ -15,14 +15,11 @@
   (add-to-list 'load-path default-directory)
   (normal-top-level-add-subdirs-to-load-path))
 
+;; Generate some autoloads and load them
+(require 'setup-autoloads)
+
 ;; Configure package.el and install missing packages
 (require 'setup-package)
-
-;; Load functions in defuns-dir
-(setq defuns-dir (concat user-emacs-directory "defuns"))
-(dolist (file (directory-files defuns-dir t "\\w+"))
-  (when (file-regular-p file)
-    (load file)))
 
 ;; Load appearance settings at the beginning to avoid momentary display
 (require 'appearance)

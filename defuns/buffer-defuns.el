@@ -1,6 +1,7 @@
 ;;; Buffer-related defuns
 
 ;; http://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
+;;;###autoload
 (defun create-scratch-buffer nil
   "Create a new scratch buffer to work in. (could be *scratch* - *scratchX*)"
   (interactive)
@@ -16,6 +17,7 @@
     (emacs-lisp-mode)))
 
 ;; http://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
+;;;###autoload
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)
@@ -42,6 +44,7 @@
           (if this-win-2nd (other-window 1))))))
 
 ;; http://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
+;;;###autoload
 (defun ido-imenu ()
   "Update the imenu index and then use ido to select a symbol to navigate to.
 Symbols matching the text at point are put first in the completion list."
@@ -87,14 +90,17 @@ Symbols matching the text at point are put first in the completion list."
       (push-mark (point))
       (goto-char position))))
 
+;;;###autoload
 (defun untabify-buffer ()
   (interactive)
   (untabify (point-min) (point-max)))
 
+;;;###autoload
 (defun indent-buffer ()
   (interactive)
   (indent-region (point-min) (point-max)))
 
+;;;###autoload
 (defun cleanup-buffer-safe ()
   "Perform a bunch of safe operations on the whitespace content of a buffer.
 Does not indent buffer, because it is used for a before-save-hook, and that
@@ -104,6 +110,7 @@ might be bad."
   (delete-trailing-whitespace)
   (set-buffer-file-coding-system 'utf-8))
 
+;;;###autoload
 (defun cleanup-buffer ()
   "Perform a bunch of operations on the whitespace content of a buffer.
 Including indent-buffer, which should not be called automatically on save."
@@ -111,6 +118,7 @@ Including indent-buffer, which should not be called automatically on save."
   (cleanup-buffer-safe)
   (indent-buffer))
 
+;;;###autoload
 (defun recentf-ido-find-file (&optional arg)
   "Find a recent file using ido."
   (interactive "P")

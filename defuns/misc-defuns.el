@@ -10,16 +10,19 @@ If there is not active region then call only `isearch-function'"
      (isearch-yank-string selection))
    (call-interactively isearch-function)))
 
+;;;###autoload
 (defun isearch-forward-use-region (beg end)
   "Search forward for active region."
   (interactive "r")
   (isearch-use-region 'isearch-forward beg end))
 
+;;;###autoload
 (defun isearch-backward-use-region (beg end)
   "Search backward for active region."
   (interactive "r")
   (isearch-use-region 'isearch-backward beg end))
 
+;;;###autoload
 (defun goto-line-with-feedback ()
   "Show line numbers temporarily, while prompting for the line number input."
   (interactive)
@@ -43,12 +46,14 @@ If there is not active region then call only `isearch-function'"
                  line)
          'face 'linum)))
 
+;;;###autoload
 (defun sudo-edit (&optional arg)
   (interactive "P")
   (if (and arg buffer-file-name)
       (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))
     (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))))
 
+;;;###autoload
 (defun google-search ()
   "Googles a query or region if any."
   (interactive)
@@ -59,6 +64,7 @@ If there is not active region then call only `isearch-function'"
                            (buffer-substring (region-beginning) (region-end))
                          (read-string "Google: "))))))
 
+;;;###autoload
 (defun view-url ()
   "Open a new buffer containing the contents of URL."
   (interactive)
@@ -67,6 +73,7 @@ If there is not active region then call only `isearch-function'"
     (switch-to-buffer (url-retrieve-synchronously url))
     (rename-buffer url t)))
 
+;;;###autoload
 (defun ispell-cycle-dicts ()
   "Switch between `ispell-my-dicts' dictionaries."
   (interactive)
@@ -77,6 +84,7 @@ If there is not active region then call only `isearch-function'"
                                 (length ispell-my-dicts))
                              ispell-my-dicts)))
 
+;;;###autoload
 (defun run-urxvt-with-current-dir ()
   "Run urxvt and change directory in terminal to the current one."
   (interactive)
