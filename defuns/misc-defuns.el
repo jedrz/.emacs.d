@@ -1,5 +1,7 @@
 ;;; Misc defuns
 
+(eval-when-compile (require 'cl))       ; for position
+
 (defun isearch-use-region (isearch-function beg end)
   "Call interactively `isearch-function' and use active region as saarch string.
 If there is not active region then call only `isearch-function'"

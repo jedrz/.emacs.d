@@ -1,5 +1,6 @@
 ;;; Configure package.el and install missing packages
 
+(eval-when-compile (require 'cl))       ; for remove-if
 (require 'package)
 
 ;; Packages archives
