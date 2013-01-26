@@ -68,11 +68,9 @@
                                 (interactive "p")
                                 (join-line (- arg))))
 
-;; Sane open-line
-(global-set-key (kbd "C-o") 'open-line-sane)
-(global-set-key (kbd "C-S-o") (lambda (arg)
-                                (interactive "p")
-                                (open-line-sane (- arg))))
+;; Insert empty line below/above point
+(global-set-key (kbd "C-o") 'empty-line-below)
+(global-set-key (kbd "C-S-o") 'empty-line-above)
 
 ;; M-S-SPC for deleting all spaces around point
 (global-set-key (kbd "M-S-SPC") 'delete-horizontal-space)
