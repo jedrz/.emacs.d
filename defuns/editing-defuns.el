@@ -262,6 +262,3 @@ If ARG is positive then ARG lines are inserted above otherwise below."
   "Save rectangle as the last killed one."
   (interactive "r")
   (setq killed-rectangle (extract-rectangle start end)))
-
-(autoload 'zap-up-to-char "misc"
-  "Kill up to, but not including ARGth occurrence of CHAR.")
