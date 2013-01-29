@@ -68,12 +68,12 @@
 (add-hook 'text-mode-hook 'fci-mode)
 
 ;; Workaround for fci and AC's popup
-(defadvice popup-create (before suppress-fci-mode activate)
+(defadvice popup-create (before suppress-fci-mode activate compile)
   "Suspend fci-mode while popups are visible"
   (when fci-mode
     (turn-off-fci-mode)))
 
-(defadvice popup-delete (after restore-fci-mode activate)
+(defadvice popup-delete (after restore-fci-mode activate compile)
   "Restore fci-mode when all popups have closed"
   (when (not fci-mode)
     (turn-on-fci-mode)))

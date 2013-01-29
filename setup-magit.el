@@ -2,10 +2,12 @@
 
 ;; Restore the previous window configuration after quitting magit-status buffer
 
-(defadvice magit-status (before magit-save-window-configuration activate)
+(defadvice magit-status
+  (before magit-save-window-configuration activate compile)
   (window-configuration-to-register :magit-window-configuration))
 
-(defadvice magit-quit-window (after magit-restore-window-configuration activate)
+(defadvice magit-quit-window
+  (after magit-restore-window-configuration activate compile)
   (jump-to-register :magit-window-configuration))
 
 ;; Ignore whitespace

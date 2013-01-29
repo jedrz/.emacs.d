@@ -51,13 +51,12 @@
       (set-buffer-modified-p nil))))
 
 ;; Simple hook doesn't work.
-(defadvice dired-readin (after dired-after-updating-hook activate)
+(defadvice dired-readin (after dired-after-updating-hook activate compile)
   "Sort dired listings with not hidden files first."
   (dired-sort-not-hidden-first))
 
-(defadvice dired-clean-up-after-deletion (before
-                                          dired-auto-kill-buffer-after-deletion
-                                          activate)
+(defadvice dired-clean-up-after-deletion
+  (before dired-auto-kill-buffer-after-deletion activate compile)
   "Kill buffers associated with file or directory being removed.
 Do not ask for permission."
   (let* ((fn (ad-get-arg 0))

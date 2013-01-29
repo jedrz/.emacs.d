@@ -103,7 +103,7 @@
 ;; Enable downcasing region
 (put 'downcase-region 'disabled nil)
 
-(defadvice kill-line (after kill-line-cleanup-whitespace activate)
+(defadvice kill-line (after kill-line-cleanup-whitespace activate compile)
   "Cleanup white space after `kill-line' up to non white space character."
   (when (not (bolp))
     (delete-region (point)
@@ -176,7 +176,7 @@
 
 (after 'webjump
   ;; Fix choosing first entry in webjump
-  (defadvice webjump (around ido-ubiquitous-new activate)
+  (defadvice webjump (around ido-ubiquitous-new activate compile)
     (let ((ido-ubiquitous-enable-compatibility nil))
       ad-do-it))
   (setq webjump-sites (append
