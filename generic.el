@@ -25,8 +25,8 @@
 ;; Create auto-save-list directory if doesn't exist yet
 ;; as its lack causes errors while auto saving is performed.
 (let ((auto-save-list-dir (concat user-emacs-directory "auto-save-list")))
- (when (not (file-exists-p auto-save-list-dir))
-   (make-directory auto-save-list-dir)))
+  (unless (file-exists-p auto-save-list-dir)
+    (make-directory auto-save-list-dir)))
 
 ;; Savehist keeps track of some history
 (after 'savehist
@@ -105,7 +105,7 @@
 
 (defadvice kill-line (after kill-line-cleanup-whitespace activate compile)
   "Cleanup white space after `kill-line' up to non white space character."
-  (when (not (bolp))
+  (unless (bolp)
     (delete-region (point)
                    (progn (skip-chars-forward " \t") (point)))))
 

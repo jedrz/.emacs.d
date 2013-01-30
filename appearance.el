@@ -75,7 +75,7 @@
 
 (defadvice popup-delete (after restore-fci-mode activate compile)
   "Restore fci-mode when all popups have closed"
-  (when (not fci-mode)
+  (unless fci-mode
     (turn-on-fci-mode)))
 
 (provide 'appearance)

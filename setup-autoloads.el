@@ -8,7 +8,7 @@
   (update-directory-autoloads (concat user-emacs-directory "defuns")))
 
 ;; Create autoloads at startup if file doesn't exist.
-(when (not (file-exists-p generated-autoload-file))
+(unless (file-exists-p generated-autoload-file)
   (update-my-autoloads))
 
 ;; Load the autoloads.
