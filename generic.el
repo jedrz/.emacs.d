@@ -127,6 +127,8 @@
         ido-create-new-buffer 'always
         ido-use-filename-at-point 'guess
         ido-use-url-at-point t
+        ;; Disable searching for other files while waiting for input.
+        ido-auto-merge-work-directories-length -1
         ido-save-directory-list-file (concat user-emacs-directory "ido.last")))
 (ido-mode 1)
 
