@@ -20,7 +20,8 @@
 (global-hl-line-mode 1)
 
 ;; Visualize some kinds of blank
-(setq whitespace-style '(face trailing))
+(after 'whitespace
+  (setq whitespace-style '(face trailing)))
 (global-whitespace-mode 1)
 
 ;; Indicate empty lines after the buffer end

@@ -78,7 +78,8 @@
 
 ;; Set fill-column and comment-fill-column
 (setq-default fill-column 79)
-(setq comment-fill-column 70)
+(after 'newcomment
+  (setq comment-fill-column 70))
 
 ;; Sentences do not need double spaces to end.
 (setq-default sentence-end-double-space nil)
@@ -152,7 +153,8 @@
       auto-revert-verbose nil)
 
 ;; Don't use M-TAB to correct words in flyspell-mode
-(setq flyspell-use-meta-tab nil)
+(after 'flyspell
+  (setq flyspell-use-meta-tab nil))
 
 ;; Handle camelCase words properly everywhere
 (global-subword-mode 1)
