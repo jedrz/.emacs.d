@@ -1,19 +1,18 @@
 ;;; Configure package.el and install missing packages
 
-(eval-when-compile (require 'cl))       ; for remove-if
 (require 'package)
 
-;; Packages archives
-(defvar gnu '("gnu" . "http://elpa.gnu.org/packages/"))
-(defvar marmalade '("marmalade" . "http://marmalade-repo.org/packages/"))
-(defvar melpa '("melpa" . "http://melpa.milkbox.net/packages/"))
-
 ;; Add marmalade and melpa to package repos
-(add-to-list 'package-archives marmalade t)
-(add-to-list 'package-archives melpa t)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; Initialize packages to be able to use them
 (package-initialize)
+;; If there are no archives get them
+(unless package-archive-contents
+  (package-refresh-contents))
 
 (defvar my-packages
   '(
@@ -61,9 +60,8 @@
   "List of packages to be installed via package.el.")
 
 ;; Install missing packages
-(let ((not-installed (remove-if 'package-installed-p my-packages)))
-  (when not-installed
-    (package-refresh-contents)
-    (mapc 'package-install not-installed)))
+(dolist (package my-packages)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 (provide 'setup-package)
