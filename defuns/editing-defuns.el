@@ -1,32 +1,15 @@
 ;;; Defuns for editing text
 
-;; {{{
-;; http://github.com/magnars/.emacs.d/blob/master/defuns/editing-defuns.el
-;;;###autoload
-(defun move-line-down ()
-  (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines 1))
-    (forward-line)
-    (move-to-column col)))
+;; Some functions from http://github.com/magnars/.emacs.d/blob/master/defuns/editing-defuns.el
 
 ;;;###autoload
-(defun move-line-up ()
+(defun back-to-indentation-or-beginning ()
+  "Move point to beginning of line only if looking at indentation."
   (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines -1))
-    (move-to-column col)))
-
-;;;###autoload
-(defun new-line-below ()
-  (interactive)
-  (end-of-line)
-  (newline)
-  (indent-for-tab-command))
+  (if (and (looking-back "^[[:blank:]]+")
+           (not (looking-at "[[:blank:]]+")))
+      (beginning-of-line)
+    (back-to-indentation)))
 
 ;;;###autoload
 (defun new-line-above ()
@@ -44,6 +27,31 @@
     (newline)
     (indent-for-tab-command))
   (indent-for-tab-command))
+
+;;;###autoload
+(defun empty-line-below (arg)
+  "Insert empty line below point.
+If ARG is positive then ARG lines are inserted below otherwise above."
+  (interactive "p")
+  (save-excursion
+    (if (< arg 0)
+        (dotimes (_ (- arg))
+          (beginning-of-line)
+          (newline))
+      (forward-line)
+      (newline arg)))
+  ;; If point was at beginning of line with negative prefix argument
+  ;; then the point is `arg' lines too high.
+  ;; Old position has to be restored manually.
+  (when (and (< arg 0) (looking-at "^"))
+    (forward-line (- arg))))
+
+;;;###autoload
+(defun empty-line-above (arg)
+  "Insert empty line above point.
+If ARG is positive then ARG lines are inserted above otherwise below."
+  (interactive "p")
+  (empty-line-below (- arg)))
 
 ;;;###autoload
 (defun duplicate-current-line-or-region (arg)
@@ -131,10 +139,29 @@ region-end is used. Adds the duplicated text to the kill ring."
 
 ;;;###autoload
 (defun kill-and-retry-line ()
-  "Kill the entire current line and reposition point at indentation"
+  "Kill the entire current line and reposition point at indentation."
   (interactive)
   (back-to-indentation)
   (kill-line))
+
+;;;###autoload
+(defun comment-kill-all ()
+  "Kill all comments in buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (comment-kill (save-excursion
+                    (goto-char (point-max))
+                    (line-number-at-pos)))))
+
+;;;###autoload
+(defun comment-or-uncomment-current-line-or-region ()
+  "Comment or uncomment current line or region."
+  (interactive)
+  (if (region-active-p)
+      (call-interactively 'comment-or-uncomment-region)
+    (comment-or-uncomment-region (line-beginning-position)
+                                 (line-end-position))))
 
 ;;;###autoload
 (defun camelize-buffer ()
@@ -143,16 +170,6 @@ region-end is used. Adds the duplicated text to the kill ring."
   (ignore-errors
     (replace-next-underscore-with-camel 0))
   (goto-char 0))
-
-;; kill all comments in buffer
-;;;###autoload
-(defun comment-kill-all ()
-  (interactive)
-  (save-excursion
-    (goto-char (point-min))
-    (comment-kill (save-excursion
-                    (goto-char (point-max))
-                    (line-number-at-pos)))))
 
 ;;;###autoload
 (defun replace-next-underscore-with-camel (arg)
@@ -167,28 +184,29 @@ region-end is used. Adds the duplicated text to the kill ring."
       (capitalize-word 1)
       (setq arg (1- arg)))))
 
-(defun current-quotes-char ()
+(defun point-in-string-p ()
   (nth 3 (syntax-ppss)))
 
-(defalias 'point-is-in-string-p 'current-quotes-char)
+(defun point-in-comment-p ()
+  (nth 4 (syntax-ppss)))
 
 (defun move-point-forward-out-of-string ()
-  (while (point-is-in-string-p) (forward-char)))
+  (while (point-in-string-p) (forward-char)))
 
 (defun move-point-backward-out-of-string ()
-  (while (point-is-in-string-p) (backward-char)))
+  (while (point-in-string-p) (backward-char)))
 
 (defun move-forward-out-of-param ()
   (while (not (looking-at ")\\|, \\| ?}\\| ?\\]"))
     (cond
-     ((point-is-in-string-p) (move-point-forward-out-of-string))
+     ((point-in-string-p) (move-point-forward-out-of-string))
      ((looking-at "(\\|{\\|\\[") (forward-list))
      (t (forward-char)))))
 
 (defun move-backward-out-of-param ()
   (while (not (looking-back "(\\|, \\|{ ?\\|\\[ ?"))
     (cond
-     ((point-is-in-string-p) (move-point-backward-out-of-string))
+     ((point-in-string-p) (move-point-backward-out-of-string))
      ((looking-back ")\\|}\\|\\]") (backward-list))
      (t (backward-char)))))
 
@@ -211,51 +229,6 @@ region-end is used. Adds the duplicated text to the kill ring."
                         (move-forward-out-of-param)
                         (point))))
     (transpose-regions start-of-first end-of-first start-of-last end-of-last)))
-;; }}}
-
-;;;###autoload
-(defun back-to-indentation-or-beginning ()
-  "Move point to beginning of line only if looking at indentation"
-  (interactive)
-  (if (and (looking-back "^[[:blank:]]+")
-           (not (looking-at "[[:blank:]]+")))
-      (beginning-of-line)
-    (back-to-indentation)))
-
-;;;###autoload
-(defun comment-or-uncomment-current-line-or-region ()
-  "Comment or uncomment current line or region."
-  (interactive)
-  (if (region-active-p)
-      (call-interactively 'comment-or-uncomment-region)
-    (comment-or-uncomment-region
-     (line-beginning-position)
-     (line-end-position))))
-
-;;;###autoload
-(defun empty-line-below (arg)
-  "Insert empty line below point.
-If ARG is positive then ARG lines are inserted below otherwise above."
-  (interactive "p")
-  (save-excursion
-    (if (< arg 0)
-        (dotimes (_ (- arg))
-          (beginning-of-line)
-          (newline))
-      (forward-line)
-      (newline arg)))
-  ;; If point was at beginning of line with negative prefix argument
-  ;; then the point is `arg' lines too high.
-  ;; Old position has to be restored manually.
-  (when (and (< arg 0) (looking-at "^"))
-    (forward-line (- arg))))
-
-;;;###autoload
-(defun empty-line-above (arg)
-  "Insert empty line above point.
-If ARG is positive then ARG lines are inserted above otherwise below."
-  (interactive "p")
-  (empty-line-below (- arg)))
 
 ;;;###autoload
 (defun copy-rectangle (start end)
