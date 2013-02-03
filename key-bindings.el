@@ -101,6 +101,10 @@
 ;; Indent region with a number of columns
 (global-set-key (kbd "C-x I") 'indent-rigidly)
 
+;; Fill/unfill text
+(global-set-key (kbd "M-q") 'fill-paragraph-or-indent)
+(global-set-key (kbd "M-Q") 'unfill-paragraph)
+
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t")) ; which used to be transpose-words
 (global-set-key (kbd "M-t l") 'transpose-lines)

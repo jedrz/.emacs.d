@@ -231,6 +231,28 @@ region-end is used. Adds the duplicated text to the kill ring."
     (transpose-regions start-of-first end-of-first start-of-last end-of-last)))
 
 ;;;###autoload
+(defun fill-paragraph-or-indent ()
+  "Fill paragraph or indent code.
+If point is in string or comment or current major mode is not a
+prog-mode, text is filled. Otherwise a region or defun is indented."
+  (interactive)
+  (if (or (point-in-string-p)
+          (point-in-comment-p)
+          (not (derived-mode-p 'prog-mode)))
+      (call-interactively 'fill-paragraph)
+    (apply 'indent-region (if (region-active-p)
+                              (list (region-beginning) (region-end))
+                            (list (save-excursion (beginning-of-defun) (point))
+                                  (save-excursion (end-of-defun) (point)))))))
+
+;;;###autoload
+(defun unfill-paragraph ()
+  "Unfill paragraph or region."
+  (interactive)
+  (let ((fill-column (point-max)))
+    (call-interactively 'fill-paragraph)))
+
+;;;###autoload
 (defun copy-rectangle (start end)
   "Save rectangle as the last killed one."
   (interactive "r")
