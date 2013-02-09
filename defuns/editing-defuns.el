@@ -12,6 +12,13 @@
     (back-to-indentation)))
 
 ;;;###autoload
+(defun new-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+;;;###autoload
 (defun new-line-above ()
   (interactive)
   (beginning-of-line)
