@@ -49,7 +49,6 @@
 (after 'magit (require 'setup-magit))
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
-(after 'hippie-exp (require 'setup-hippie-expand))
 (require 'setup-pairing)
 (require 'setup-flycheck)
 

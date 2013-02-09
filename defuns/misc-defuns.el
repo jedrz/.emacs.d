@@ -49,6 +49,14 @@ If there is not active region then call only `isearch-function'"
          'face 'linum)))
 
 ;;;###autoload
+(defun hippie-expand-lines ()
+  "Try to expand entire line."
+  (interactive)
+  (let ((hippie-expand-try-functions-list '(try-expand-line
+                                            try-expand-line-all-buffers)))
+    (hippie-expand nil)))
+
+;;;###autoload
 (defun sudo-edit (&optional arg)
   (interactive "P")
   (if (and arg buffer-file-name)
