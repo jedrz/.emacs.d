@@ -59,6 +59,9 @@
 (after 'newcomment
   (setq comment-fill-column 70))
 
+;; Show keystrokes in progress
+(setq echo-keystrokes 0.1)
+
 ;; Sentences do not need double spaces to end.
 (setq-default sentence-end-double-space nil)
 
