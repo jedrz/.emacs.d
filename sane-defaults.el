@@ -68,6 +68,9 @@
 ;; Make edited files end with a carriage return
 (setq require-final-newline t)
 
+;; Do not break lines
+(setq-default truncate-lines t)
+
 ;; Any key deletes selection
 (delete-selection-mode 1)
 
