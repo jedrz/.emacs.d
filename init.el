@@ -24,8 +24,11 @@
 ;; Shrink minor mode names
 (require 'setup-diminish)
 
-;; Load general and extensions settings
-(require 'generic)
+;; My sane defaults for emacs
+(require 'sane-defaults)
+
+;; My misc
+(require 'my-misc)
 
 ;; Associate major modes with some files
 (require 'mode-mappings)
@@ -41,6 +44,7 @@
 (after 'asm-mode (require 'setup-asm-mode))
 
 ;; Setup extensions
+(require 'setup-ido)
 (after 'dired (require 'setup-dired))
 (after 'magit (require 'setup-magit))
 (require 'setup-yasnippet)
