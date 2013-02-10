@@ -7,4 +7,7 @@
 ;; Load the snippets
 (yas-load-directory yas-root-directory)
 
+;; Select a snippet with popup library
+(setq yas-prompt-functions '(yas-popup-prompt yas-no-prompt))
+
 (provide 'setup-yasnippet)
