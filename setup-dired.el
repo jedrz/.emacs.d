@@ -1,9 +1,14 @@
 (require 'dired+)
+(require 'dired-details)
 
 (setq dired-listing-switches "-alhv --group-directories-first"
       dired-dwim-target t               ; Copy to the second visible dired buffer
       dired-auto-revert-buffer t        ; Revert buffer on revisiting
       dired-recursive-copies 'always)
+
+;; Hide usually redundant file details
+(dired-details-install)
+(setq-default dired-details-hidden-string "--- ")
 
 (defun dired-goto-top ()
   "Move to the third line (..)."

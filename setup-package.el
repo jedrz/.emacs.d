@@ -26,6 +26,7 @@
     color-theme-sanityinc-tomorrow
     diminish
     dired+
+    dired-details
     elisp-slime-nav
     evil-numbers
     expand-region
