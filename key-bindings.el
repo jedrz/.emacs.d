@@ -146,6 +146,12 @@
 (global-set-key (kbd "C-S-c a r") 'mc/mark-all-in-region)
 ;; Rectangular region mode
 (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
+;; Add a cursor on click
+(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+;; Special
+(global-set-key (kbd "C-S-c n") 'mc/insert-numbers)
+(global-set-key (kbd "C-S-c s") 'mc/sort-regions)
+(global-set-key (kbd "C-S-c r") 'mc/reverse-regions)
 
 ;; Why there is no command to copy rectangle?
 (global-set-key (kbd "C-x r C") 'copy-rectangle)
