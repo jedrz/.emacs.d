@@ -1,5 +1,5 @@
-;; Enable flycheck for all files
-(add-hook 'find-file-hook 'flycheck-mode)
+;; Enable flycheck for all buffers
+(global-flycheck-mode)
 
 (after 'flycheck
   ;; Highlight whole line with error
