@@ -1,5 +1,5 @@
 ;; Enable flycheck for all buffers
-(global-flycheck-mode)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 (after 'flycheck
   ;; Highlight whole line with error
