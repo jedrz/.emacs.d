@@ -28,38 +28,6 @@
 
 (define-key dired-mode-map [remap end-of-buffer] 'dired-goto-bottom)
 
-(defun dired-sort-not-hidden-first ()
-  "Sort files not starting with dot first."
-  (save-excursion
-    (let (buffer-read-only)
-      ;; Go to the end of last line.
-      (goto-char (point-max))
-      (backward-char)
-      (let ((current-insert-line-number (line-number-at-pos)))
-        ;; Search backward for first hidden file.
-        (while (search-backward-regexp " +\\."
-                                       (save-excursion
-                                         (goto-char (point-min))
-                                         (search-forward ".." nil t))
-                                       t)
-          (let ((line (buffer-substring (line-beginning-position)
-                                        (1+ (line-end-position)))))
-            (dired-kill-line)
-            ;; Paste the line at `current-insert-line-number'.
-            (goto-char (point-min))
-            (forward-line (1- current-insert-line-number))
-            (insert line))
-          ;; Process previous line (just before the inserted one).
-          (forward-line -2)
-          (end-of-line)
-          (setq current-insert-line-number (line-number-at-pos))))
-      (set-buffer-modified-p nil))))
-
-;; Simple hook doesn't work.
-(defadvice dired-readin (after dired-after-updating-hook activate compile)
-  "Sort dired listings with not hidden files first."
-  (dired-sort-not-hidden-first))
-
 (defadvice dired-clean-up-after-deletion
   (before dired-auto-kill-buffer-after-deletion activate compile)
   "Kill buffers associated with file or directory being removed.
