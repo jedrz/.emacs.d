@@ -6,6 +6,10 @@
       dired-auto-revert-buffer t        ; Revert buffer on revisiting
       dired-recursive-copies 'always)
 
+;; Omit hidden, autosave and lock files but show . and ..
+(setq dired-omit-files "^\\.?#\\|^\\.[^\\.].*$")
+(add-hook 'dired-mode-hook 'dired-omit-mode)
+
 ;; Hide usually redundant file details
 (dired-details-install)
 (setq-default dired-details-hidden-string "--- ")
