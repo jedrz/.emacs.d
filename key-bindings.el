@@ -43,13 +43,6 @@
 ;; Activate occur inside isearch with C-o
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
-;; Smart forward
-;; These key bindings replace making a selection using Shift
-(global-set-key (kbd "C-S-f") 'smart-forward)
-(global-set-key (kbd "C-S-b") 'smart-backward)
-(global-set-key (kbd "C-S-n") 'smart-down)
-(global-set-key (kbd "C-S-p") 'smart-up)
-
 ;; vim's f and b commands
 (global-set-key (kbd "M-m") 'jump-char-forward)
 (global-set-key (kbd "M-M") 'jump-char-backward)

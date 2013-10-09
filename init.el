@@ -49,7 +49,7 @@
 (after 'magit (require 'setup-magit))
 (require 'setup-yasnippet)
 (require 'setup-auto-complete)
-(require 'setup-pairing)
+(require 'setup-smartparens)
 (require 'setup-flycheck)
 
 ;; Load extensions

@@ -18,7 +18,6 @@
   '(
     ace-jump-mode
     auto-complete                       ; depends on popup
-    autopair
     browse-kill-ring
     buffer-move
     change-inner
@@ -42,18 +41,16 @@
     melpa
     move-text
     multiple-cursors
-    paredit
     pkgbuild-mode
     projectile
     rainbow-delimiters
     rainbow-mode
     refheap
-    smart-forward
+    smartparens
     smex
     solarized-theme
     undo-tree
     wgrep
-    wrap-region
     yasnippet
     zenburn-theme
     zencoding-mode
