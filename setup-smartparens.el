@@ -42,6 +42,7 @@
 (define-key sp-keymap (kbd "M-s M-p") 'sp-add-to-previous-sexp)
 (define-key sp-keymap (kbd "M-s M-j") 'sp-join-sexp)
 
-;; TODO: add wrap-round M-(
+;; paredit's wrap-round
+(sp-local-pair 'emacs-lisp-mode "(" nil :wrap "M-(")
 
 (provide 'setup-smartparens)
