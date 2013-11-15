@@ -7,22 +7,22 @@
   ;; Define a poor c/c++ checker (it fails when errors affect other files,
   ;; not the one being being checked actually)
   (defmacro flycheck-define-clike-checker (name command modes)
-    `(flycheck-declare-checker ,(intern (format "flycheck-checker-%s" name))
+    `(flycheck-define-checker ,(intern (format "%s" name))
        ,(format "A %s checker using %s" name (car command))
-       :command '(,@command source-inplace)
+       :command (,@command source-inplace)
        :error-patterns
-       '(("^\\(?1:.*\\):\\(?2:[0-9]+\\):\\(?3:[0-9]+\\): error: \\(?4:.*\\)$"
-          error)
-         ("^\\(?1:.*\\):\\(?2:[0-9]+\\):\\(?3:[0-9]+\\): warning: \\(?4:.*\\)$"
-          warning))
+       ((warning line-start (file-name) ":" line ":" column
+                 ": warning: " (message) line-end)
+        (error line-start (file-name) ":" line ":" column
+               ": error: " (message) line-end))
        :modes ',modes))
-  (flycheck-define-clike-checker c
+  (flycheck-define-clike-checker c-gcc
                                  ("gcc" "-fsyntax-only" "-Wall" "-Wextra")
                                  c-mode)
-  (add-to-list 'flycheck-checkers 'flycheck-checker-c)
-  (flycheck-define-clike-checker c++
-                                 ("g++" "-fsyntax-only" "-Wall" "-Wextra")
+  (add-to-list 'flycheck-checkers 'c-gcc)
+  (flycheck-define-clike-checker c++-g++
+                                 ("g++" "-fsyntax-only" "-Wall" "-Wextra" "-std=c++11")
                                  c++-mode)
-  (add-to-list 'flycheck-checkers 'flycheck-checker-c++))
+  (add-to-list 'flycheck-checkers 'c++-g++))
 
 (provide 'setup-flycheck)
