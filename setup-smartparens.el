@@ -7,6 +7,9 @@
 ;; Highlights matching pairs
 (show-smartparens-global-mode t)
 
+;; Always skip closing pair even if the expression is not active
+(setq sp-autoskip-closing-pair 'always)
+
 (define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
 (define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
 
