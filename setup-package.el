@@ -31,6 +31,7 @@
     expand-region
     fill-column-indicator
     flycheck
+    flycheck-cask
     gist                                ; depends on gh, logito, pcache
     git-commit-mode
     highlight-indentation
