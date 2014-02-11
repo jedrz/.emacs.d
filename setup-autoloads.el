@@ -3,9 +3,11 @@
 (setq generated-autoload-file (concat user-emacs-directory "my-autoloads.el"))
 
 (defun update-my-autoloads ()
-  "Update autoloads for some files.
-- defuns in defuns/ directory"
-  (update-directory-autoloads (concat user-emacs-directory "defuns")))
+  "Update autoloads for some files."
+  (interactive)
+  (mapc (lambda (path)
+          (update-directory-autoloads (concat user-emacs-directory path)))
+        '("defuns" "vendor" "vendor/atilde")))
 
 ;; Create autoloads at startup if file doesn't exist.
 (unless (file-exists-p generated-autoload-file)

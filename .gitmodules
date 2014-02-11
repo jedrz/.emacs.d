@@ -1,0 +1,3 @@
+[submodule "vendor/atilde"]
+	path = vendor/atilde
+	url = https://github.com/jedrz/atilde.git

@@ -28,10 +28,11 @@
         ;; Plug RefTeX into AUCTeX
         reftex-plug-into-AUCTeX t))
 
-(add-hook 'latex-mode-hook
+(add-hook 'LaTeX-mode-hook
           (lambda ()
             (flyspell-mode-on)
             (reftex-mode 1)
-            (LaTeX-math-mode 1)))
+            (LaTeX-math-mode 1)
+            (atilde-mode 1)))
 
 (provide 'setup-latex-mode)
