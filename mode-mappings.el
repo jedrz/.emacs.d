@@ -7,4 +7,7 @@
 ;; PKGBUILD
 (add-to-list 'auto-mode-alist '("PKGBUILD" . pkgbuild-mode))
 
+;; Treat .m files as octave files
+(add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+
 (provide 'mode-mappings)
