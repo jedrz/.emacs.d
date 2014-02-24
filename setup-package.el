@@ -27,6 +27,7 @@
     dired+
     dired-details
     elisp-slime-nav
+    emacs-jedi
     evil-numbers
     expand-region
     fill-column-indicator
