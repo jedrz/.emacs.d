@@ -18,6 +18,7 @@
   '(
     ace-jump-mode
     auto-complete                       ; depends on popup
+    auto-complete-clang
     browse-kill-ring
     buffer-move
     change-inner
