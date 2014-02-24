@@ -11,14 +11,13 @@
     "Find includes paths using gcc and return as proper clang options."
     (let ((buffer (get-buffer-create "*gcc-include-paths*")))
       (with-current-buffer buffer
-        (erase-buffer))
-      (call-process "/bin/bash"
-                    nil
-                    buffer
-                    nil
-                    "-c"
-                    "echo | g++ -v -x c++ -E -")
-      (with-current-buffer buffer
+        (erase-buffer)
+        (call-process "/bin/bash"
+                      nil
+                      buffer
+                      nil
+                      "-c"
+                      "echo | g++ -v -x c++ -E -")
         (goto-char (point-min))
         (mapcar (lambda (path)
                   (concat "-I" path))
