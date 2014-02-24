@@ -17,6 +17,10 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+;; Separate custom file
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file)
+
 ;; Backup files settings
 (setq backup-by-copying t
       backup-directory-alist (list (cons "." (concat user-emacs-directory "backups")))
