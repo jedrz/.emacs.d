@@ -16,6 +16,7 @@
 
 (defvar my-packages
   '(
+    ac-octave
     ace-jump-mode
     auto-complete                       ; depends on popup
     auto-complete-clang
