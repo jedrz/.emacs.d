@@ -81,6 +81,7 @@ This allows local functions from current directory to be completed."
 
 (add-hook 'octave-mode-hook
           (lambda ()
+            (run-octave t)
             (setq-local eldoc-documentation-function 'octave-eldoc-function)
             (eldoc-mode 1)
             (auto-complete-mode 1)
