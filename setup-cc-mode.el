@@ -8,25 +8,23 @@
 
 (after 'auto-complete-clang
   (defun ac-clang-find-include-paths ()
-    "Find includes paths using gcc and return as proper clang options."
-    (let ((buffer (get-buffer-create "*gcc-include-paths*")))
-      (with-current-buffer buffer
-        (erase-buffer)
-        (call-process "/bin/bash"
-                      nil
-                      buffer
-                      nil
-                      "-c"
-                      "echo | g++ -v -x c++ -E -")
-        (goto-char (point-min))
-        (mapcar (lambda (path)
-                  (concat "-I" path))
-                (split-string
-                 (buffer-substring-no-properties
-                  (search-forward "#include <...> search starts here:" nil t)
-                  (progn
-                    (search-forward "End of search list.")
-                    (line-beginning-position)))))))))
+    "Find include paths using gcc and return as proper clang options."
+    (with-temp-buffer
+      (call-process "/bin/bash"
+                    nil
+                    (current-buffer)
+                    nil
+                    "-c"
+                    "echo | g++ -v -x c++ -E -")
+      (goto-char (point-min))
+      (mapcar (lambda (path)
+                (concat "-I" path))
+              (split-string
+               (buffer-substring-no-properties
+                (search-forward "#include <...> search starts here:" nil t)
+                (progn
+                  (search-forward "End of search list.")
+                  (line-beginning-position))))))))
 
 (add-hook 'c-mode-common-hook
           (lambda ()
