@@ -32,6 +32,8 @@
     evil-numbers
     expand-region
     fill-column-indicator
+    flx
+    flx-ido
     flycheck
     flycheck-cask
     gist                                ; depends on gh, logito, pcache

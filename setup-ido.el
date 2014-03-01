@@ -13,6 +13,11 @@
 ;; Ido everywhere, really
 (ido-ubiquitous-mode 1)
 
+;; Better flex matching.
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+
 ;; Smart M-x
 (after 'smex
   (setq smex-save-file (concat user-emacs-directory "smex-items")))
