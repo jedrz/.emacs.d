@@ -1,5 +1,7 @@
 (require 'ac-octave)
 
+(setq octave-comment-char ?%)
+
 (after 'octave-inf
   ;; Change prompt since in default one version is not detected and no ouput
   ;; is printed in octave buffer.
