@@ -18,6 +18,9 @@
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
 
+;; Vertical ido
+(ido-vertical-mode 1)
+
 ;; Smart M-x
 (after 'smex
   (setq smex-save-file (concat user-emacs-directory "smex-items")))

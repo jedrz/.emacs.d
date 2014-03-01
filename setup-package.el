@@ -39,6 +39,7 @@
     gist                                ; depends on gh, logito, pcache
     git-commit-mode
     highlight-indentation
+    ido-vertical-mode
     ido-ubiquitous
     jedi
     jump-char
