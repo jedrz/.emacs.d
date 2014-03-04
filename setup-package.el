@@ -25,6 +25,7 @@
     change-inner
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
+    diff-hl
     diminish
     dired+
     dired-details

@@ -46,4 +46,7 @@ Do not ask for permission."
   (define-key wdired-mode-map [remap beginning-of-buffer] 'dired-goto-top)
   (define-key wdired-mode-map [remap end-of-buffer] 'dired-goto-bottom))
 
+;; Highlight changed files under vc
+(add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+
 (provide 'setup-dired)

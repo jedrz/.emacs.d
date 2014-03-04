@@ -14,6 +14,8 @@
   (flyspell-prog-mode)
   (local-comment-auto-fill)
   (add-watchwords)
+  ;; Highlight changes made to files under vc
+  (diff-hl-mode)
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))
 
 (add-hook 'prog-mode-hook 'prog-mode-defaults)
