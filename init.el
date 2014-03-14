@@ -1,3 +1,6 @@
+;; Speed up Emacs?
+(setq gc-cons-threshold 20000000)
+
 (defmacro after (file &rest forms)
   "Evaluate FORMS after FILE is loaded."
   (declare (indent 1))
