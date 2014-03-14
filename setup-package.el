@@ -43,6 +43,7 @@
     ido-vertical-mode
     ido-ubiquitous
     jedi
+    js2-mode
     jump-char
     magit
     markdown-mode
