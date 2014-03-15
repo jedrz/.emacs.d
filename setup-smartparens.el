@@ -42,10 +42,4 @@
 (define-key sp-keymap (kbd "M-s M-p") 'sp-add-to-previous-sexp)
 (define-key sp-keymap (kbd "M-s M-j") 'sp-join-sexp)
 
-;; paredit's wrap-round
-(sp-local-pair 'emacs-lisp-mode "(" nil :wrap "M-(")
-
-;; Enable strict mode in emacs lisp
-(add-hook 'emacs-lisp-mode-hook 'smartparens-strict-mode)
-
 (provide 'setup-smartparens)
