@@ -57,9 +57,5 @@
 (require 'setup-smartparens)
 (require 'setup-flycheck)
 
-;; Load extensions
-(require 'smart-forward)
-(require 'my-desktop)
-
 ;; Setup key bindings
 (require 'key-bindings)
