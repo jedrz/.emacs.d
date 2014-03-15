@@ -21,9 +21,12 @@
 ;; Vertical ido
 ;; Don't override key bindings to browse history.
 (after 'ido-vertical-mode
-  (setq ido-vertical-define-keys nil)
-  (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
-  (define-key ido-completion-map (kbd "C-p") 'ido-prev-match))
+  (setq ido-vertical-define-keys nil))
+;; Use C-n and C-p to navigate candidates.
+(add-hook 'ido-setup-hook
+          (lambda ()
+            (define-key ido-completion-map (kbd "C-n") 'ido-next-match)
+            (define-key ido-completion-map (kbd "C-p") 'ido-prev-match)))
 (ido-vertical-mode 1)
 
 ;; Smart M-x
