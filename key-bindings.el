@@ -43,6 +43,9 @@
 ;; Activate occur inside isearch with C-o
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
+;; Visual query replace
+(global-set-key (kbd "C-M-%") 'vr/query-replace)
+
 ;; vim's f and b commands
 (global-set-key (kbd "M-m") 'jump-char-forward)
 (global-set-key (kbd "M-M") 'jump-char-backward)
@@ -141,6 +144,8 @@
 (global-set-key (kbd "C-S-SPC") 'set-rectangular-region-anchor)
 ;; Add a cursor on click
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+;; Add cursors for matches
+(global-set-key (kbd "C-S-c m") 'vr/mc-mark)
 ;; Special
 (global-set-key (kbd "C-S-c n") 'mc/insert-numbers)
 (global-set-key (kbd "C-S-c s") 'mc/sort-regions)

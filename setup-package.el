@@ -59,6 +59,7 @@
     smex
     solarized-theme
     undo-tree
+    visual-regexp
     wgrep
     yasnippet
     zenburn-theme
