@@ -30,6 +30,8 @@
 ;; Slime
 (setq inferior-lisp-program "sbcl")
 (setq slime-contribs '(slime-fancy slime-repl))
+(after 'slime
+  (setq slime-auto-start 'always))
 (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
 (after 'auto-complete
