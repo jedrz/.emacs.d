@@ -32,10 +32,6 @@
 ;; Turn off blinking
 (blink-cursor-mode -1)
 
-;; Remove splash screen and message
-(setq inhibit-splash-screen t
-      initial-scratch-message nil)
-
 ;; Hide tool bar
 (tool-bar-mode -1)
 

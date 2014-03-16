@@ -21,6 +21,11 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
+;; Remove splash screen and message, change major mode
+(setq inhibit-splash-screen t
+      initial-scratch-message nil
+      initial-major-mode 'emacs-lisp-mode)
+
 ;; Backup files settings
 (setq backup-by-copying t
       backup-directory-alist (list (cons "." (concat user-emacs-directory "backups")))
