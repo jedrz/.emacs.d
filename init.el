@@ -38,7 +38,7 @@
 
 ;; Load settings for some major modes
 (require 'setup-prog-mode)
-(require 'setup-emacs-lisp-mode)
+(require 'setup-lisp-mode)
 (after 'cc-mode (require 'setup-cc-mode))
 (after 'python (require 'setup-python-mode))
 (after 'sgml-mode (require 'setup-sgml-mode))
