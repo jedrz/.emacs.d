@@ -17,6 +17,7 @@
 (defvar my-packages
   '(
     ac-octave
+    ac-slime
     ace-jump-mode
     auto-complete                       ; depends on popup
     auto-complete-clang
@@ -55,6 +56,7 @@
     rainbow-delimiters
     rainbow-mode
     refheap
+    slime
     smartparens
     smex
     solarized-theme

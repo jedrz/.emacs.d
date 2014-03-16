@@ -1,15 +1,43 @@
 ;;; Basic configuration for emacs lisp mode
 
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (turn-on-eldoc-mode)
-            ;; Go to definition with M-. and back again with M-,
-            (elisp-slime-nav-mode 1)
-            (rainbow-delimiters-mode 1)))
+(defconst my-elisp-mode-hooks
+  '(emacs-lisp-mode-hook inferior-emacs-lisp-mode-hook))
+
+(defconst my-lisp-mode-hooks
+  (append my-elisp-mode-hooks '(lisp-mode-hook lisp-interaction-mode-hook)))
+
+(defconst my-lisp-modes
+  (-map (lambda (hook)
+          (let ((hook-name (symbol-name hook)))
+            (intern (substring hook-name 0
+                               (- (length hook-name) (length "-hook"))))))
+        my-lisp-mode-hooks))
+
+(defun my-lisp-mode-setup ()
+  (turn-on-eldoc-mode)
+  (rainbow-delimiters-mode 1))
+
+(defun my-elisp-mode-setup ()
+  ;; Go to definition with M-. and back again with M-,
+  (elisp-slime-nav-mode 1))
+
+(--each my-lisp-mode-hooks
+  (add-hook it 'my-lisp-mode-setup))
+
+(--each my-elisp-mode-hooks
+  (add-hook it 'my-elisp-mode-setup))
+
+;; Slime
+(setq inferior-lisp-program "sbcl")
+(setq slime-contribs '(slime-fancy slime-repl))
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(after 'auto-complete
+  (add-to-list 'ac-modes 'slime-repl-mode))
 
 (after 'smartparens
   ;; paredit's wrap-round
-  (sp-local-pair 'emacs-lisp-mode "(" nil :wrap "M-("
+  (sp-local-pair my-lisp-modes "(" nil :wrap "M-("
                  :post-handlers '(:add my-restore-paren-location))
 
   ;; https://github.com/Fuco1/smartparens/wiki/Permissions#pre-and-post-action-hooks
@@ -35,7 +63,8 @@
         (save-excursion
           (newline-and-indent)))))
 
-  ;; Enable strict mode in emacs lisp
-  (add-hook 'emacs-lisp-mode-hook 'smartparens-strict-mode))
+  ;; Enable strict mode in lisp modes
+  (--each my-lisp-mode-hooks
+    (add-hook it 'smartparens-strict-mode)))
 
-(provide 'setup-emacs-lisp-mode)
+(provide 'setup-lisp-mode)
