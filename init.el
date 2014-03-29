@@ -38,6 +38,7 @@
 
 ;; Load settings for some major modes
 (require 'setup-prog-mode)
+(after 'org (require 'setup-org-mode))
 (require 'setup-lisp-mode)
 (after 'cc-mode (require 'setup-cc-mode))
 (after 'python (require 'setup-python-mode))
