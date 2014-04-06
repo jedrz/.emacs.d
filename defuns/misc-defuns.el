@@ -70,7 +70,7 @@ If there is not active region then call only `isearch-function'"
   ;; Be quiet about compilation.
   (let (font-lock-verbose
         byte-compile-verbose)
-   (byte-recompile-directory user-emacs-directory)))
+   (byte-recompile-directory user-emacs-directory 0)))
 
 ;;;###autoload
 (defun google-search ()
