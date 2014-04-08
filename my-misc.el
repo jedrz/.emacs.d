@@ -32,6 +32,17 @@
 ;; Projectile is a project interaction library
 (projectile-global-mode 1)
 
+;; Show the current function name in the header line only in prog modes.
+(which-function-mode 1)
+(add-hook 'prog-mode-hook
+          (lambda ()
+            (setq header-line-format
+                  '((which-func-mode ("" which-func-format " "))))))
+(setq mode-line-misc-info
+      ;; We remove Which Function Mode from the mode line, because it's mostly
+      ;; invisible here anyway.
+      (assq-delete-all 'which-func-mode mode-line-misc-info))
+
 ;; Custom characters for ace-jump-mode
 (after 'ace-jump-mode
   (setq ace-jump-mode-move-keys
