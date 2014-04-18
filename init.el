@@ -49,6 +49,7 @@
 (require 'setup-latex-mode)
 (after 'asm-mode (require 'setup-asm-mode))
 (after 'octave-mod (require 'setup-octave-mode))
+(after 'prolog (require 'setup-prolog-mode))
 
 ;; Setup extensions
 (require 'setup-ido)
