@@ -4,7 +4,11 @@
   '(emacs-lisp-mode-hook inferior-emacs-lisp-mode-hook))
 
 (defconst my-lisp-mode-hooks
-  (append my-elisp-mode-hooks '(lisp-mode-hook lisp-interaction-mode-hook)))
+  (append my-elisp-mode-hooks
+          '(lisp-mode-hook
+            lisp-interaction-mode-hook
+            clojure-mode-hook
+            cider-repl-mode-hook)))
 
 (defconst my-lisp-modes
   (-map (lambda (hook)
