@@ -70,4 +70,7 @@
 (after 'multiple-cursors-core
   (add-to-list 'mc/unsupported-minor-modes 'flyspell-mode))
 
+;; Fancy narrow
+(fancy-narrow-mode 1)
+
 (provide 'my-misc)

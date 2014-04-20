@@ -36,6 +36,7 @@
     elisp-slime-nav
     evil-numbers
     expand-region
+    fancy-narrow
     fill-column-indicator
     flx
     flx-ido
