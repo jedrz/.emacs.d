@@ -72,5 +72,6 @@
 
 ;; Fancy narrow
 (fancy-narrow-mode 1)
+(setq fancy-narrow-lighter nil)
 
 (provide 'my-misc)
