@@ -33,6 +33,7 @@
     diminish
     dired+
     dired-details
+    dired-imenu
     elisp-slime-nav
     evil-numbers
     expand-region

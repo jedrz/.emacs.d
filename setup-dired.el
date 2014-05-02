@@ -49,4 +49,7 @@ Do not ask for permission."
 ;; Highlight changed files under vc
 (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
 
+;; Imenu for dired
+(require 'dired-imenu)
+
 (provide 'setup-dired)
