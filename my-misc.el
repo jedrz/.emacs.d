@@ -14,7 +14,7 @@
   (setq recentf-save-file (concat user-emacs-directory "recentf")
         recentf-max-saved-items 200
         recentf-max-menu-items 15
-        recentf-exclude '("ido\\.last" "\\.mc-lists\\.el" "/elpa/")
+        recentf-exclude '("ido\\.last" "\\.mc-lists\\.el" "/elpa/" "\\.git/")
         recentf-auto-cleanup 'never))
 (recentf-mode 1)
 
