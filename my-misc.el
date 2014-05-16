@@ -29,6 +29,9 @@
   (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
         bookmark-save-flag 1))
 
+;; Save current session before killing emacs
+(add-hook 'kill-emacs-hook 'my-desktop-kill-emacs-hook)
+
 ;; Projectile is a project interaction library
 (projectile-global-mode 1)
 
