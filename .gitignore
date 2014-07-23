@@ -17,3 +17,5 @@
 /ac-comphist.dat
 /semanticdb
 /my-autoloads.el
+/session.*
+/projectile-bookmarks.eld
