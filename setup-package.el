@@ -53,7 +53,6 @@
     jump-char
     magit
     markdown-mode
-    melpa
     move-text
     multiple-cursors
     pkgbuild-mode
