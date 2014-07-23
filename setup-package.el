@@ -60,6 +60,7 @@
     rainbow-delimiters
     rainbow-mode
     refheap
+    robe
     slime
     smartparens
     smex
