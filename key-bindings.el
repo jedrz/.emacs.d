@@ -215,7 +215,7 @@
 ;; Google search
 (global-set-key (kbd "C-x M-g") 'google-search)
 
-(global-set-key (kbd "C-$") 'run-urxvt-with-current-dir)
+(global-set-key (kbd "C-$") 'run-terminal-with-current-dir)
 
 ;; Show menu bar on demand
 (global-set-key (kbd "<f12>") 'menu-bar-mode)

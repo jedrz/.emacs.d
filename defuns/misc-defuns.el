@@ -127,8 +127,8 @@ If there is not active region then call only `isearch-function'"
       (message "%s loaded" (car custom-enabled-themes)))))
 
 ;;;###autoload
-(defun run-urxvt-with-current-dir ()
-  "Run urxvt and change directory in terminal to the current one."
+(defun run-terminal-with-current-dir ()
+  "Run terminal and change directory in terminal to the current one."
   (interactive)
-  (let ((urxvt-process (start-process "urxvt-process" nil "urxvt")))
-    (process-send-string urxvt-process (concat "cd " default-directory))))
+  (let ((terminal-process (start-process "terminal-process" nil "urxvt")))
+    (process-send-string terminal-process (concat "cd " default-directory))))
