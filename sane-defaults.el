@@ -135,6 +135,9 @@
     (delete-region (point)
                    (progn (skip-chars-forward " \t") (point)))))
 
+;; Show number of search matches in mode line
+(global-anzu-mode 1)
+
 ;; Text mode
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (add-hook 'text-mode-hook 'flyspell-mode)

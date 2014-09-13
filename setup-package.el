@@ -19,6 +19,7 @@
     ac-octave
     ac-slime
     ace-jump-mode
+    anzu
     auto-complete                       ; depends on popup
     auto-complete-clang
     browse-kill-ring
