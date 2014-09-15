@@ -14,5 +14,7 @@
   (diminish 'drag-stuff-mode))
 (after 'elisp-slime-nav
   (diminish 'elisp-slime-nav-mode))
+(after 'anzu
+  (diminish 'anzu-mode))
 
 (provide 'setup-diminish)
