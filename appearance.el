@@ -41,6 +41,9 @@
 ;; Hide menu bar
 (menu-bar-mode -1)
 
+;; Start maximized
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 ;; Smooth scrolling
 (setq scroll-conservatively 10000
       scroll-margin 3
