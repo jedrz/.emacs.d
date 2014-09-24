@@ -6,25 +6,24 @@
               c-basic-offset 4)
 
 
-(after 'auto-complete-clang
-  (defun ac-clang-find-include-paths ()
-    "Find include paths using gcc and return as proper clang options."
-    (with-temp-buffer
-      (call-process "/bin/bash"
-                    nil
-                    (current-buffer)
-                    nil
-                    "-c"
-                    "echo | g++ -v -x c++ -E -")
-      (goto-char (point-min))
-      (mapcar (lambda (path)
-                (concat "-I" path))
-              (split-string
-               (buffer-substring-no-properties
-                (search-forward "#include <...> search starts here:" nil t)
-                (progn
-                  (search-forward "End of search list.")
-                  (line-beginning-position))))))))
+;; (defun ac-clang-find-include-paths ()
+;;   "Find include paths using gcc and return as proper clang options."
+;;   (with-temp-buffer
+;;     (call-process "/bin/bash"
+;;                   nil
+;;                   (current-buffer)
+;;                   nil
+;;                   "-c"
+;;                   "echo | g++ -v -x c++ -E -")
+;;     (goto-char (point-min))
+;;     (mapcar (lambda (path)
+;;               (concat "-I" path))
+;;             (split-string
+;;              (buffer-substring-no-properties
+;;               (search-forward "#include <...> search starts here:" nil t)
+;;               (progn
+;;                 (search-forward "End of search list.")
+;;                 (line-beginning-position)))))))
 
 (after 'smartparens
   ;; https://github.com/Fuco1/smartparens/wiki/Permissions#pre-and-post-action-hooks
@@ -42,10 +41,13 @@
             ;; Enable deleting all whitespace until next non-whitespace
             (c-toggle-hungry-state 1)
             ;; Do not indent open curly in in-class inline method
-            (c-set-offset 'inline-open '0)
-            ;; Set up completion with ac-clang
-            (require 'auto-complete-clang)
-            (add-to-list 'ac-sources 'ac-source-clang)
-            (setq ac-clang-flags (ac-clang-find-include-paths))))
+            (c-set-offset 'inline-open '0)))
+
+;; Completion with irony
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(after 'company
+  (add-to-list 'company-backends 'company-irony))
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
 
 (provide 'setup-cc-mode)

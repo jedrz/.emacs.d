@@ -16,12 +16,9 @@
 
 (defvar my-packages
   '(
-    ac-octave
-    ac-slime
     ace-jump-mode
+    anaconda-mode
     anzu
-    auto-complete                       ; depends on popup
-    auto-complete-clang
     browse-kill-ring
     buffer-move
     change-inner
@@ -30,6 +27,10 @@
     clojure-mode
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
+    company
+    company-anaconda
+    company-irony
+    company-tern
     diff-hl
     diminish
     dired+
@@ -49,7 +50,7 @@
     highlight-indentation
     ido-vertical-mode
     ido-ubiquitous
-    jedi
+    irony
     js2-mode
     js2-refactor
     jump-char
@@ -64,6 +65,7 @@
     refheap
     robe
     slime
+    slime-company
     smartparens
     smex
     solarized-theme

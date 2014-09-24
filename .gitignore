@@ -1,6 +1,7 @@
 .*
 !.gitignore
 *.elc
+projectile.cache
 /auto-save-list
 /elpa
 /backups
@@ -19,3 +20,4 @@
 /my-autoloads.el
 /session.*
 /projectile-bookmarks.eld
+/irony

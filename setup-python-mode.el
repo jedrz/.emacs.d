@@ -4,11 +4,9 @@
             (run-python (python-shell-parse-command) nil nil)))
 (add-hook 'python-mode-hook 'turn-on-eldoc-mode)
 
-;; Setup jedi
-(add-hook 'python-mode-hook 'jedi:setup)
-(after 'jedi
-  (setq jedi:complete-on-dot t)
-  ;; Eldoc
-  (setq jedi:tooltip-method nil))
+;; Completion with anaconda
+(add-hook 'python-mode-hook 'anaconda-mode)
+(after 'company
+  (add-to-list 'company-backends 'company-anaconda))
 
 (provide 'setup-python-mode)

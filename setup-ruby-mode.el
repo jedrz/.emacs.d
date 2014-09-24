@@ -1,4 +1,6 @@
 (add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
+
+(after 'company
+  (add-to-list 'company-backends 'company-robe))
 
 (provide 'setup-ruby-mode)

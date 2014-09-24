@@ -33,13 +33,10 @@
 
 ;; Slime
 (setq inferior-lisp-program "sbcl")
-(setq slime-contribs '(slime-fancy slime-repl))
+(setq slime-contribs '(slime-fancy slime-repl slime-company))
 (after 'slime
+  (require 'slime-company)
   (setq slime-auto-start 'always))
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
-(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-(after 'auto-complete
-  (add-to-list 'ac-modes 'slime-repl-mode))
 
 (after 'smartparens
   ;; paredit's wrap-round

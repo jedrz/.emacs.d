@@ -4,14 +4,8 @@
   (setq nrepl-hide-special-buffers t
         cider-repl-pop-to-buffer-on-connect nil
         cider-repl-use-clojure-font-lock t)
-  
-  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
-  ;; ac-nrepl
-  (add-hook 'cider-repl-mode-hook 'ac-nrepl-setup)
-  (add-hook 'cider-mode-hook 'ac-nrepl-setup)
-  (after 'auto-complete
-    (add-to-list 'ac-modes 'cider-repl-mode)))
+  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
 ;; clj refactor
 (add-hook 'clojure-mode-hook

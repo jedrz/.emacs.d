@@ -9,7 +9,7 @@
 
 ;; Tern
 (add-hook 'js2-mode-hook 'tern-mode)
-(after 'tern
-  (tern-ac-setup))
+(after 'company
+  (add-to-list 'company-backends 'company-tern))
 
 (provide 'setup-js2-mode)

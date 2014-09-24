@@ -57,7 +57,7 @@
 (after 'dired (require 'setup-dired))
 (after 'magit (require 'setup-magit))
 (require 'setup-yasnippet)
-(require 'setup-auto-complete)
+(require 'setup-company-mode)
 (require 'setup-smartparens)
 (require 'setup-flycheck)
 

@@ -77,8 +77,6 @@
           (lambda ()
             (run-octave t)
             (setq-local eldoc-documentation-function 'octave-eldoc-function)
-            (eldoc-mode 1)
-            (auto-complete-mode 1)
-            (add-to-list 'ac-sources 'ac-source-octave)))
+            (eldoc-mode 1)))
 
 (provide 'setup-octave-mode)
