@@ -51,6 +51,7 @@
     ido-ubiquitous
     jedi
     js2-mode
+    js2-refactor
     jump-char
     magit
     markdown-mode
