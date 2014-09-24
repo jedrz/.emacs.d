@@ -7,7 +7,7 @@
   (interactive)
   (mapc (lambda (path)
           (update-directory-autoloads (concat user-emacs-directory path)))
-        '("defuns" "vendor" "vendor/atilde" "vendor/tern/emacs")))
+        '("defuns" "vendor" "vendor/atilde")))
 
 ;; Create autoloads at startup if file doesn't exist.
 (unless (file-exists-p generated-autoload-file)

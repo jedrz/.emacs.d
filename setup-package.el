@@ -69,6 +69,7 @@
     smartparens
     smex
     solarized-theme
+    tern
     undo-tree
     visual-regexp
     wgrep

@@ -9,6 +9,8 @@
 
 ;; Tern
 (add-hook 'js2-mode-hook 'tern-mode)
+(after 'tern
+  (setq tern-command (list (concat user-emacs-directory "vendor/tern/bin/tern"))))
 (after 'company
   (add-to-list 'company-backends 'company-tern))
 
