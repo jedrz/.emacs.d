@@ -1,6 +1,6 @@
 ;; Load autoloads since auctex is not installed from ELPA
-(load "auctex.el" nil t)
-(load "preview-latex.el" nil t)
+;(load "auctex.el" nil t)
+;(load "preview-latex.el" nil t)
 
 ;; Configure AUCTex
 (after 'tex-site
@@ -27,6 +27,10 @@
         reftex-use-multiple-selection-buffers t
         ;; Plug RefTeX into AUCTeX
         reftex-plug-into-AUCTeX t))
+
+;; Completion
+(after 'company
+  (company-auctex-init))
 
 (add-hook 'LaTeX-mode-hook
           (lambda ()

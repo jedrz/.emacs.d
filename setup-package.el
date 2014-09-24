@@ -19,6 +19,7 @@
     ace-jump-mode
     anaconda-mode
     anzu
+    auctex
     browse-kill-ring
     buffer-move
     change-inner
@@ -29,6 +30,7 @@
     color-theme-sanityinc-tomorrow
     company
     company-anaconda
+    company-auctex
     company-irony
     company-tern
     diff-hl
