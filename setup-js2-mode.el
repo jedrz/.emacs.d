@@ -7,4 +7,9 @@
 
 (js2r-add-keybindings-with-prefix "C-c r")
 
+;; Tern
+(add-hook 'js2-mode-hook 'tern-mode)
+(after 'tern
+  (tern-ac-setup))
+
 (provide 'setup-js2-mode)
