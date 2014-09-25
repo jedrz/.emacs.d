@@ -16,6 +16,10 @@
   (add-watchwords)
   ;; Highlight changes made to files under vc
   (diff-hl-mode)
+  ;; Highlight symbol at point
+  (highlight-symbol-mode 1)
+  (local-set-key (kbd "M-s n") 'highlight-symbol-next)
+  (local-set-key (kbd "M-s p") 'highlight-symbol-prev)
   (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))
 
 (add-hook 'prog-mode-hook 'prog-mode-defaults)

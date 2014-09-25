@@ -50,6 +50,7 @@
     gist                                ; depends on gh, logito, pcache
     git-commit-mode
     highlight-indentation
+    highlight-symbol
     ido-vertical-mode
     ido-ubiquitous
     irony

@@ -16,5 +16,7 @@
   (diminish 'elisp-slime-nav-mode))
 (after 'anzu
   (diminish 'anzu-mode))
+(after 'highlight-symbol
+  (diminish 'highlight-symbol-mode))
 
 (provide 'setup-diminish)
