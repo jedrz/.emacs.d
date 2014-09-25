@@ -135,6 +135,11 @@
     (delete-region (point)
                    (progn (skip-chars-forward " \t") (point)))))
 
+;; http://endlessparentheses.com/exclude-directories-from-grep.html
+(after 'grep
+  (add-to-list 'grep-find-ignored-directories "auto")
+  (add-to-list 'grep-find-ignored-directories "elpa"))
+
 ;; Show number of search matches in mode line
 (global-anzu-mode 1)
 
