@@ -1,6 +1,7 @@
 .*
 !.gitignore
 *.elc
+*~
 projectile.cache
 /auto-save-list
 /elpa
