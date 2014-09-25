@@ -23,7 +23,31 @@
 
 (defun my-elisp-mode-setup ()
   ;; Go to definition with M-. and back again with M-,
-  (elisp-slime-nav-mode 1))
+  (elisp-slime-nav-mode 1)
+  ;; Complete symbol considering without namespace
+  (make-local-variable 'hippie-expand-try-functions-list)
+  (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol-without-namespace t))
+
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-lisp.el
+(defun try-complete-lisp-symbol-without-namespace (old)
+  "Hippie expand \"try\" function which expands \"-foo\" to \"modname-foo\" in elisp."
+  (unless old
+    (he-init-string (he-lisp-symbol-beg) (point))
+    (when (string-prefix-p "-" he-search-string)
+      (let ((mod-name (emacs-lisp-module-name)))
+        (when mod-name
+          (setq he-expand-list (list (concat mod-name he-search-string)))))))
+  (when he-expand-list
+    (he-substitute-string (car he-expand-list))
+    (setq he-expand-list nil)
+    t))
+
+(defun emacs-lisp-module-name ()
+  "Search the buffer for `provide' declaration."
+  (save-excursion
+    (goto-char (point-min))
+    (when (search-forward-regexp "^(provide '" nil t)
+      (symbol-name (symbol-at-point)))))
 
 (--each my-lisp-mode-hooks
   (add-hook it 'my-lisp-mode-setup))
