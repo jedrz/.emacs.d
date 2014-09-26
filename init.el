@@ -21,6 +21,10 @@
 ;; Configure package.el and install missing packages
 (require 'setup-package)
 
+;; Separate custom file
+(setq custom-file (concat user-emacs-directory "custom.el"))
+(load custom-file)
+
 ;; Load appearance settings at the beginning to avoid momentary display
 (require 'appearance)
 
