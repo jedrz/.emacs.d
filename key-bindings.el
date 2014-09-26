@@ -222,14 +222,12 @@
 (define-key ctl-x-map "t" 'toggle-map)
 (define-key toggle-map "f" 'auto-fill-mode)
 (define-key toggle-map "m" 'menu-bar-mode)
+(define-key toggle-map "t" 'my-themes-cycle)
 
 ;; Google search
 (global-set-key (kbd "C-x M-g") 'google-search)
 
 (global-set-key (kbd "C-$") 'run-terminal-with-current-dir)
-
-;; Switch between `my-themes'
-(global-set-key (kbd "<f10>") 'my-themes-cycle)
 
 ;; Switch between `ispell-my-dicts'
 (global-set-key (kbd "<f6>") 'ispell-cycle-dicts)
