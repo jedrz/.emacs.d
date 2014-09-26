@@ -183,12 +183,6 @@
 (global-set-key (kbd "C-x C-j") 'dired-jump)
 (global-set-key (kbd "C-x 4 C-j") 'dired-jump-other-window)
 
-;; Occur with multiple buffers
-(global-set-key (kbd "M-s m") 'multi-occur)
-
-;; Recursive grep
-(global-set-key (kbd "M-s r") 'rgrep)
-
 ;;; Windows management
 ;; Use shift + arrow keys to switch between windows
 (windmove-default-keybindings)
@@ -210,8 +204,18 @@
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
-;; Webjump
-(global-set-key (kbd "C-x g") 'webjump)
+;; Launcher map
+;; http://endlessparentheses.com/launcher-keymap-for-standalone-features.html
+(define-prefix-command 'launcher-map)
+(define-key ctl-x-map "l" 'launcher-map)
+(define-key launcher-map "l" 'lgrep)
+(define-key launcher-map "r" 'rgrep)
+(define-key launcher-map "o" 'occur)
+(define-key launcher-map "m" 'multi-occur)
+(define-key launcher-map "p" 'paradox-list-packages)
+(define-key launcher-map "w" 'webjump)
+(define-key launcher-map "g" 'google-search)
+
 ;; Google search
 (global-set-key (kbd "C-x M-g") 'google-search)
 

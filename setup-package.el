@@ -61,6 +61,7 @@
     markdown-mode
     move-text
     multiple-cursors
+    paradox
     pkgbuild-mode
     projectile
     rainbow-delimiters
