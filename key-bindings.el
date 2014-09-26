@@ -216,13 +216,17 @@
 (define-key launcher-map "w" 'webjump)
 (define-key launcher-map "g" 'google-search)
 
+;; Toggle map
+;; http://endlessparentheses.com/the-toggle-map-and-wizardry.html
+(define-prefix-command 'toggle-map)
+(define-key ctl-x-map "t" 'toggle-map)
+(define-key toggle-map "f" 'auto-fill-mode)
+(define-key toggle-map "m" 'menu-bar-mode)
+
 ;; Google search
 (global-set-key (kbd "C-x M-g") 'google-search)
 
 (global-set-key (kbd "C-$") 'run-terminal-with-current-dir)
-
-;; Show menu bar on demand
-(global-set-key (kbd "<f12>") 'menu-bar-mode)
 
 ;; Switch between `my-themes'
 (global-set-key (kbd "<f10>") 'my-themes-cycle)
