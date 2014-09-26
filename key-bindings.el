@@ -204,6 +204,9 @@
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
+;; Ispell word and save correction
+(global-set-key (kbd "M-$") 'ispell-word-then-abbrev) ; was ispell-word
+
 ;; Launcher map
 ;; http://endlessparentheses.com/launcher-keymap-for-standalone-features.html
 (define-prefix-command 'launcher-map)

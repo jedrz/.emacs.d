@@ -123,6 +123,10 @@
                                            try-complete-lisp-symbol-partially
                                            try-complete-lisp-symbol)))
 
+;; Enable dynamic expansion of words
+(abbrev-mode 1)
+(setq save-abbrevs 'silently)
+
 ;; Visualization of undo tree
 (global-undo-tree-mode 1)
 
