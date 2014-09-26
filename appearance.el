@@ -60,6 +60,9 @@
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
+;; Smart mode line
+(sml/setup)
+
 ;; fill-column-indicator
 ;; Enable only in text- and prog-modes
 (add-hook 'prog-mode-hook 'fci-mode)

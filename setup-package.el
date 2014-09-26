@@ -72,6 +72,7 @@
     robe
     slime
     slime-company
+    smart-mode-line
     smartparens
     smex
     solarized-theme
