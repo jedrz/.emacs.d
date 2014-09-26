@@ -37,6 +37,7 @@
             (flyspell-mode-on)
             (reftex-mode 1)
             (LaTeX-math-mode 1)
+            (latex-extra-mode 1)
             (atilde-mode 1)))
 
 (provide 'setup-latex-mode)
