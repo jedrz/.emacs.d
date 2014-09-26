@@ -214,7 +214,10 @@
 (define-key launcher-map "m" 'multi-occur)
 (define-key launcher-map "p" 'paradox-list-packages)
 (define-key launcher-map "w" 'webjump)
-(define-key launcher-map "g" 'google-search)
+
+;; Google this
+(autoload 'google-this-mode-submap "google-this" nil nil 'keymap)
+(define-key ctl-x-map "g" 'google-this-mode-submap)
 
 ;; Toggle map
 ;; http://endlessparentheses.com/the-toggle-map-and-wizardry.html
@@ -223,9 +226,6 @@
 (define-key toggle-map "f" 'auto-fill-mode)
 (define-key toggle-map "m" 'menu-bar-mode)
 (define-key toggle-map "t" 'my-themes-cycle)
-
-;; Google search
-(global-set-key (kbd "C-x M-g") 'google-search)
 
 (global-set-key (kbd "C-$") 'run-terminal-with-current-dir)
 

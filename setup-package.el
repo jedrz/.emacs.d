@@ -49,6 +49,7 @@
     flycheck-cask
     gist                                ; depends on gh, logito, pcache
     git-commit-mode
+    google-this
     highlight-indentation
     highlight-symbol
     ido-vertical-mode
