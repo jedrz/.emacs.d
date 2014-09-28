@@ -204,6 +204,9 @@
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 
+;; Display major mode key bindings in popup menu
+(global-set-key (kbd "C-h C-m") 'discover-my-major)
+
 ;; Ispell word and save correction
 (global-set-key (kbd "M-$") 'ispell-word-then-abbrev) ; was ispell-word
 

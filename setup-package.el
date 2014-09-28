@@ -38,6 +38,7 @@
     dired+
     dired-details
     dired-imenu
+    discover-my-major
     elisp-slime-nav
     evil-numbers
     expand-region
