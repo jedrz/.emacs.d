@@ -235,7 +235,4 @@
 
 (global-set-key (kbd "C-$") 'run-terminal-with-current-dir)
 
-;; Switch between `ispell-my-dicts'
-(global-set-key (kbd "<f6>") 'ispell-cycle-dicts)
-
 (provide 'key-bindings)

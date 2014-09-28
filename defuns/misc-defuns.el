@@ -93,17 +93,6 @@ If there is not active region then call only `isearch-function'"
     (rename-buffer url t)))
 
 ;;;###autoload
-(defun ispell-cycle-dicts ()
-  "Switch between `ispell-my-dicts' dictionaries."
-  (interactive)
-  (ispell-change-dictionary (nth
-                             (% (1+ (position ispell-current-dictionary
-                                              ispell-my-dicts
-                                              :test 'string=))
-                                (length ispell-my-dicts))
-                             ispell-my-dicts)))
-
-;;;###autoload
 (defun my-themes-cycle ()
   "Load the next theme from `my-themes' list"
   (interactive)

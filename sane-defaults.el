@@ -94,7 +94,9 @@
 ;; Set default dictionary for flyspell-mode
 (after 'ispell
   (setq ispell-dictionary "english"))
-(defvar ispell-my-dicts '("english" "polish")) ; used by ispell-cycle-dicts
+
+;; Detect buffer language
+(add-hook 'find-file-hook 'exttextcat-guess-language-buffer)
 
 ;; Revert buffers automatically associated with files when the file changes on disk
 (global-auto-revert-mode 1)
