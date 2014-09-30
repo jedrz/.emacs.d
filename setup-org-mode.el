@@ -24,4 +24,8 @@
 ;; Add a timestamp when a certain TODO item was finished.
 (setq org-log-done 'time)
 
+;; Setup org-journal
+(after 'org-journal
+  (setq org-journal-dir (concat org-directory "/journal/")))
+
 (provide 'setup-org-mode)
