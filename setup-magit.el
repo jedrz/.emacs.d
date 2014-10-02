@@ -5,7 +5,7 @@
 (defvar magit--credential-cache-process nil)
 
 (defun magit-maybe-run-credential-cache-daemon (&rest _)
-  (let ((socket-path "~/.git-credential-cache/socket"))
+  (let ((socket-path (expand-file-name "~/.git-credential-cache/socket")))
     (unless (or (file-exists-p socket-path)
                 magit--credential-cache-process)
       (setq magit--credential-cache-process
