@@ -1,5 +1,18 @@
-;; From https://github.com/magnars/.emacs.d/blob/master/setup-magit.el
+;; Start credential-cache--daemon to remember passwords
 
+(add-hook 'magit-push-hook 'magit-maybe-run-credential-cache-daemon)
+
+(defvar magit--credential-cache-process nil)
+
+(defun magit-maybe-run-credential-cache-daemon (&rest _)
+  (let ((socket-path "~/.git-credential-cache/socket"))
+    (unless (or (file-exists-p socket-path)
+                magit--credential-cache-process)
+      (setq magit--credential-cache-process
+            (start-process "credential-cache-daemon" nil
+                           "git" "credential-cache--daemon" socket-path)))))
+
+;; From https://github.com/magnars/.emacs.d/blob/master/setup-magit.el
 ;; Restore the previous window configuration after quitting magit-status buffer
 
 (defadvice magit-status
