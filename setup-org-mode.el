@@ -24,6 +24,11 @@
 ;; Add a timestamp when a certain TODO item was finished.
 (setq org-log-done 'time)
 
+;; Indent tags after save.
+(add-hook 'after-save-hook (lambda ()
+                             (when (derived-mode-p 'org-mode)
+                               (org-align-all-tags))))
+
 ;; Setup org-journal
 (after 'org-journal
   (setq org-journal-dir (concat org-directory "/journal/")))
