@@ -16,4 +16,8 @@
 ;; Treat .m files as octave files
 (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
 
+;; org-journal - hacky solution
+(autoload 'org-journal-mode "org-journal")
+(add-to-list 'auto-mode-alist '("journal/" . org-journal-mode))
+
 (provide 'mode-mappings)
