@@ -1,6 +1,6 @@
 ;; Start credential-cache--daemon to remember passwords
 
-(add-hook 'magit-push-hook 'magit-maybe-run-credential-cache-daemon)
+(add-hook 'magit-mode-hook 'magit-maybe-run-credential-cache-daemon)
 
 (defun magit-maybe-run-credential-cache-daemon (&rest _)
   (let ((socket-path (expand-file-name "~/.git-credential-cache/socket")))
