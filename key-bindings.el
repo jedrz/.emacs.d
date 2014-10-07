@@ -235,4 +235,6 @@
 
 (global-set-key (kbd "C-$") 'run-terminal-with-current-dir)
 
+(global-set-key (kbd "<f6>") 'exttextcat-guess-language-buffer)
+
 (provide 'key-bindings)
