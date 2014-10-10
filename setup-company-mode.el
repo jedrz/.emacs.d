@@ -6,13 +6,13 @@
   (define-key company-active-map (kbd "<tab>") 'company-complete)
   (define-key company-active-map (kbd "TAB") 'company-complete))
 
-;; http://www.emacswiki.org/emacs/CompanyMode
 (after 'yasnippet
   (defun company-indent-or-complete ()
     (interactive)
     (if (looking-at "\\_>")
         (company-complete-common)
-      (indent-according-to-mode)))
+      (let ((yas-fallback-behavior 'call-other-command))
+        (yas--fallback))))
 
   (setq yas-fallback-behavior '(apply company-indent-or-complete)))
 
