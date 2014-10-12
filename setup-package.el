@@ -84,6 +84,7 @@
     undo-tree
     visual-regexp
     wgrep
+    yaml-mode
     yasnippet
     zenburn-theme
     zencoding-mode
