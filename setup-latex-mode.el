@@ -19,6 +19,12 @@
                 ;; Generate output in PDF
                 TeX-PDF-mode t))
 
+(after 'tex
+  ;; Set default pdf browser
+  (setq TeX-view-program-selection
+        (cons '(output-pdf "Okular")
+              (assq-delete-all 'output-pdf TeX-view-program-selection))))
+
 ;; Configure RefTex
 (after 'reftex
   ;; Recommended optimizations
