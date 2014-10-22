@@ -8,11 +8,11 @@
      '(progn ,@forms)))
 
 ;; Set up load path
-(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path user-emacs-directory t)
 
 ;; Add extensions' folder and sub-folders to load path
 (let ((default-directory (concat user-emacs-directory "vendor")))
-  (add-to-list 'load-path default-directory)
+  (add-to-list 'load-path default-directory t)
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; Generate some autoloads and load them
