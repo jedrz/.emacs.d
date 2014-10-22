@@ -3,7 +3,8 @@
 (setq dired-listing-switches "-alhv --group-directories-first"
       dired-dwim-target t               ; Copy to the second visible dired buffer
       dired-auto-revert-buffer t        ; Revert buffer on revisiting
-      dired-recursive-copies 'always)
+      dired-recursive-copies 'always
+      dired-recursive-deletes 'always)
 
 ;; Omit hidden, autosave and lock files but show . and ..
 (setq dired-omit-files "^\\.?#\\|^\\.[^\\.].*$")
