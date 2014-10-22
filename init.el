@@ -1,11 +1,7 @@
 ;; Speed up Emacs?
 (setq gc-cons-threshold 20000000)
 
-(defmacro after (file &rest forms)
-  "Evaluate FORMS after FILE is loaded."
-  (declare (indent 1))
-  `(eval-after-load ,file
-     '(progn ,@forms)))
+(defalias 'after 'with-eval-after-load)
 
 ;; Set up load path
 (add-to-list 'load-path user-emacs-directory t)
