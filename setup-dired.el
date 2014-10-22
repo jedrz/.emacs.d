@@ -1,5 +1,4 @@
 (require 'dired+)
-(require 'dired-details)
 
 (setq dired-listing-switches "-alhv --group-directories-first"
       dired-dwim-target t               ; Copy to the second visible dired buffer
@@ -9,10 +8,6 @@
 ;; Omit hidden, autosave and lock files but show . and ..
 (setq dired-omit-files "^\\.?#\\|^\\.[^\\.].*$")
 (add-hook 'dired-mode-hook 'dired-omit-mode)
-
-;; Hide usually redundant file details
-(dired-details-install)
-(setq-default dired-details-hidden-string "--- ")
 
 (defun dired-goto-top ()
   "Move to the third line (..)."

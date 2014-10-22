@@ -36,7 +36,6 @@
     diff-hl
     diminish
     dired+
-    dired-details
     dired-imenu
     discover-my-major
     elisp-slime-nav
