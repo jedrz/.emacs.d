@@ -51,6 +51,17 @@
 (set-language-environment 'utf-8)
 (prefer-coding-system 'utf-8)
 
+;; .emacs.d in load path warning
+;; http://stackoverflow.com/a/25552511
+(defadvice display-warning
+    (around no-warn-emacs-directory-in-load-path (type msg &rest ignored)
+            activate compile)
+  (unless (and (eq type 'initialization)
+               (string-prefix-p
+                "Your `load-path' seems to contain\nyour `.emacs.d' directory"
+                msg))
+    ad-do-it))
+
 ;; Spaces for indentation
 (setq-default indent-tabs-mode nil
               tab-width 4)
