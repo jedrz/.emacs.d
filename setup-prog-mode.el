@@ -19,8 +19,7 @@
   ;; Highlight symbol at point
   (highlight-symbol-mode 1)
   (local-set-key (kbd "M-s n") 'highlight-symbol-next)
-  (local-set-key (kbd "M-s p") 'highlight-symbol-prev)
-  (local-set-key (kbd "RET") 'reindent-then-newline-and-indent))
+  (local-set-key (kbd "M-s p") 'highlight-symbol-prev))
 
 (add-hook 'prog-mode-hook 'prog-mode-defaults)
 
