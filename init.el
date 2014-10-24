@@ -1,6 +1,12 @@
 ;; Speed up Emacs?
 (setq gc-cons-threshold 20000000)
 
+;; Don't load default library
+(setq inhibit-default-init t)
+
+;; Don't load outdated byte-code files
+(setq load-prefer-newer t)
+
 (defalias 'after 'with-eval-after-load)
 
 ;; Set up load path
