@@ -7,6 +7,9 @@
 ;; Open Common Lisp files in lisp-mode
 (add-to-list 'auto-mode-alist '("\\.cl$" . lisp-mode))
 
+;; Zsh files in sh-mode
+(add-to-list 'auto-mode-alist '("\\.zsh$" . sh-mode))
+
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)$" . markdown-mode))
 
