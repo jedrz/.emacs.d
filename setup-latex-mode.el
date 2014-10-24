@@ -3,7 +3,7 @@
 ;(load "preview-latex.el" nil t)
 
 ;; Configure AUCTex
-(after 'tex-site
+(after 'tex
   (setq TeX-auto-save t         ; Automatically save style information
         ;; Parse document structure
         TeX-parse-self t
@@ -14,16 +14,14 @@
         ;; Do not ask for permission before saving files
         TeX-save-query nil
         ;; Do not ask before deleting files
-        TeX-clean-confirm nil)
+        TeX-clean-confirm nil
+        ;; Set default pdf browser
+        TeX-view-program-selection
+        (cons '(output-pdf "Okular")
+              (assq-delete-all 'output-pdf TeX-view-program-selection)))
   (setq-default TeX-master nil          ; Ask for master document
                 ;; Generate output in PDF
                 TeX-PDF-mode t))
-
-(after 'tex
-  ;; Set default pdf browser
-  (setq TeX-view-program-selection
-        (cons '(output-pdf "Okular")
-              (assq-delete-all 'output-pdf TeX-view-program-selection))))
 
 ;; Configure RefTex
 (after 'reftex
