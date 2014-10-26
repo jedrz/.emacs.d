@@ -133,7 +133,8 @@
                                            try-complete-lisp-symbol)))
 
 ;; Enable dynamic expansion of words
-(abbrev-mode 1)
+(setq global-abbrev-table (make-abbrev-table)) ; Fix wrong type argument
+(setq-default abbrev-mode t)
 (setq save-abbrevs 'silently)
 
 ;; Visualization of undo tree
