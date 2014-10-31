@@ -33,4 +33,11 @@
 (after 'org-journal
   (setq org-journal-dir (concat org-directory "/journal/")))
 
+;; LaTeX export
+(after 'ox-latex
+  (setq org-latex-pdf-process
+        (-repeat 3 "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"))
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (setq org-latex-listings 'minted))
+
 (provide 'setup-org-mode)
