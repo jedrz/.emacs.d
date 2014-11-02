@@ -21,7 +21,8 @@
               (assq-delete-all 'output-pdf TeX-view-program-selection)))
   (setq-default TeX-master nil          ; Ask for master document
                 ;; Generate output in PDF
-                TeX-PDF-mode t))
+                TeX-PDF-mode t)
+  (auctex-latexmk-setup))
 
 ;; Configure RefTex
 (after 'reftex

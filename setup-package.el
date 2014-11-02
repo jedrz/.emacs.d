@@ -20,6 +20,7 @@
     anaconda-mode
     anzu
     auctex
+    auctex-latexmk
     browse-kill-ring
     buffer-move
     change-inner
