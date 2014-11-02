@@ -137,6 +137,9 @@
 (setq-default abbrev-mode t)
 (setq save-abbrevs 'silently)
 
+;; Start week at Monday
+(setq calendar-week-start-day 1)
+
 ;; Visualization of undo tree
 (global-undo-tree-mode 1)
 
