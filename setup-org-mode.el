@@ -40,4 +40,8 @@
   (add-to-list 'org-latex-packages-alist '("" "minted"))
   (setq org-latex-listings 'minted))
 
+(after 'ox-beamer
+  ;; Don't ask me if this variable can be evaluated.
+  (put 'org-beamer-outline-frame-title 'safe-local-variable 'stringp))
+
 (provide 'setup-org-mode)
