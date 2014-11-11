@@ -40,6 +40,7 @@
     dired-imenu
     discover-my-major
     elisp-slime-nav
+    ess
     evil-numbers
     expand-region
     fancy-narrow
