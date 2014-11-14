@@ -3,6 +3,7 @@
 
 ;; JavaScript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 
 ;; Open Common Lisp files in lisp-mode
 (add-to-list 'auto-mode-alist '("\\.cl$" . lisp-mode))
