@@ -33,12 +33,21 @@
 (after 'org-journal
   (setq org-journal-dir (concat org-directory "/journal/")))
 
+;; Org babel
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sh . t)
+   (python . t)))
+
 ;; LaTeX export
 (after 'ox-latex
   (setq org-latex-pdf-process
         (-repeat 3 "pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f"))
   (add-to-list 'org-latex-packages-alist '("" "minted"))
-  (setq org-latex-listings 'minted))
+  (setq org-latex-listings 'minted)
+  (add-to-list 'org-beamer-environments-extra
+               '("onlyenv+block" "O" "\\begin{onlyenv}%a\\begin{block}{%h}" "\\end{block}\\end{onlyenv}")))
 
 (after 'ox-beamer
   ;; Don't ask me if this variable can be evaluated.
