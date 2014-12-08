@@ -129,3 +129,10 @@ Including indent-buffer, which should not be called automatically on save."
       (if arg
           (find-file-other-window file)
         (find-file file)))))
+
+;; http://www.emacswiki.org/emacs/DosToUnix
+;;;###autoload
+(defun dos2unix ()
+  "Not exactly but it's easier to remember"
+  (interactive)
+  (set-buffer-file-coding-system 'unix 't))
