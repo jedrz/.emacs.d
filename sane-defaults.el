@@ -164,4 +164,12 @@
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (add-hook 'text-mode-hook 'flyspell-mode)
 
+;; To avoid accidentally typing Alt Gr + Space that expands to strange
+;; character I immediately replace it with just plain space.
+(add-hook 'post-self-insert-hook
+          (lambda ()
+            (when (char-equal (char-before) ? )
+              (delete-char -1)
+              (insert-char ? ))))
+
 (provide 'sane-defaults)
