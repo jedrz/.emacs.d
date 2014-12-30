@@ -52,9 +52,10 @@
 
 ;; More useful frame title
 (setq frame-title-format
-      '("" invocation-name ": " (:eval (if (buffer-file-name)
-                                           (abbreviate-file-name (buffer-file-name))
-                                         "%b"))))
+      '((:eval (if (buffer-file-name)
+                   (abbreviate-file-name (buffer-file-name))
+                 "%b"))
+        " - " invocation-name))
 
 ;; Unique buffer names
 (require 'uniquify)
