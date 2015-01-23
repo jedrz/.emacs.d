@@ -29,10 +29,6 @@
           (lambda ()
             (add-hook 'before-save-hook 'org-align-all-tags nil t)))
 
-;; Setup org-journal
-(after 'org-journal
-  (setq org-journal-dir (concat org-directory "/journal/")))
-
 ;; Org babel
 (org-babel-do-load-languages
  'org-babel-load-languages
