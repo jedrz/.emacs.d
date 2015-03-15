@@ -51,6 +51,7 @@
     flycheck-cask
     gist                                ; depends on gh, logito, pcache
     git-commit-mode
+    git-messenger
     git-timemachine
     google-this
     highlight-indentation
