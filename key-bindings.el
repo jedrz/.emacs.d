@@ -36,6 +36,10 @@
 ;; Go to line with linum mode enabled
 (global-set-key [remap goto-line] 'goto-line-with-feedback)
 
+;; Replace iseach with swiper
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "C-r") 'swiper)
+
 ;; Like isearch but uses active region as search string
 (global-set-key (kbd "C-S-s") 'isearch-forward-use-region)
 (global-set-key (kbd "C-S-r") 'isearch-backward-use-region)

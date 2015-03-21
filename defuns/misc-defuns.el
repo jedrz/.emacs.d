@@ -2,27 +2,28 @@
 
 (eval-when-compile (require 'cl))       ; for position
 
-(defun isearch-use-region (isearch-function beg end)
-  "Call interactively `isearch-function' and use active region as saarch string.
-If there is not active region then call only `isearch-function'"
+(defun isearch-use-region (isearch-function)
+  "Call interactively `isearch-function' and use active region as search string.
+If there is no active region then just call `isearch-function'."
   (if (region-active-p)
-   (let ((selection (buffer-substring-no-properties beg end)))
-     (deactivate-mark)
-     (call-interactively isearch-function)
-     (isearch-yank-string selection))
-   (call-interactively isearch-function)))
+      (let ((selection (buffer-substring-no-properties
+                        (region-beginning) (region-end))))
+        (deactivate-mark)
+        (call-interactively isearch-function)
+        (isearch-yank-string selection))
+    (call-interactively isearch-function)))
 
 ;;;###autoload
-(defun isearch-forward-use-region (beg end)
-  "Search forward for active region."
-  (interactive "r")
-  (isearch-use-region 'isearch-forward beg end))
+(defun isearch-forward-use-region ()
+  "Search forward for active region or input."
+  (interactive)
+  (isearch-use-region 'isearch-forward))
 
 ;;;###autoload
-(defun isearch-backward-use-region (beg end)
-  "Search backward for active region."
-  (interactive "r")
-  (isearch-use-region 'isearch-backward beg end))
+(defun isearch-backward-use-region ()
+  "Search backward for active region or input."
+  (interactive)
+  (isearch-use-region 'isearch-backward))
 
 ;;;###autoload
 (defun goto-line-with-feedback ()

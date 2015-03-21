@@ -81,6 +81,7 @@
     smartparens
     smex
     solarized-theme
+    swiper
     tagedit
     tern
     undo-tree
