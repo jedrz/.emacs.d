@@ -18,7 +18,9 @@
         ;; Set default pdf browser
         TeX-view-program-selection
         (cons '(output-pdf "Okular")
-              (assq-delete-all 'output-pdf TeX-view-program-selection)))
+              (assq-delete-all 'output-pdf TeX-view-program-selection))
+        ;; Don't ask to start server for inverse search
+        TeX-source-correlate-start-server t)
   (setq-default TeX-master nil          ; Ask for master document
                 ;; Generate output in PDF
                 TeX-PDF-mode t)
