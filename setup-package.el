@@ -75,6 +75,7 @@
     rainbow-mode
     refheap
     robe
+    scala-mode2
     slime
     slime-company
     smart-mode-line
