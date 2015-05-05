@@ -1,3 +1,5 @@
+(require 's)
+
 ;; Enable flycheck for all buffers
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
