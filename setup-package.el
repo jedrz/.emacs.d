@@ -49,6 +49,7 @@
     flx-ido
     flycheck
     flycheck-cask
+    flycheck-rust
     gist                                ; depends on gh, logito, pcache
     git-commit-mode
     git-messenger

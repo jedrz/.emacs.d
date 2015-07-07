@@ -40,6 +40,7 @@
   (setq flycheck-display-errors-function
         'flycheck-diplay-error-messages-one-line)
 
-  (add-hook 'flycheck-mode-hook 'flycheck-cask-setup))
+  (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
+  (add-hook 'flycheck-mode-hook 'flycheck-rust-setup))
 
 (provide 'setup-flycheck)
