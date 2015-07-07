@@ -1,8 +1,4 @@
-;; Load autoloads since auctex is not installed from ELPA
-;(load "auctex.el" nil t)
-;(load "preview-latex.el" nil t)
-
-;; Configure AUCTex
+;; Configure AUCTeX
 (after 'tex
   (setq TeX-auto-save t         ; Automatically save style information
         ;; Parse document structure
@@ -11,8 +7,6 @@
         TeX-source-correlate-method 'synctex
         ;; Enable source correlation mode
         TeX-source-correlate-mode t
-        ;; Do not ask for permission before saving files
-        TeX-save-query nil
         ;; Do not ask before deleting files
         TeX-clean-confirm nil
         ;; Set default pdf browser
@@ -23,8 +17,11 @@
         TeX-source-correlate-start-server t)
   (setq-default TeX-master nil          ; Ask for master document
                 ;; Generate output in PDF
-                TeX-PDF-mode t)
-  (auctex-latexmk-setup))
+                TeX-PDF-mode t))
+
+(after 'tex-buf
+  ;; Do not ask for permission before saving files
+  (setq TeX-save-query nil))
 
 ;; Configure RefTex
 (after 'reftex
@@ -34,6 +31,9 @@
         reftex-use-multiple-selection-buffers t
         ;; Plug RefTeX into AUCTeX
         reftex-plug-into-AUCTeX t))
+
+(after 'latex
+  (auctex-latexmk-setup))
 
 ;; Completion
 (after 'company
