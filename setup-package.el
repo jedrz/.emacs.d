@@ -72,6 +72,7 @@
     paradox
     pkgbuild-mode
     projectile
+    racer
     rainbow-delimiters
     rainbow-mode
     refheap

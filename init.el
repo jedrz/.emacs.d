@@ -61,6 +61,7 @@
 (after 'octave-mod (require 'setup-octave-mode))
 (after 'prolog (require 'setup-prolog-mode))
 (after 'ess (require 'setup-ess-mode))
+(after 'rust-mode (require 'setup-rust-mode))
 
 ;; Setup extensions
 (require 'setup-ido)
