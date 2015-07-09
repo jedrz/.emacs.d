@@ -60,7 +60,7 @@
 (after 'cc-mode (require 'setup-cc-mode))
 (after 'python (require 'setup-python-mode))
 (after 'sgml-mode (require 'setup-sgml-mode))
-(after 'css-mode (require 'setup-css-mode))
+(require 'setup-css-mode)
 (after 'js2-mode (require 'setup-js2-mode))
 (after 'ruby-mode (require 'setup-ruby-mode))
 (require 'setup-latex-mode)
