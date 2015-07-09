@@ -89,6 +89,7 @@
     tagedit
     tern
     undo-tree
+    use-package
     visual-regexp
     wgrep
     yaml-mode

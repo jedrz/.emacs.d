@@ -23,6 +23,13 @@
 ;; Configure package.el and install missing packages
 (require 'setup-package)
 
+;; TODO: Wrap with eval-when-compile later.
+(setq use-package-verbose t)
+(require 'use-package)
+
+(require 'bind-key)
+(require 'diminish)
+
 ;; Separate custom file
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
@@ -60,7 +67,7 @@
 (after 'asm-mode (require 'setup-asm-mode))
 (after 'octave-mod (require 'setup-octave-mode))
 (after 'prolog (require 'setup-prolog-mode))
-(after 'ess (require 'setup-ess-mode))
+(require 'setup-ess-mode)
 (after 'rust-mode (require 'setup-rust-mode))
 
 ;; Setup extensions
