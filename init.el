@@ -62,7 +62,7 @@
 (after 'sgml-mode (require 'setup-sgml-mode))
 (require 'setup-css-mode)
 (after 'js2-mode (require 'setup-js2-mode))
-(after 'ruby-mode (require 'setup-ruby-mode))
+(require 'setup-ruby-mode)
 (require 'setup-latex-mode)
 (after 'asm-mode (require 'setup-asm-mode))
 (require 'setup-octave-mode)
