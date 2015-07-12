@@ -2,6 +2,11 @@
   :ensure t
   :defer t)
 
+;; Major mode for .toml Cargo files
+(use-package toml-mode
+  :ensure t
+  :defer t)
+
 ;; Auto completion for rust
 (use-package racer
   :ensure t
