@@ -67,12 +67,9 @@
     paradox
     pkgbuild-mode
     projectile
-    racer
     rainbow-delimiters
     rainbow-mode
     refheap
-    robe
-    rust-mode
     scala-mode2
     slime
     slime-company
