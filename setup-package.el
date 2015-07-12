@@ -40,7 +40,6 @@
     dired-imenu
     discover-my-major
     elisp-slime-nav
-    ess
     evil-numbers
     expand-region
     fancy-narrow
@@ -49,9 +48,7 @@
     flx-ido
     flycheck
     flycheck-cask
-    flycheck-rust
     gist                                ; depends on gh, logito, pcache
-    git-commit-mode
     git-messenger
     git-timemachine
     google-this
