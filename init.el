@@ -64,7 +64,7 @@
 (after 'js2-mode (require 'setup-js2-mode))
 (require 'setup-ruby-mode)
 (require 'setup-latex-mode)
-(after 'asm-mode (require 'setup-asm-mode))
+(require 'setup-asm-mode)
 (require 'setup-octave-mode)
 (require 'setup-prolog-mode)
 (require 'setup-ess-mode)
