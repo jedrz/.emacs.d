@@ -202,9 +202,6 @@
 ;; Eval and replace anywhere
 (global-set-key (kbd "C-x E") 'eval-and-replace)
 
-;; Magit status
-(global-set-key (kbd "C-x m") 'magit-status) ; which used to be compose-mail
-
 ;; A complementary binding to the apropos-command(C-h a)
 (global-set-key (kbd "C-h A") 'apropos)
 

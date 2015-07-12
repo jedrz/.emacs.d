@@ -61,7 +61,6 @@
     js2-refactor
     jump-char
     latex-extra
-    magit
     markdown-mode
     move-text
     multiple-cursors

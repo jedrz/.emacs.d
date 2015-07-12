@@ -73,7 +73,7 @@
 ;; Setup extensions
 (require 'setup-ido)
 (after 'dired (require 'setup-dired))
-(after 'magit (require 'setup-magit))
+(require 'setup-magit)
 (require 'setup-yasnippet)
 (require 'setup-company-mode)
 (require 'setup-smartparens)
