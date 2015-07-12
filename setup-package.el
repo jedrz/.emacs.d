@@ -64,7 +64,6 @@
     markdown-mode
     move-text
     multiple-cursors
-    org-journal
     paradox
     pkgbuild-mode
     projectile

@@ -51,10 +51,7 @@
 
 ;; Load settings for some major modes
 (require 'setup-prog-mode)
-(after 'org (require 'setup-org-mode))
-;; HACK: force org-journal-dir
-(after 'org-journal
-  (setq org-journal-dir (concat org-directory "/journal/")))
+(require 'setup-org-mode)
 (require 'setup-lisp-mode)
 (after 'clojure-mode (require 'setup-clojure-mode))
 (after 'cc-mode (require 'setup-cc-mode))
