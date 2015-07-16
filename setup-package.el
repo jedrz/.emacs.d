@@ -29,7 +29,6 @@
     clojure-mode
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
-    company
     company-anaconda
     company-auctex
     company-irony
