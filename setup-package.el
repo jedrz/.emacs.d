@@ -23,9 +23,6 @@
     browse-kill-ring
     buffer-move
     change-inner
-    cider
-    clj-refactor
-    clojure-mode
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
     company-auctex

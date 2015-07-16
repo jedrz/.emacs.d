@@ -53,7 +53,7 @@
 (require 'setup-prog-mode)
 (require 'setup-org-mode)
 (require 'setup-lisp-mode)
-(after 'clojure-mode (require 'setup-clojure-mode))
+(require 'setup-clojure-mode)
 (after 'cc-mode (require 'setup-cc-mode))
 (require 'setup-python-mode)
 (after 'sgml-mode (require 'setup-sgml-mode))
