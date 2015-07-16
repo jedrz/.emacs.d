@@ -17,7 +17,6 @@
 (defvar my-packages
   '(
     ace-jump-mode
-    anaconda-mode
     anzu
     auctex
     auctex-latexmk
@@ -29,7 +28,6 @@
     clojure-mode
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
-    company-anaconda
     company-auctex
     company-irony
     company-tern
