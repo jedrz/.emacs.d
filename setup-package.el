@@ -31,10 +31,7 @@
     company-auctex
     company-irony
     company-tern
-    diff-hl
     diminish
-    dired+
-    dired-imenu
     discover-my-major
     elisp-slime-nav
     evil-numbers
