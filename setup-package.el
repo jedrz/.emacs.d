@@ -36,10 +36,8 @@
     paradox
     rainbow-mode
     refheap
-    scala-mode2
     use-package
     visual-regexp
-    wgrep
     )
   "List of packages to be installed via package.el.")
 

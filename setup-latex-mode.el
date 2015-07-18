@@ -4,13 +4,7 @@
   :init
   (progn
     (add-hook 'LaTeX-mode-hook #'flyspell-mode-on)
-    (add-hook 'LaTeX-mode-hook #'reftex-mode)
-    (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode)
-    (add-hook 'LaTeX-mode-hook #'latex-extra-mode)
-    (add-hook 'LaTeX-mode-hook #'atilde-mode))
-  :config
-  (with-eval-after-load 'company
-    (company-auctex-init)))
+    (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode)))
 
 (use-package tex-site
   :ensure auctex
@@ -57,11 +51,29 @@
         ;; Plug RefTeX into AUCTeX.
         reftex-plug-into-AUCTeX t))
 
+(use-package latex-extra
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'LaTeX-mode-hook #'latex-extra-mode))
+
 (use-package auctex-latexmk
   :ensure t
   :defer t
   :init
   (with-eval-after-load 'latex
     (auctex-latexmk-setup)))
+
+(use-package company-auctex
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'company
+    (company-auctex-init)))
+
+(use-package atilde
+  :defer t
+  :init
+  (add-hook 'LaTeX-mode-hook #'atilde-mode))
 
 (provide 'setup-latex-mode)

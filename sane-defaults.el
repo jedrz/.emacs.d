@@ -174,6 +174,11 @@
     (add-to-list 'grep-find-ignored-directories "auto")
     (add-to-list 'grep-find-ignored-directories "elpa")))
 
+;; Writable grep buffer.
+(use-package wgrep
+  :ensure t
+  :defer t)
+
 ;; Show number of search matches in mode line.
 (use-package anzu
   :ensure t
