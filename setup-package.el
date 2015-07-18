@@ -17,7 +17,6 @@
 (defvar my-packages
   '(
     ace-jump-mode
-    anzu
     browse-kill-ring
     buffer-move
     change-inner
@@ -44,7 +43,6 @@
     rainbow-mode
     refheap
     scala-mode2
-    undo-tree
     use-package
     visual-regexp
     wgrep
