@@ -32,7 +32,6 @@
     jump-char
     move-text
     paradox
-    rainbow-mode
     refheap
     use-package
     visual-regexp
