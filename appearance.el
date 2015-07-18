@@ -1,83 +1,98 @@
 ;; Font
 (setq default-frame-alist '((font . "Source Code Pro-10.5")))
 
-;; Load theme
-(defvar my-themes '(sanityinc-tomorrow-night
-                    sanityinc-tomorrow-day)
-  "List of themes to switch between")
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :config
+  (load-theme 'sanityinc-tomorrow-night t))
 
-(load-theme (car my-themes) t)
-
-;; Show line numbers
-;(global-linum-mode 1)
-
-;; Show column number in status bar
+;; Show column number in status bar.
 (column-number-mode 1)
 
-;; Highlight current line
+;; Highlight current line.
 (global-hl-line-mode 1)
 
-;; Visualize some kinds of blank
-(after 'whitespace
+;; Visualize some kinds of blank.
+(use-package whitespace
+  :defer t
+  :init
+  (global-whitespace-mode 1)
+  :config
   (setq whitespace-style '(face trailing)))
-(global-whitespace-mode 1)
 
-;; Indicate empty lines after the buffer end
+;; Indicate empty lines after the buffer end.
 (setq-default indicate-empty-lines t)
 
-;; Highlight matching parens
-(show-paren-mode 1)
-(setq show-paren-delay 0)
+;; Highlight matching parens.
+(use-package paren
+  :defer t
+  :init
+  (show-paren-mode 1)
+  :config
+  (setq show-paren-delay 0))
 
-;; Turn off blinking
+;; Turn off blinking.
 (blink-cursor-mode -1)
 
-;; Hide tool bar
+;; Hide tool bar.
 (tool-bar-mode -1)
 
-;; Hide scroll bars
+;; Hide scroll bars.
 (scroll-bar-mode -1)
 
-;; Hide menu bar
+;; Hide menu bar.
 (menu-bar-mode -1)
 
-;; Start maximized
+;; Start maximized.
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
-;; Smooth scrolling
+;; Smooth scrolling.
 (setq scroll-conservatively 10000
       scroll-margin 3
       scroll-preserve-screen-position t
       auto-window-vscroll nil)
 
-;; More useful frame title
+;; More useful frame title.
 (setq frame-title-format
       '((:eval (if (buffer-file-name)
                    (abbreviate-file-name (buffer-file-name))
                  "%b"))
         " - " invocation-name))
 
-;; Unique buffer names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
+;; Unique buffer names.
+(use-package uniquify
+  :defer t
+  :config
+  (progn
+    (require 'uniquify)
+    (setq uniquify-buffer-name-style 'forward)))
 
-;; Smart mode line
-(sml/setup)
+;; Smart mode line.
+(use-package smart-mode-line
+  :ensure t
+  :defer t
+  :init
+  (sml/setup))
 
 ;; fill-column-indicator
-;; Enable only in text- and prog-modes
-(add-hook 'prog-mode-hook 'fci-mode)
-(add-hook 'text-mode-hook 'fci-mode)
+;; Enable only in text- and prog-modes.
+(use-package fill-column-indicator
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (add-hook 'prog-mode-hook 'fci-mode)
+    (add-hook 'text-mode-hook 'fci-mode)
 
-;; Workaround for fci and AC's popup
-(defadvice popup-create (before suppress-fci-mode activate compile)
-  "Suspend fci-mode while popups are visible"
-  (when fci-mode
-    (turn-off-fci-mode)))
+    ;; Workaround for popup library.
+    (defadvice popup-create (before suppress-fci-mode activate compile)
+      "Suspend fci-mode while popups are visible"
+      (when fci-mode
+        (turn-off-fci-mode)))
 
-(defadvice popup-delete (after restore-fci-mode activate compile)
-  "Restore fci-mode when all popups have closed"
-  (unless fci-mode
-    (turn-on-fci-mode)))
+    (defadvice popup-delete (after restore-fci-mode activate compile)
+      "Restore fci-mode when all popups have closed"
+      (unless fci-mode
+        (turn-on-fci-mode)))))
 
 (provide 'appearance)

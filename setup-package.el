@@ -21,15 +21,12 @@
     browse-kill-ring
     buffer-move
     change-inner
-    color-theme-sanityinc-solarized
-    color-theme-sanityinc-tomorrow
     diminish
     discover-my-major
     elisp-slime-nav
     evil-numbers
     expand-region
     fancy-narrow
-    fill-column-indicator
     gist                                ; depends on gh, logito, pcache
     git-messenger
     git-timemachine
@@ -47,14 +44,11 @@
     rainbow-mode
     refheap
     scala-mode2
-    smart-mode-line
-    solarized-theme
     undo-tree
     use-package
     visual-regexp
     wgrep
     yaml-mode
-    zenburn-theme
     )
   "List of packages to be installed via package.el.")
 
