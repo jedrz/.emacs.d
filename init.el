@@ -68,6 +68,3 @@
 (require 'setup-company-mode)
 (require 'setup-smartparens)
 (require 'setup-flycheck)
-
-;; Setup key bindings.
-(require 'key-bindings)

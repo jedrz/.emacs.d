@@ -58,10 +58,14 @@ See `ido-ubiquitous-disable-compatibility' documentation for explanation."
               (bind-key "C-n" #'ido-next-match ido-completion-map)
               (bind-key "C-p" #'ido-prev-match ido-completion-map))))
 
-;; Smart M-x
+;; Smart M-x.
 (use-package smex
   :ensure t
-  :defer t
+  :bind
+  (("M-x" . smex)
+   ("M-X" . smex-major-mode-commands)
+   ;; M-x without Meta.
+   ("C-x C-m" . smex))
   :config
   (setq smex-save-file (concat user-emacs-directory "smex-items")))
 

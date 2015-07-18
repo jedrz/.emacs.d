@@ -127,6 +127,9 @@
   (setq flyspell-use-meta-tab nil))
 
 (use-package hippie-exp
+  :bind
+  (("M-/" . hippie-expand)
+   ("C-M-/" . hippie-expand-lines))
   :config
   ;; Custom hippie-expand expansion functions.
   (setq hippie-expand-try-functions-list '(try-expand-dabbrev
@@ -145,6 +148,10 @@
 (setq-default abbrev-mode t)
 (setq save-abbrevs 'silently)
 
+(use-package ibuffer
+  :bind
+  ([remap list-buffers] . ibuffer))
+
 (use-package calendar
   :config
   ;; Start week at Monday.
@@ -158,16 +165,27 @@
 
 (use-package browse-kill-ring
   :ensure t
-  :defer t)
+  :bind
+  ("C-x C-y" . browse-kill-ring))
 
 ;; Undo/redo window configuration with C-c <left>/<right>.
 (use-package winner
   :config
   (winner-mode 1))
 
+;; Use shift + arrow keys to switch between buffers.
+(use-package windmove
+  :config
+  (windmove-default-keybindings))
+
+;; Buffers moving.
 (use-package buffer-move
   :ensure t
-  :defer t)
+  :bind
+  (("<C-S-up>" . buf-move-up)
+   ("<C-S-down>" . buf-move-down)
+   ("<C-S-left>" . buf-move-left)
+   ("<C-S-right>" . buf-move-right)))
 
 (defadvice kill-line (after kill-line-cleanup-whitespace activate compile)
   "Cleanup white space after `kill-line' up to non white space character."
@@ -193,9 +211,11 @@
   :config
   (global-anzu-mode 1))
 
+;; Visual query replace.
 (use-package visual-regexp
   :ensure t
-  :defer t)
+  :bind
+  ("C-M-%" . vr/query-replace))
 
 ;; Text mode
 (add-hook 'text-mode-hook #'auto-fill-mode)
@@ -229,7 +249,7 @@
         recentf-max-saved-items 1000
         recentf-max-menu-items 15
         recentf-exclude '("ido\\.last" "\\.mc-lists\\.el" "/elpa/" "\\.git/")
-        recentf-auto-cleanup 'never))
+        recentf-auto-cleanup 3600))
 
 ;; Save locations of files.
 (use-package saveplace
@@ -279,11 +299,16 @@
       ;; invisible here anyway.
       (assq-delete-all 'which-func-mode mode-line-misc-info))
 
-;; Custom characters for ace-jump-mode.
 (use-package ace-jump-mode
   :ensure t
-  :defer t
+  :bind
+  (;; Quickly go to word with ace-jump-mode.
+   ("C-c C-SPC" . ace-jump-mode)
+   ;; To char, use C-u C-c C-SPC.
+   ;; To line (there is still M-g g bound to goto-line).
+   ("M-g M-g" . ace-jump-line-mode))
   :config
+  ;; Custom characters for ace-jump-mode.
   (setq ace-jump-mode-move-keys
         (nconc (loop for c from ?a to ?z collect c)
                (loop for c from ?A to ?Z collect c)
@@ -300,39 +325,220 @@
   :config
   (setq fancy-narrow-lighter nil))
 
+(use-package misc
+  :bind
+  (("M-z" . zap-up-to-char)
+   ("M-Z" . zap-to-char)))
+
+;; Move line or region.
 (use-package move-text
   :ensure t
-  :defer t)
+  :bind
+  ("M-S-<down>" . move-text-down)
+  ("M-S-<up>" . move-text-up))
 
 (use-package multiple-cursors
   :ensure t
-  :defer t
+  :bind
+  (;; From active region to multiple cursors.
+   ("C-S-c C-S-c" . mc/edit-lines)
+   ("C-S-c C-e" . mc/edit-ends-of-lines)
+   ("C-S-c C-a" . mc/edit-beginnings-of-lines)
+   ;; Often used.
+   ("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/mark-previous-like-this)
+   ("C-S-c C->" . mc/mark-all-like-this-dwim)
+   ;; Mark one occurrence.
+   ("C-S-c w" . mc/mark-next-word-like-this)
+   ("C-S-c W" . mc/mark-previous-word-like-this)
+   ("C-S-c s" . mc/mark-next-symbol-like-this)
+   ("C-S-c S" . mc/mark-previous-symbol-like-this)
+   ("C-S-c e" . mc/mark-more-like-this-extended)
+   ;; Mark many occurrences.
+   ("C-S-c a a" . mc/mark-all-like-this)
+   ("C-S-c a A" . mc/mark-all-like-this-in-defun)
+   ("C-S-c a w" . mc/mark-all-words-like-this)
+   ("C-S-c a W" . mc/mark-all-words-like-this-in-defun)
+   ("C-S-c a s" . mc/mark-all-symbols-like-this)
+   ("C-S-c a S" . mc/mark-all-symbols-like-this-in-defun)
+   ("C-S-c a r" . mc/mark-all-in-region)
+   ;; Rectangular region mode.
+   ("C-S-SPC" . set-rectangular-region-anchor)
+   ;; Add a cursor on click.
+   ("C-S-<mouse-1>" . mc/add-cursor-on-click)
+   ;; Add cursors for matches.
+   ("C-S-c m" . vr/mc-mark)
+   ;; Special.
+   ("C-S-c n" . mc/insert-numbers)
+   ("C-S-c s" . mc/sort-regions)
+   ("C-S-c r" . mc/reverse-regions))
   :config
   (add-to-list 'mc/unsupported-minor-modes 'flyspell-mode))
 
 (use-package expand-region
   :ensure t
-  :defer t)
+  :bind
+  ("C-=" . er/expand-region))
 
+;; vim's f and b commands.
 (use-package jump-char
   :ensure t
-  :defer t)
+  :bind
+  (("M-m" . jump-char-forward)
+   ("M-M" . jump-char-backward)))
 
 (use-package evil-numbers
   :ensure t
-  :defer t)
+  :bind
+  ;; Increase number at point.
+  ("C-+" . evil-numbers/inc-at-pt))
 
+;; Display major mode key bindings in popup menu.
 (use-package discover-my-major
   :ensure t
-  :defer t)
+  :bind
+  ("C-h C-m" . discover-my-major))
 
 (use-package google-this
   :ensure t
-  :defer t)
+  :defer t
+  :init
+  (bind-key "g" #'google-this-mode-submap ctl-x-map))
 
 ;; Paste buffers to refheap from emacs.
 (use-package refheap
   :ensure t
   :defer t)
+
+;;; Core key bindings.
+
+;; Kill also emacs daemon if started.
+(bind-key "C-x r q" #'save-buffers-kill-emacs)
+;; Usual C-x C-c close frame only.
+(bind-key "C-x C-c" #'delete-frame)
+
+;; Repeat last command.
+(bind-key "C-z" #'repeat)             ; which used to be suspend-frame
+
+;; C-x 4 with C-4.
+(bind-key "C-4" #'ctl-x-4-prefix)
+
+;; Paragraph movement.
+(bind-key "M-n" #'forward-paragraph)
+(bind-key "M-p" #'backward-paragraph)
+
+;; Rebind C-a to work as M-m then second hit as usual C-a.
+(bind-key "C-a" #'back-to-indentation-or-beginning)
+
+;; Go to line with linum mode enabled.
+(bind-key "M-g M-g" #'goto-line-with-feedback)
+
+;; Like isearch but uses active region as search string.
+(bind-key "C-S-s" #'isearch-forward-use-region)
+(bind-key "C-S-r" #'isearch-backward-use-region)
+
+;; Activate occur inside isearch with C-o.
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
+;; Jump to a definition in the current file.
+(bind-key "C-x C-i" #'ido-imenu)
+
+;; Clever new lines.
+(bind-key "<C-return>" #'new-line-below)
+(bind-key "<C-S-return>" #'new-line-above)
+(bind-key "<M-return>" #'new-line-in-between)
+
+;; Join line.
+(bind-key "C-x j" #'join-line)
+(bind-key "C-x J" (lambda (arg)
+                    (interactive "p")
+                    (join-line (- arg))))
+
+;; Insert empty line below/above point.
+(bind-key "C-o" #'empty-line-below)
+(bind-key "C-S-o" #'empty-line-above)
+
+;; M-S-SPC for deleting all spaces around point.
+(bind-key "M-S-SPC" #'delete-horizontal-space)
+
+;; Use M-w for copy to end of line if no active region.
+(bind-key "M-w" #'save-region-or-current-line)
+;; M-W to copy entire line.
+(bind-key "M-W" (lambda () (interactive) (save-region-or-current-line 1)))
+
+;; Yank and indent.
+(bind-key "C-S-y" #'yank-and-indent)
+(bind-key "M-Y" #'yank-pop-and-indent)
+
+;; Duplicate region or current line
+(bind-key "C-c d" #'duplicate-current-line-or-region)
+
+;; Comment or uncomment region or current line
+(bind-key "C-c c" #'comment-or-uncomment-current-line-or-region)
+
+;; Indent region with a number of columns
+(bind-key "C-x I" #'indent-rigidly)
+
+;; Fill/unfill text
+(bind-key "M-q" #'fill-paragraph-or-indent)
+(bind-key "M-Q" #'unfill-paragraph)
+
+;; Transpose stuff with M-t
+(global-unset-key (kbd "M-t"))      ; which used to be transpose-words
+(bind-key "M-t l" #'transpose-lines)
+(bind-key "M-t w" #'transpose-words)
+(bind-key "M-t s" #'transpose-sexps)
+(bind-key "M-t p" #'transpose-params)
+
+;; Why there is no command to copy rectangle?
+(bind-key "C-x r C" #'copy-rectangle)
+
+;;; File finding.
+;; Find recent files with ido.
+(bind-key "C-x f" #'recentf-ido-find-file)
+;; Recent in other window.
+;; Overwrites find-file-other-window (also bound to C-x 4 C-f).
+(bind-key "C-x 4 f" (lambda () (interactive) (recentf-ido-find-file 1)))
+;; Edit file with sudo.
+(bind-key "C-x C-#" #'sudo-edit)
+
+;; Buffer file functions.
+(bind-key "C-x C-r" #'rename-current-buffer-file) ; was find-file-read-only
+(bind-key "C-x C-S-k" #'delete-current-buffer-file)
+
+;; Create a new scratch buffer.
+(bind-key "C-x S" #'create-scratch-buffer)
+
+;; Eval and replace anywhere.
+(bind-key "C-x E" #'eval-and-replace)
+
+;; A complementary binding to the apropos-command (C-h a).
+(bind-key "C-h A" #'apropos)
+
+;; Ispell word and save correction.
+(bind-key "M-$" #'ispell-word-then-abbrev) ; was ispell-word
+
+;; Launcher map.
+;; http://endlessparentheses.com/launcher-keymap-for-standalone-features.html
+(define-prefix-command 'launcher-map)
+(define-key ctl-x-map "l" 'launcher-map)
+(define-key launcher-map "l" 'lgrep)
+(define-key launcher-map "r" 'rgrep)
+(define-key launcher-map "o" 'occur)
+(define-key launcher-map "m" 'multi-occur)
+(define-key launcher-map "p" 'paradox-list-packages)
+(define-key launcher-map "w" 'webjump)
+
+;; Toggle map.
+;; http://endlessparentheses.com/the-toggle-map-and-wizardry.html
+(define-prefix-command 'toggle-map)
+(define-key ctl-x-map "t" 'toggle-map)
+(define-key toggle-map "f" 'auto-fill-mode)
+(define-key toggle-map "m" 'menu-bar-mode)
+(define-key toggle-map "t" 'my-themes-cycle)
+
+(bind-key "C-$" #'run-terminal-with-current-dir)
+
+(bind-key "<f6>" #'exttextcat-guess-language-buffer)
 
 (provide 'general-settings)

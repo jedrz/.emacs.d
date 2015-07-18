@@ -45,7 +45,10 @@ Do not ask for permission."
       (bind-key [remap end-of-buffer] #'dired-goto-bottom) wdired-mode-map)))
 
 (use-package dired-x
-  :defer t
+  ;; Jump from file to current directory.
+  :bind
+  (("C-x C-j" . dired-jump)
+   ("C-x 4 C-j" . dired-jump-other-window))
   :init
   (add-hook 'dired-mode-hook #'dired-omit-mode)
   :config
@@ -63,7 +66,6 @@ Do not ask for permission."
   :defer t
   :init
   ;; Highlight changed files under vc.
-  ;; TODO: Move to better file.
   (add-hook 'dired-mode-hook #'diff-hl-dired-mode))
 
 (use-package dired-imenu
