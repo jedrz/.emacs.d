@@ -28,7 +28,8 @@
 (--each my-lisp-mode-hooks
   (add-hook it 'my-lisp-mode-setup))
 
-(use-package elisp-mode
+;; Emacs lisp mode setup.
+(use-package lisp-mode
   :defer t
   :config
   (progn
