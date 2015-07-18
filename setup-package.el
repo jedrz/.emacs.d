@@ -21,7 +21,6 @@
     change-inner
     diminish
     discover-my-major
-    elisp-slime-nav
     evil-numbers
     expand-region
     gist                                ; depends on gh, logito, pcache
@@ -31,7 +30,6 @@
     highlight-indentation
     highlight-symbol
     jump-char
-    latex-extra
     move-text
     paradox
     rainbow-mode

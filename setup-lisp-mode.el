@@ -30,6 +30,7 @@
 
 ;; Emacs lisp mode setup.
 (use-package lisp-mode
+  :ensure elisp-slime-nav
   :defer t
   :config
   (progn
