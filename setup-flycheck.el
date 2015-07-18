@@ -18,10 +18,10 @@
     (defun flycheck-diplay-error-messages-one-line (errors)
       (-when-let (messages (-keep #'flycheck-error-message errors))
         (when (flycheck-may-use-echo-area-p)
-          (message (string-join " | " messages))
+          (message (string-join messages " | "))
           (with-current-buffer (get-buffer-create flycheck-error-message-buffer)
             (erase-buffer)
-            (insert (string-join "\n\n" messages))))))
+            (insert (string-join messages "\n\n"))))))
 
     (setq flycheck-display-errors-function
           'flycheck-diplay-error-messages-one-line)
