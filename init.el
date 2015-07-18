@@ -54,7 +54,7 @@
 (require 'setup-org-mode)
 (require 'setup-lisp-mode)
 (require 'setup-clojure-mode)
-(after 'cc-mode (require 'setup-cc-mode))
+(require 'setup-cc-mode)
 (require 'setup-python-mode)
 (require 'setup-sgml-mode)
 (require 'setup-css-mode)

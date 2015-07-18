@@ -45,7 +45,6 @@
     highlight-symbol
     ido-vertical-mode
     ido-ubiquitous
-    irony
     jump-char
     latex-extra
     markdown-mode
