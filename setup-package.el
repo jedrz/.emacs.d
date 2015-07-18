@@ -49,7 +49,6 @@
     scala-mode2
     smart-mode-line
     solarized-theme
-    swiper
     undo-tree
     use-package
     visual-regexp
