@@ -18,14 +18,11 @@
   '(
     ace-jump-mode
     anzu
-    auctex
-    auctex-latexmk
     browse-kill-ring
     buffer-move
     change-inner
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
-    company-auctex
     company-irony
     company-tern
     diminish
