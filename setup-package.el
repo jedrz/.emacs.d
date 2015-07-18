@@ -30,16 +30,12 @@
     expand-region
     fancy-narrow
     fill-column-indicator
-    flx
-    flx-ido
     gist                                ; depends on gh, logito, pcache
     git-messenger
     git-timemachine
     google-this
     highlight-indentation
     highlight-symbol
-    ido-vertical-mode
-    ido-ubiquitous
     jump-char
     latex-extra
     markdown-mode
@@ -52,7 +48,6 @@
     refheap
     scala-mode2
     smart-mode-line
-    smex
     solarized-theme
     swiper
     undo-tree
