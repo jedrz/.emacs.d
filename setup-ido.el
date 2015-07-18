@@ -30,7 +30,8 @@ See `ido-ubiquitous-disable-compatibility' documentation for explanation."
            (let (ido-ubiquitous-enable-compatibility)
              ad-do-it))))
 
-    (ido-ubiquitous-disable-compatibility webjump 'webjump)))
+    (with-eval-after-load 'webjump
+      (ido-ubiquitous-disable-compatibility webjump 'webjump))))
 
 ;; Better flex matching.
 (use-package flx-ido
