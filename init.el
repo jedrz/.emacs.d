@@ -41,11 +41,7 @@
 ;; Shrink minor mode names.
 (require 'setup-diminish)
 
-;; My sane defaults for emacs.
-(require 'sane-defaults)
-
-;; My misc.
-(require 'my-misc)
+(require 'general-settings)
 
 ;; Load settings for some major modes.
 (require 'setup-prog-mode)
