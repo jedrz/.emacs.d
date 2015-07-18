@@ -64,7 +64,6 @@
     smex
     solarized-theme
     swiper
-    tagedit
     undo-tree
     use-package
     visual-regexp
@@ -72,7 +71,6 @@
     yaml-mode
     yasnippet
     zenburn-theme
-    zencoding-mode
     )
   "List of packages to be installed via package.el.")
 

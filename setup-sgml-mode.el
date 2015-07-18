@@ -1,21 +1,29 @@
-;;; Basic configuration for sgml-mode and modes derived from it
+(use-package sgml-mode
+  :defer t
+  :config
+  ;; Rename matching tags
+  (with-eval-after-load 'multiple-cursors
+    (bind-key "C-c C-r" #'mc/mark-sgml-tag-pair) sgml-mode-map))
 
-;; Rename matching tags
-(define-key sgml-mode-map (kbd "C-c C-r") 'mc/mark-sgml-tag-pair)
+(use-package tagedit
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'sgml-mode-hook #'tagedit-mode)
+  :config
+  (progn
+    (tagedit-add-paredit-like-keybindings)
+    (tagedit-add-experimental-features)))
 
-;; Tagedit
-(tagedit-add-paredit-like-keybindings)
-(tagedit-add-experimental-features)
-
-;; FIXME: move zencoding configuration to a separate file?
-(after 'zencoding-mode
-  (define-key zencoding-mode-keymap (kbd "C-j") nil)
-  (define-key zencoding-mode-keymap (kbd "C-<return>") nil)
-  (define-key zencoding-mode-keymap (kbd "C-c C-z") 'zencoding-expand-line))
-
-(add-hook 'sgml-mode-hook
-          (lambda ()
-            (zencoding-mode 1)
-            (tagedit-mode 1)))
+(use-package zencoding-mode
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'sgml-mode-hook #'zencoding-mode)
+  :config
+  (progn
+    (bind-key "C-j" nil zencoding-mode-keymap)
+    (bind-key "C-<return>" nil zencoding-mode-keymap)
+    (bind-key "C-c C-z" #'zencoding-expand-line) zencoding-mode-keymap))
 
 (provide 'setup-sgml-mode)

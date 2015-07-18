@@ -56,7 +56,7 @@
 (require 'setup-clojure-mode)
 (after 'cc-mode (require 'setup-cc-mode))
 (require 'setup-python-mode)
-(after 'sgml-mode (require 'setup-sgml-mode))
+(require 'setup-sgml-mode)
 (require 'setup-css-mode)
 (require 'setup-js2-mode)
 (require 'setup-ruby-mode)
