@@ -23,8 +23,6 @@
     change-inner
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
-    company-irony
-    company-tern
     diminish
     discover-my-major
     elisp-slime-nav

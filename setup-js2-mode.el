@@ -24,8 +24,13 @@
     (add-hook 'js2-mode-hook 'tern-mode))
   :config
   (progn
-    (setq tern-command (list (concat user-emacs-directory "vendor/tern/bin/tern")))
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-tern))))
+    (setq tern-command (list (concat user-emacs-directory "vendor/tern/bin/tern")))))
+
+(use-package company-tern
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-tern)))
 
 (provide 'setup-js2-mode)

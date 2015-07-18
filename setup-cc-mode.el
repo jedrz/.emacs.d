@@ -31,11 +31,16 @@
   :init
   (progn
     (add-hook 'c++-mode-hook #'irony-mode)
-    (add-hook 'c-mode-hook #'irony-mode))
+    (add-hook 'c-mode-hook #'irony-mode)))
+
+(use-package company-irony
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'irony
+    (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands))
   :config
-  (progn
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'company-irony))
-    (add-hook 'irony-mode-hook #'company-irony-setup-begin-commands)))
+  (with-eval-after-load 'company
+    (add-to-list 'company-backends 'company-irony)))
 
 (provide 'setup-cc-mode)
