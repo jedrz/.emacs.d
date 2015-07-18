@@ -1,5 +1,6 @@
 (use-package octave
   :defer t
+  :mode ("\\.m$" . octave-mode)
   :init
   (add-hook 'octave-mode-hook
             (lambda ()

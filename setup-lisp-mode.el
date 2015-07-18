@@ -69,7 +69,7 @@ to \"modname-foo\" in elisp."
 
 (use-package slime
   :ensure t
-  :defer t
+  :mode ("\\.cl$" . lisp-mode)
   :init
   (progn
     (setq inferior-lisp-program "sbcl")

@@ -1,6 +1,6 @@
 (use-package js2-mode
   :ensure t
-  :defer t
+  :mode ("\\.js$" "\\.json$")
   :config
   (progn
     (setq-default js2-basic-offset 2)

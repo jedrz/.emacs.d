@@ -1,5 +1,5 @@
 (use-package cc-mode
-  :defer t
+  :mode ("\\.h$" . c++-mode)
   :config
   (progn
     (setq-default c-default-style '((java-mode . "java")

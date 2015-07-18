@@ -47,13 +47,10 @@
 ;; My misc
 (require 'my-misc)
 
-;; Associate major modes with some files
-(require 'mode-mappings)
-
 ;; Load settings for some major modes
 (require 'setup-prog-mode)
 (require 'setup-org-mode)
-;; Need to load clojure first, because some clojure hooks are add in
+;; Need to load clojure first, because some clojure hooks are added in
 ;; setup-lisp-mode file.
 (require 'setup-clojure-mode)
 (require 'setup-lisp-mode)
@@ -69,6 +66,7 @@
 (require 'setup-prolog-mode)
 (require 'setup-ess-mode)
 (require 'setup-rust-mode)
+(require 'setup-major-modes)
 
 ;; Setup extensions
 (require 'setup-ido)

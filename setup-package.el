@@ -32,17 +32,14 @@
     highlight-symbol
     jump-char
     latex-extra
-    markdown-mode
     move-text
     paradox
-    pkgbuild-mode
     rainbow-mode
     refheap
     scala-mode2
     use-package
     visual-regexp
     wgrep
-    yaml-mode
     )
   "List of packages to be installed via package.el.")
 
