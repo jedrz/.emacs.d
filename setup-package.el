@@ -16,7 +16,6 @@
 
 (defvar my-packages
   '(
-    ace-jump-mode
     browse-kill-ring
     buffer-move
     change-inner
@@ -25,7 +24,6 @@
     elisp-slime-nav
     evil-numbers
     expand-region
-    fancy-narrow
     gist                                ; depends on gh, logito, pcache
     git-messenger
     git-timemachine
@@ -36,10 +34,8 @@
     latex-extra
     markdown-mode
     move-text
-    multiple-cursors
     paradox
     pkgbuild-mode
-    projectile
     rainbow-mode
     refheap
     scala-mode2

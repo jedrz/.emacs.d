@@ -29,6 +29,7 @@
 
 (require 'bind-key)
 (require 'diminish)
+(require 'dash)
 
 ;; Separate custom file
 (setq custom-file (concat user-emacs-directory "custom.el"))
