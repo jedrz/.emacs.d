@@ -17,53 +17,72 @@
                                (- (length hook-name) (length "-hook"))))))
         my-lisp-mode-hooks))
 
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t)
+
 (defun my-lisp-mode-setup ()
   (turn-on-eldoc-mode)
   (rainbow-delimiters-mode 1))
 
-(defun my-elisp-mode-setup ()
-  ;; Go to definition with M-. and back again with M-,
-  (elisp-slime-nav-mode 1)
-  ;; Complete symbol considering without namespace
-  (make-local-variable 'hippie-expand-try-functions-list)
-  (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol-without-namespace t))
-
-;; https://github.com/purcell/emacs.d/blob/master/lisp/init-lisp.el
-(defun try-complete-lisp-symbol-without-namespace (old)
-  "Hippie expand \"try\" function which expands \"-foo\" to \"modname-foo\" in elisp."
-  (unless old
-    (he-init-string (he-lisp-symbol-beg) (point))
-    (when (string-prefix-p "-" he-search-string)
-      (let ((mod-name (emacs-lisp-module-name)))
-        (when mod-name
-          (setq he-expand-list (list (concat mod-name he-search-string)))))))
-  (when he-expand-list
-    (he-substitute-string (car he-expand-list))
-    (setq he-expand-list nil)
-    t))
-
-(defun emacs-lisp-module-name ()
-  "Search the buffer for `provide' declaration."
-  (save-excursion
-    (goto-char (point-min))
-    (when (search-forward-regexp "^(provide '" nil t)
-      (symbol-name (symbol-at-point)))))
-
 (--each my-lisp-mode-hooks
   (add-hook it 'my-lisp-mode-setup))
 
-(--each my-elisp-mode-hooks
-  (add-hook it 'my-elisp-mode-setup))
+(use-package elisp-mode
+  :defer t
+  :config
+  (progn
+    (defun my-elisp-mode-setup ()
+      ;; Go to definition with M-. and back again with M-,
+      (elisp-slime-nav-mode 1)
+      ;; Complete symbol considering without namespace.
+      (make-local-variable 'hippie-expand-try-functions-list)
+      (add-to-list 'hippie-expand-try-functions-list
+                   'try-complete-lisp-symbol-without-namespace t))
 
-;; Slime
-(setq inferior-lisp-program "sbcl")
-(setq slime-contribs '(slime-fancy slime-repl slime-company))
-(after 'slime
-  (require 'slime-company)
-  (setq slime-auto-start 'always))
+    ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-lisp.el
+    (defun try-complete-lisp-symbol-without-namespace (old)
+      "Hippie expand \"try\" function which expands \"-foo\"
+to \"modname-foo\" in elisp."
+      (unless old
+        (he-init-string (he-lisp-symbol-beg) (point))
+        (when (string-prefix-p "-" he-search-string)
+          (let ((mod-name (emacs-lisp-module-name)))
+            (when mod-name
+              (setq he-expand-list (list (concat mod-name
+                                                 he-search-string)))))))
+      (when he-expand-list
+        (he-substitute-string (car he-expand-list))
+        (setq he-expand-list nil)
+        t))
 
-(after 'smartparens
-  ;; paredit's wrap-round
+    (defun emacs-lisp-module-name ()
+      "Search the buffer for `provide' declaration."
+      (save-excursion
+        (goto-char (point-min))
+        (when (search-forward-regexp "^(provide '" nil t)
+          (symbol-name (symbol-at-point)))))
+
+    (--each my-elisp-mode-hooks
+      (add-hook it 'my-elisp-mode-setup))))
+
+(use-package slime
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (setq inferior-lisp-program "sbcl")
+    (setq slime-contribs '(slime-fancy slime-repl slime-company)))
+  :config
+  (progn
+    (use-package slime-company
+      :ensure t)
+    (require 'slime-company)
+
+    (setq slime-auto-start 'always)))
+
+(with-eval-after-load 'smartparens
+  ;; paredit's wrap-round.
   (sp-local-pair my-lisp-modes "(" nil :wrap "M-("
                  :post-handlers '(:add my-restore-paren-location))
 
@@ -90,7 +109,7 @@
         (save-excursion
           (newline-and-indent)))))
 
-  ;; Enable strict mode in lisp modes
+  ;; Enable strict mode in lisp modes.
   (--each my-lisp-mode-hooks
     (add-hook it 'smartparens-strict-mode)))
 

@@ -52,8 +52,10 @@
 ;; Load settings for some major modes
 (require 'setup-prog-mode)
 (require 'setup-org-mode)
-(require 'setup-lisp-mode)
+;; Need to load clojure first, because some clojure hooks are add in
+;; setup-lisp-mode file.
 (require 'setup-clojure-mode)
+(require 'setup-lisp-mode)
 (require 'setup-cc-mode)
 (require 'setup-python-mode)
 (require 'setup-sgml-mode)

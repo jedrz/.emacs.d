@@ -48,12 +48,9 @@
     paradox
     pkgbuild-mode
     projectile
-    rainbow-delimiters
     rainbow-mode
     refheap
     scala-mode2
-    slime
-    slime-company
     smart-mode-line
     smex
     solarized-theme
