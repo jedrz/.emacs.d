@@ -65,7 +65,6 @@
     visual-regexp
     wgrep
     yaml-mode
-    yasnippet
     zenburn-theme
     )
   "List of packages to be installed via package.el.")
