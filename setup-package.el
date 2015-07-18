@@ -46,8 +46,6 @@
     ido-vertical-mode
     ido-ubiquitous
     irony
-    js2-mode
-    js2-refactor
     jump-char
     latex-extra
     markdown-mode
@@ -67,7 +65,6 @@
     solarized-theme
     swiper
     tagedit
-    tern
     undo-tree
     use-package
     visual-regexp

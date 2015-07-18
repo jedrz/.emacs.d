@@ -58,7 +58,7 @@
 (require 'setup-python-mode)
 (after 'sgml-mode (require 'setup-sgml-mode))
 (require 'setup-css-mode)
-(after 'js2-mode (require 'setup-js2-mode))
+(require 'setup-js2-mode)
 (require 'setup-ruby-mode)
 (require 'setup-latex-mode)
 (require 'setup-asm-mode)
