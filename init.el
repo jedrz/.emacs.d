@@ -67,7 +67,7 @@
 ;; Setup extensions.
 (require 'setup-ido)
 (require 'setup-dired)
-(require 'setup-magit)
+(require 'setup-git)
 (require 'setup-yasnippet)
 (require 'setup-company-mode)
 (require 'setup-smartparens)

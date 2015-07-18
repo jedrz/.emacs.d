@@ -23,8 +23,6 @@
     discover-my-major
     evil-numbers
     expand-region
-    gist                                ; depends on gh, logito, pcache
-    git-messenger
     git-timemachine
     google-this
     highlight-indentation

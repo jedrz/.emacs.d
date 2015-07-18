@@ -2,8 +2,7 @@
   :ensure t
   :defer t
   :bind
-  ;; Magit status
-  (("C-x m" . magit-status)) ; which used to be compose-mail
+  ("C-x m" . magit-status)             ; Which used to be compose-mail.
   :config
   (progn
     ;; Start credential-cache--daemon to remember passwords
@@ -47,4 +46,12 @@
 
     (bind-key "W" #'magit-toggle-whitespace magit-status-mode-map)))
 
-(provide 'setup-magit)
+(use-package git-messenger
+  :ensure t
+  :defer t)
+
+(use-package git-timemachine
+  :ensure t
+  :defer t)
+
+(provide 'setup-git)
