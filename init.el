@@ -23,10 +23,6 @@
 ;; Configure package.el and install missing packages.
 (require 'setup-package)
 
-;; TODO: Wrap with eval-when-compile later.
-(setq use-package-verbose t)
-(require 'use-package)
-
 (require 'bind-key)
 (require 'diminish)
 (require 'dash)

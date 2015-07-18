@@ -157,10 +157,6 @@
 ;; Expand region
 (global-set-key (kbd "C-=") 'er/expand-region)
 
-;; Change inner/outer
-(global-set-key (kbd "M-i") 'change-inner) ; which used to be tab-to-tab-stop
-(global-set-key (kbd "M-o") 'change-outer) ; which used to be facemenu-set-bold
-
 ;;; File finding
 ;; Find recent files with ido
 (global-set-key (kbd "C-x f") 'recentf-ido-find-file)

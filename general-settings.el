@@ -156,10 +156,18 @@
   :config
   (global-undo-tree-mode 1))
 
+(use-package browse-kill-ring
+  :ensure t
+  :defer t)
+
 ;; Undo/redo window configuration with C-c <left>/<right>.
 (use-package winner
   :config
   (winner-mode 1))
+
+(use-package buffer-move
+  :ensure t
+  :defer t)
 
 (defadvice kill-line (after kill-line-cleanup-whitespace activate compile)
   "Cleanup white space after `kill-line' up to non white space character."
@@ -184,6 +192,10 @@
   :ensure t
   :config
   (global-anzu-mode 1))
+
+(use-package visual-regexp
+  :ensure t
+  :defer t)
 
 ;; Text mode
 (add-hook 'text-mode-hook #'auto-fill-mode)
@@ -232,6 +244,21 @@
   (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
         bookmark-save-flag 1))
 
+(use-package webjump
+  :config
+  (setq webjump-sites (append
+                       '(("bab.la" .
+                          [simple-query
+                           "bab.la"
+                           "bab.la/slownik/angielski-polski/"
+                           ""])
+                         ("Urban Dictionary" .
+                          [simple-query
+                           "urbandictionary.com"
+                           "urbandictionary.com/define.php?term="
+                           ""]))
+                       webjump-sample-sites)))
+
 ;; Save current session before killing emacs.
 (add-hook 'kill-emacs-hook #'my-desktop-kill-emacs-hook)
 
@@ -265,27 +292,6 @@
                      '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
                      collect c))))
 
-(use-package webjump
-  :config
-  (setq webjump-sites (append
-                       '(("bab.la" .
-                          [simple-query
-                           "bab.la"
-                           "bab.la/slownik/angielski-polski/"
-                           ""])
-                         ("Urban Dictionary" .
-                          [simple-query
-                           "urbandictionary.com"
-                           "urbandictionary.com/define.php?term="
-                           ""]))
-                       webjump-sample-sites)))
-
-(use-package multiple-cursors
-  :ensure t
-  :defer t
-  :config
-  (add-to-list 'mc/unsupported-minor-modes 'flyspell-mode))
-
 (use-package fancy-narrow
   :ensure t
   :defer 10
@@ -293,5 +299,40 @@
   (fancy-narrow-mode 1)
   :config
   (setq fancy-narrow-lighter nil))
+
+(use-package move-text
+  :ensure t
+  :defer t)
+
+(use-package multiple-cursors
+  :ensure t
+  :defer t
+  :config
+  (add-to-list 'mc/unsupported-minor-modes 'flyspell-mode))
+
+(use-package expand-region
+  :ensure t
+  :defer t)
+
+(use-package jump-char
+  :ensure t
+  :defer t)
+
+(use-package evil-numbers
+  :ensure t
+  :defer t)
+
+(use-package discover-my-major
+  :ensure t
+  :defer t)
+
+(use-package google-this
+  :ensure t
+  :defer t)
+
+;; Paste buffers to refheap from emacs.
+(use-package refheap
+  :ensure t
+  :defer t)
 
 (provide 'general-settings)
