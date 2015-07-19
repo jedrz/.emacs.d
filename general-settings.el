@@ -74,6 +74,7 @@
 ;; Set fill-column and comment-fill-column.
 (setq-default fill-column 79)
 (use-package newcomment
+  :defer t
   :config
   (setq comment-fill-column 70))
 
@@ -103,6 +104,7 @@
 
 ;; Set default dictionary for flyspell-mode.
 (use-package ispell
+  :defer t
   :config
   (setq ispell-dictionary "english"))
 
@@ -123,6 +125,7 @@
 
 ;; Don't use M-TAB to correct words in flyspell-mode.
 (use-package flyspell
+  :defer t
   :config
   (setq flyspell-use-meta-tab nil))
 
@@ -153,6 +156,7 @@
   ([remap list-buffers] . ibuffer))
 
 (use-package calendar
+  :defer t
   :config
   ;; Start week at Monday.
   (setq calendar-week-start-day 1))
@@ -195,6 +199,7 @@
 
 ;; http://endlessparentheses.com/exclude-directories-from-grep.html
 (use-package grep
+  :defer t
   :config
   (progn
     (add-to-list 'grep-find-ignored-directories "auto")
@@ -234,22 +239,22 @@
 
 ;; Savehist keeps track of some history.
 (use-package savehist
-  :init
-  (savehist-mode 1)
   :config
-  (setq savehist-additional-variables '(search ring regexp-search-ring)
-        savehist-file (concat user-emacs-directory "savehist")))
+  (progn
+    (setq savehist-additional-variables '(search ring regexp-search-ring)
+          savehist-file (concat user-emacs-directory "savehist"))
+    (savehist-mode 1)))
 
 ;; Save recent files.
 (use-package recentf
-  :init
-  (recentf-mode 1)
   :config
-  (setq recentf-save-file (concat user-emacs-directory "recentf")
-        recentf-max-saved-items 1000
-        recentf-max-menu-items 15
-        recentf-exclude '("ido\\.last" "\\.mc-lists\\.el" "/elpa/" "\\.git/")
-        recentf-auto-cleanup 3600))
+  (progn
+    (setq recentf-save-file (concat user-emacs-directory "recentf")
+          recentf-max-saved-items 1000
+          recentf-max-menu-items 15
+          recentf-exclude '("ido\\.last" "\\.mc-lists\\.el" "/elpa/" "\\.git/")
+          recentf-auto-cleanup 3600)
+    (recentf-mode 1)))
 
 ;; Save locations of files.
 (use-package saveplace
@@ -260,11 +265,13 @@
 
 ;; Bookmarks.
 (use-package bookmark
+  :defer t
   :config
   (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
         bookmark-save-flag 1))
 
 (use-package webjump
+  :defer t
   :config
   (setq webjump-sites (append
                        '(("bab.la" .

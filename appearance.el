@@ -79,12 +79,14 @@
 (use-package fill-column-indicator
   :ensure t
   :defer t
+  :init
+  (progn
+    (add-hook 'prog-mode-hook #'fci-mode)
+    (add-hook 'text-mode-hook #'fci-mode))
   :config
   (progn
-    (add-hook 'prog-mode-hook 'fci-mode)
-    (add-hook 'text-mode-hook 'fci-mode)
+    ;; Workarounds for popup library.
 
-    ;; Workaround for popup library.
     (defadvice popup-create (before suppress-fci-mode activate compile)
       "Suspend fci-mode while popups are visible"
       (when fci-mode
