@@ -11,7 +11,7 @@
 
 (defun prog-mode-defaults ()
   "Default coding hook."
-  (flyspell-prog-mode 1)
+  (flyspell-prog-mode)
   (local-comment-auto-fill)
   (add-watchwords)
   ;; Highlight changes made to files under vc.
