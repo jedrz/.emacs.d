@@ -13,22 +13,26 @@
   "Default coding hook."
   (flyspell-prog-mode)
   (local-comment-auto-fill)
-  (add-watchwords)
-  ;; Highlight changes made to files under vc.
-  (diff-hl-mode)
-  ;; Highlight symbol at point.
-  (highlight-symbol-mode 1)
-  (local-set-key (kbd "M-s n") 'highlight-symbol-next)
-  (local-set-key (kbd "M-s p") 'highlight-symbol-prev))
+  (add-watchwords))
 
 (add-hook 'prog-mode-hook #'prog-mode-defaults)
 
+;; Highlight changes made to files under vc.
 (use-package diff-hl
   :ensure t
-  :defer t)
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook #'diff-hl-mode))
 
+;; Highlight symbol at point.
 (use-package highlight-symbol
   :ensure t
-  :defer t)
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook #'highlight-symbol-mode)
+  :config
+  (progn
+    (bind-key "M-s n" #'highlight-symbol-next prog-mode-map)
+    (bind-key "M-s p" #'highlight-symbol-prev prog-mode-map)))
 
 (provide 'setup-prog-mode)
