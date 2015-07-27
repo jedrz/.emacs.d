@@ -1,5 +1,12 @@
+;; Configuration based on http://doc.norang.ca/org-mode.html.
+
 (use-package org
   :defer t
+  :bind
+  (("C-c a" . org-agenda)
+   ("C-c l" . org-store-link)
+   ("C-c b" . org-iswitchb)
+   ("C-c k" . org-capture))
   :config
   (progn
     ;; Add some new modules.
@@ -7,10 +14,30 @@
 
     ;; Set up paths.
     (setq org-directory "~/Dokumenty/org"
-          org-default-notes-file (concat org-directory "/todo.org")
-          ;; MobileOrg
+          ;; File for capturing new tasks.
+          org-default-notes-file (concat org-directory "/refile.org")
+          org-agenda-files (list (concat org-directory "/todo.org")
+                                 org-default-notes-file)
+          ;; MobileOrg.
           org-mobile-directory "~/Dropbox/MobileOrg"
           org-mobile-inbox-for-pull (concat org-directory "/from-mobile.org"))
+
+    (setq org-todo-keywords
+          '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+            (sequence "WAITING(w@)" "HOLD(h@)" "|" "CANCELLED(c)")))
+
+    (setq org-todo-keyword-faces
+          '(("NEXT" :foreground "blue" :weight bold)
+            ("WAITING" :foreground "orange" :weight bold)
+            ("HOLD" :foreground "magenta" :weight bold)
+            ("CANCELLED" :foreground "forest green" :weight bold)))
+
+    (setq org-capture-templates
+          (let ((refile-file (concat org-directory "/refile.org")))
+            `(("t" "todo" entry (file ,refile-file)
+               "* TODO %?")
+              ("n" "note" entry (file ,refile-file)
+               "* %?"))))
 
     ;; Use ido completion.
     (setq org-completion-use-ido t)
@@ -20,10 +47,6 @@
 
     ;; Highlight source code.
     (setq org-src-fontify-natively t)
-
-    ;; TODO keywords.
-    ;; (setq org-todo-keywords
-    ;;       '((sequence "TODO" "NEXT" "SOMEDAY" "|" "DONE" "DELEGATED")))
 
     ;; Add a timestamp when a certain TODO item was finished.
     (setq org-log-done 'time)
