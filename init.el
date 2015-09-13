@@ -1,5 +1,8 @@
 ;; Speed up Emacs?
-(setq gc-cons-threshold 20000000)
+(setq gc-cons-threshold 100000000)
+
+;; Speed up Emacs?
+(let ((file-name-handler-alist nil))
 
 ;; Don't load default library.
 (setq inhibit-default-init t)
@@ -68,3 +71,5 @@
 (require 'setup-company-mode)
 (require 'setup-smartparens)
 (require 'setup-flycheck)
+
+)
