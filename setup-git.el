@@ -5,7 +5,10 @@
   ("C-x m" . magit-status)             ; Which used to be compose-mail.
   :config
   (progn
-    ;; Start credential-cache--daemon to remember passwords
+    ;; Silence, magit.
+    (setq magit-push-always-verify nil)
+
+    ;; Start credential-cache--daemon to remember passwords.
 
     (add-hook 'magit-mode-hook #'magit-maybe-run-credential-cache-daemon)
 
@@ -16,7 +19,8 @@
                          "git" "credential-cache--daemon" socket-path))))
 
     ;; From https://github.com/magnars/.emacs.d/blob/master/setup-magit.el
-    ;; Restore the previous window configuration after quitting magit-status buffer
+    ;; Restore the previous window configuration after quitting magit-status
+    ;; buffer.
 
     (defadvice magit-status
         (before magit-save-window-configuration activate compile)
@@ -26,7 +30,7 @@
         (after magit-restore-window-configuration activate compile)
       (jump-to-register :magit-window-configuration))
 
-    ;; Ignore whitespace
+    ;; Ignore whitespace.
 
     (defun magit-toggle-whitespace ()
       (interactive)
