@@ -36,6 +36,10 @@
               ("n" "note" entry (file ,refile-file)
                "* %?"))))
 
+    ;; Refile setup.
+    (setq org-refile-targets '((org-agenda-files :level . 1))
+          org-refile-use-outline-path 'file)
+
     ;; Use ido completion.
     (setq org-completion-use-ido t)
 
