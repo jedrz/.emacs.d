@@ -15,12 +15,9 @@
     ;; Set up paths.
     (setq org-directory "~/Dokumenty/org"
           ;; File for capturing new tasks.
-          org-default-notes-file (concat org-directory "/refile.org")
+          org-default-notes-file (concat org-directory "/notes.org")
           org-agenda-files (list (concat org-directory "/todo.org")
-                                 org-default-notes-file)
-          ;; MobileOrg.
-          org-mobile-directory "~/Dropbox/MobileOrg"
-          org-mobile-inbox-for-pull (concat org-directory "/from-mobile.org"))
+                                 org-default-notes-file))
 
     (setq org-todo-keywords
           '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
@@ -33,7 +30,7 @@
             ("CANCELLED" :foreground "forest green" :weight bold)))
 
     (setq org-capture-templates
-          (let ((refile-file (concat org-directory "/refile.org")))
+          (let ((refile-file (concat org-directory "/notes.org")))
             `(("t" "todo" entry (file ,refile-file)
                "* TODO %?")
               ("n" "note" entry (file ,refile-file)
