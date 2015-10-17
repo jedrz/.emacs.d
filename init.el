@@ -40,6 +40,11 @@
 ;; Shrink minor mode names.
 (require 'setup-diminish)
 
+;; Ensure hydra.
+(use-package hydra
+  :ensure t
+  :defer t)
+
 (require 'general-settings)
 
 ;; Load settings for some major modes.

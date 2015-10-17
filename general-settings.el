@@ -293,7 +293,65 @@
 (use-package projectile
   :ensure t
   :init
-  (projectile-global-mode 1))
+  (progn
+    (projectile-global-mode 1)
+    (bind-key*
+     "C-c p"
+     (defhydra hydra-projectile (:color blue :hint nil :idle 0.4)
+       "
+    Files             Search          Buffer             Do
+   ─────────────────────────────────────────────────────────────────────────────
+    [_f_] file          [_a_] ag          [_b_] switch         [_g_] magit
+    [_l_] file dwim     [_A_] grep        [_v_] show all       [_p_] commander
+    [_r_] recent file   [_s_] occur       [_V_] ibuffer        [_i_] info
+    [_d_] dir           [_S_] replace     [_K_] kill all
+    [_o_] other         [_t_] find tag
+    [_u_] test file     [_T_] make tags
+    [_h_] root
+
+    Other Window      Run             Cache
+   ─────────────────────────────────────────────────────────────────────────────
+    [_F_] file          [_U_] test        [_kc_] clear
+    [_L_] dwim          [_m_] compile     [_kk_] add current
+    [_D_] dir           [_c_] shell       [_ks_] cleanup
+    [_O_] other         [_C_] command     [_kd_] remove
+    [_B_] buffer
+   -----------------------------------------------------------------------------
+        "
+       ("<tab>" hydra-master/body "back")
+       ("a"   projectile-ag)
+       ("A"   projectile-grep)
+       ("b"   projectile-switch-to-buffer)
+       ("B"   projectile-switch-to-buffer-other-window)
+       ("c"   projectile-run-async-shell-command-in-root)
+       ("C"   projectile-run-command-in-root)
+       ("d"   projectile-find-dir)
+       ("D"   projectile-find-dir-other-window)
+       ("f"   projectile-find-file)
+       ("F"   projectile-find-file-other-window)
+       ("g"   projectile-vc)
+       ("h"   projectile-dired)
+       ("i"   projectile-project-info)
+       ("kc"  projectile-invalidate-cache)
+       ("kd"  projectile-remove-known-project)
+       ("kk"  projectile-cache-current-file)
+       ("K"   projectile-kill-buffers)
+       ("ks"  projectile-cleanup-known-projects)
+       ("l"   projectile-find-file-dwim)
+       ("L"   projectile-find-file-dwim-other-window)
+       ("m"   projectile-compile-project)
+       ("o"   projectile-find-other-file)
+       ("O"   projectile-find-other-file-other-window)
+       ("p"   projectile-commander)
+       ("r"   projectile-recentf)
+       ("s"   projectile-multi-occur)
+       ("S"   projectile-replace)
+       ("t"   projectile-find-tag)
+       ("T"   projectile-regenerate-tags)
+       ("u"   projectile-find-test-file)
+       ("U"   projectile-test-project)
+       ("v"   projectile-display-buffer)
+       ("V"   projectile-ibuffer)))))
 
 ;; Show the current function name in the header line only in prog modes.
 (which-function-mode 1)
@@ -526,26 +584,33 @@
 (bind-key "M-$" #'ispell-word-then-abbrev) ; was ispell-word
 
 ;; Launcher map.
-;; http://endlessparentheses.com/launcher-keymap-for-standalone-features.html
-(define-prefix-command 'launcher-map)
-(define-key ctl-x-map "l" 'launcher-map)
-(define-key launcher-map "l" 'lgrep)
-(define-key launcher-map "r" 'rgrep)
-(define-key launcher-map "o" 'occur)
-(define-key launcher-map "m" 'multi-occur)
-(define-key launcher-map "p" 'paradox-list-packages)
-(define-key launcher-map "w" 'webjump)
+(bind-key "C-x l"
+          (defhydra hydra-launcher (:color blue)
+            "launcher"
+            ("l" lgrep "grep")
+            ("r" rgrep "recursive grep")
+            ("o" occur "occur")
+            ("m" multi-occur "multi occur")
+            ("p" paradox-list-packages "list packages")
+            ("w" webjump "web jump")))
 
 ;; Toggle map.
-;; http://endlessparentheses.com/the-toggle-map-and-wizardry.html
-(define-prefix-command 'toggle-map)
-(define-key ctl-x-map "t" 'toggle-map)
-(define-key toggle-map "f" 'auto-fill-mode)
-(define-key toggle-map "m" 'menu-bar-mode)
-(define-key toggle-map "t" 'my-themes-cycle)
+(bind-key "C-x t"
+          (defhydra hydra-toggle (:color blue)
+            "toggle"
+            ("f" auto-fill-mode "fill")
+            ("t" truncate-lines "truncate")
+            ("m" menu-bar-mode "menu bar")))
 
 (bind-key "C-$" #'run-terminal-with-current-dir)
 
 (bind-key "<f6>" #'exttextcat-guess-language-buffer)
+
+(bind-key "<f2>"
+          (defhydra hydra-zoom ()
+            "zoom"
+            ("+" text-scale-increase "in")
+            ("-" text-scale-decrease "out")
+            ("0" (text-scale-adjust 0) "reset" :color blue)))
 
 (provide 'general-settings)
