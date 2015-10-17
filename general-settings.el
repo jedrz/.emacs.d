@@ -364,24 +364,6 @@
       ;; invisible here anyway.
       (assq-delete-all 'which-func-mode mode-line-misc-info))
 
-(use-package ace-jump-mode
-  :ensure t
-  :bind
-  (;; Quickly go to word with ace-jump-mode.
-   ("C-c C-SPC" . ace-jump-mode)
-   ;; To char, use C-u C-c C-SPC.
-   ;; To line (there is still M-g g bound to goto-line).
-   ("M-g M-g" . ace-jump-line-mode))
-  :config
-  ;; Custom characters for ace-jump-mode.
-  (setq ace-jump-mode-move-keys
-        (nconc (loop for c from ?a to ?z collect c)
-               (loop for c from ?A to ?Z collect c)
-               (loop for c from ?0 to ?9 collect c)
-               (loop for c in
-                     '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
-                     collect c))))
-
 (use-package avy
   :ensure t
   :defer t
@@ -511,9 +493,6 @@
 
 ;; Rebind C-a to work as M-m then second hit as usual C-a.
 (bind-key "C-a" #'back-to-indentation-or-beginning)
-
-;; Go to line with linum mode enabled.
-(bind-key "M-g M-g" #'goto-line-with-feedback)
 
 ;; Like isearch but uses active region as search string.
 (bind-key "C-S-s" #'isearch-forward-use-region)
