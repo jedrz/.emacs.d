@@ -382,6 +382,23 @@
                      '(?ą ?ć ?ę ?ł ?ó ?ś ?ż ?ź ?Ą ?Ć ?Ę ?Ł ?Ó ?Ś ?Ż ?Ź)
                      collect c))))
 
+(use-package avy
+  :ensure t
+  :defer t
+  :init
+  (bind-key
+   "M-g"
+   (defhydra hydra-avy (:color blue)
+     "avy"
+     ("c" avy-goto-char "char")
+     ("C" avy-goto-char-2 "2 char")
+     ("m" avy-goto-char-in-line "char in line")
+     ("g" avy-goto-line "line")
+     ("w" avy-goto-word-1 "word")
+     ("W" avy-goto-word-0 "some word")
+     ("s" avy-goto-subword-1 "subword")
+     ("S" avy-goto-subword-0 "some subword"))))
+
 (use-package fancy-narrow
   :ensure t
   :defer 10
@@ -550,6 +567,7 @@
 
 ;; Transpose stuff with M-t
 (global-unset-key (kbd "M-t"))      ; which used to be transpose-words
+(bind-key "M-t c" #'transpose-chars)
 (bind-key "M-t l" #'transpose-lines)
 (bind-key "M-t w" #'transpose-words)
 (bind-key "M-t s" #'transpose-sexps)
