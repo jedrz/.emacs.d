@@ -37,9 +37,6 @@
 ;; Load appearance settings at the beginning to avoid momentary display.
 (require 'appearance)
 
-;; Shrink minor mode names.
-(require 'setup-diminish)
-
 ;; Ensure hydra.
 (use-package hydra
   :ensure t)

@@ -28,6 +28,7 @@
 (use-package highlight-symbol
   :ensure t
   :defer t
+  :diminish highlight-symbol-mode
   :init
   (add-hook 'prog-mode-hook #'highlight-symbol-mode)
   :config

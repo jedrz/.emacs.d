@@ -22,7 +22,7 @@
   :defer t)
 
 (defun my-lisp-mode-setup ()
-  (turn-on-eldoc-mode)
+  (eldoc-mode 1)
   (rainbow-delimiters-mode 1))
 
 (--each my-lisp-mode-hooks
@@ -30,10 +30,14 @@
 
 ;; Emacs lisp mode setup.
 (use-package lisp-mode
-  :ensure elisp-slime-nav
   :defer t
   :config
   (progn
+    (use-package elisp-slime-nav
+      :ensure t
+      :defer t
+      :diminish elisp-slime-nav-mode)
+
     (defun my-elisp-mode-setup ()
       ;; Go to definition with M-. and back again with M-,
       (elisp-slime-nav-mode 1)

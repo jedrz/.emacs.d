@@ -110,6 +110,7 @@
 
 ;; Detect buffer language.
 (use-package exttextcat
+  :defer t
   :config
   (add-hook 'find-file-hook #'exttextcat-guess-language-buffer))
 
@@ -126,6 +127,7 @@
 ;; Don't use M-TAB to correct words in flyspell-mode.
 (use-package flyspell
   :defer t
+  :diminish flyspell-mode
   :config
   (setq flyspell-use-meta-tab nil))
 
@@ -164,6 +166,7 @@
 ;; Visualization of undo tree.
 (use-package undo-tree
   :ensure t
+  :diminish undo-tree-mode
   :config
   (global-undo-tree-mode 1))
 
@@ -213,6 +216,7 @@
 ;; Show number of search matches in mode line.
 (use-package anzu
   :ensure t
+  :diminish anzu-mode
   :config
   (global-anzu-mode 1))
 
@@ -292,6 +296,7 @@
 ;; Projectile is a project interaction library.
 (use-package projectile
   :ensure t
+  :diminish projectile-mode
   :init
   (progn
     (projectile-global-mode 1)
