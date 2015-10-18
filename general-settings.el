@@ -372,6 +372,8 @@
 (use-package avy
   :ensure t
   :defer t
+  :bind
+  ("M-m" . avy-goto-char-in-line)
   :init
   (bind-key
    "M-g"
@@ -448,13 +450,6 @@
   :ensure t
   :bind
   ("C-=" . er/expand-region))
-
-;; vim's f and b commands.
-(use-package jump-char
-  :ensure t
-  :bind
-  (("M-m" . jump-char-forward)
-   ("M-M" . jump-char-backward)))
 
 (use-package evil-numbers
   :ensure t
