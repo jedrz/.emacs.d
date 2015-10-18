@@ -42,8 +42,7 @@
 
 ;; Ensure hydra.
 (use-package hydra
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (require 'general-settings)
 
