@@ -31,7 +31,9 @@
   :init
   (progn
     (add-hook 'c++-mode-hook #'irony-mode)
-    (add-hook 'c-mode-hook #'irony-mode)))
+    (add-hook 'c-mode-hook #'irony-mode))
+  :config
+  (setq irony-additional-clang-options '("-std=c++11")))
 
 (use-package company-irony
   :ensure t
