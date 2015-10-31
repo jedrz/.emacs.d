@@ -466,8 +466,10 @@
 (use-package google-this
   :ensure t
   :defer t
+  :bind
+  ("C-x g" . google-this-mode-submap)
   :init
-  (bind-key "g" #'google-this-mode-submap ctl-x-map))
+  (google-this-mode 1))
 
 ;; Paste buffers to refheap from emacs.
 (use-package refheap
