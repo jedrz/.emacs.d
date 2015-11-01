@@ -466,6 +466,7 @@
 (use-package google-this
   :ensure t
   :defer t
+  :diminish google-this-mode
   :bind
   ("C-x g" . google-this-mode-submap)
   :init
