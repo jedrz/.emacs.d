@@ -57,6 +57,8 @@
     (setq org-time-stamp-custom-formats
           '("<%d-%m-%Y %a>" . "<%d-%m-%Y %a %H:%M>"))
 
+    (setq org-ellipsis "⤵")
+
     ;; Align org tags before saving.
     (add-hook 'org-mode-hook
               (lambda ()
