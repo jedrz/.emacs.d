@@ -63,6 +63,9 @@
                 msg))
     ad-do-it))
 
+;; Tab indents or completes.
+(setq tab-always-indent 'complete)
+
 ;; Spaces for indentation.
 (setq-default indent-tabs-mode nil
               tab-width 4)
