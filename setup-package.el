@@ -15,9 +15,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; TODO: Wrap with eval-when-compile later.
-(setq use-package-verbose t)
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 
 ;; Package.el on steroids.
 (use-package paradox
