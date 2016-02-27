@@ -377,7 +377,9 @@
        ("u"   projectile-find-test-file)
        ("U"   projectile-test-project)
        ("v"   projectile-display-buffer)
-       ("V"   projectile-ibuffer)))))
+       ("V"   projectile-ibuffer))))
+  :config
+  (setq projectile-completion-system 'ivy))
 
 ;; Show the current function name in the header line only in prog modes.
 (which-function-mode 1)
@@ -408,6 +410,40 @@
      ("W" avy-goto-word-0 "some word")
      ("s" avy-goto-subword-1 "subword")
      ("S" avy-goto-subword-0 "some subword"))))
+
+(use-package imenu
+  :defer t
+  :config
+  ;; Always rescan buffer for imenu
+  (setq-default imenu-auto-rescan t))
+
+;; Fuzzy matching.
+(use-package flx
+  :ensure t
+  :defer t)
+
+;; isearch with an overview.
+(use-package swiper
+  :ensure t
+  :defer t
+  :bind
+  (("C-s" . swiper)
+   ("C-r" . swiper)
+   ("C-c C-r" . ivy-resume)
+   ("M-x" . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)
+   ("C-x C-i" . counsel-imenu)
+   ("C-x f" . ivy-recentf)
+   ("C-h f" . counsel-describe-function)
+   ("C-h v" . counsel-describe-variable)
+   ("C-h S" . counsel-info-lookup-symbol))
+  :init
+  (ivy-mode 1)
+  :config
+  (setq ivy-use-virtual-buffers t
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy))
+        ivy-initial-inputs-alist nil
+        counsel-find-file-at-point t))
 
 (use-package fancy-narrow
   :ensure t
@@ -524,9 +560,6 @@
 
 ;; Activate occur inside isearch with C-o.
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
-
-;; Jump to a definition in the current file.
-(bind-key "C-x C-i" #'ido-imenu)
 
 ;; Clever new lines.
 (bind-key "<C-return>" #'new-line-below)
