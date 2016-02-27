@@ -27,6 +27,7 @@
 
     (bind-key "C-M-u" #'sp-up-sexp)
     (bind-key "C-M-S-u" #'sp-backward-up-sexp)
+    (bind-key "C-M-t" 'sp-transpose-sexp)
 
     (bind-key "C-M-k" #'sp-kill-sexp)
     (bind-key "C-M-w" #'sp-copy-sexp)
