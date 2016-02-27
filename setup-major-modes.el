@@ -6,8 +6,6 @@
   :ensure t
   :defer t)
 
-(add-to-list 'auto-mode-alist '("\\.zsh$" . sh-mode))
-
 (use-package pkgbuild-mode
   :ensure t
   :defer t)

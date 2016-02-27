@@ -62,6 +62,7 @@
 (require 'setup-prolog-mode)
 (require 'setup-ess-mode)
 (require 'setup-rust-mode)
+(require 'setup-sh-mode)
 (require 'setup-major-modes)
 
 ;; Setup extensions.
