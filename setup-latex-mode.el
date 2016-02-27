@@ -31,7 +31,8 @@
           TeX-source-correlate-start-server t)
     (setq-default TeX-master nil        ; Ask for master document.
                   ;; Generate output in PDF.
-                  TeX-PDF-mode t)))
+                  TeX-PDF-mode t)
+    (add-hook 'LaTeX-mode-hook #'add-watchwords)))
 
 (use-package tex-buf
   :ensure auctex

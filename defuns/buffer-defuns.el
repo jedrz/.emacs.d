@@ -1,5 +1,11 @@
 ;;; Buffer-related defuns
 
+;;;###autoload
+(defun add-watchwords ()
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIX\\|TODO\\|FIXME\\|HACK\\|REFACTOR\\):"
+          1 font-lock-warning-face t))))
+
 ;; http://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
 ;;;###autoload
 (defun create-scratch-buffer nil
