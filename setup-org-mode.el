@@ -40,9 +40,6 @@
     (setq org-refile-targets '((org-agenda-files :level . 1))
           org-refile-use-outline-path 'file)
 
-    ;; Use ido completion.
-    (setq org-completion-use-ido t)
-
     ;; Do not split line when cursor in not at the end.
     (setq org-M-RET-may-split-line nil)
 

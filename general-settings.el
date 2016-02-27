@@ -417,34 +417,6 @@
   ;; Always rescan buffer for imenu
   (setq-default imenu-auto-rescan t))
 
-;; Fuzzy matching.
-(use-package flx
-  :ensure t
-  :defer t)
-
-;; isearch with an overview.
-(use-package swiper
-  :ensure t
-  :defer t
-  :bind
-  (("C-s" . swiper)
-   ("C-r" . swiper)
-   ("C-c C-r" . ivy-resume)
-   ("M-x" . counsel-M-x)
-   ("C-x C-f" . counsel-find-file)
-   ("C-x C-i" . counsel-imenu)
-   ("C-x f" . ivy-recentf)
-   ("C-h f" . counsel-describe-function)
-   ("C-h v" . counsel-describe-variable)
-   ("C-h S" . counsel-info-lookup-symbol))
-  :init
-  (ivy-mode 1)
-  :config
-  (setq ivy-use-virtual-buffers t
-        ivy-re-builders-alist '((t . ivy--regex-fuzzy))
-        ivy-initial-inputs-alist nil
-        counsel-find-file-at-point t))
-
 (use-package fancy-narrow
   :ensure t
   :defer 10
@@ -554,10 +526,6 @@
 ;; Rebind C-a to work as M-m then second hit as usual C-a.
 (bind-key "C-a" #'back-to-indentation-or-beginning)
 
-;; Like isearch but uses active region as search string.
-(bind-key "C-S-s" #'isearch-forward-use-region)
-(bind-key "C-S-r" #'isearch-backward-use-region)
-
 ;; Activate occur inside isearch with C-o.
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
@@ -611,15 +579,6 @@
 
 ;; Why there is no command to copy rectangle?
 (bind-key "C-x r C" #'copy-rectangle)
-
-;;; File finding.
-;; Find recent files with ido.
-(bind-key "C-x f" #'recentf-ido-find-file)
-;; Recent in other window.
-;; Overwrites find-file-other-window (also bound to C-x 4 C-f).
-(bind-key "C-x 4 f" (lambda () (interactive) (recentf-ido-find-file 1)))
-;; Edit file with sudo.
-(bind-key "C-x C-#" #'sudo-edit)
 
 ;; Buffer file functions.
 (bind-key "C-x C-r" #'rename-current-buffer-file) ; was find-file-read-only
