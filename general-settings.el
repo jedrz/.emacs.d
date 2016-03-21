@@ -127,6 +127,18 @@
   :config
   (add-hook 'find-file-hook #'exttextcat-guess-language-buffer))
 
+;; Typographical editing minor mode.
+(use-package typo
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (add-hook 'text-mode-hook #'typo-mode)
+    (add-hook 'org-mode-hook #'typo-mode))
+  :config
+  ;; Set to Czech since they are the same as Polish.
+  (setq typo-language "Czech"))
+
 (use-package autorevert
   :config
   (progn
