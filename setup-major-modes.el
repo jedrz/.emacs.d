@@ -14,4 +14,8 @@
   :ensure t
   :defer t)
 
+(use-package dockerfile-mode
+  :ensure t
+  :defer t)
+
 (provide 'setup-major-modes)
