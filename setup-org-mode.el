@@ -66,7 +66,8 @@
      'org-babel-load-languages
      '((emacs-lisp . t)
        (sh . t)
-       (python . t)))))
+       (python . t)
+       (R . t)))))
 
 ;; LaTeX export
 (use-package ox-latex
