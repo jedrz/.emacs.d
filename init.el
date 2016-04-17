@@ -10,8 +10,6 @@
 ;; Don't load outdated byte-code files.
 (setq load-prefer-newer t)
 
-(defalias 'after 'with-eval-after-load)
-
 ;; Set up load path.
 (add-to-list 'load-path user-emacs-directory t)
 
