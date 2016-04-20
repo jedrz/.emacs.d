@@ -9,6 +9,9 @@
    ("C-c k" . org-capture))
   :config
   (progn
+    ;; Indent (view only) headlines and text.
+    (setq org-startup-indented t)
+
     ;; Add some new modules.
     (add-to-list 'org-modules 'org-habit)
 
@@ -56,6 +59,9 @@
 
     (setq org-ellipsis "⤵")
 
+    ;; Hide characters like *word*, etc.
+    (setq org-hide-emphasis-markers t)
+
     ;; Align org tags before saving.
     (add-hook 'org-mode-hook
               (lambda ()
@@ -67,7 +73,15 @@
      '((emacs-lisp . t)
        (sh . t)
        (python . t)
-       (R . t)))))
+       (R . t)))
+
+    ;; Better bullets.
+    (font-lock-add-keywords #'org-mode
+                            '(("^ +\\([-*]\\) "
+                               (0 (prog1 () (compose-region
+                                             (match-beginning 1)
+                                             (match-end 1)
+                                             "•"))))))))
 
 ;; LaTeX export
 (use-package ox-latex
@@ -99,5 +113,11 @@
   ("journal/[0-9]\\{8\\}$" . org-journal-mode)
   :config
   (setq org-journal-dir (concat org-directory "/journal/")))
+
+(use-package org-bullets
+  :ensure t
+  :defer t
+  :init
+  (add-hook #'org-mode-hook #'org-bullets-mode))
 
 (provide 'setup-org-mode)
