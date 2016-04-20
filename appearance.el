@@ -1,5 +1,6 @@
-;; Font
-(setq default-frame-alist '((font . "Source Code Pro-10.5")))
+;; Fira Code font but no ligatures on Emacs unfortunalety :(
+(when (window-system)
+  (set-default-font "Fira Code"))
 
 (use-package color-theme-sanityinc-tomorrow
   :ensure t
