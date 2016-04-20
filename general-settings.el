@@ -492,6 +492,12 @@
   :bind
   ("C-=" . er/expand-region))
 
+;; Display available keybindings after delay.
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
 (use-package evil-numbers
   :ensure t
   :bind
