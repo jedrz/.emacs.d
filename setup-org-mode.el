@@ -12,6 +12,9 @@
     ;; Indent (view only) headlines and text.
     (setq org-startup-indented t)
 
+    ;; Single key navigation for headlines.
+    (setq org-use-speed-commands t)
+
     ;; Add some new modules.
     (add-to-list 'org-modules 'org-habit)
 
