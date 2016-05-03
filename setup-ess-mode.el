@@ -19,6 +19,9 @@
                                   (mapc (lambda (buffer)
                                           (with-current-buffer buffer
                                             (ess-kill-buffer-function)))
-                                        (buffer-list))))))
+                                        (buffer-list))))
+
+    (with-eval-after-load 'flycheck
+      (setq flycheck-lintr-linters "with_defaults(camel_case_linter = NULL, snake_case_linter, object_usage_linter = NULL)"))))
 
 (provide 'setup-ess-mode)
