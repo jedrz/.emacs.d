@@ -2,10 +2,10 @@
 (when (window-system)
   (set-default-font "Fira Code"))
 
-(use-package color-theme-sanityinc-tomorrow
+(use-package flatui-theme
   :ensure t
   :config
-  (load-theme 'sanityinc-tomorrow-night t))
+  (load-theme 'flatui t))
 
 ;; Show column number in status bar.
 (column-number-mode 1)
