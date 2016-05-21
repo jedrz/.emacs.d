@@ -103,17 +103,20 @@
       "Forward to `find-file-other-window'.
 When INITIAL-INPUT is non-nil, use it in the minibuffer during completion."
       (interactive)
-      (ivy-read "Find file: " 'read-file-name-internal
+      (ivy-read "Find file: " #'read-file-name-internal
                 :matcher #'counsel--find-file-matcher
                 :initial-input initial-input
                 :action
                 (lambda (x)
-                  (find-file-other-window (expand-file-name x ivy--directory)))
+                  (with-ivy-window
+                    (find-file-other-window (expand-file-name x ivy--directory))))
                 :preselect (when counsel-find-file-at-point
                              (require 'ffap)
-                             (ffap-guesser))
+                             (let ((f (ffap-guesser)))
+                               (when f (expand-file-name f))))
                 :require-match #'confirm-after-completion
                 :history #'file-name-history
-                :keymap counsel-find-file-map))))
+                :keymap counsel-find-file-map
+                :caller #'counsel-find-file-other-window))))
 
 (provide 'setup-swiper)
