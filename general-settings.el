@@ -513,6 +513,15 @@
   :ensure t
   :defer t)
 
+;; Weather from wttr.in.
+(use-package wttrin
+  :ensure t
+  :defer t
+  :commands (wttrin)
+  :config
+  (setq wttrin-default-cities '("Warsaw"
+                                "Siedlce")))
+
 ;;; Core key bindings.
 
 ;; Kill also emacs daemon if started.
