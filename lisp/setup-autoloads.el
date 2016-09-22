@@ -1,6 +1,6 @@
 ;;; Generate autoloads for some files.
 
-(setq generated-autoload-file (concat user-emacs-directory "my-autoloads.el"))
+(setq generated-autoload-file (concat user-emacs-directory "lisp/my-autoloads.el"))
 
 (defun update-my-autoloads ()
   "Update autoloads for some files."

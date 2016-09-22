@@ -1,4 +1,11 @@
 ;; Speed up Emacs?
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (setq gc-cons-threshold 100000000)
 
 ;; Speed up Emacs?
@@ -10,8 +17,8 @@
 ;; Don't load outdated byte-code files.
 (setq load-prefer-newer t)
 
-;; Set up load path.
-(add-to-list 'load-path user-emacs-directory t)
+;; Add custom emacs lisp files to load-path.
+(add-to-list 'load-path (concat user-emacs-directory "lisp") t)
 
 ;; Add extensions folder and sub-folders to load path.
 (let ((default-directory (concat user-emacs-directory "vendor")))
@@ -29,7 +36,7 @@
 (require 'dash)
 
 ;; Separate custom file.
-(setq custom-file (concat user-emacs-directory "custom.el"))
+(setq custom-file (concat user-emacs-directory "lisp/custom.el"))
 (load custom-file)
 
 ;; Load appearance settings at the beginning to avoid momentary display.
@@ -64,7 +71,6 @@
 (require 'setup-major-modes)
 
 ;; Setup extensions.
-(require 'setup-ido)
 (require 'setup-dired)
 (require 'setup-git)
 (require 'setup-yasnippet)
