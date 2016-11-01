@@ -8,47 +8,13 @@
   :ensure t
   :defer t
   :bind
-  (("C-c C-r" . ivy-resume)
-   ("C-x f" . ivy-recentf)
-   ("C-x 4 f" . ivy-recentf-other-window))
-  :commands
-  (ivy-recentf-other-window)
+  (("C-c C-r" . ivy-resume))
   :init
   (ivy-mode 1)
   :config
-  (progn
-    (setq ivy-use-virtual-buffers t
-          ivy-re-builders-alist '((t . ivy--regex-fuzzy))
-          ivy-initial-inputs-alist nil)
-
-    ;; Abbreviate /home/user with ~.
-    (ivy-set-display-transformer #'ivy-recentf #'abbreviate-file-name)
-
-    (ivy-set-actions
-     #'counsel-find-file
-     '(("j" find-file-other-window "other")
-       ("s" ivy-sudo-edit-action "sudo")))
-
-    (ivy-set-actions
-     #'counsel-find-file-other-window
-     '(("s" ivy-sudo-edit-action)))
-
-    (ivy-set-actions
-     #'ivy-recentf
-     '(("j" find-file-other-window "other")))
-
-    (defun ivy-recentf-other-window ()
-      "Find a file on `recentf-list' in another window."
-      (interactive)
-      (ivy-read "Recentf: " recentf-list
-                :action #'find-file-other-window
-                :caller 'ivy-recentf-other-window))
-
-    (defun ivy-sudo-edit-action (file-name)
-      (with-ivy-window
-        (find-file (expand-file-name
-                    (concat "/sudo:root@localhost:" file-name)
-                    ivy--directory))))))
+  (setq ivy-use-virtual-buffers t
+        ivy-re-builders-alist '((t . ivy--regex-fuzzy))
+        ivy-initial-inputs-alist nil))
 
 (use-package swiper
   :ensure t
@@ -83,9 +49,11 @@
    ("C-x C-i" . counsel-imenu)
    ("C-h f" . counsel-describe-function)
    ("C-h v" . counsel-describe-variable)
-   ("C-h S" . counsel-info-lookup-symbol))
+   ("C-h S" . counsel-info-lookup-symbol)
+   ("C-x f" . counsel-recentf)
+   ("C-x 4 f" . counsel-recentf-other-window))
   :commands
-  (counsel-find-file-other-window)
+  (counsel-find-file-other-window counsel-recentf-other-window)
   :config
   (progn
     (setq counsel-find-file-at-point t)
@@ -98,6 +66,20 @@
     (ivy-set-actions
      #'counsel-find-file-other-window
      '(("s" ivy-sudo-edit-action)))
+
+    ;; Abbreviate /home/user with ~.
+    (ivy-set-display-transformer #'counsel-recentf #'abbreviate-file-name)
+    (ivy-set-display-transformer #'counsel-recentf-other-window #'abbreviate-file-name)
+
+    (ivy-set-actions
+     #'counsel-recentf
+     '(("j" find-file-other-window "other")))
+
+    (defun ivy-sudo-edit-action (file-name)
+      (with-ivy-window
+        (find-file (expand-file-name
+                    (concat "/sudo:root@localhost:" file-name)
+                    ivy--directory))))
 
     (defun counsel-find-file-other-window (&optional initial-input)
       "Forward to `find-file-other-window'.
@@ -117,6 +99,13 @@ When INITIAL-INPUT is non-nil, use it in the minibuffer during completion."
                 :require-match #'confirm-after-completion
                 :history #'file-name-history
                 :keymap counsel-find-file-map
-                :caller #'counsel-find-file-other-window))))
+                :caller #'counsel-find-file-other-window))
+
+    (defun counsel-recentf-other-window ()
+      "Find a file on `recentf-list' in another window."
+      (interactive)
+      (ivy-read "Recentf: " recentf-list
+                :action #'find-file-other-window
+                :caller 'counsel-recentf-other-window))))
 
 (provide 'setup-swiper)
