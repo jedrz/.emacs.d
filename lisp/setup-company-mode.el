@@ -14,10 +14,17 @@
     (with-eval-after-load 'yasnippet
       (defun company-indent-or-complete ()
         (interactive)
-        (if (looking-at "\\_>")
-            (company-complete-common)
-          (let ((yas-fallback-behavior 'call-other-command))
-            (yas--fallback))))
+        (let* ((end-of-expression (looking-at "\\_>"))
+               (org-easy-templating (and (eq major-mode #'org-mode)
+                                         (save-excursion
+                                           ;; Go to the beginning of line.
+                                           (forward-line 0)
+                                           (looking-at "<.\\_>"))))
+               (complete-with-company (and end-of-expression (not org-easy-templating))))
+          (if complete-with-company
+              (company-complete-common)
+            (let ((yas-fallback-behavior #'call-other-command))
+              (yas--fallback)))))
 
       (setq yas-fallback-behavior '(apply company-indent-or-complete)))
 
