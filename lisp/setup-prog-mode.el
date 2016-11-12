@@ -31,4 +31,8 @@
     (bind-key "M-s n" #'highlight-symbol-next prog-mode-map)
     (bind-key "M-s p" #'highlight-symbol-prev prog-mode-map)))
 
+(use-package ag
+  :ensure t
+  :defer t)
+
 (provide 'setup-prog-mode)
