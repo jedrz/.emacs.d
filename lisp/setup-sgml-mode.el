@@ -6,6 +6,7 @@
     (bind-key "C-c C-r" #'mc/mark-sgml-tag-pair) sgml-mode-map))
 
 (use-package tagedit
+  :disabled t
   :ensure t
   :defer t
   :init
