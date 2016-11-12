@@ -48,7 +48,14 @@
       (setq magit-diff-options (remove "-w" magit-diff-options))
       (magit-refresh))
 
-    (bind-key "W" #'magit-toggle-whitespace magit-status-mode-map)))
+    (bind-key "W" #'magit-toggle-whitespace magit-status-mode-map)
+
+    (defun magit-visit-origin ()
+      (interactive)
+      (let ((remote-url (magit-get "remote" "origin" "url")))
+        (browse-url remote-url)))
+
+    (bind-key "H" #'magit-visit-origin magit-status-mode-map)))
 
 (use-package git-messenger
   :ensure t
