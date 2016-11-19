@@ -76,7 +76,8 @@
      '((emacs-lisp . t)
        (sh . t)
        (python . t)
-       (R . t)))
+       (R . t)
+       (calc . t)))
 
     ;; Better bullets.
     (font-lock-add-keywords #'org-mode
