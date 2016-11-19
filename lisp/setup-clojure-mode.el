@@ -17,7 +17,7 @@
           cider-repl-pop-to-buffer-on-connect nil
           cider-repl-use-clojure-font-lock t)
 
-    (add-hook 'cider-mode-hook #'cider-turn-on-eldoc-mode)
+    (add-hook 'cider-mode-hook #'eldoc-mode)
 
     (with-eval-after-load 'smartparens
       (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode))))
