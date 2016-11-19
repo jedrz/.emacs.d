@@ -80,6 +80,9 @@
        (calc . t)
        (sql . t)))
 
+    ;; Never evaluate blocks when exporting.
+    (setq org-export-babel-evaluate nil)
+
     ;; Better bullets.
     (font-lock-add-keywords #'org-mode
                             '(("^ +\\([-*]\\) "
