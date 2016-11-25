@@ -33,7 +33,9 @@
 
 (require 'bind-key)
 (require 'diminish)
-(require 'dash)
+
+(use-package dash
+  :ensure t)
 
 ;; Separate custom file.
 (setq custom-file (concat user-emacs-directory "lisp/custom.el"))
