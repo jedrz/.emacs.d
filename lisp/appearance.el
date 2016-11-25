@@ -1,6 +1,6 @@
 ;; Fira Code font but no ligatures on Emacs unfortunalety :(
 (when (window-system)
-  (set-default-font "Fira Code"))
+  (set-default-font "Fira Code-11"))
 
 (use-package flatui-theme
   :ensure t
