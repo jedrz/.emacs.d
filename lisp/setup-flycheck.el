@@ -26,11 +26,14 @@
     (setq flycheck-display-errors-function
           'flycheck-diplay-error-messages-one-line)
 
-    ;; Integration with cask files.
-    (add-hook 'flycheck-mode-hook 'flycheck-cask-setup)
-
     ;; Use c++11 standard.
     (setq-default flycheck-clang-language-standard "c++11"
                   flycheck-gcc-language-standard "c++11")))
+
+(use-package flycheck-cask
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'flycheck-mode-hook 'flycheck-cask-setup))
 
 (provide 'setup-flycheck)
