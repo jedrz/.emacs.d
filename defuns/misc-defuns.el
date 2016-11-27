@@ -66,12 +66,26 @@ If there is no active region then just call `isearch-function'."
 
 ;;;###autoload
 (defun byte-recompile-emacs-directory ()
-  "Recompile outdated already compiled files in `user-emacs-directory'."
+  "Recompile my files."
+  (interactive)
+  ;; Be quiet about compilation.
+  (let (font-lock-verbose
+        byte-compile-verbose
+        (directories-to-recompile '("lisp" "defuns")))
+    (mapc (lambda (dir)
+            (byte-recompile-directory
+             (concat user-emacs-directory dir)
+             0))
+          directories-to-recompile)))
+
+;;;###autoload
+(defun byte-recompile-full-emacs-directory ()
+  "Recompile all files in `user-emacs-directory'."
   (interactive)
   ;; Be quiet about compilation.
   (let (font-lock-verbose
         byte-compile-verbose)
-   (byte-recompile-directory user-emacs-directory 0)))
+    (byte-recompile-directory user-emacs-directory 0)))
 
 ;;;###autoload
 (defun google-search ()
