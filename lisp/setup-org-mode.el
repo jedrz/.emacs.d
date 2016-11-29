@@ -65,6 +65,9 @@
     ;; Hide characters like *word*, etc.
     (setq org-hide-emphasis-markers t)
 
+    ;; Index more levels with imenu.
+    (setq org-imenu-depth 5)
+
     ;; Align org tags before saving.
     (add-hook 'org-mode-hook
               (lambda ()
