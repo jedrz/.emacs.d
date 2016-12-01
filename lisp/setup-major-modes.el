@@ -22,4 +22,8 @@
   :ensure t
   :defer t)
 
+(use-package elm-mode
+  :ensure t
+  :defer t)
+
 (provide 'setup-major-modes)
