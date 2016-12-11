@@ -79,7 +79,7 @@
      '((emacs-lisp . t)
        (sh . t)
        (python . t)
-       (R . t)
+       ;; (R . t)
        (calc . t)
        (sql . t)))
 
@@ -130,6 +130,10 @@
   :defer t
   :init
   (add-hook #'org-mode-hook #'org-bullets-mode))
+
+(use-package ox-reveal
+  :ensure t
+  :defer t)
 
 (with-eval-after-load 'ob-sql
   ;; Fix babel for postgresql.
