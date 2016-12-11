@@ -1,6 +1,8 @@
 ;; Configuration based on http://doc.norang.ca/org-mode.html.
 
 (use-package org
+  :ensure t
+  :pin org
   :defer t
   :bind
   (("C-c a" . org-agenda)
@@ -94,6 +96,11 @@
                                              (match-end 1)
                                              "•"))))))))
 
+(use-package org-plus-contrib
+  :ensure t
+  :pin org
+  :defer t)
+
 ;; LaTeX export
 (use-package ox-latex
   :defer t
@@ -134,103 +141,5 @@
 (use-package ox-reveal
   :ensure t
   :defer t)
-
-(with-eval-after-load 'ob-sql
-  ;; Fix babel for postgresql.
-  (when (version<= org-version "9")
-    (eval-when-compile (require 'cl))
-    (defun org-babel-execute:sql (body params)
-      "Execute a block of Sql code with Babel.
-This function is called by `org-babel-execute-src-block'."
-      (let* ((result-params (cdr (assoc :result-params params)))
-             (cmdline (cdr (assoc :cmdline params)))
-             (dbhost (cdr (assoc :dbhost params)))
-             (dbuser (cdr (assoc :dbuser params)))
-             (dbpassword (cdr (assoc :dbpassword params)))
-             (database (cdr (assoc :database params)))
-             (engine (cdr (assoc :engine params)))
-             (colnames-p (not (equal "no" (cdr (assoc :colnames params)))))
-             (in-file (org-babel-temp-file "sql-in-"))
-             (out-file (or (cdr (assoc :out-file params))
-                           (org-babel-temp-file "sql-out-")))
-             (header-delim "")
-             (command (case (intern engine)
-                            ('dbi (format "dbish --batch %s < %s | sed '%s' > %s"
-                                          (or cmdline "")
-                                          (org-babel-process-file-name in-file)
-                                          "/^+/d;s/^|//;s/(NULL)/ /g;$d"
-                                          (org-babel-process-file-name out-file)))
-                            ('monetdb (format "mclient -f tab %s < %s > %s"
-                                              (or cmdline "")
-                                              (org-babel-process-file-name in-file)
-                                              (org-babel-process-file-name out-file)))
-                            ('msosql (format "osql %s -s \"\t\" -i %s -o %s"
-                                             (or cmdline "")
-                                             (org-babel-process-file-name in-file)
-                                             (org-babel-process-file-name out-file)))
-                            ('mysql (format "mysql %s %s %s < %s > %s"
-                                            (dbstring-mysql dbhost dbuser dbpassword database)
-                                            (if colnames-p "" "-N")
-                                            (or cmdline "")
-                                            (org-babel-process-file-name in-file)
-                                            (org-babel-process-file-name out-file)))
-                            ('postgresql (format
-                                          "psql -A -P footer=off -F \"\t\"  -d %s -f %s -o %s %s"
-                                          database
-                                          (org-babel-process-file-name in-file)
-                                          (org-babel-process-file-name out-file)
-                                          (or cmdline "")))
-                            (t (error "No support for the %s SQL engine" engine)))))
-        (with-temp-file in-file
-          (insert
-           (case (intern engine)
-                 ('dbi "/format partbox\n")
-                 (t ""))
-           (org-babel-expand-body:sql body params)))
-        (message command)
-        (org-babel-eval command "")
-        (org-babel-result-cond result-params
-          (with-temp-buffer
-            (progn (insert-file-contents-literally out-file) (buffer-string)))
-          (with-temp-buffer
-            (cond
-             ((or (eq (intern engine) 'mysql)
-                  (eq (intern engine) 'dbi)
-                  (eq (intern engine) 'postgresql))
-              ;; Add header row delimiter after column-names header in first line
-              (cond
-               (colnames-p
-                (with-temp-buffer
-                  (insert-file-contents out-file)
-                  (goto-char (point-min))
-                  (forward-line 1)
-                  (insert "-\n")
-                  (setq header-delim "-")
-                  (write-file out-file)))))
-             (t
-              ;; Need to figure out the delimiter for the header row
-              (with-temp-buffer
-                (insert-file-contents out-file)
-                (goto-char (point-min))
-                (when (re-search-forward "^\\(-+\\)[^-]" nil t)
-                  (setq header-delim (match-string-no-properties 1)))
-                (goto-char (point-max))
-                (forward-char -1)
-                (while (looking-at "\n")
-                  (delete-char 1)
-                  (goto-char (point-max))
-                  (forward-char -1))
-                (write-file out-file))))
-            (org-table-import out-file '(16))
-            (org-babel-reassemble-table
-             (mapcar (lambda (x)
-                       (if (string= (car x) header-delim)
-                           'hline
-                         x))
-                     (org-table-to-lisp))
-             (org-babel-pick-name (cdr (assoc :colname-names params))
-                                  (cdr (assoc :colnames params)))
-             (org-babel-pick-name (cdr (assoc :rowname-names params))
-                                  (cdr (assoc :rownames params))))))))))
 
 (provide 'setup-org-mode)
