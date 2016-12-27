@@ -16,6 +16,10 @@
         ivy-re-builders-alist '((t . ivy--regex-fuzzy))
         ivy-initial-inputs-alist nil))
 
+(use-package ivy-hydra
+  :ensure t
+  :defer t)
+
 (use-package swiper
   :ensure t
   :defer t
