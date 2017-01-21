@@ -23,4 +23,8 @@
   (with-eval-after-load 'company
     (add-to-list 'company-backends 'company-anaconda)))
 
+(use-package virtualenvwrapper
+  :ensure t
+  :defer t)
+
 (provide 'setup-python-mode)
