@@ -22,3 +22,11 @@ projectile.cache
 /session.*
 /projectile-bookmarks.eld
 /irony
+/TODO.org
+/abbrev_defs*
+/inferior-*-history
+/eshell
+/exttextcat
+/image-dired
+/lisp/my-autoloads.el
+/network-security.data
