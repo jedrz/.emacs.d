@@ -152,3 +152,31 @@ With prefix P, create local abbrev. Otherwise it will be global."
       (define-abbrev
         (if p local-abbrev-table global-abbrev-table)
         bef aft))))
+
+;;https://oleksandrmanzyuk.wordpress.com/2011/10/23/a-persistent-command-history-in-emacs/
+
+;;;###autoload
+(defun comint-write-history-on-exit (process event)
+  (comint-write-input-ring)
+  (let ((buf (process-buffer process)))
+    (when (buffer-live-p buf)
+      (with-current-buffer buf
+        (insert (format "\nProcess %s %s" process event))))))
+
+;;;###autoload
+(defun turn-on-comint-history ()
+  (let ((process (get-buffer-process (current-buffer))))
+    (when process
+      (setq comint-input-ring-file-name
+            (format (concat user-emacs-directory "inferior-%s-history")
+                    (process-name process)))
+      (comint-read-input-ring)
+      (set-process-sentinel process
+                            #'comint-write-history-on-exit))))
+
+;;;###autoload
+(defun comint-write-input-ring-all-buffers ()
+  (mapc (lambda (buffer)
+          (with-current-buffer buffer
+            (comint-write-input-ring)))
+        (buffer-list)))

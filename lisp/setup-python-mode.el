@@ -6,7 +6,9 @@
     (add-hook 'python-mode-hook
               (lambda ()
                 (run-python (python-shell-parse-command) nil nil)))
-    (add-hook 'python-mode-hook #'turn-on-eldoc-mode)))
+    (add-hook 'python-mode-hook #'turn-on-eldoc-mode)
+
+    (add-hook 'inferior-python-mode-hook #'turn-on-comint-history)))
 
 (use-package anaconda-mode
   :ensure t

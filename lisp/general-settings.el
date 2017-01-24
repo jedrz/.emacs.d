@@ -511,6 +511,9 @@
   (setq wttrin-default-cities '("Warsaw"
                                 "Siedlce")))
 
+;; Persistent command history.
+(add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
+
 ;;; Core key bindings.
 
 ;; Kill also emacs daemon if started.
