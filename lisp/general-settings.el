@@ -513,6 +513,7 @@
 
 ;; Persistent command history.
 (add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
+(add-hook 'kill-buffer-hook #'comint-write-input-ring)
 
 ;;; Core key bindings.
 
