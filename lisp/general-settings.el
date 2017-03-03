@@ -492,10 +492,10 @@
   :ensure t
   :defer t
   :diminish google-this-mode
-  :bind
-  ("C-x g" . google-this-mode-submap)
   :init
-  (google-this-mode 1))
+  (progn
+    (setq google-this-keybind (kbd "C-x g"))
+    (google-this-mode 1)))
 
 ;; Paste buffers to refheap from emacs.
 (use-package refheap
@@ -514,6 +514,7 @@
 ;; Persistent command history.
 (add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
 (add-hook 'kill-buffer-hook #'comint-write-input-ring)
+(setq comint-input-ring-size 100000)
 
 ;;; Core key bindings.
 
