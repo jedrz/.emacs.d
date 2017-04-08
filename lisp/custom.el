@@ -17,7 +17,8 @@
  '(paradox-github-token t)
  '(safe-local-variable-values
    (quote
-    ((eval venv-workon "pdm")
+    ((TeX-command-extra-options . "-shell-escape")
+     (eval venv-workon "pdm")
      (python-shell-extra-pythonpaths "/home/lukasz/Programowanie/pdm/predict")
      (python-shell-extra-pythonpaths "/home/lukasz/Programowanie/python/predicting-jams"))))
  '(vc-annotate-background nil)
