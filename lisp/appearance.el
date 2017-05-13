@@ -48,6 +48,9 @@
 ;; Start maximized.
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+;; Fix frame fullscreen being not completely fullscreen.
+(setq frame-resize-pixelwise t)
+
 ;; Smooth scrolling.
 (setq scroll-conservatively 10000
       scroll-margin 3
