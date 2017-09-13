@@ -25,7 +25,7 @@
 
 ;; Backup files settings.
 (setq backup-by-copying t
-      backup-directory-alist (list (cons "." (concat user-emacs-directory "backups")))
+      backup-directory-alist (list (cons "." "~/local/share/emacs/backups"))
       delete-old-versions t
       kept-new-versions 6
       kept-old-versions 2
@@ -35,7 +35,7 @@
 
 ;; Autosave settings.
 (setq auto-save-file-name-transforms
-      `((".*" ,(concat user-emacs-directory "autosaves/\\1") t)))
+      `((".*" "~/.local/share/emacs/autosaves/\\1" t)))
 
 ;; Create auto-save-list directory if doesn't exist yet
 ;; as its lack causes errors while auto saving is performed.
