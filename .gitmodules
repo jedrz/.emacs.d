@@ -1,9 +1,6 @@
 [submodule "vendor/atilde"]
 	path = vendor/atilde
 	url = https://github.com/jedrz/atilde.git
-[submodule "vendor/tern"]
-	path = vendor/tern
-	url = https://github.com/marijnh/tern.git
 [submodule "vendor/exttextcat"]
 	path = vendor/exttextcat
 	url = https://github.com/jedrz/exttextcat.el.git

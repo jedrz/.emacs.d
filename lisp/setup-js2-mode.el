@@ -16,21 +16,13 @@
   :config
   (js2r-add-keybindings-with-prefix "C-c r"))
 
-(use-package tern
+;; Javascript development environment
+(use-package indium
   :ensure t
   :defer t
   :init
-  (with-eval-after-load 'js2-mode
-    (add-hook 'js2-mode-hook 'tern-mode))
-  :config
-  (progn
-    (setq tern-command (list (concat user-emacs-directory "vendor/tern/bin/tern")))))
-
-(use-package company-tern
-  :ensure t
-  :defer t
-  :init
-  (with-eval-after-load 'company
-    (add-to-list 'company-backends 'company-tern)))
+  (add-hook 'js-mode-hook (lambda ()
+                            (require 'indium)
+                            (indium-interaction-mode))))
 
 (provide 'setup-js2-mode)
