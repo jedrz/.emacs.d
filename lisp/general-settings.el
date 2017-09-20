@@ -511,6 +511,13 @@
   (setq wttrin-default-cities '("Warsaw"
                                 "Siedlce")))
 
+;; Redefine M-< and M-> for some modes
+(use-package beginend
+  :ensure t
+  :defer t
+  :init
+  (beginend-global-mode))
+
 ;; Persistent command history.
 (add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
 (add-hook 'kill-buffer-hook #'comint-write-input-ring)
