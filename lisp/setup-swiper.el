@@ -25,7 +25,8 @@
   :defer t
   :bind
   (("C-S" . swiper-use-region)
-   ("C-R" . swiper-use-region))
+   ("C-R" . swiper-use-region)
+   ("C-c u" . swiper-all))
   :commands
   (swiper-use-region)
   :init
