@@ -48,17 +48,14 @@
   :bind
   (("C-s" . counsel-grep-or-swiper)
    ("C-r" . counsel-grep-or-swiper)
-   ("M-x" . counsel-M-x)
-   ("C-x C-f" . counsel-find-file)
    ("C-x 4 C-f" . counsel-find-file-other-window)
    ("C-x C-i" . counsel-imenu)
-   ("C-h f" . counsel-describe-function)
-   ("C-h v" . counsel-describe-variable)
-   ("C-h S" . counsel-info-lookup-symbol)
    ("C-x f" . counsel-recentf)
    ("C-x 4 f" . counsel-recentf-other-window))
   :commands
   (counsel-find-file-other-window counsel-recentf-other-window)
+  :init
+  (counsel-mode 1)
   :config
   (progn
     (setq counsel-find-file-at-point t)
