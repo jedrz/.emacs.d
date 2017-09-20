@@ -24,9 +24,7 @@
   :ensure t
   :defer t
   :bind
-  (("C-s" . swiper)
-   ("C-r" . swiper)
-   ("C-S" . swiper-use-region)
+  (("C-S" . swiper-use-region)
    ("C-R" . swiper-use-region))
   :commands
   (swiper-use-region)
@@ -47,7 +45,9 @@
   :ensure t
   :defer t
   :bind
-  (("M-x" . counsel-M-x)
+  (("C-s" . counsel-grep-or-swiper)
+   ("C-r" . counsel-grep-or-swiper)
+   ("M-x" . counsel-M-x)
    ("C-x C-f" . counsel-find-file)
    ("C-x 4 C-f" . counsel-find-file-other-window)
    ("C-x C-i" . counsel-imenu)
