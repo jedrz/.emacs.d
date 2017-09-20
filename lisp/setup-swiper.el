@@ -48,6 +48,7 @@
   :bind
   (("C-s" . counsel-grep-or-swiper)
    ("C-r" . counsel-grep-or-swiper)
+   ("C-c r" . counsel-rg)
    ("C-x 4 C-f" . counsel-find-file-other-window)
    ("C-x C-i" . counsel-imenu)
    ("C-x f" . counsel-recentf)
@@ -59,6 +60,10 @@
   :config
   (progn
     (setq counsel-find-file-at-point t)
+
+    (when (executable-find "rg")
+      (setq counsel-grep-base-command
+            "rg -i -M 120 --no-heading --line-number --color never '%s' %s"))
 
     (ivy-set-actions
      #'counsel-find-file
