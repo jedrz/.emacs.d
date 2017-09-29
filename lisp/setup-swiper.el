@@ -13,7 +13,8 @@
   (ivy-mode 1)
   :config
   (setq ivy-use-virtual-buffers t
-        ivy-re-builders-alist '((t . ivy--regex-fuzzy))
+        ivy-re-builders-alist '((swiper . ivy--regex-plus)
+                                (t . ivy--regex-fuzzy))
         ivy-initial-inputs-alist nil))
 
 (use-package ivy-hydra
