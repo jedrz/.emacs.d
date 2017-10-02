@@ -520,6 +520,11 @@
   :init
   (beginend-global-mode))
 
+;; Conversion of names (upcase, camelcase, uppercase, etc.).
+(use-package string-inflection
+  :ensure t
+  :defer t)
+
 ;; Persistent command history.
 (add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
 (add-hook 'kill-buffer-hook #'comint-write-input-ring)
