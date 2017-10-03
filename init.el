@@ -17,6 +17,11 @@
 ;; Don't load outdated byte-code files.
 (setq load-prefer-newer t)
 
+;; Start emacs server.
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; Add custom emacs lisp files to load-path.
 (add-to-list 'load-path (concat user-emacs-directory "lisp") t)
 
