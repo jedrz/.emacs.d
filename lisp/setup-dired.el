@@ -75,4 +75,11 @@ Do not ask for permission."
   :init
   (add-hook 'dired-mode-hook #'dired-setup-imenu))
 
+(use-package dired-open
+  :ensure t
+  :defer t
+  :bind
+  (:map dired-mode-map
+        ("<C-return>" . dired-open-xdg)))
+
 (provide 'setup-dired)
