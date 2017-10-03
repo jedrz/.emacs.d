@@ -119,4 +119,12 @@ to \"modname-foo\" in elisp."
   (--each my-lisp-mode-hooks
     (add-hook it 'smartparens-strict-mode)))
 
+
+;; Nicely display page break line characters ^L
+(use-package page-break-lines
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'emacs-lisp-mode-hook #'page-break-lines-mode))
+
 (provide 'setup-lisp-mode)
