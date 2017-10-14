@@ -24,6 +24,10 @@
 ;; Indicate empty lines after the buffer end.
 (setq-default indicate-empty-lines t)
 
+;; Make cursor the width of the character it is under i.e. full width of a TAB.
+;; http://pragmaticemacs.com/emacs/adaptive-cursor-width/
+(setq x-stretch-cursor t)
+
 ;; Highlight matching parens.
 (use-package paren
   :defer t
