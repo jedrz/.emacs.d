@@ -70,6 +70,9 @@
     ;; Index more levels with imenu.
     (setq org-imenu-depth 5)
 
+    ;; Show entities as UTF8 characters.
+    (setq org-pretty-entities t)
+
     ;; Align org tags before saving.
     (add-hook 'org-mode-hook
               (lambda ()
