@@ -525,6 +525,12 @@
   :ensure t
   :defer t)
 
+;; Quickly generate linear ranges.
+(use-package tiny
+  :ensure t
+  :bind
+  ("C-:" . tiny-expand))
+
 ;; Persistent command history.
 (add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
 (add-hook 'kill-buffer-hook #'comint-write-input-ring)
