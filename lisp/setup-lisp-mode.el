@@ -124,6 +124,7 @@ to \"modname-foo\" in elisp."
 (use-package page-break-lines
   :ensure t
   :defer t
+  :diminish page-break-lines-mode
   :init
   (add-hook 'emacs-lisp-mode-hook #'page-break-lines-mode))
 
