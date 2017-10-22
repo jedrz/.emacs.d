@@ -8,6 +8,10 @@
     ;; Silence, magit.
     (setq magit-push-always-verify nil)
 
+    ;; Integrate with gopass.
+    (add-to-list 'magit-process-find-password-functions
+                 'magit-process-password-auth-source)
+
     ;; Start credential-cache--daemon to remember passwords.
 
     (add-hook 'magit-mode-hook #'magit-maybe-run-credential-cache-daemon)

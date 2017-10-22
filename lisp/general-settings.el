@@ -531,6 +531,13 @@
   :bind
   ("C-:" . tiny-expand))
 
+;; Integrate Emacs' auth-source with password-store.
+(use-package auth-password-store
+  :ensure t
+  :defer t
+  :init
+  (auth-pass-enable))
+
 ;; Persistent command history.
 (add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
 (add-hook 'kill-buffer-hook #'comint-write-input-ring)
