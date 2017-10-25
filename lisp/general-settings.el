@@ -499,8 +499,8 @@
     (setq google-this-keybind (kbd "C-x g"))
     (google-this-mode 1)))
 
-;; Paste buffers to refheap from emacs.
-(use-package refheap
+;; Paste buffers to pastebin-like services.
+(use-package webpaste
   :ensure t
   :defer t)
 
