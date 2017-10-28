@@ -34,26 +34,6 @@
         (after magit-restore-window-configuration activate compile)
       (jump-to-register :magit-window-configuration))
 
-    ;; Ignore whitespace.
-
-    (defun magit-toggle-whitespace ()
-      (interactive)
-      (if (member "-w" magit-diff-options)
-          (magit-dont-ignore-whitespace)
-        (magit-ignore-whitespace)))
-
-    (defun magit-ignore-whitespace ()
-      (interactive)
-      (add-to-list 'magit-diff-options "-w")
-      (magit-refresh))
-
-    (defun magit-dont-ignore-whitespace ()
-      (interactive)
-      (setq magit-diff-options (remove "-w" magit-diff-options))
-      (magit-refresh))
-
-    (bind-key "W" #'magit-toggle-whitespace magit-status-mode-map)
-
     (defun magit-visit-origin ()
       (interactive)
       (let ((remote-url (magit-get "remote" "origin" "url")))
