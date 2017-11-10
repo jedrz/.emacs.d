@@ -538,6 +538,19 @@
   :init
   (auth-pass-enable))
 
+;; Nice integration with pdf files.
+;; http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
+(use-package pdf-tools
+  :pin manual ;; manually update
+  :bind-keymap
+  (("C-s" . isearch-forward)
+   ("C-r" . isearch-backward))
+  :config
+  (progn
+    (setq-default pdf-view-display-size 'fit-page)
+    (with-eval-after-load 'pdf-annot
+      (setq pdf-annot-activate-created-annotations t))))
+
 ;; Persistent command history.
 (add-hook 'kill-emacs-hook #'comint-write-input-ring-all-buffers)
 (add-hook 'kill-buffer-hook #'comint-write-input-ring)
