@@ -305,6 +305,13 @@
 ;; Save current session before killing emacs.
 (add-hook 'kill-emacs-hook #'my-desktop-kill-emacs-hook)
 
+;; Fix tramp 'Waiting for prompts from remote shell'.
+;; https://www.emacswiki.org/emacs/TrampMode#toc12
+(use-package tramp
+  :config
+  (setq tramp-shell-prompt-pattern
+        "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"))
+
 ;; Projectile is a project interaction library.
 (use-package projectile
   :ensure t
