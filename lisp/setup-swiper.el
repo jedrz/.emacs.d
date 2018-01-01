@@ -15,7 +15,9 @@
   (setq ivy-use-virtual-buffers t
         ivy-re-builders-alist '((swiper . ivy--regex-plus)
                                 (t . ivy--regex-fuzzy))
-        ivy-initial-inputs-alist nil))
+        ivy-initial-inputs-alist nil
+        ;; Allow to select current input with C-p.
+        ivy-use-selectable-prompt t))
 
 (use-package ivy-hydra
   :ensure t
