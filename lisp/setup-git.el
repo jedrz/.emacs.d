@@ -41,10 +41,13 @@
 
     (bind-key "H" #'magit-visit-origin magit-status-mode-map)))
 
+;; Provides function that popup commit message at current line. This is useful
+;; when you want to know why this line was changed.
 (use-package git-messenger
   :ensure t
   :defer t)
 
+;; Step through historic versions of git controlled file using.
 (use-package git-timemachine
   :ensure t
   :defer t)
