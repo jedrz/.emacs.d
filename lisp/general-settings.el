@@ -37,7 +37,7 @@
 (setq auto-save-file-name-transforms
       `((".*" "~/.local/share/emacs/autosaves/\\1" t))
       auto-save-list-file-prefix
-      "~/.local/share/emacs/auto-save-list/.saves-")
+      "~/.local/share/emacs/auto-save-list/saves-")
 
 ;; Create auto-save-list directory if doesn't exist yet
 ;; as its lack causes errors while auto saving is performed.
