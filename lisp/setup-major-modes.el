@@ -26,4 +26,16 @@
   :ensure t
   :defer t)
 
+(use-package terraform-mode
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
+
+(use-package company-terraform
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'terraform-mode-hook #'company-terraform-init))
+
 (provide 'setup-major-modes)
