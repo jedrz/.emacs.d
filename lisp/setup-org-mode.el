@@ -28,7 +28,7 @@
                                  org-default-notes-file))
 
     (setq org-todo-keywords
-          '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+          '((sequence "TODO(t!)" "NEXT(n)" "|" "DONE(d!)")
             (sequence "WAITING(w@)" "HOLD(h@)" "|" "CANCELLED(c)")))
 
     (setq org-todo-keyword-faces
@@ -43,6 +43,8 @@
                "* TODO %?")
               ("n" "note" entry (file ,refile-file)
                "* %?"))))
+
+    (setq org-log-into-drawer t)
 
     ;; Refile setup.
     (setq org-refile-targets '((org-agenda-files :level . 1))
