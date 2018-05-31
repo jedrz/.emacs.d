@@ -7,6 +7,7 @@
 (use-package ivy
   :ensure t
   :defer t
+  :diminish ivy-mode
   :bind
   (("C-c C-r" . ivy-resume))
   :init
@@ -48,6 +49,7 @@
 (use-package counsel
   :ensure t
   :defer t
+  :diminish counsel-mode
   :bind
   (("C-s" . counsel-grep-or-swiper)
    ("C-r" . counsel-grep-or-swiper)

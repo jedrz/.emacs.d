@@ -68,6 +68,7 @@
 
 ;; Set fill-column and comment-fill-column.
 (setq-default fill-column 79)
+(diminish #'auto-fill-function)
 (use-package newcomment
   :defer t
   :config
@@ -89,7 +90,10 @@
 (delete-selection-mode 1)
 
 ;; Handle camelCase words properly everywhere.
-(global-subword-mode 1)
+(use-package subword
+  :diminish subword-mode
+  :config
+  (global-subword-mode 1))
 
 ;; Move files to trash when deleting.
 (setq delete-by-moving-to-trash t)
@@ -120,6 +124,7 @@
   (add-hook 'find-file-hook #'exttextcat-guess-language-buffer))
 
 (use-package autorevert
+  :diminish auto-revert-mode
   :config
   (progn
     ;; Revert buffers automatically associated with files when the file changes
@@ -154,9 +159,13 @@
                                            try-complete-lisp-symbol)))
 
 ;; Enable dynamic expansion of words.
-(setq global-abbrev-table (make-abbrev-table)) ; Fix wrong type argument.
-(setq-default abbrev-mode t)
-(setq save-abbrevs 'silently)
+(use-package abbrev
+  :diminish abbrev-mode
+  :config
+  (progn
+    (setq global-abbrev-table (make-abbrev-table)) ; Fix wrong type argument.
+    (abbrev-mode t)
+    (setq save-abbrevs 'silently)))
 
 (use-package ibuffer
   :bind
@@ -483,6 +492,7 @@
 ;; Display available keybindings after delay.
 (use-package which-key
   :ensure t
+  :diminish which-key-mode
   :config
   (which-key-mode))
 
@@ -526,7 +536,11 @@
   :ensure t
   :defer t
   :init
-  (beginend-global-mode))
+  (beginend-global-mode)
+  :config
+  (progn
+    (diminish #'beginend-global-mode)
+    (diminish #'beginend-prog-mode)))
 
 ;; Conversion of names (upcase, camelcase, uppercase, etc.).
 (use-package string-inflection

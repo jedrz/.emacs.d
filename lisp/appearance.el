@@ -15,7 +15,7 @@
 ;; Visualize some kinds of blank.
 (use-package whitespace
   :defer t
-  :diminish whitespace-mode
+  :diminish global-whitespace-mode
   :init
   (global-whitespace-mode 1)
   :config
