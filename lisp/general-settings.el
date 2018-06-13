@@ -322,6 +322,14 @@
   (setq tramp-shell-prompt-pattern
         "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"))
 
+;; https://emacs.stackexchange.com/a/17890
+(use-package exec-path-from-shell
+  :ensure t
+  :config
+  (progn
+    (exec-path-from-shell-copy-env "SSH_AGENT_PID")
+    (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")))
+
 ;; Projectile is a project interaction library.
 (use-package projectile
   :ensure t
