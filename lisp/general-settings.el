@@ -327,6 +327,7 @@
   :ensure t
   :config
   (progn
+    (setq exec-path-from-shell-check-startup-files nil)
     (exec-path-from-shell-copy-env "SSH_AGENT_PID")
     (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")))
 
