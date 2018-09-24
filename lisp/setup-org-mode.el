@@ -1,8 +1,7 @@
-;; Configuration based on http://doc.norang.ca/org-mode.html.
+;; Configuration based on https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
 
 (use-package org
   :ensure t
-  :pin org
   :defer t
   :bind
   (("C-c a" . org-agenda)
@@ -17,38 +16,66 @@
     ;; Single key navigation for headlines.
     (setq org-use-speed-commands t)
 
-    ;; Add some new modules.
-    (add-to-list 'org-modules 'org-habit)
-
     ;; Set up paths.
     (setq org-directory "~/Dokumenty/org"
-          ;; File for capturing new tasks.
-          org-default-notes-file (concat org-directory "/notes.org")
-          org-agenda-files (list (concat org-directory "/todo.org")
-                                 org-default-notes-file))
+          org-agenda-files '("~/Dokumenty/org/gtd/inbox.org"
+                             "~/Dokumenty/org/gtd/gtd.org"
+                             "~/Dokumenty/org/gtd/tickler.org")
+          org-default-notes-file "~/Dokumenty/org/gtd/inbox.org")
 
     (setq org-todo-keywords
-          '((sequence "TODO(t!)" "NEXT(n)" "|" "DONE(d!)")
-            (sequence "WAITING(w@)" "HOLD(h@)" "|" "CANCELLED(c)")))
+          '((sequence "TODO(t!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELLED(c!)")))
 
     (setq org-todo-keyword-faces
-          '(("NEXT" :foreground "blue" :weight bold)
-            ("WAITING" :foreground "orange" :weight bold)
-            ("HOLD" :foreground "magenta" :weight bold)
+          '(("WAITING" :foreground "orange" :weight bold)
             ("CANCELLED" :foreground "forest green" :weight bold)))
 
     (setq org-capture-templates
-          (let ((refile-file (concat org-directory "/notes.org")))
-            `(("t" "todo" entry (file ,refile-file)
-               "* TODO %?")
-              ("n" "note" entry (file ,refile-file)
-               "* %?"))))
+          '(("t" "Todo [inbox]" entry
+             (file+headline "~/Dokumenty/org/gtd/inbox.org" "Tasks")
+             "* TODO %i%?")
+            ("T" "Tickler" entry
+             (file+headline "~/Dokumenty/org/gtd/tickler.org" "Tickler")
+             "* %i%? \n %U")))
 
-    (setq org-log-into-drawer t)
-
-    ;; Refile setup.
-    (setq org-refile-targets '((org-agenda-files :level . 1))
+    (setq org-refile-targets
+          '(("~/Dokumenty/org/gtd/gtd.org" :maxlevel . 3)
+            ("~/Dokumenty/org/gtd/someday.org" :level . 1)
+            ("~/Dokumenty/org/gtd/tickler.org" :maxlevel . 2))
           org-refile-use-outline-path 'file)
+
+    (setq org-agenda-custom-commands
+          '(("g" "Getting Things Done"
+             ((agenda "")
+              (todo
+               ""
+               ((org-agenda-overriding-header "Next action")
+                (org-agenda-skip-function
+                 '(or (my-org-agenda-skip-all-siblings-but-first)
+                      (my-org-agenda-skip-file "tickler.org")))))))))
+
+    (defun my-org-agenda-skip-all-siblings-but-first ()
+      "Skip all but the first non-done entry."
+      (let (should-skip-entry)
+        (unless (org-current-is-todo)
+          (setq should-skip-entry t))
+        (save-excursion
+          (while (and (not should-skip-entry) (org-goto-sibling t))
+            (when (org-current-is-todo)
+              (setq should-skip-entry t))))
+        (when should-skip-entry
+          (or (outline-next-heading)
+              (goto-char (point-max))))))
+
+    (defun my-org-agenda-skip-file (filename)
+      (when (string-suffix-p filename (buffer-file-name))
+        (point-max)))
+
+    (defun org-current-is-todo ()
+      (string= "TODO" (org-get-todo-state)))
+
+    ;; Log state changes into the LOGBOOK.
+    (setq org-log-into-drawer t)
 
     ;; Do not split line when cursor in not at the end.
     (setq org-M-RET-may-split-line nil)
@@ -91,20 +118,7 @@
        (sql . t)))
 
     ;; Never evaluate blocks when exporting.
-    (setq org-export-babel-evaluate nil)
-
-    ;; Better bullets.
-    (font-lock-add-keywords #'org-mode
-                            '(("^ +\\([-*]\\) "
-                               (0 (prog1 () (compose-region
-                                             (match-beginning 1)
-                                             (match-end 1)
-                                             "•"))))))))
-
-(use-package org-plus-contrib
-  :ensure t
-  :pin org
-  :defer t)
+    (setq org-export-babel-evaluate nil)))
 
 ;; LaTeX export
 (use-package ox-latex
