@@ -42,7 +42,8 @@
           '(("~/Dokumenty/org/gtd/gtd.org" :maxlevel . 3)
             ("~/Dokumenty/org/gtd/someday.org" :level . 1)
             ("~/Dokumenty/org/gtd/tickler.org" :maxlevel . 2))
-          org-refile-use-outline-path 'file)
+          org-refile-use-outline-path 'file
+          org-outline-path-complete-in-steps nil)
 
     (setq org-agenda-custom-commands
           '(("g" "Getting Things Done"
