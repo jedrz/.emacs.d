@@ -52,7 +52,8 @@
                ((org-agenda-overriding-header "Next action")
                 (org-agenda-skip-function
                  '(or (my-org-agenda-skip-all-siblings-but-first)
-                      (my-org-agenda-skip-file "tickler.org")))
+                      (my-org-agenda-skip-file "tickler.org")
+                      (my-org-agenda-skip-file "inbox.org")))
                 (org-agenda-prefix-format "  ")))
               (todo
                ""
