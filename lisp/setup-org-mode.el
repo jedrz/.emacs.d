@@ -6,7 +6,7 @@
   :bind
   (("C-c a" . org-agenda)
    ("C-c l" . org-store-link)
-   ("C-c b" . org-iswitchb)
+   ("C-c b" . org-switchb)
    ("C-c k" . org-capture))
   :config
   (progn
