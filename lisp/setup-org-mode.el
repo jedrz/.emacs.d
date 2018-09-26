@@ -24,7 +24,7 @@
           org-default-notes-file "~/Dokumenty/org/gtd/inbox.org")
 
     (setq org-todo-keywords
-          '((sequence "TODO(t!)" "WAITING(w!)" "|" "DONE(d!)" "CANCELLED(c!)")))
+          '((sequence "TODO(t!)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
 
     (setq org-todo-keyword-faces
           '(("WAITING" :foreground "orange" :weight bold)
