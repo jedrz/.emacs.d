@@ -95,11 +95,6 @@
     ;; Add a timestamp when a certain TODO item was finished.
     (setq org-log-done 'time)
 
-    ;; Custom timestamp formats.
-    (setq-default org-display-custom-times t)
-    (setq org-time-stamp-custom-formats
-          '("<%d-%m-%Y %a>" . "<%d-%m-%Y %a %H:%M>"))
-
     (setq org-ellipsis "⤵")
 
     ;; Hide characters like *word*, etc.
