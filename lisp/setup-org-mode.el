@@ -32,12 +32,11 @@
 
     (setq org-capture-templates
           '(("t" "Todo [inbox]" entry
-             (file+headline "~/Dokumenty/org/gtd/inbox.org" "Tasks")
+             (file "~/Dokumenty/org/gtd/inbox.org")
              "* TODO %i%?")
             ("T" "Tickler" entry
              (file+headline "~/Dokumenty/org/gtd/tickler.org" "Tickler")
-             "* %i%? \n %U")))
-
+             "* %i%? \n %T")))
     (setq org-refile-targets
           '(("~/Dokumenty/org/gtd/gtd.org" :maxlevel . 3)
             ("~/Dokumenty/org/gtd/someday.org" :level . 1)
