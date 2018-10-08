@@ -67,6 +67,9 @@
                  "%b"))
         " - " invocation-name))
 
+;; Disable beep.
+(setq visible-bell t)
+
 ;; Unique buffer names.
 (use-package uniquify
   :defer t
