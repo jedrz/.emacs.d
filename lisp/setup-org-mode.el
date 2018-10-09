@@ -20,7 +20,8 @@
     (setq org-directory "~/Dokumenty/org"
           org-agenda-files '("~/Dokumenty/org/gtd/inbox.org"
                              "~/Dokumenty/org/gtd/gtd.org"
-                             "~/Dokumenty/org/gtd/tickler.org")
+                             "~/Dokumenty/org/gtd/tickler.org"
+                             "~/Dokumenty/org/gtd/gcal.org")
           org-default-notes-file "~/Dokumenty/org/gtd/inbox.org")
 
     (setq org-todo-keywords
@@ -36,7 +37,11 @@
              "* TODO %i%?")
             ("T" "Tickler" entry
              (file+headline "~/Dokumenty/org/gtd/tickler.org" "Tickler")
-             "* %i%? \n %T")))
+             "* TODO %i%? \n %^t")
+            ("a" "Appointment" entry
+             (file "~/Dokumenty/org/gtd/gcal.org")
+             "* %i? \n %^T")))
+
     (setq org-refile-targets
           '(("~/Dokumenty/org/gtd/gtd.org" :maxlevel . 3)
             ("~/Dokumenty/org/gtd/someday.org" :level . 1)
@@ -163,5 +168,18 @@
 (use-package ox-reveal
   :ensure t
   :defer t)
+
+(use-package orgtbl-aggregate
+  :ensure t
+  :defer t)
+
+(use-package org-gcal
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (load "setup-org-mode-private.el")
+    (add-hook 'org-agenda-mode-hook #'org-gcal-sync)
+    (add-hook 'org-capture-after-finalize-hook #'org-gcal-sync)))
 
 (provide 'setup-org-mode)

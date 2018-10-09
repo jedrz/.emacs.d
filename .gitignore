@@ -31,3 +31,4 @@ projectile.cache
 /lisp/my-autoloads.el
 /network-security.data
 /anaconda-mode
+/lisp/setup-org-mode-private.el
