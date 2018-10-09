@@ -50,6 +50,7 @@
 
 ;; Start maximized.
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Fix frame fullscreen being not completely fullscreen.
 (setq frame-resize-pixelwise t)
