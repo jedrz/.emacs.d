@@ -37,15 +37,16 @@
              "* TODO %i%?")
             ("T" "Tickler" entry
              (file+headline "~/Dokumenty/org/gtd/tickler.org" "Tickler")
-             "* TODO %i%? \n %^t")
+             "* TODO %i%?\n\n%^t\n\n")
             ("a" "Appointment" entry
-             (file "~/Dokumenty/org/gtd/gcal.org")
-             "* %i? \n %^T")))
+             (file  "~/Dokumenty/org/gtd/gcal.org")
+             "* %?\n\n%^T\n")))
 
     (setq org-refile-targets
           '(("~/Dokumenty/org/gtd/gtd.org" :maxlevel . 3)
             ("~/Dokumenty/org/gtd/someday.org" :level . 1)
-            ("~/Dokumenty/org/gtd/tickler.org" :maxlevel . 2))
+            ("~/Dokumenty/org/gtd/tickler.org" :maxlevel . 2)
+            ("~/Dokumenty/org/gtd/gcal.org" :level . 1))
           org-refile-use-outline-path 'file
           org-outline-path-complete-in-steps nil)
 
@@ -176,10 +177,13 @@
 (use-package org-gcal
   :ensure t
   :defer t
+  :init
+  (progn
+    (add-hook 'org-agenda-mode-hook #'org-gcal-sync)
+    (add-hook 'org-capture-after-finalize-hook #'org-gcal-sync))
   :config
   (progn
     (load "setup-org-mode-private.el")
-    (add-hook 'org-agenda-mode-hook #'org-gcal-sync)
-    (add-hook 'org-capture-after-finalize-hook #'org-gcal-sync)))
+    (setq org-gcal-down-days 730)))
 
 (provide 'setup-org-mode)
