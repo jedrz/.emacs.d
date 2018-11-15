@@ -498,6 +498,14 @@
   :bind
   ("C-=" . er/expand-region))
 
+(use-package easy-kill
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (global-set-key [remap kill-ring-save] #'easy-kill)
+    (global-set-key [remap mark-sexp] #'easy-mark)))
+
 ;; Display available keybindings after delay.
 (use-package which-key
   :ensure t
@@ -627,11 +635,6 @@
 
 ;; M-S-SPC for deleting all spaces around point.
 (bind-key "M-S-SPC" #'delete-horizontal-space)
-
-;; Use M-w for copy to end of line if no active region.
-(bind-key "M-w" #'save-region-or-current-line)
-;; M-W to copy entire line.
-(bind-key "M-W" (lambda () (interactive) (save-region-or-current-line 1)))
 
 ;; Yank and indent.
 (bind-key "C-S-y" #'yank-and-indent)
