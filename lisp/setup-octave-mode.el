@@ -5,8 +5,7 @@
   (add-hook 'octave-mode-hook
             (lambda ()
               (run-octave t)
-              (setq-local eldoc-documentation-function 'octave-eldoc-function)
-              (eldoc-mode 1)))
+              (setq-local eldoc-documentation-function 'octave-eldoc-function)))
   :config
   (progn
     (setq octave-comment-char ?%)

@@ -13,7 +13,9 @@
 (add-hook 'prog-mode-hook #'prog-mode-defaults)
 
 (use-package eldoc
-  :diminish eldoc-mode)
+  :diminish eldoc-mode
+  :init
+  (global-eldoc-mode))
 
 ;; Highlight changes made to files under vc.
 (use-package diff-hl

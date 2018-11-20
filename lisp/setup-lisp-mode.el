@@ -22,7 +22,6 @@
   :defer t)
 
 (defun my-lisp-mode-setup ()
-  (eldoc-mode 1)
   (rainbow-delimiters-mode 1))
 
 (--each my-lisp-mode-hooks
