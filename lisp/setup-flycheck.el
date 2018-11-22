@@ -9,6 +9,9 @@
     ;; Highlight whole line with error.
     (setq flycheck-highlighting-mode 'lines)
 
+    ;; Disable in org-mode.
+    (setq flycheck-global-modes '(not org-mode))
+
     ;; Display error messages on one line in minibuffer and by new lines
     ;; separated in `flycheck-error-message-buffer'.
 
