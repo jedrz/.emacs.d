@@ -41,6 +41,10 @@
 
     (bind-key "H" #'magit-visit-origin magit-status-mode-map)))
 
+(use-package forge
+  :ensure t
+  :defer t)
+
 ;; Provides function that popup commit message at current line. This is useful
 ;; when you want to know why this line was changed.
 (use-package git-messenger
