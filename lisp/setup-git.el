@@ -43,7 +43,13 @@
 
 (use-package forge
   :ensure t
-  :defer t)
+  :defer t
+  :config
+  (add-to-list 'forge-alist
+               '("gitlab.touk.pl"
+                 "gitlab.touk.pl/api/v4"
+                 "gitlab.touk.pl"
+                 forge-gitlab-repository)))
 
 ;; Provides function that popup commit message at current line. This is useful
 ;; when you want to know why this line was changed.
