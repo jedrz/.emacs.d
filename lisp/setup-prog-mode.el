@@ -7,8 +7,7 @@
 (defun prog-mode-defaults ()
   "Default coding hook."
   (flyspell-prog-mode)
-  (local-comment-auto-fill)
-  (add-watchwords))
+  (local-comment-auto-fill))
 
 (add-hook 'prog-mode-hook #'prog-mode-defaults)
 
@@ -35,6 +34,12 @@
   (progn
     (bind-key "M-s n" #'highlight-symbol-next prog-mode-map)
     (bind-key "M-s p" #'highlight-symbol-prev prog-mode-map)))
+
+(use-package hl-todo
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'prog-mode-hook #'hl-todo-mode))
 
 (use-package ag
   :ensure t
