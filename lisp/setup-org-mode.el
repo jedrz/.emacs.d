@@ -154,11 +154,8 @@
 
 (use-package org-journal
   :ensure t
-  :defer t
-  :mode
-  ("journal/[0-9]\\{8\\}$" . org-journal-mode)
-  :config
-  (setq org-journal-dir (concat org-directory "/journal/")))
+  :init
+  (setq org-journal-dir "~/Dokumenty/org/journal/"))
 
 (use-package org-bullets
   :ensure t
