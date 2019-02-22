@@ -7,7 +7,8 @@
 (defun prog-mode-defaults ()
   "Default coding hook."
   (flyspell-prog-mode)
-  (local-comment-auto-fill))
+  (local-comment-auto-fill)
+  (setq ispell-local-dictionary "english"))
 
 (add-hook 'prog-mode-hook #'prog-mode-defaults)
 

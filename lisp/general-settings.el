@@ -115,13 +115,13 @@
 (use-package ispell
   :defer t
   :config
-  (setq ispell-dictionary "english"))
+  (setq ispell-dictionary "polish"))
 
 ;; Detect buffer language.
 (use-package exttextcat
   :defer t
-  :config
-  (add-hook 'find-file-hook #'exttextcat-guess-language-buffer))
+  :bind
+  ("<f6>" . exttextcat-guess-language-buffer))
 
 (use-package autorevert
   :diminish auto-revert-mode
@@ -700,8 +700,6 @@
             ("m" menu-bar-mode "menu bar")))
 
 (bind-key "C-$" #'run-terminal-with-current-dir)
-
-(bind-key "<f6>" #'exttextcat-guess-language-buffer)
 
 (bind-key "<f2>"
           (defhydra hydra-zoom ()
