@@ -33,3 +33,4 @@ projectile.cache
 /anaconda-mode
 /lisp/setup-org-mode-private.el
 /request
+/transient
