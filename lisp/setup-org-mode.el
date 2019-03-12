@@ -40,7 +40,10 @@
              "* TODO %i%?\n\n%^t\n\n")
             ("a" "Appointment" entry
              (file  "~/Dokumenty/org/gtd/gcal.org")
-             "* %?\n\n%^T\n")))
+             "* %?\n\n%^T\n")
+            ("A" "Appointment [Day]" entry
+             (file  "~/Dokumenty/org/gtd/gcal.org")
+             "* %?\n\n%^t\n")))
 
     (setq org-refile-targets
           '(("~/Dokumenty/org/gtd/gtd.org" :maxlevel . 3)
