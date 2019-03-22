@@ -1,5 +1,5 @@
 (when (window-system)
-  (set-default-font "Hack-11"))
+  (set-default-font "Hack-11.5"))
 
 (use-package flatui-theme
   :ensure t
