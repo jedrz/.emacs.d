@@ -1,5 +1,4 @@
-(when (window-system)
-  (set-default-font "Hack-11.5"))
+(add-to-list 'default-frame-alist '(font . "HACK-11"))
 
 (use-package flatui-theme
   :ensure t
