@@ -38,4 +38,8 @@
   :init
   (add-hook 'terraform-mode-hook #'company-terraform-init))
 
+(use-package groovy-mode
+  :ensure t
+  :defer t)
+
 (provide 'setup-major-modes)
