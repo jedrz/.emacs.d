@@ -175,7 +175,6 @@
   :defer t)
 
 (use-package org-gcal
-  :disabled t
   :ensure t
   :defer t
   :init
