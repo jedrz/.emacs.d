@@ -17,8 +17,6 @@
 ;; Don't load outdated byte-code files.
 (setq load-prefer-newer t)
 
-(setq initial-major-mode 'fundamental-mode)
-
 ;; Start emacs server.
 (require 'server)
 (unless (server-running-p)

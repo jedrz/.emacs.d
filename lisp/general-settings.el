@@ -21,7 +21,7 @@
 ;; Remove splash screen and message, change major mode.
 (setq inhibit-splash-screen t
       initial-scratch-message nil
-      initial-major-mode 'emacs-lisp-mode)
+      initial-major-mode 'fundamental-mode)
 
 ;; Backup files settings.
 (setq backup-by-copying t

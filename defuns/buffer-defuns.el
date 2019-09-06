@@ -14,7 +14,7 @@
              (setq n (1+ n))
              (get-buffer bufname)))
     (switch-to-buffer (get-buffer-create bufname))
-    (emacs-lisp-mode)))
+    (funcall initial-major-mode)))
 
 ;; http://github.com/magnars/.emacs.d/blob/master/defuns/buffer-defuns.el
 ;;;###autoload
