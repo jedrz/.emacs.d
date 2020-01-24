@@ -1,4 +1,4 @@
-(add-to-list 'default-frame-alist '(font . "HACK-11"))
+(add-to-list 'default-frame-alist '(font . "JetBrains Mono 10"))
 
 (use-package flatui-theme
   :ensure t
