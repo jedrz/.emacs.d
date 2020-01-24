@@ -52,7 +52,7 @@
   :diminish counsel-mode
   :bind
   (("C-s" . counsel-grep-or-swiper)
-   ("C-r" . counsel-grep-or-swiper)
+   ("C-r" . counsel-grep-or-swiper-backward)
    ("C-c r" . counsel-rg)
    ("C-x 4 C-f" . counsel-find-file-other-window)
    ("C-x C-i" . counsel-imenu)
