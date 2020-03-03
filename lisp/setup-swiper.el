@@ -64,7 +64,8 @@
   (counsel-mode 1)
   :config
   (progn
-    (setq counsel-find-file-at-point t)
+    (setq counsel-find-file-at-point t
+          counsel-grep-swiper-limit 1000000)
 
     (when (executable-find "rg")
       (setq counsel-grep-base-command
