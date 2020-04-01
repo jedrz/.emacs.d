@@ -1,6 +1,7 @@
 (use-package js2-mode
   :ensure t
-  :mode ("\\.js$" "\\.json$")
+  :mode (("\\.js\\'" . js2-mode)
+         ("\\.jsx?\\'" . js2-jsx-mode))
   :config
   (progn
     (setq-default js2-basic-offset 2)
@@ -24,5 +25,9 @@
   (add-hook 'js-mode-hook (lambda ()
                             (require 'indium)
                             (indium-interaction-mode))))
+
+(use-package json-mode
+  :ensure t
+  :defer t)
 
 (provide 'setup-js2-mode)
