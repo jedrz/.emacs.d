@@ -55,8 +55,7 @@
 (use-package latex-extra
   :ensure t
   :defer t
-  :init
-  (add-hook 'LaTeX-mode-hook #'latex-extra-mode))
+  :hook LaTeX-mode)
 
 (use-package auctex-latexmk
   :ensure t
@@ -75,6 +74,6 @@
 (use-package atilde
   :defer t
   :init
-  (add-hook 'LaTeX-mode-hook #'atilde-mode))
+  :hook LaTeX-mode)
 
 (provide 'setup-latex-mode)
