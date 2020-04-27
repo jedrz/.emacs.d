@@ -108,4 +108,11 @@
       (unless fci-mode
         (turn-on-fci-mode)))))
 
+(use-package emojify
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (add-hook 'after-init-hook #'global-emojify-mode)))
+
 (provide 'appearance)
