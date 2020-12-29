@@ -91,9 +91,6 @@
     (defun org-current-is-todo ()
       (string= "TODO" (org-get-todo-state)))
 
-    ;; Log state changes into the LOGBOOK.
-    (setq org-log-into-drawer t)
-
     ;; Do not split line when cursor in not at the end.
     (setq org-M-RET-may-split-line nil)
 
@@ -160,11 +157,11 @@
   :init
   (setq org-journal-dir "~/Dokumenty/org/journal/"))
 
-(use-package org-bullets
+(use-package org-superstar
   :ensure t
   :defer t
   :init
-  (add-hook #'org-mode-hook #'org-bullets-mode))
+  (add-hook #'org-mode-hook #'org-superstar-mode))
 
 (use-package ox-reveal
   :ensure t
