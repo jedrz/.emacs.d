@@ -32,7 +32,10 @@
             ("CANCELLED" :foreground "forest green" :weight bold)))
 
     (setq org-capture-templates
-          '(("t" "Todo [inbox]" entry
+          '(("n" "Note" entry
+             (file "~/Dokumenty/org/notes.org")
+             "* %i%?")
+            ("t" "Todo [inbox]" entry
              (file "~/Dokumenty/org/gtd/inbox.org")
              "* TODO %i%?")
             ("T" "Tickler" entry
