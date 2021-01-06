@@ -693,7 +693,8 @@
             ("o" occur "occur")
             ("m" multi-occur "multi occur")
             ("p" paradox-list-packages "list packages")
-            ("w" webjump "web jump")))
+            ("w" webjump "web jump")
+            ("d" deft "deft")))
 
 ;; Toggle map.
 (bind-key "C-x t"

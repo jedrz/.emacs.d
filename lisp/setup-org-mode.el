@@ -183,4 +183,12 @@
     (load "setup-org-mode-private.el")
     (setq org-gcal-down-days 730)))
 
+(use-package deft
+  :ensure t
+  :defer t
+  :commands (deft)
+  :config
+  (setq deft-directory "~/Dokumenty/org"
+        deft-recursive t))
+
 (provide 'setup-org-mode)
