@@ -85,28 +85,13 @@
   :init
   (sml/setup))
 
-;; fill-column-indicator
 ;; Enable only in text- and prog-modes.
-(use-package fill-column-indicator
-  :ensure t
+(use-package display-fill-column-indicator
   :defer t
   :init
   (progn
-    (add-hook 'prog-mode-hook #'fci-mode)
-    (add-hook 'text-mode-hook #'fci-mode))
-  :config
-  (progn
-    ;; Workarounds for popup library.
-
-    (defadvice popup-create (before suppress-fci-mode activate compile)
-      "Suspend fci-mode while popups are visible"
-      (when fci-mode
-        (turn-off-fci-mode)))
-
-    (defadvice popup-delete (after restore-fci-mode activate compile)
-      "Restore fci-mode when all popups have closed"
-      (unless fci-mode
-        (turn-on-fci-mode)))))
+    (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+    (add-hook 'text-mode-hook #'display-fill-column-indicator-mode)))
 
 (use-package emojify
   :ensure t
