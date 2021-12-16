@@ -194,4 +194,11 @@
   (setq deft-directory "~/Dokumenty/org"
         deft-recursive t))
 
+(use-package org-tree-slide
+  :ensure t
+  :defer t
+  :config
+  (setq org-tree-slide-cursor-init nil)
+  :bind (:map org-mode-map ("<f8>" . org-tree-slide-mode)))
+
 (provide 'setup-org-mode)
