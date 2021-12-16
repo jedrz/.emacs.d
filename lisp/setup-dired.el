@@ -56,7 +56,6 @@ Do not ask for permission."
   (setq dired-omit-files "^\\.?#\\|^\\.[^\\.].*$"))
 
 (use-package dired+
-  :ensure t
   :defer t
   :init
   (require 'dired+))
