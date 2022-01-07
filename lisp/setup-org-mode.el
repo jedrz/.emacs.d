@@ -27,6 +27,8 @@
     (setq org-todo-keywords
           '((sequence "TODO(t!)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
 
+    (setq org-log-into-drawer "LOGBOOK")
+
     (setq org-todo-keyword-faces
           '(("WAITING" :foreground "orange" :weight bold)
             ("CANCELLED" :foreground "forest green" :weight bold)))
