@@ -692,7 +692,7 @@
             ("r" rgrep "recursive grep")
             ("o" occur "occur")
             ("m" multi-occur "multi occur")
-            ("p" paradox-list-packages "list packages")
+            ("p" package-list-packages "list packages")
             ("w" webjump "web jump")
             ("d" deft "deft")))
 

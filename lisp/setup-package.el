@@ -18,11 +18,4 @@
 (eval-when-compile
   (require 'use-package))
 
-;; Package.el on steroids.
-(use-package paradox
-  :ensure t
-  :defer t
-  :config
-  (setq paradox-execute-asynchronously nil))
-
 (provide 'setup-package)
