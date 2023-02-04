@@ -1,4 +1,11 @@
+;;  -*- lexical-binding: t; -*-
+
 ;; Configuration based on https://emacs.cafe/emacs/orgmode/gtd/2017/06/30/orgmode-gtd.html
+
+(defvar my-org-base-agenda-files '("~/Dokumenty/org/gtd/inbox.org"
+                                   "~/Dokumenty/org/gtd/gtd.org"
+                                   "~/Dokumenty/org/gtd/tickler.org"
+                                   "~/Dokumenty/org/gtd/gcal.org"))
 
 (use-package org
   :ensure t
@@ -18,10 +25,7 @@
 
     ;; Set up paths.
     (setq org-directory "~/Dokumenty/org"
-          org-agenda-files '("~/Dokumenty/org/gtd/inbox.org"
-                             "~/Dokumenty/org/gtd/gtd.org"
-                             "~/Dokumenty/org/gtd/tickler.org"
-                             "~/Dokumenty/org/gtd/gcal.org")
+          org-agenda-files my-org-base-agenda-files
           org-default-notes-file "~/Dokumenty/org/gtd/inbox.org")
 
     (setq org-todo-keywords
@@ -194,5 +198,101 @@
   :config
   (setq org-tree-slide-cursor-init nil)
   :bind (:map org-mode-map ("<f8>" . org-tree-slide-mode)))
+
+;; Based on:
+;; https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
+;; https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html
+(use-package org-roam
+  :ensure t
+  :defer t
+  :custom
+  (org-roam-directory "~/Dokumenty/org/roam")
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "%?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)
+     ("b" "book notes" plain
+      "\n* Pozycja\n\nAutor: %^{Autor}\nTytuł: ${title}\nRok: %^{Rok}\n\n* Podsumowanie\n\n%?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+      :unnarrowed t)
+     ("p" "project" plain "* Zadania\n\n** TODO Pierwsze zadanie\n\n"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}")
+      :unnarrowed t)))
+  :bind
+  (("C-c n l" . org-roam-buffer-toggle)
+   ("C-c n f" . org-roam-node-find)
+   ("C-c n i" . org-roam-node-insert))
+  :init
+  (add-hook 'find-file-hook #'my-org-roam-project-update-tag)
+  (add-hook 'before-save-hook #'my-org-roam-project-update-tag)
+  (advice-add 'org-agenda :before #'my-org-roam-agenda-files-update)
+  (advice-add 'org-todo-list :before #'my-org-roam-agenda-files-update)
+  :config
+  (require 'vulpea)
+
+  (defun my-org-roam-project-p ()
+    "Return non-nil if current buffer has any todo entry.
+
+TODO entries marked as done are ignored, meaning the this
+function returns nil if current buffer contains only completed
+tasks."
+    (org-element-map
+        (org-element-parse-buffer 'headline)
+        'headline
+      (lambda (h)
+        (eq (org-element-property :todo-type h)
+            'todo))
+      nil 'first-match))
+
+  (defun my-org-roam-project-files ()
+    "Return a list of note files containing 'project' tag." ;
+    (seq-uniq
+     (seq-map
+      #'car
+      (org-roam-db-query
+       [:select [nodes:file]
+                :from tags
+                :left-join nodes
+                :on (= tags:node-id nodes:id)
+                :where (like tag (quote "%\"project\"%"))]))))
+
+  (defun my-org-roam-project-update-tag ()
+    "Update PROJECT tag in the current buffer."
+    (when (and (not (active-minibuffer-window))
+               (my-org-roam-buffer-p))
+      (save-excursion
+        (goto-char (point-min))
+        (let* ((tags (vulpea-buffer-tags-get))
+               (original-tags tags))
+          (if (my-org-roam-project-p)
+              (setq tags (cons "project" tags))
+            (setq tags (remove "project" tags)))
+
+          ;; cleanup duplicates
+          (setq tags (seq-uniq tags))
+
+          ;; update tags if changed
+          (when (or (seq-difference tags original-tags)
+                    (seq-difference original-tags tags))
+            (apply #'vulpea-buffer-tags-set tags))))))
+
+  (defun my-org-roam-buffer-p ()
+    "Return non-nil if the currently visited buffer is a note."
+    (and buffer-file-name
+         (string-prefix-p
+          (expand-file-name (file-name-as-directory org-roam-directory))
+          (file-name-directory buffer-file-name))))
+
+  (defun my-org-roam--agenda-files-update (&rest _)
+    "Update the value of `org-agenda-files'."
+    (setq org-agenda-files (append my-org-base-agenda-files
+                                   (my-org-roam-project-files))))
+
+  (org-roam-db-autosync-mode))
+
+(use-package vulpea
+  :ensure t
+  :defer t)
 
 (provide 'setup-org-mode)
