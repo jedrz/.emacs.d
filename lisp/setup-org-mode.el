@@ -38,10 +38,7 @@
             ("CANCELLED" :foreground "forest green" :weight bold)))
 
     (setq org-capture-templates
-          '(("n" "Note" entry
-             (file "~/Dokumenty/org/notes.org")
-             "* %i%?")
-            ("t" "Todo [inbox]" entry
+          '(("t" "Todo [inbox]" entry
              (file "~/Dokumenty/org/gtd/inbox.org")
              "* TODO %i%?")
             ("T" "Tickler" entry
@@ -54,51 +51,16 @@
              (file  "~/Dokumenty/org/gtd/gcal.org")
              "* %?\n\n%^t\n")))
 
-    (setq org-refile-targets
-          '(("~/Dokumenty/org/gtd/gtd.org" :maxlevel . 3)
-            ("~/Dokumenty/org/gtd/someday.org" :level . 1)
-            ("~/Dokumenty/org/gtd/tickler.org" :maxlevel . 2)
-            ("~/Dokumenty/org/gtd/gcal.org" :level . 1))
+    (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
           org-refile-use-outline-path 'file
           org-outline-path-complete-in-steps nil)
 
     (setq org-agenda-custom-commands
-          '(("g" "Getting Things Done"
-             ((agenda "")
-              (todo
-               ""
-               ((org-agenda-overriding-header "Next action")
-                (org-agenda-skip-function
-                 '(or (my-org-agenda-skip-all-siblings-but-first)
-                      (my-org-agenda-skip-file "tickler.org")
-                      (my-org-agenda-skip-file "inbox.org")))
-                (org-agenda-prefix-format "  ")))
-              (todo
-               ""
-               ((org-agenda-overriding-header "All")
-                (org-agenda-skip-function
-                 '(my-org-agenda-skip-file "tickler.org"))
-                (org-agenda-prefix-format "  ")))))))
-
-    (defun my-org-agenda-skip-all-siblings-but-first ()
-      "Skip all but the first non-done entry."
-      (let (should-skip-entry)
-        (unless (org-current-is-todo)
-          (setq should-skip-entry t))
-        (save-excursion
-          (while (and (not should-skip-entry) (org-goto-sibling t))
-            (when (org-current-is-todo)
-              (setq should-skip-entry t))))
-        (when should-skip-entry
-          (or (outline-next-heading)
-              (goto-char (point-max))))))
-
-    (defun my-org-agenda-skip-file (filename)
-      (when (string-suffix-p filename (buffer-file-name))
-        (point-max)))
-
-    (defun org-current-is-todo ()
-      (string= "TODO" (org-get-todo-state)))
+          '((" " "Agenda"
+             ((tags
+               "REFILE"
+               ((org-agenda-overriding-header "To refile")
+                (org-tags-match-list-sublevels nil)))))))
 
     ;; Do not split line when cursor in not at the end.
     (setq org-M-RET-may-split-line nil)
@@ -284,7 +246,7 @@ tasks."
           (expand-file-name (file-name-as-directory org-roam-directory))
           (file-name-directory buffer-file-name))))
 
-  (defun my-org-roam--agenda-files-update (&rest _)
+  (defun my-org-roam-agenda-files-update (&rest _)
     "Update the value of `org-agenda-files'."
     (setq org-agenda-files (append my-org-base-agenda-files
                                    (my-org-roam-project-files))))
