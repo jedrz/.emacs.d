@@ -16,89 +16,91 @@
    ("C-c b" . org-switchb)
    ("C-c k" . org-capture))
   :config
-  (progn
-    ;; Indent (view only) headlines and text.
-    (setq org-startup-indented t)
+  ;; Indent (view only) headlines and text.
+  (setq org-startup-indented t)
 
-    ;; Single key navigation for headlines.
-    (setq org-use-speed-commands t)
+  ;; Single key navigation for headlines.
+  (setq org-use-speed-commands t)
 
-    ;; Set up paths.
-    (setq org-directory "~/Dokumenty/org"
-          org-agenda-files my-org-base-agenda-files
-          org-default-notes-file "~/Dokumenty/org/gtd/inbox.org")
+  ;; Set up paths.
+  (setq org-directory "~/Dokumenty/org"
+        org-agenda-files my-org-base-agenda-files
+        org-default-notes-file "~/Dokumenty/org/gtd/inbox.org")
 
-    (setq org-todo-keywords
-          '((sequence "TODO(t!)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
+  (setq org-todo-keywords
+        '((sequence "TODO(t!)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
 
-    (setq org-log-into-drawer "LOGBOOK")
+  (setq org-log-into-drawer "LOGBOOK")
 
-    (setq org-todo-keyword-faces
-          '(("WAITING" :foreground "orange" :weight bold)
-            ("CANCELLED" :foreground "forest green" :weight bold)))
+  (setq org-todo-keyword-faces
+        '(("WAITING" :foreground "orange" :weight bold)
+          ("CANCELLED" :foreground "forest green" :weight bold)))
 
-    (setq org-capture-templates
-          '(("t" "Todo [inbox]" entry
-             (file "~/Dokumenty/org/gtd/inbox.org")
-             "* TODO %i%?")
-            ("T" "Tickler" entry
-             (file+headline "~/Dokumenty/org/gtd/tickler.org" "Tickler")
-             "* TODO %i%?\n\n%^t\n\n")
-            ("a" "Appointment" entry
-             (file  "~/Dokumenty/org/gtd/gcal.org")
-             "* %?\n\n%^T\n")
-            ("A" "Appointment [Day]" entry
-             (file  "~/Dokumenty/org/gtd/gcal.org")
-             "* %?\n\n%^t\n")))
+  (setq org-capture-templates
+        '(("t" "Todo [inbox]" entry
+           (file "~/Dokumenty/org/gtd/inbox.org")
+           "* TODO %i%?")
+          ("T" "Tickler" entry
+           (file+headline "~/Dokumenty/org/gtd/tickler.org" "Tickler")
+           "* TODO %i%?\n\n%^t\n\n")
+          ("a" "Appointment" entry
+           (file  "~/Dokumenty/org/gtd/gcal.org")
+           "* %?\n\n%^T\n")
+          ("A" "Appointment [Day]" entry
+           (file  "~/Dokumenty/org/gtd/gcal.org")
+           "* %?\n\n%^t\n")))
 
-    (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
-          org-refile-use-outline-path 'file
-          org-outline-path-complete-in-steps nil)
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 3))
+        org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps nil)
 
-    (setq org-agenda-custom-commands
-          '((" " "Agenda"
-             ((tags
-               "REFILE"
-               ((org-agenda-overriding-header "To refile")
-                (org-tags-match-list-sublevels nil)))))))
+  (setq org-agenda-custom-commands
+        '((" " "Agenda"
+           ((tags
+             "REFILE"
+             ((org-agenda-overriding-header "To refile")
+              (org-tags-match-list-sublevels nil)))))))
 
-    ;; Do not split line when cursor in not at the end.
-    (setq org-M-RET-may-split-line nil)
+  ;; Do not split line when cursor in not at the end.
+  (setq org-M-RET-may-split-line nil)
 
-    ;; Highlight source code.
-    (setq org-src-fontify-natively t)
+  ;; Highlight source code.
+  (setq org-src-fontify-natively t)
 
-    ;; Add a timestamp when a certain TODO item was finished.
-    (setq org-log-done 'time)
+  ;; Add a timestamp when a certain TODO item was finished.
+  (setq org-log-done 'time)
 
-    (setq org-ellipsis "⤵")
+  (setq org-ellipsis "⤵")
 
-    ;; Hide characters like *word*, etc.
-    (setq org-hide-emphasis-markers t)
+  ;; Hide characters like *word*, etc.
+  (setq org-hide-emphasis-markers t)
 
-    ;; Index more levels with imenu.
-    (setq org-imenu-depth 5)
+  ;; Index more levels with imenu.
+  (setq org-imenu-depth 5)
 
-    ;; Show entities as UTF8 characters.
-    (setq org-pretty-entities t)
+  ;; Show entities as UTF8 characters.
+  (setq org-pretty-entities t)
 
-    ;; Align org tags before saving.
-    (add-hook 'org-mode-hook
-              (lambda ()
-                (add-hook 'before-save-hook 'org-align-all-tags nil t)))
+  ;; Align org tags before saving.
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'org-align-all-tags nil t)))
 
-    ;; Org babel
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     '((emacs-lisp . t)
-       (shell . t)
-       (python . t)
-       ;; (R . t)
-       (calc . t)
-       (sql . t)))
+  ;; Autosave org mode buffers.
+  (add-hook 'auto-save-hook 'org-save-all-org-buffers)
 
-    ;; Never evaluate blocks when exporting.
-    (setq org-export-babel-evaluate nil)))
+  ;; Org babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t)
+     (python . t)
+     ;; (R . t)
+     (calc . t)
+     (sql . t)))
+
+  ;; Never evaluate blocks when exporting.
+  (setq org-export-babel-evaluate nil))
 
 ;; LaTeX export
 (use-package ox-latex
