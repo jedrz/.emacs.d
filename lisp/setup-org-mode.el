@@ -81,6 +81,9 @@
   ;; Show entities as UTF8 characters.
   (setq org-pretty-entities t)
 
+  ;; Follow link on RET.
+  (setq org-return-follows-link t)
+
   ;; Align org tags before saving.
   (add-hook 'org-mode-hook
             (lambda ()
