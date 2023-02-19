@@ -62,4 +62,8 @@
   :ensure t
   :defer t)
 
+(use-package git-auto-commit-mode
+  :ensure t
+  :defer t)
+
 (provide 'setup-git)
