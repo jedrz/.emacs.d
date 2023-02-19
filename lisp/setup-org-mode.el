@@ -30,8 +30,6 @@
   (setq org-todo-keywords
         '((sequence "TODO(t!)" "WAITING(w@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
 
-  (setq org-log-into-drawer "LOGBOOK")
-
   (setq org-todo-keyword-faces
         '(("WAITING" :foreground "orange" :weight bold)
           ("CANCELLED" :foreground "forest green" :weight bold)))
@@ -66,9 +64,6 @@
 
   ;; Highlight source code.
   (setq org-src-fontify-natively t)
-
-  ;; Add a timestamp when a certain TODO item was finished.
-  (setq org-log-done 'time)
 
   (setq org-ellipsis "⤵")
 
