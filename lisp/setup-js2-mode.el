@@ -3,13 +3,12 @@
   :mode (("\\.js\\'" . js2-mode)
          ("\\.jsx?\\'" . js2-jsx-mode))
   :config
-  (progn
-    (setq-default js2-basic-offset 2)
+  (setq-default js2-basic-offset 2)
 
-    ;; Let flycheck handle parse errors.
-    (setq-default js2-show-parse-errors nil)
-    (setq-default js2-strict-missing-semi-warning nil)
-    (setq-default js2-strict-trailing-comma-warning t)))
+  ;; Let flycheck handle parse errors.
+  (setq-default js2-show-parse-errors nil)
+  (setq-default js2-strict-missing-semi-warning nil)
+  (setq-default js2-strict-trailing-comma-warning t))
 
 (use-package js2-refactor
   :ensure t
@@ -24,7 +23,9 @@
   :init
   (add-hook 'js-mode-hook (lambda ()
                             (require 'indium)
-                            (indium-interaction-mode))))
+                            (indium-interaction-mode)))
+  :config
+  (unbind-key "C-c d" indium-interaction-mode-map))
 
 (use-package json-mode
   :ensure t
