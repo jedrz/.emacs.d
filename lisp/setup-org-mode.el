@@ -185,6 +185,8 @@
   (("C-c n l" . org-roam-buffer-toggle)
    ("C-c n f" . org-roam-node-find)
    ("C-c n i" . org-roam-node-insert))
+  :autoload
+  (my-org-roam-project-update-tag my-org-roam-agenda-files-update)
   :init
   (add-hook 'find-file-hook #'my-org-roam-project-update-tag)
   (add-hook 'before-save-hook #'my-org-roam-project-update-tag)
