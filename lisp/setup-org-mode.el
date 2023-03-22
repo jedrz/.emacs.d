@@ -53,11 +53,18 @@
         org-outline-path-complete-in-steps nil)
 
   (setq org-agenda-custom-commands
-        '((" " "Agenda"
-           ((tags
-             "REFILE"
-             ((org-agenda-overriding-header "To refile")
-              (org-tags-match-list-sublevels nil)))))))
+        '(("g" "Getting Things Done"
+           ((agenda "")
+            (tags "Inbox"
+                  ((org-agenda-overriding-header "Inbox")
+                   (org-tags-match-list-sublevels nil)))
+            (todo
+             ""
+             ((org-agenda-overriding-header "All")
+              (org-agenda-skip-function
+               '(or (my-org-agenda-skip-file "tickler.org")
+                    (my-org-agenda-skip-file "inbox.org")))
+              (org-agenda-prefix-format "  ")))))))
 
   ;; Do not split line when cursor in not at the end.
   (setq org-M-RET-may-split-line nil)
@@ -98,7 +105,11 @@
      (sql . t)))
 
   ;; Never evaluate blocks when exporting.
-  (setq org-export-babel-evaluate nil))
+  (setq org-export-babel-evaluate nil)
+
+  (defun my-org-agenda-skip-file (filename)
+    (when (string-suffix-p filename (buffer-file-name))
+      (point-max))))
 
 ;; LaTeX export
 (use-package ox-latex
