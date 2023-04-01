@@ -75,7 +75,6 @@
 (require 'setup-dired)
 (require 'setup-git)
 (require 'setup-yasnippet)
-(require 'setup-company-mode)
 (require 'setup-smartparens)
 (require 'setup-flycheck)
 (require 'setup-swiper)
