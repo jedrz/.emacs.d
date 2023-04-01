@@ -88,4 +88,20 @@
               ("l" dumb-jump-quick-look "Quick look")
               ("b" dumb-jump-back "Back"))))
 
+(use-package lsp-mode
+  :ensure t
+  :defer t
+  :init
+  ;; Overrides downcase-region.
+  (setq lsp-keymap-prefix "C-x C-l")
+  :hook ((lsp-mode . lsp-enable-which-key-integration)
+         ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-typescript/
+         (javascript-mode . lsp))
+  :commands lsp)
+
+(use-package lsp-ui
+  :ensure t
+  :defer t
+  :commands lsp-ui-mode)
+
 (provide 'setup-prog-mode)

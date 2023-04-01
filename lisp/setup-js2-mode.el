@@ -16,17 +16,6 @@
   :config
   (js2r-add-keybindings-with-prefix "C-c r"))
 
-;; Javascript development environment
-(use-package indium
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'js-mode-hook (lambda ()
-                            (require 'indium)
-                            (indium-interaction-mode)))
-  :config
-  (unbind-key "C-c d" indium-interaction-mode-map))
-
 (use-package json-mode
   :ensure t
   :defer t)
