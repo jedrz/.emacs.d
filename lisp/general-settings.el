@@ -584,7 +584,8 @@
 ;; Nice integration with pdf files.
 ;; http://pragmaticemacs.com/emacs/view-and-annotate-pdfs-in-emacs-with-pdf-tools/
 (use-package pdf-tools
-  :pin manual ;; manually update
+  :ensure t
+  :defer t
   :bind-keymap
   (("C-s" . isearch-forward)
    ("C-r" . isearch-backward))
