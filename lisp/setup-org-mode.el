@@ -15,6 +15,8 @@
    ("C-c l" . org-store-link)
    ("C-c b" . org-switchb)
    ("C-c k" . org-capture))
+  :init
+  (setq org-export-backends '(ascii html icalendar latex odt md))
   :config
   ;; Indent (view only) headlines and text.
   (setq org-startup-indented t)
