@@ -92,6 +92,9 @@
 ;; Handle URLs as if they were file names throughout Emacs.
 (url-handler-mode 1)
 
+;; Allow to center with Ctrl-l while searching.
+(setq isearch-allow-scroll t)
+
 ;; Handle camelCase words properly everywhere.
 (use-package subword
   :diminish subword-mode
