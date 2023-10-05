@@ -89,6 +89,9 @@
 ;; Any key deletes selection.
 (delete-selection-mode 1)
 
+;; Handle URLs as if they were file names throughout Emacs.
+(url-handler-mode 1)
+
 ;; Handle camelCase words properly everywhere.
 (use-package subword
   :diminish subword-mode
