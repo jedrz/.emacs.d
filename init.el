@@ -69,6 +69,7 @@
 (require 'setup-rust-mode)
 (require 'setup-sh-mode)
 (require 'setup-haskell-mode)
+(require 'setup-ocaml-mode)
 (require 'setup-major-modes)
 
 ;; Setup extensions.
