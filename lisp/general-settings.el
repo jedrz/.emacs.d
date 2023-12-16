@@ -318,9 +318,6 @@
                            ""]))
                        webjump-sample-sites)))
 
-;; Save current session before killing emacs.
-(add-hook 'kill-emacs-hook #'my-desktop-kill-emacs-hook)
-
 ;; Fix tramp 'Waiting for prompts from remote shell'.
 ;; https://www.emacswiki.org/emacs/TrampMode#toc12
 (use-package tramp
@@ -331,9 +328,10 @@
 ;; https://emacs.stackexchange.com/a/17890
 (use-package exec-path-from-shell
   :ensure t
+  :init
+  (exec-path-from-shell-initialize)
   :config
   (progn
-    (setq exec-path-from-shell-check-startup-files nil)
     (exec-path-from-shell-copy-env "SSH_AGENT_PID")
     (exec-path-from-shell-copy-env "SSH_AUTH_SOCK")))
 
