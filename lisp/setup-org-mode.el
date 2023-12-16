@@ -197,7 +197,8 @@
   :bind
   (("C-c n l" . org-roam-buffer-toggle)
    ("C-c n f" . org-roam-node-find)
-   ("C-c n i" . org-roam-node-insert))
+   ("C-c n i" . org-roam-node-insert)
+   ("C-c n w" . org-roam-refile))
   :autoload
   (my-org-roam-project-update-tag my-org-roam-agenda-files-update)
   :init
