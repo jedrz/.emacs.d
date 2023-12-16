@@ -328,10 +328,6 @@
   (setq tramp-shell-prompt-pattern
         "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"))
 
-(use-package docker-tramp
-  :ensure t
-  :defer t)
-
 ;; https://emacs.stackexchange.com/a/17890
 (use-package exec-path-from-shell
   :ensure t
