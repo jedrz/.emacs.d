@@ -77,6 +77,6 @@
 (require 'setup-yasnippet)
 (require 'setup-smartparens)
 (require 'setup-flycheck)
-(require 'setup-swiper)
+(require 'setup-vertico)
 
 )

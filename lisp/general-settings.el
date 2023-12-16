@@ -415,26 +415,6 @@
       ;; invisible here anyway.
       (assq-delete-all 'which-func-mode mode-line-misc-info))
 
-(use-package avy
-  :ensure t
-  :defer t
-  :bind
-  ("M-m" . avy-goto-char-in-line)
-  :init
-  (bind-key
-   "M-g"
-   (defhydra hydra-avy (:color blue)
-     "avy"
-     ("c" avy-goto-char "char")
-     ("C" avy-goto-char-2 "2 char")
-     ("m" avy-goto-char-in-line "char in line")
-     ("g" avy-goto-line "line")
-     ("G" goto-line "line (default)")
-     ("w" avy-goto-word-1 "word")
-     ("W" avy-goto-word-0 "some word")
-     ("s" avy-goto-subword-1 "subword")
-     ("S" avy-goto-subword-0 "some subword"))))
-
 (use-package imenu
   :defer t
   :config
@@ -588,9 +568,6 @@
 (use-package pdf-tools
   :ensure t
   :defer t
-  :bind-keymap
-  (("C-s" . isearch-forward)
-   ("C-r" . isearch-backward))
   :config
   (progn
     (setq-default pdf-view-display-size 'fit-page)
@@ -626,9 +603,9 @@
 (define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
 
 ;; Clever new lines.
-(bind-key "<C-return>" #'new-line-below)
-(bind-key "<C-S-return>" #'new-line-above)
-(bind-key "<M-return>" #'new-line-in-between)
+;(bind-key "<C-return>" #'new-line-below)
+;(bind-key "<C-S-return>" #'new-line-above)
+;(bind-key "<M-return>" #'new-line-in-between)
 
 ;; Join line.
 (bind-key "C-x j" #'join-line)
