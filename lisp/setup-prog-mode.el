@@ -8,7 +8,8 @@
   "Default coding hook."
   (flyspell-prog-mode)
   (local-comment-auto-fill)
-  (setq ispell-local-dictionary "english"))
+  (setq ispell-local-dictionary "english")
+  (display-line-numbers-mode 1))
 
 (add-hook 'prog-mode-hook #'prog-mode-defaults)
 
