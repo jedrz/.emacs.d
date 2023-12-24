@@ -194,6 +194,7 @@
      ("p" "project" plain "* Zadania\n\n** TODO Pierwsze zadanie\n\n"
       :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+category: ${title}")
       :unnarrowed t)))
+  ;; Some of the below bindings are overridden in consult-org-roam.
   :bind
   (("C-c n l" . org-roam-buffer-toggle)
    ("C-c n f" . org-roam-node-find)
@@ -272,5 +273,33 @@ tasks."
 (use-package vulpea
   :ensure t
   :defer t)
+
+(use-package consult-org-roam
+  :ensure t
+  :defer t
+  :after org-roam
+  :init
+  (require 'consult-org-roam)
+  ;; Activate the minor mode
+  (consult-org-roam-mode 1)
+  :custom
+  ;; Use `ripgrep' for searching with `consult-org-roam-search'
+  (consult-org-roam-grep-func #'consult-ripgrep)
+  ;; Configure a custom narrow key for `consult-buffer'
+  (consult-org-roam-buffer-narrow-key ?r)
+  ;; Display org-roam buffers right after non-org-roam buffers
+  ;; in consult-buffer (and not down at the bottom)
+  (consult-org-roam-buffer-after-buffers t)
+  :config
+  ;; Eventually suppress previewing for certain functions
+  (consult-customize
+   consult-org-roam-forward-links
+   :preview-key "M-.")
+  :bind
+  ;; Define some convenient keybindings as an addition
+  ("C-c n f" . consult-org-roam-file-find)
+  ("C-c n r" . consult-org-roam-search)
+  ("C-c n b" . consult-org-roam-backlinks)
+  ("C-c n l" . consult-org-roam-forward-links))
 
 (provide 'setup-org-mode)
