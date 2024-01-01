@@ -522,10 +522,7 @@
   :defer t
   :init
   (beginend-global-mode)
-  :config
-  (progn
-    (diminish #'beginend-global-mode)
-    (diminish #'beginend-prog-mode)))
+  :diminish 'beginend-global-mode)
 
 ;; Conversion of names (upcase, camelcase, uppercase, etc.).
 (use-package string-inflection
