@@ -302,22 +302,6 @@
   (setq bookmark-default-file (concat user-emacs-directory "bookmarks")
         bookmark-save-flag 1))
 
-(use-package webjump
-  :defer t
-  :config
-  (setq webjump-sites (append
-                       '(("bab.la" .
-                          [simple-query
-                           "bab.la"
-                           "bab.la/slownik/angielski-polski/"
-                           ""])
-                         ("Urban Dictionary" .
-                          [simple-query
-                           "urbandictionary.com"
-                           "urbandictionary.com/define.php?term="
-                           ""]))
-                       webjump-sample-sites)))
-
 ;; Fix tramp 'Waiting for prompts from remote shell'.
 ;; https://www.emacswiki.org/emacs/TrampMode#toc12
 (use-package tramp
@@ -670,9 +654,7 @@
             ("r" rgrep "recursive grep")
             ("o" occur "occur")
             ("m" multi-occur "multi occur")
-            ("p" package-list-packages "list packages")
-            ("w" webjump "web jump")
-            ("d" deft "deft")))
+            ("p" package-list-packages "list packages")))
 
 ;; Toggle map.
 (bind-key "C-x t"
