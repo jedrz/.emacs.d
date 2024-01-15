@@ -280,27 +280,6 @@ tasks."
   :after org-roam
   :init
   (require 'consult-org-roam)
-
-  ;; Override the function to fix org roam buffers order.
-  ;; See: https://github.com/jgru/consult-org-roam/issues/27
-  (defun consult-org-roam-buffer-setup ()
-    "Setup consult-org-roam-buffer functionality.
-Setup consult-org-roam-buffer functionality by adding
-org-roam-buffer-source to consult-buffer-sources and customizing
-consult--source-buffer."
-    ;; Remove org-roam-buffer-source to avoid duplicate
-    (consult-org-roam-buffer-teardown)
-    (consult-org-roam-buffer--customize-source-buffer t)
-    (if consult-org-roam-buffer-after-buffers
-        (let* ((idx (cl-position 'consult--source-buffer
-                                 consult-buffer-sources :test 'equal))
-               (tail (nthcdr (1+ idx) consult-buffer-sources)))
-          (setcdr
-           ;; Was (1- idx)
-           (nthcdr idx consult-buffer-sources)
-           (append (list 'org-roam-buffer-source) tail)))
-      (add-to-list 'consult-buffer-sources 'org-roam-buffer-source 'append)))
-
   ;; Activate the minor mode
   (consult-org-roam-mode 1)
   :custom
