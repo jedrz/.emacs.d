@@ -151,6 +151,13 @@
   :ensure t
   :defer t)
 
+(use-package ox-jira
+  :ensure t
+  :defer t
+  :after ox
+  :init
+  (require 'ox-jira))
+
 (use-package orgtbl-aggregate
   :ensure t
   :defer t)
