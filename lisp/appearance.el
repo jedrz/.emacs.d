@@ -1,9 +1,9 @@
 (add-to-list 'default-frame-alist '(font . "JetBrains Mono 10"))
 
-(use-package flatui-theme
+(use-package monokai-theme
   :ensure t
   :config
-  (load-theme 'flatui t))
+  (load-theme 'monokai t))
 
 ;; Show column number in status bar.
 (column-number-mode 1)
