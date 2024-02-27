@@ -95,6 +95,13 @@
 ;; Allow to center with Ctrl-l while searching.
 (setq isearch-allow-scroll t)
 
+;; Display transient menu with isearch keybindings.
+(use-package cc-isearch-menu
+  :ensure t
+  :defer t
+  :bind
+  (:map isearch-mode-map ("<f2>" . cc-isearch-menu-transient)))
+
 ;; Handle camelCase words properly everywhere.
 (use-package subword
   :diminish subword-mode
