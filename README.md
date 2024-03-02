@@ -1,5 +1,7 @@
 # My emacs configuration #
 
+Configuration migrated to [.doom.d](https://github.com/jedrz/.doom.d)
+
 This repo contains my emacs configuration. A lot of things were stolen from:
 * [EmacsWiki](http://emacswiki.org)
 * [WikEmacs](http://wikemacs.org)
